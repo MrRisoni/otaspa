@@ -6,7 +6,11 @@ class PriceBox extends Component {
     render() {
         return (
             <div className="pricebox">
-                PriceBox
+                <div className="row">
+                    <div className="col-md-12">
+                         Total Price : {this.props.data.total}
+                    </div>
+                </div>
             </div>
         )
     }
