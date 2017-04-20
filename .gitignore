@@ -1,0 +1,15 @@
+/node_modules
+/.idea
+*.xml
+/bower_components
+*.mp3
+*.log
+config.json
+*.env
+*.xml
+./idea
+*.xml
+/.idea/workspace.xml
+/.idea
+.idea/workspace.xml
+**/.idea/workspace.xml
