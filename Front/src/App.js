@@ -16,17 +16,17 @@ class App extends Component {
                     id: 1,
                     title: 'SMS',
                     price: 1,
-                    selected : false
-                },{
+                    selected: false
+                }, {
                     id: 2,
                     title: 'Web Check-in',
                     price: 6,
-                    selected : false
-                },{
+                    selected: false
+                }, {
                     id: 3,
                     title: 'Hotel Room',
                     price: 10,
-                    selected : false
+                    selected: false
                 }
             ]
 
@@ -35,22 +35,25 @@ class App extends Component {
         this.handleUpsales = this.handleUpsales.bind(this);
     }
 
-    handleUpsales(upsale_id)
-    {
+    handleUpsales(upsale_id, checked) {
         var self = this;
-        console.log('App Component Bought ' + upsale_id);
+        console.log('App Component Bought ' + upsale_id + ' is ' + checked);
 
         let upsalesNew = this.state.upsales;
-        for (let i =0 ; i < upsalesNew.length; i++)
-        {
+        for (let i = 0; i < upsalesNew.length; i++) {
             if (upsalesNew[i].id == upsale_id) {
-                console.log('Price of upsale ' +  upsalesNew[i].price);
+                console.log('Price of upsale ' + upsalesNew[i].price);
                 upsalesNew[i].selected = true;
                 let pricingNew = this.state.pricing;
-                pricingNew.total += upsalesNew[i].price;
+                if (checked) {
+                    pricingNew.total += upsalesNew[i].price;
+                }
+                else {
+                    pricingNew.total -= upsalesNew[i].price;
+                }
 
-                self.setState({ pricing : pricingNew});
-                self.setState({ upsales : upsalesNew});
+                self.setState({pricing: pricingNew});
+                self.setState({upsales: upsalesNew});
 
             }
         }

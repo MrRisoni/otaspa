@@ -5,7 +5,7 @@ class Upsale extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selected: false,
+            selected: true,
             price: this.props.price
         };
 
@@ -13,21 +13,26 @@ class Upsale extends Component {
         this.localHandler = this.localHandler.bind(this);
     }
 
-    localHandler()
-    {
-      //  console.log('local handler ' + this.props.obj.id);
-        this.props.parentHandler(this.props.obj.id);
+    localHandler() {
+        if (this.state.selected) {
+            this.setState({selected: false});
+        }
+        else {
+            this.setState({selected: true});
+        }
+
+
+        console.log('local handler ' + this.props.obj.id + ' status ' + this.state.selected);
+        this.props.parentHandler(this.props.obj.id, this.state.selected);
     }
 
     render() {
-        const { isChecked } = this.state.selected;
+        const {isChecked} = this.state.selected;
 
         return (
 
             <div className="row">
                 <div className="col-md-8">
-
-
 
 
                     <div className="checkbox">
@@ -43,7 +48,6 @@ class Upsale extends Component {
                             {this.props.obj.title} {this.props.obj.price}
                         </label>
                     </div>
-
 
 
                 </div>
