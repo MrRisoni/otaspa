@@ -20,7 +20,7 @@ class UpsaleList extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col-md-8">
+                <div className="col-md-10">
 
                     <div className="panel panel-default">
                         <div className="panel-heading">Select upsales</div>

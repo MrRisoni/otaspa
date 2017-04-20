@@ -32,7 +32,7 @@ class Upsale extends Component {
         return (
 
             <div className="row">
-                <div className="col-md-8">
+                <div className="col-md-10">
 
 
                     <div className="checkbox">

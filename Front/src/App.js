@@ -27,6 +27,31 @@ class App extends Component {
                     title: 'Hotel Room',
                     price: 10,
                     selected: false
+                }, {
+                    id: 4,
+                    title: 'Rent a Car',
+                    price: 30,
+                    selected: false
+                }, {
+                    id: 5,
+                    title: 'Pet in Cabin',
+                    price: 25,
+                    selected: false
+                }, {
+                    id: 6,
+                    title: 'Risotto a frutti di mare',
+                    price: 15,
+                    selected: false
+                }, {
+                    id: 7,
+                    title: 'a glass of red wine',
+                    price: 12,
+                    selected: false
+                },{
+                    id: 8,
+                    title: 'Chocolate Dessert',
+                    price: 7,
+                    selected: false
                 }
             ]
 
@@ -67,7 +92,7 @@ class App extends Component {
 
                     {/* start panel */}
                     <div className="row">
-                        <div className="col-md-8">
+                        <div className="col-md-10">
 
                             <div className="panel panel-default">
                                 <div className="panel-body">Panel Content</div>
