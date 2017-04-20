@@ -8,6 +8,14 @@ class UpsaleList extends Component {
 
         console.log(this.props.upsales);
 
+        this.handleUpsales = this.handleUpsales.bind(this);
+    }
+
+    handleUpsales(id)
+    {
+        console.log('handleUpsales' + id);
+        this.props.AppHandler(id); // update state of App Component
+
     }
 
     render() {
@@ -20,7 +28,7 @@ class UpsaleList extends Component {
                         <div className="panel-body">
 
                             {this.props.upsales.map(upsl => {
-                                return ( <Upsale key={upsl.id} obj={upsl} handler={this.props.handler}/>)
+                                return ( <Upsale key={upsl.id} obj={upsl} parentHandler={this.handleUpsales}/>)
                             })}
 
 

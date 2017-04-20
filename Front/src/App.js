@@ -37,7 +37,23 @@ class App extends Component {
 
     handleUpsales(upsale_id)
     {
-        console.log(upsale_id)
+        var self = this;
+        console.log('App Component Bought ' + upsale_id);
+
+        let upsalesNew = this.state.upsales;
+        for (let i =0 ; i < upsalesNew.length; i++)
+        {
+            if (upsalesNew[i].id == upsale_id) {
+                console.log('Price of upsale ' +  upsalesNew[i].price);
+                upsalesNew[i].selected = true;
+                let pricingNew = this.state.pricing;
+                pricingNew.total += upsalesNew[i].price;
+
+                self.setState({ pricing : pricingNew});
+                self.setState({ upsales : upsalesNew});
+
+            }
+        }
     }
 
     render() {
@@ -59,7 +75,7 @@ class App extends Component {
                     {/* end panel */}
 
 
-                    <UpsaleList handler={this.handleUpsales} upsales={this.state.upsales}/>
+                    <UpsaleList AppHandler={this.handleUpsales} upsales={this.state.upsales}/>
 
 
                 </div>

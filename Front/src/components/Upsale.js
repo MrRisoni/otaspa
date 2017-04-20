@@ -7,24 +7,43 @@ class Upsale extends Component {
         this.state = {
             selected: false,
             price: this.props.price
-        }
+        };
+
+
+        this.localHandler = this.localHandler.bind(this);
+    }
+
+    localHandler()
+    {
+      //  console.log('local handler ' + this.props.obj.id);
+        this.props.parentHandler(this.props.obj.id);
     }
 
     render() {
+        const { isChecked } = this.state.selected;
+
         return (
 
             <div className="row">
                 <div className="col-md-8">
 
 
-                    <input
-                        id={this.props.obj.title}
-                        name={this.props.obj.title}
-                        type="checkbox"
-                        checked={this.props.obj.selected}
-                        onChange={this.props.handler}/>
 
-                    {this.props.obj.title} {this.props.obj.price}
+
+                    <div className="checkbox">
+                        <label>
+                            <input
+                                id={this.props.obj.id}
+                                name={this.props.obj.title}
+                                type="checkbox"
+                                value={this.props.obj.id}
+                                checked={isChecked}
+                                onChange={this.localHandler}/>
+
+                            {this.props.obj.title} {this.props.obj.price}
+                        </label>
+                    </div>
+
 
 
                 </div>
