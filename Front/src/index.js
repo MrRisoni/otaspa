@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
-import { I18nextProvider } from 'react-i18next';
 import App from './App';
 import './index.css';
 

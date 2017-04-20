@@ -1,34 +1,35 @@
 import React, {Component} from 'react';
 
 
-class Upsale extends Component
-{
-    constructor(props)
-    {
+class Upsale extends Component {
+    constructor(props) {
         super(props);
         this.state = {
-            selected : false,
-            price : this.props.price
+            selected: false,
+            price: this.props.price
         }
     }
-    render()
-    {
-        return(<div>
 
+    render() {
+        return (
 
-            <div className="checkbox">
-                <label> {this.props.title} {this.props.price}
+            <div className="row">
+                <div className="col-md-8">
+
 
                     <input
-                        name={this.props.title}
+                        id={this.props.obj.title}
+                        name={this.props.obj.title}
                         type="checkbox"
-                        checked={this.props.selected}
-                        onChange={this.props.handler} />
-                </label>
+                        checked={this.props.obj.selected}
+                        onChange={this.props.handler}/>
 
-            </div>
+                    {this.props.obj.title} {this.props.obj.price}
 
-        </div>)
+
+                </div>
+
+            </div>)
     }
 }
 
