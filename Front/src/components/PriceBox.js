@@ -17,12 +17,16 @@ class PriceBox extends Component {
                                 <div className="row">
                                     <div className="col-md-12">
                                         {this.props.upsales.map(function (upsl) {
-                                            return ( <div className="row">
-                                                <div className="col-md-12">
-                                                    {upsl.title} : {upsl.price}
-                                                </div>
-                                                </div>
-                                            )
+
+                                            if (upsl.selected) {
+                                                return (
+                                                    <div className="row">
+                                                        <div className="col-md-12">
+                                                            {upsl.title} : {upsl.price}
+                                                        </div>
+                                                    </div> )
+                                            }
+
                                         })}
                                     </div>
                                 </div>
