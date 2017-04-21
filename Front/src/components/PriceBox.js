@@ -31,7 +31,7 @@ class PriceBox extends Component {
                                     </div>
                                 </div>
 
-                                <h2>Total Price : {this.props.data.total}</h2>
+                                <h2>Total Price : {this.props.total}</h2>
 
                             </div>
                         </div>

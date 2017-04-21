@@ -11,6 +11,7 @@ class App extends Component {
         super(props);
         this.state = {
             loadingUpsales :0,
+            totalPrice : 0,
             pricing: {
                 total: 0
             },
@@ -66,13 +67,15 @@ class App extends Component {
     componentDidMount()
     {
         var self = this;
-
+        console.log('Mount Component');
+/*
         axios.get(this.props.apiURL + '/upsales').then(function(response)
         {
             console.log(response.data);
             var upsales = [];
             response.data.forEach(function(obj, index) {
                 obj.selected = false;
+                obj.price = parseFloat(obj.price);
                 upsales.push(obj);
         });
 
@@ -82,6 +85,7 @@ class App extends Component {
         }).catch(function (error) {
             console.log(error);
         });
+        */
 
     }
     handleUpsales(upsale_id, checked) {
@@ -90,20 +94,19 @@ class App extends Component {
 
         let upsalesNew = this.state.upsales;
         for (let i = 0; i < upsalesNew.length; i++) {
-            if (upsalesNew[i].id === upsale_id) {
+            if (upsalesNew[i].id == upsale_id) {
                 console.log('Price of upsale ' + upsalesNew[i].price);
                 upsalesNew[i].selected = true;
-                let pricingNew = this.state.pricing;
+                let pricingNew = this.state.totalPrice;
                 if (checked) {
-                    pricingNew.total += parseFloat(upsalesNew[i].price).toFixed(2);
+                    pricingNew += upsalesNew[i].price;
                 }
                 else {
-                    pricingNew.total -= parseFloat(upsalesNew[i].price).toFixed(2);
+                    pricingNew -= upsalesNew[i].price;
                 }
-                pricingNew.total = parseFloat(pricingNew.total).toFixed(2);
 
-
-                self.setState({pricing: pricingNew});
+                console.log(pricingNew);
+                self.setState({totalPrice : pricingNew});
                 self.setState({upsales: upsalesNew});
 
             }
@@ -146,7 +149,7 @@ class App extends Component {
 
 
                 <div className="col-md-2 ">
-                    <PriceBox data={this.state.pricing} upsales={this.state.upsales}/>
+                    <PriceBox total={this.state.totalPrice} upsales={this.state.upsales}/>
                 </div>
 
             </div>
