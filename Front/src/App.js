@@ -4,90 +4,60 @@ import axios from 'axios';
 import PriceBox from './components/PriceBox';
 import UpsaleList from "./containers/UpsaleList";
 import FontAwesome from 'react-fontawesome';
+import Modal from 'react-modal';
 
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loadingUpsales :0,
-            totalPrice : 0,
+            searchID: 34243233,
+            loadingUpsales: 0,
+            priceDifference : false,
+            totalPrice: 0,
             pricing: {
                 total: 0
             },
-            upsales: [
-                {
-                    id: 1,
-                    title: 'SMS',
-                    price: 1,
-                    selected: false
-                }, {
-                    id: 2,
-                    title: 'Web Check-in',
-                    price: 6,
-                    selected: false
-                }, {
-                    id: 3,
-                    title: 'Hotel Room',
-                    price: 10,
-                    selected: false
-                }, {
-                    id: 4,
-                    title: 'Rent a Car',
-                    price: 30,
-                    selected: false
-                }, {
-                    id: 5,
-                    title: 'Pet in Cabin',
-                    price: 25,
-                    selected: false
-                }, {
-                    id: 6,
-                    title: 'Risotto a frutti di mare',
-                    price: 15,
-                    selected: false
-                }, {
-                    id: 7,
-                    title: 'a glass of red wine',
-                    price: 12,
-                    selected: false
-                },{
-                    id: 8,
-                    title: 'Chocolate Dessert',
-                    price: 7,
-                    selected: false
-                }
-            ]
-
+            upsales: []
         };
 
         this.handleUpsales = this.handleUpsales.bind(this);
     }
 
-    componentDidMount()
-    {
+    componentDidMount() {
         var self = this;
         console.log('Mount Component');
 
-        axios.get(this.props.apiURL + '/upsales').then(function(response)
-        {
+
+        axios.get(this.props.apiURL + '/upsales').then(function (response) {
             console.log(response.data);
             var upsales = [];
-            response.data.forEach(function(obj, index) {
+            response.data.forEach(function (obj, index) {
                 obj.selected = false;
                 obj.price = parseFloat(obj.price);
                 upsales.push(obj);
-        });
+            });
 
-            self.setState({upsales:upsales});
-            self.setState({loadingUpsales:1});
+            self.setState({upsales: upsales});
+            self.setState({loadingUpsales: 1});
 
         }).catch(function (error) {
             console.log(error);
         });
 
 
+        setInterval(function () {
+            console.log('1');
+            axios.get(this.props.apiURL + '/priceChange').then(function (response) {
+            }).catch(function (error) {
+                console.log(error);
+                self.setState({priceDifference : false});
+            });
+        }.bind(this), 10000);
+
+
     }
+
     handleUpsales(upsale_id, checked) {
         var self = this;
         console.log('App Component Bought ' + upsale_id + ' is ' + checked);
@@ -106,7 +76,7 @@ class App extends Component {
                 }
 
                 console.log(pricingNew);
-                self.setState({totalPrice : pricingNew});
+                self.setState({totalPrice: pricingNew});
                 self.setState({upsales: upsalesNew});
 
             }
@@ -130,6 +100,16 @@ class App extends Component {
                         </div>
                     </div>
                     {/* end panel */}
+
+
+
+                    <Modal
+                        isOpen={this.state.priceDifference}
+                    >
+                        <h1>Modal Content</h1>
+                        <p>Etc.</p>
+                    </Modal>
+
 
                     {/*  while loading display spinner  */}
                     { (this.state.loadingUpsales == 0) ?
