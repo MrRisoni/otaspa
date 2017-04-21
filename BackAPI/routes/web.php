@@ -17,3 +17,6 @@ Route::get('/', function () {
 
 
 Route::get('/upsales', 'BookController@upsales');
+
+
+Route::get('/pricechange', 'BookController@priceChange');
