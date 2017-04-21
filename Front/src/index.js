@@ -5,8 +5,7 @@ import App from './App';
 import './index.css';
 
 
-let apiURL = 'http://localhost:3500';
-
+let apiURL = 'http://localhost:8000';
 
 render((
     <Router history={hashHistory}>

@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
-
+import axios from 'axios';
 
 import PriceBox from './components/PriceBox';
 import UpsaleList from "./containers/UpsaleList";
+import FontAwesome from 'react-fontawesome';
+
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            loadingUpsales :0,
             pricing: {
                 total: 0
             },
@@ -60,22 +63,45 @@ class App extends Component {
         this.handleUpsales = this.handleUpsales.bind(this);
     }
 
+    componentDidMount()
+    {
+        var self = this;
+
+        axios.get(this.props.apiURL + '/upsales').then(function(response)
+        {
+            console.log(response.data);
+            var upsales = [];
+            response.data.forEach(function(obj, index) {
+                obj.selected = false;
+                upsales.push(obj);
+        });
+
+            self.setState({upsales:upsales});
+            self.setState({loadingUpsales:1});
+
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+    }
     handleUpsales(upsale_id, checked) {
         var self = this;
         console.log('App Component Bought ' + upsale_id + ' is ' + checked);
 
         let upsalesNew = this.state.upsales;
         for (let i = 0; i < upsalesNew.length; i++) {
-            if (upsalesNew[i].id == upsale_id) {
+            if (upsalesNew[i].id === upsale_id) {
                 console.log('Price of upsale ' + upsalesNew[i].price);
                 upsalesNew[i].selected = true;
                 let pricingNew = this.state.pricing;
                 if (checked) {
-                    pricingNew.total += upsalesNew[i].price;
+                    pricingNew.total += parseFloat(upsalesNew[i].price).toFixed(2);
                 }
                 else {
-                    pricingNew.total -= upsalesNew[i].price;
+                    pricingNew.total -= parseFloat(upsalesNew[i].price).toFixed(2);
                 }
+                pricingNew.total = parseFloat(pricingNew.total).toFixed(2);
+
 
                 self.setState({pricing: pricingNew});
                 self.setState({upsales: upsalesNew});
@@ -102,6 +128,16 @@ class App extends Component {
                     </div>
                     {/* end panel */}
 
+                    {/*  while loading display spinner  */}
+                    { (this.state.loadingUpsales == 0) ?
+                        <FontAwesome
+                            className='fa-spinner'
+                            name='spinner'
+                            size='4x'
+                            spin
+                            style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
+                        />
+                        : '' }
 
                     <UpsaleList AppHandler={this.handleUpsales} upsales={this.state.upsales}/>
 
