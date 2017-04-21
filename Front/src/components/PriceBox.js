@@ -13,7 +13,21 @@ class PriceBox extends Component {
                             <div className="panel-heading">Price Analysis</div>
                             <div className="panel-body">
 
-                                Total Price : {this.props.data.total}
+                                <h4>Upsales</h4>
+                                <div className="row">
+                                    <div className="col-md-12">
+                                        {this.props.upsales.map(function (upsl) {
+                                            return ( <div className="row">
+                                                <div className="col-md-12">
+                                                    {upsl.title} : {upsl.price}
+                                                </div>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                </div>
+
+                                <h2>Total Price : {this.props.data.total}</h2>
 
                             </div>
                         </div>

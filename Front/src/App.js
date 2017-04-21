@@ -110,7 +110,7 @@ class App extends Component {
 
 
                 <div className="col-md-2 ">
-                    <PriceBox data={this.state.pricing}/>
+                    <PriceBox data={this.state.pricing} upsales={this.state.upsales}/>
                 </div>
 
             </div>
