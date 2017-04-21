@@ -68,7 +68,7 @@ class App extends Component {
     {
         var self = this;
         console.log('Mount Component');
-/*
+
         axios.get(this.props.apiURL + '/upsales').then(function(response)
         {
             console.log(response.data);
@@ -85,7 +85,7 @@ class App extends Component {
         }).catch(function (error) {
             console.log(error);
         });
-        */
+
 
     }
     handleUpsales(upsale_id, checked) {
