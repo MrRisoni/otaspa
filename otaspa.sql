@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2017 at 06:54 PM
+-- Generation Time: Apr 21, 2017 at 06:30 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -189,8 +189,37 @@ INSERT INTO `legtypes` (`id`, `title`) VALUES
 
 CREATE TABLE `upsales` (
   `id` smallint(5) UNSIGNED NOT NULL,
-  `title` varchar(25) NOT NULL
+  `title` varchar(25) NOT NULL,
+  `type_id` tinyint(3) UNSIGNED NOT NULL,
+  `price` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `upsales`
+--
+
+INSERT INTO `upsales` (`id`, `title`, `type_id`, `price`) VALUES
+(1, 'SMS', 1, '1.20'),
+(2, 'Web Check-in', 1, '6.00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `upsale_types`
+--
+
+CREATE TABLE `upsale_types` (
+  `id` tinyint(3) UNSIGNED NOT NULL,
+  `title` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `upsale_types`
+--
+
+INSERT INTO `upsale_types` (`id`, `title`) VALUES
+(1, 'per booking'),
+(2, 'per passenger');
 
 --
 -- Indexes for dumped tables
@@ -271,6 +300,13 @@ ALTER TABLE `legtypes`
 -- Indexes for table `upsales`
 --
 ALTER TABLE `upsales`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `type_id` (`type_id`);
+
+--
+-- Indexes for table `upsale_types`
+--
+ALTER TABLE `upsale_types`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -326,7 +362,12 @@ ALTER TABLE `legtypes`
 -- AUTO_INCREMENT for table `upsales`
 --
 ALTER TABLE `upsales`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `upsale_types`
+--
+ALTER TABLE `upsale_types`
+  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
@@ -358,6 +399,12 @@ ALTER TABLE `booktickets`
 ALTER TABLE `bookupsales`
   ADD CONSTRAINT `bookupsales_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `bookfinal` (`id`),
   ADD CONSTRAINT `bookupsales_ibfk_2` FOREIGN KEY (`upsale_id`) REFERENCES `upsales` (`id`);
+
+--
+-- Constraints for table `upsales`
+--
+ALTER TABLE `upsales`
+  ADD CONSTRAINT `upsales_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `upsale_types` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
