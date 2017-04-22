@@ -2,9 +2,12 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 import PriceBox from './components/PriceBox';
-import UpsaleList from "./containers/UpsaleList";
+import UpsaleList from './containers/UpsaleList';
+import PassengerList from './containers/PassengerList';
+
 import FontAwesome from 'react-fontawesome';
 import Modal from 'react-modal';
+
 
 
 class App extends Component {
@@ -101,6 +104,8 @@ class App extends Component {
                     </div>
                     {/* end panel */}
 
+
+                    <PassengerList/>
 
 
                     <Modal
