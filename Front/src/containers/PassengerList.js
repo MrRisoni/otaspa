@@ -9,7 +9,7 @@ class PassengerList extends Component
     {
         return(<div>
 
-            <PassengerCompo/>
+            <PassengerCompo meals={this.props.meals}/>
         </div>);
     }
 }

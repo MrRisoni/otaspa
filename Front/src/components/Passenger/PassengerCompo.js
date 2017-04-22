@@ -7,7 +7,10 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import Names from './Names';
-
+import Passport from './Passport';
+import Baggages from './Baggages';
+import Insurance from './Insurance';
+import Meals from './Meals';
 
 class PassengerCompo extends Component {
     constructor(props) {
@@ -41,12 +44,24 @@ class PassengerCompo extends Component {
         }
     }
 
+    componentDidMount()
+    {
+
+    }
+
     render() {
         return (<div className="row">
             <div className="col-md-12">
                 Passenger Component
 
                 <Names/>
+                <Passport/>
+                <Baggages/>
+                <Insurance/>
+
+
+                <Meals data={this.props.meals}/>
+
             </div>
         </div>)
     }

@@ -9,19 +9,25 @@ import FontAwesome from 'react-fontawesome';
 import Modal from 'react-modal';
 
 
-
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             searchID: 34243233,
             loadingUpsales: 0,
-            priceDifference : false,
+            priceDifference: false,
             totalPrice: 0,
             pricing: {
                 total: 0
             },
-            upsales: []
+            upsales: [],
+            passengers: [],
+            meals: {
+                appetizers: [],
+                mains: [],
+                desserts: [],
+                drinks: []
+            }
         };
 
         this.handleUpsales = this.handleUpsales.bind(this);
@@ -48,13 +54,53 @@ class App extends Component {
             console.log(error);
         });
 
+        axios.get(this.props.apiURL + '/meals').then(function (response) {
+
+            let appetizers = [];
+            let mains = [];
+            let desserts = [];
+            let drinks = [];
+
+            response.data.forEach(function (obj, index) {
+                obj.price = parseFloat(obj.price);
+                obj.title += ' ' + obj.price;
+                switch (obj.meal_type_id) {
+                    case 1:
+                        appetizers.push(obj);
+                        break;
+                    case 2:
+                        mains.push(obj);
+                        break;
+                    case 3:
+                        drinks.push(obj);
+                        break;
+                    case 4:
+                        desserts.push(obj);
+                        break;
+                }
+
+            });
+
+            self.setState({
+                meals: {
+                    appetizers: appetizers,
+                    desserts: desserts,
+                    mains : mains,
+                    drinks:drinks
+                }
+            });
+
+
+        }).catch(function (error) {
+            console.log(error);
+        });
 
         setInterval(function () {
             console.log('1');
             axios.get(this.props.apiURL + '/priceChange').then(function (response) {
             }).catch(function (error) {
                 console.log(error);
-                self.setState({priceDifference : false});
+                self.setState({priceDifference: false});
             });
         }.bind(this), 10000);
 
@@ -105,7 +151,7 @@ class App extends Component {
                     {/* end panel */}
 
 
-                    <PassengerList/>
+                    <PassengerList meals={this.state.meals}/>
 
 
                     <Modal

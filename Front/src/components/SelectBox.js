@@ -18,7 +18,7 @@ class SelectBox extends Component
 
         return (
 
-            <div className="form-group col-md-2">
+            <div className={`form-group ${ this.props.classColSize }`}>
 
                 <select className="form-control" id={this.props.selectID} onChange={this.props.changeHandler}>
                     <option></option>

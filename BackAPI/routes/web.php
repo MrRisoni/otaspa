@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 
 Route::get('/upsales', 'BookController@upsales');
+Route::get('/meals', 'BookController@meals');
 
 
 Route::get('/pricechange', 'BookController@priceChange');

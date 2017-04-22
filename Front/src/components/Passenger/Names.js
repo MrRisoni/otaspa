@@ -1,3 +1,13 @@
-/**
- * Created by phoenix on 21/04/2017.
- */
+import React, {Component} from 'react';
+
+
+class Names extends  Component
+{
+    render()
+    {
+        return(<div>Name From</div>);
+    }
+}
+
+
+export default Names;
