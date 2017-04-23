@@ -31,6 +31,7 @@ class App extends Component {
         };
 
         this.handleUpsales = this.handleUpsales.bind(this);
+        this.handlePassengerUpdates = this.handlePassengerUpdates.bind(this);
     }
 
     componentDidMount() {
@@ -97,7 +98,7 @@ class App extends Component {
 
         setInterval(function () {
             console.log('1');
-            axios.get(this.props.apiURL + '/priceChange').then(function (response) {
+            axios.get(this.props.apiURL + '/pricechange').then(function (response) {
             }).catch(function (error) {
                 console.log(error);
                 self.setState({priceDifference: false});
@@ -107,13 +108,40 @@ class App extends Component {
 
     }
 
+
+    handlePassengerUpdates(passengers_state)
+    {
+        var self = this;
+        console.log('Passenger updates');
+        console.log(passengers_state);
+
+        var apz = passengers_state.upsales.meals.appetizer;
+        console.log('selected appetizer ' + apz);
+
+        console.log(self.state.meals.appetizers);
+
+       for (var i=0 ; i < this.state.meals.appetizers.length; i++) {
+            console.log(' loop ');
+            console.log(this.state.meals.appetizers[i]);
+            if ( this.state.meals.appetizers[i].id == apz) {
+                console.log('March');
+                let pricingNew = this.state.totalPrice;
+                pricingNew += this.state.meals.appetizers[i].price;
+                self.setState({totalPrice: pricingNew});
+            }
+        }
+
+    }
+
+
+
     handleUpsales(upsale_id, checked) {
         var self = this;
         console.log('App Component Bought ' + upsale_id + ' is ' + checked);
 
         let upsalesNew = this.state.upsales;
         for (let i = 0; i < upsalesNew.length; i++) {
-            if (upsalesNew[i].id == upsale_id) {
+            if (upsalesNew[i].id === upsale_id) {
                 console.log('Price of upsale ' + upsalesNew[i].price);
                 upsalesNew[i].selected = true;
                 let pricingNew = this.state.totalPrice;
@@ -151,7 +179,7 @@ class App extends Component {
                     {/* end panel */}
 
 
-                    <PassengerList meals={this.state.meals}/>
+                    <PassengerList meals={this.state.meals} updatePassenger={this.handlePassengerUpdates}/>
 
 
                     <Modal
@@ -163,7 +191,7 @@ class App extends Component {
 
 
                     {/*  while loading display spinner  */}
-                    { (this.state.loadingUpsales == 0) ?
+                    { (this.state.loadingUpsales === 0) ?
                         <FontAwesome
                             className='fa-spinner'
                             name='spinner'

@@ -5,6 +5,14 @@ class SelectBox extends Component
     constructor(props)
     {
         super(props);
+
+        this.localHandler = this.localHandler.bind(this);
+    }
+
+    localHandler(event)
+    {
+        console.log('Local Change Handler '  + event.target.value );
+        this.props.changeHandler(event.target.value);
     }
     render()
     {
@@ -20,7 +28,7 @@ class SelectBox extends Component
 
             <div className={`form-group ${ this.props.classColSize }`}>
 
-                <select className="form-control" id={this.props.selectID} onChange={this.props.changeHandler}>
+                <select className="form-control" id={this.props.selectID} onChange={this.localHandler}>
                     <option></option>
                     {optionsHTML}
                 </select>
