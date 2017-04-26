@@ -3,3 +3,10 @@
     top: 2%;
     right: 2%;
 }
+
+
+img {
+    width: 85%;
+    height: auto;
+    overflow: hidden;
+}

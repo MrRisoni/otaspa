@@ -29,6 +29,8 @@ class PassengerList extends Component
         return(<div>
 
             <PassengerCompo meals={this.props.meals} updatePassengers={this.updatePassengers}/>
+            <PassengerCompo meals={this.props.meals} updatePassengers={this.updatePassengers}/>
+
         </div>);
     }
 }

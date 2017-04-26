@@ -7,7 +7,7 @@ import PassengerList from './containers/PassengerList';
 
 import FontAwesome from 'react-fontawesome';
 import Modal from 'react-modal';
-
+import Carousel from './components/Carousel';
 
 class App extends Component {
     constructor(props) {
@@ -203,6 +203,10 @@ class App extends Component {
                         : '' }
 
                     <UpsaleList AppHandler={this.handleUpsales} upsales={this.state.upsales}/>
+
+                    <Carousel title="Select Car" url="http://buyersguide.caranddriver.com/media/assets/submodel/7368.jpg"/>
+
+                    <Carousel title="Select Hotel" url="http://www.hotel-r.net/im/hotel/es/hotel-room-19.jpg" />
 
 
                 </div>
