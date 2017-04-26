@@ -27,7 +27,8 @@ class App extends Component {
                 mains: [],
                 desserts: [],
                 drinks: []
-            }
+            },
+            buggages : [],
         };
 
         this.handleUpsales = this.handleUpsales.bind(this);

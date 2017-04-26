@@ -8,7 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import Names from './Names';
 import Passport from './Passport';
-import Baggages from './Baggages';
+import Baggages from './Baggages/Baggages';
 import Insurance from './Insurance';
 import Meals from './Meals';
 
