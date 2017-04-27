@@ -29,6 +29,24 @@ class App extends Component {
                 drinks: []
             },
             buggages : [],
+            hotelData: [
+                {
+                    id: 0,
+                    title: 'Mirabel',
+                    info :'',
+                    totalPrice: 86.5
+                },{
+                    id: 1,
+                    title: 'Overlook',
+                    info :'',
+                    totalPrice: 145.5
+                },{
+                    id: 2,
+                    title: 'Miramare',
+                    info :'',
+                    totalPrice: 286.5
+                }
+            ]
         };
 
         this.handleUpsales = this.handleUpsales.bind(this);
@@ -36,13 +54,13 @@ class App extends Component {
     }
 
     componentDidMount() {
-        var self = this;
+        let self = this;
         console.log('Mount Component');
 
 
         axios.get(this.props.apiURL + '/upsales').then(function (response) {
             console.log(response.data);
-            var upsales = [];
+            let upsales = [];
             response.data.forEach(function (obj, index) {
                 obj.selected = false;
                 obj.price = parseFloat(obj.price);
@@ -112,16 +130,16 @@ class App extends Component {
 
     handlePassengerUpdates(passengers_state)
     {
-        var self = this;
+        let self = this;
         console.log('Passenger updates');
         console.log(passengers_state);
 
-        var apz = passengers_state.upsales.meals.appetizer;
+        let apz = passengers_state.upsales.meals.appetizer;
         console.log('selected appetizer ' + apz);
 
         console.log(self.state.meals.appetizers);
 
-       for (var i=0 ; i < this.state.meals.appetizers.length; i++) {
+       for (let i=0 ; i < this.state.meals.appetizers.length; i++) {
             console.log(' loop ');
             console.log(this.state.meals.appetizers[i]);
             if ( this.state.meals.appetizers[i].id == apz) {
@@ -137,7 +155,7 @@ class App extends Component {
 
 
     handleUpsales(upsale_id, checked) {
-        var self = this;
+        let self = this;
         console.log('App Component Bought ' + upsale_id + ' is ' + checked);
 
         let upsalesNew = this.state.upsales;
@@ -204,9 +222,13 @@ class App extends Component {
 
                     <UpsaleList AppHandler={this.handleUpsales} upsales={this.state.upsales}/>
 
-                    <Carousel title="Select Car" url="http://buyersguide.caranddriver.com/media/assets/submodel/7368.jpg"/>
+                    <Carousel title="Select Car"
+                              data={this.state.hotelData}
+                              url="http://buyersguide.caranddriver.com/media/assets/submodel/7368.jpg"/>
 
-                    <Carousel title="Select Hotel" url="http://www.hotel-r.net/im/hotel/es/hotel-room-19.jpg" />
+                    <Carousel title="Select Hotel"
+                              data={this.state.hotelData}
+                              url="http://www.hotel-r.net/im/hotel/es/hotel-room-19.jpg" />
 
 
                 </div>
