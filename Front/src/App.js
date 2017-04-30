@@ -194,7 +194,7 @@ class App extends Component {
         return (
             <div className="row">
 
-                <div className="col-md-10">
+                <div className="col-md-12">
 
                     {/* start panel */}
                     <div className="row">

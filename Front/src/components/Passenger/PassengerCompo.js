@@ -6,8 +6,8 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import Names from './Names';
-import Passport from './Passport';
+import Names from './Personal/Names';
+import Passport from './Personal/Passport';
 import Baggages from './Baggages/Baggages';
 import InsurancePanel from './Insurance/InsurancePanel';
 import Meals from './Meals';
