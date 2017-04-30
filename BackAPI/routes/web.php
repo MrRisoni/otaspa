@@ -18,6 +18,6 @@ Route::get('/', function () {
 
 Route::get('/upsales', 'BookController@upsales');
 Route::get('/meals', 'BookController@meals');
-
+Route::get('/baggages', 'BookController@baggages');
 
 Route::get('/pricechange', 'BookController@priceChange');

@@ -29,6 +29,7 @@ class App extends Component {
                 drinks: []
             },
             buggages : [],
+            buggageData :[],
             hotelData: [
                 {
                     id: 0,
@@ -115,7 +116,17 @@ class App extends Component {
             console.log(error);
         });
 
-        setInterval(function () {
+        axios.get(this.props.apiURL + '/baggages').then(function (response) {
+
+            console.log('Baggages');
+            console.log(response.data);
+            self.setState({buggageData:response.data});
+
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+            setInterval(function () {
             console.log('1');
             axios.get(this.props.apiURL + '/pricechange').then(function (response) {
             }).catch(function (error) {
@@ -198,11 +209,16 @@ class App extends Component {
                     {/* end panel */}
 
 
-                    <PassengerList meals={this.state.meals} updatePassenger={this.handlePassengerUpdates}/>
+                    <PassengerList
+                        meals={this.state.meals}
+                        updatePassenger={this.handlePassengerUpdates}
+                        baggages={this.state.buggageData}
+                        />
 
 
                     <Modal
                         isOpen={this.state.priceDifference}
+                        contentLabel="Price Difference"
                     >
                         <h1>Modal Content</h1>
                         <p>Etc.</p>

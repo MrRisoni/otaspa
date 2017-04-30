@@ -78,7 +78,9 @@ class PassengerCompo extends Component {
 
                         <Names/>
                         <Passport/>
-                        <Baggages/>
+
+                        <Baggages data={this.props.baggages}/>
+
                         <Insurance/>
 
 

@@ -9,9 +9,9 @@ class Baggages extends Component {
 
                 <div className="row">
 
-                    <BaggageLeg/>
+                    <BaggageLeg data={this.props.data} freeBuggage={false} legTitle="Dep"/>
 
-                    <BaggageLeg/>
+                    <BaggageLeg data={this.props.data} freeBuggage={true} legTitle="Ret"/>
 
                 </div>
 

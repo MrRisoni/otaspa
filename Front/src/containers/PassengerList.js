@@ -28,8 +28,18 @@ class PassengerList extends Component
     {
         return(<div>
 
-            <PassengerCompo meals={this.props.meals} updatePassengers={this.updatePassengers}/>
-            <PassengerCompo meals={this.props.meals} updatePassengers={this.updatePassengers}/>
+            <PassengerCompo meals={this.props.meals}
+                            updatePassengers={this.updatePassengers}
+                            baggages={this.props.baggages}
+            />
+
+
+            <PassengerCompo meals={this.props.meals}
+                            updatePassengers={this.updatePassengers}
+                            baggages={this.props.baggages}
+            />
+
+
 
         </div>);
     }
