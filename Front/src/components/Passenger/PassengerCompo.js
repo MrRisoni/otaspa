@@ -9,7 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Names from './Names';
 import Passport from './Passport';
 import Baggages from './Baggages/Baggages';
-import Insurance from './Insurance';
+import InsurancePanel from './Insurance/InsurancePanel';
 import Meals from './Meals';
 
 class PassengerCompo extends Component {
@@ -81,7 +81,7 @@ class PassengerCompo extends Component {
 
                         <Baggages data={this.props.baggages}/>
 
-                        <Insurance/>
+                        <InsurancePanel/>
 
 
                         <Meals data={this.props.meals} papID={this.state.passengerID} mealUpdate={this.updateMeals}/>
