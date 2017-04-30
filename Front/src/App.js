@@ -9,6 +9,8 @@ import FontAwesome from 'react-fontawesome';
 import Modal from 'react-modal';
 import Carousel from './components/Carousel';
 
+import Itinerary from './components/Itinerary/Itinerary';
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -196,17 +198,7 @@ class App extends Component {
 
                 <div className="col-md-12">
 
-                    {/* start panel */}
-                    <div className="row">
-                        <div className="col-md-10">
-
-                            <div className="panel panel-default">
-                                <div className="panel-body">Panel Content</div>
-                                <div className="panel-footer">Panel Footer</div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* end panel */}
+                   <Itinerary/>
 
 
                     <PassengerList
