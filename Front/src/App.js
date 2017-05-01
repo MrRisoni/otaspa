@@ -58,32 +58,22 @@ class App extends Component {
 
         this.handleUpsales = this.handleUpsales.bind(this);
         this.handlePassengerUpdates = this.handlePassengerUpdates.bind(this);
+
+        this.getTodos = this.getTodos.bind(this);
     }
+
+    componentWillMount()
+    {
+        console.log('Will mount');
+    }
+
 
     componentDidMount() {
         let self = this;
         console.log('Mount Component');
 
-        /*
-        axios.get(this.props.apiURL + '/upsales').then(function (response) {
-            console.log(response.data);
-            let upsales = [];
-            response.data.forEach(function (obj, index) {
-                obj.selected = false;
-                obj.price = parseFloat(obj.price);
-                upsales.push(obj);
-            });
-
-            self.setState({upsales: upsales});
-            self.setState({loadedUpsales: 1});
-
-        }).catch(function (error) {
-            console.log(error);
-        });
-        */
-
-        self.setState({upsales: OtaSpaStore.getStoreUpsales()});
-        self.setState({loadedUpsales: 1});
+        OtaSpaActions.getUpsalesFromDB();
+        self.setState({upsales : OtaSpaStore.getStoreUpsales()});
 
         axios.get(this.props.apiURL + '/meals').then(function (response) {
 
@@ -148,6 +138,11 @@ class App extends Component {
 
     }
 
+
+
+    getTodos() {
+        OtaSpaActions.getUpsalesFromDB();
+    }
 
     handlePassengerUpdates(passengers_state)
     {
