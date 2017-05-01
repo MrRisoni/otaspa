@@ -11,12 +11,16 @@ import Carousel from './components/Carousel';
 
 import Itinerary from './components/Itinerary/Itinerary';
 
+import OtaSpaStore from './stores/ota_spa_store';
+
+import * as OtaSpaActions from './actions/ota_spa_actions';
+
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             searchID: 34243233,
-            loadingUpsales: 0,
+            loadedUpsales: 0,
             priceDifference: false,
             totalPrice: 0,
             pricing: {
@@ -60,7 +64,7 @@ class App extends Component {
         let self = this;
         console.log('Mount Component');
 
-
+        /*
         axios.get(this.props.apiURL + '/upsales').then(function (response) {
             console.log(response.data);
             let upsales = [];
@@ -71,11 +75,15 @@ class App extends Component {
             });
 
             self.setState({upsales: upsales});
-            self.setState({loadingUpsales: 1});
+            self.setState({loadedUpsales: 1});
 
         }).catch(function (error) {
             console.log(error);
         });
+        */
+
+        self.setState({upsales: OtaSpaStore.getStoreUpsales()});
+        self.setState({loadedUpsales: 1});
 
         axios.get(this.props.apiURL + '/meals').then(function (response) {
 
@@ -171,6 +179,8 @@ class App extends Component {
         let self = this;
         console.log('App Component Bought ' + upsale_id + ' is ' + checked);
 
+        OtaSpaActions.boughtUpsale(upsale_id);
+
         let upsalesNew = this.state.upsales;
         for (let i = 0; i < upsalesNew.length; i++) {
             if (upsalesNew[i].id === upsale_id) {
@@ -218,7 +228,7 @@ class App extends Component {
 
 
                     {/*  while loading display spinner  */}
-                    { (this.state.loadingUpsales === 0) ?
+                    { (this.state.loadedUpsales === 0) ?
                         <FontAwesome
                             className='fa-spinner'
                             name='spinner'

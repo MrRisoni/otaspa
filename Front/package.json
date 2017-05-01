@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "flux": "^3.1.2",
     "i18next": "^8.0.0",
     "install": "^0.8.8",
     "moment": "^2.18.1",
