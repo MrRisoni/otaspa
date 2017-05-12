@@ -10,18 +10,30 @@ import Itinerary from './container/Itinerary';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            itinerary: []
+        };
 
     }
 
     componentWillMount()
     {
+        let self = this;
+
         console.log('Will mount');
+
+        OtaActions.getItinerary();
+        console.log(OtaStore.getItinerary());
+
+        this.setState({
+            itinerary: OtaStore.getItinerary(),
+        });
+
+        console.log(self.state);
     }
 
 
     componentDidMount() {
-        let self = this;
     }
 
 
@@ -31,7 +43,7 @@ class App extends Component {
 
                 <div className="col-md-12">
 
-                   <Itinerary/>
+                   <Itinerary itinerary={this.state.itinerary}/>
 
 
 

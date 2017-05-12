@@ -2,10 +2,9 @@ import dispatcher from "./dispatcher";
 
 
 export function getItinerary() {
-    return {
+    dispatcher.dispatch({
         type: "GET_ITINERARY",
-        payload : [
-            { from : 'ATH', to : 'MUC'} ,  { from : 'ATH', to : 'MUC'}
-        ]
-    }
+        aller: { from : 'ATH', to : 'MUC'} ,
+        retour : { from : 'ATH', to : 'MUC'}
+    });
 }

@@ -5,18 +5,29 @@ import dispatcher from "./dispatcher";
 class OtaStore extends EventEmitter {
     constructor() {
         super();
-        this.itineray = [];
+        this.itinerary = {
+            aller : '',
+            retour : ''
+        };
     }
 
 
     handleActions(action) {
         switch(action.type) {
             case "GET_ITINERARY": {
-                this.itineray = action.payload;
+                console.log('get itinerary store');
+                this.itinerary.aller = action.aller;
+                this.itinerary.retour = action.retour;
+
                 this.emit("change");
                 break;
             }
         }
+    }
+
+    getItinerary()
+    {
+        return this.itinerary;
     }
 
 }

@@ -14,6 +14,9 @@ class Itinerary extends Component
                     <div className="panel-body">
                     </div>
                 </div>
+
+                <Leg segments={this.props.itinerary.aller}/>
+
             </div>
         </div>)
     }
