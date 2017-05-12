@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 
 
+import * as OtaActions from "./actions";
+import OtaStore from "./OtaStore";
+
+
+import Itinerary from './container/Itinerary';
+
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {};
 
-
-        this.getTodos = this.getTodos.bind(this);
     }
 
     componentWillMount()
