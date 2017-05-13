@@ -4,7 +4,53 @@ import dispatcher from "./dispatcher";
 export function getItinerary() {
     dispatcher.dispatch({
         type: "GET_ITINERARY",
-        aller: { from : 'ATH', to : 'MUC'} ,
-        retour : { from : 'ATH', to : 'MUC'}
+        info : {fromCity : 'Athens',
+                toCity: 'London',
+                carrier: 'Turkish Airlines',
+                depDate : 'Fr 23 Jun 2017',
+                depTime : '10:10',
+                depAirport: 'ATH',
+                arrTime: '16:00',
+                arrAirport: 'LGW',
+                duration: '07:50',
+                stops: 1,
+                suitcase: true,
+                kilos: '25KG',
+                roundTrip: false},
+        aller: [
+                    {
+                        fromCity : 'Athens',
+                        toCity : 'Istanbul',
+                        fromAirport: 'ATH, Eleftherios Venizelos Intl Arpt',
+                        toAirport: 'IST, Ataturk Arpt Terminal: I',
+                        duration: '01:50',
+                        depDateTime: '10:10 Freitag, 23 Jun 2017',
+                        arrDateTime: '11:35 Freitag, 23 Jun 2017',
+                        airline :  'Turkish Airlines TK',
+                        codeShare: '',
+                        flightNumber: 'TK1846',
+                        cos: 'V',
+                        waitTime: '02:20',
+                        differentDay: false,
+                        differentAirport: false
+                    },
+                    {
+                        fromCity : 'Istanbul',
+                        toCity : 'London',
+                        fromAirport: 'IST, Ataturk Arpt Terminal: II',
+                        toAirport: 'LGW, Gatwick Arpt  Terminal: S',
+                        duration: '04:10',
+                        depDateTime: '13:55 Freitag, 23 Jun 2017',
+                        arrDateTime: '16:00 Freitag, 23 Jun 2017',
+                        airline :  'Turkish Airlines TK',
+                        codeShare: '',
+                        flightNumber: 'TK1997',
+                        cos: 'V',
+                        waitTime: '',
+                        differentDay: false,
+                        differentAirport: false
+                    }
+                ] ,
+        retour : []
     });
 }

@@ -18,7 +18,7 @@ class OtaStore extends EventEmitter {
                 console.log('get itinerary store');
                 this.itinerary.aller = action.aller;
                 this.itinerary.retour = action.retour;
-
+                this.itinerary.info = action.info;
                 this.emit("change");
                 break;
             }
