@@ -1,17 +1,21 @@
 import React, {Component} from 'react';
-
+import FontAwesome from 'react-fontawesome';
 
 import * as OtaActions from "./actions";
 import OtaStore from "./OtaStore";
 
 
+import PriceBox from './PriceBox';
 import Itinerary from './container/Itinerary';
+import UpsaleList from './container/UpsaleList';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            itinerary: {}
+            itinerary: {},
+            upsales: [],
+            loadingUpsales : 0
         };
 
     }
@@ -23,11 +27,14 @@ class App extends Component {
         console.log('Will mount');
 
         OtaActions.getItinerary();
-        console.log(OtaStore.getItinerary());
 
         this.setState({
             itinerary: OtaStore.getItinerary(),
         });
+
+        OtaActions.getUpsales();
+
+        this.setState({ upsales: OtaStore.getUpsales()});
 
         console.log(self.state);
     }
@@ -41,17 +48,29 @@ class App extends Component {
         return (
             <div className="row">
 
-                <div className="col-md-12">
+                <div className="col-md-10">
 
                    <Itinerary itinerary={this.state.itinerary}/>
 
+                    {/*  while loading display spinner  */}
+                    { (this.state.loadingUpsales === 0) ?
+                        <FontAwesome
+                            className='fa-spinner'
+                            name='spinner'
+                            size='4x'
+                            spin
+                            style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
+                        />
+                        : '' }
+
+                    <UpsaleList AppHandler={this.handleUpsales} upsales={this.state.upsales}/>
 
 
                 </div>
 
 
                 <div className="col-md-2 ">
-                   PriceBox
+                   <PriceBox/>
                 </div>
 
             </div>

@@ -1,6 +1,45 @@
 import dispatcher from "./dispatcher";
 
 
+export function checkedUpsale(id, selection) {
+    dispatcher.dispatch({
+        type: "CHECKED_UPSALE",
+        payload : {
+            id: id,
+            selected : selection
+        }
+    })
+}
+
+export function getUpsales() {
+    dispatcher.dispatch({
+        type: "GET_UPSALES",
+        payload : [
+            {
+                id : 1,
+                title: 'SMS',
+                price : 1.5,
+                selected : false
+            },
+            {
+                id : 2,
+                title: 'Web check-in',
+                price : 3,
+                selected : false
+            },
+            {
+                id : 3,
+                title: 'Pet in cabin',
+                price : 5.65,
+                selected : false
+            }
+
+        ]
+    })
+}
+
+
+
 export function getItinerary() {
     dispatcher.dispatch({
         type: "GET_ITINERARY",
