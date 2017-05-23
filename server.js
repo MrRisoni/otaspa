@@ -28,10 +28,7 @@ con.connect(function (err) {
 });
 
 
-app.get('/api/segments', function (req,res) {
-    var segs = require('./segments.json');
-    res.send(segs);
-});
+
 
 app.get('/api/baggages', function (req,res) {
     con.query("SELECT * FROM baggages WHERE carrier = '" + req.body.carrier + "' ORDER BY price ASC", function (err, bags) {

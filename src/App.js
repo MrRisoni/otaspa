@@ -8,6 +8,8 @@ import OtaStore from "./OtaStore";
 import PriceBox from './PriceBox';
 import Itinerary from './container/Itinerary';
 import UpsaleList from './container/UpsaleList';
+import PassengerList from './container/PassengerList';
+
 
 class App extends Component {
     constructor(props) {
@@ -51,6 +53,9 @@ class App extends Component {
                 <div className="col-md-10">
 
                    <Itinerary itinerary={this.state.itinerary}/>
+
+
+                    <PassengerList/>
 
                     {/*  while loading display spinner  */}
                     { (this.state.loadingUpsales === 0) ?

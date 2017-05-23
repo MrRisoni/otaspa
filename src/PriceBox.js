@@ -36,9 +36,9 @@ class PriceBox extends Component {
 
 
                                 <h4>Upsales</h4>
-                                {this.state.pricing.upsales.map ( (upsl) => {
+                                {/* {this.state.pricing.upsales.map ( (upsl) => {
                                     return (<div>{upsl.title}</div>)
-                                })}
+                                })} */}
 
 
 
