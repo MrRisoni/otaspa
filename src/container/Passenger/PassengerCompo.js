@@ -6,6 +6,7 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import Baggages from './Baggages/Baggage';
+import FarePanel from './UpgradeFare/FarePanel';
 
 class PassengerCompo extends Component {
     constructor(props) {
@@ -61,6 +62,8 @@ class PassengerCompo extends Component {
 
 
                         <Baggages />
+
+                        <FarePanel/>
 
 
                     </div>
