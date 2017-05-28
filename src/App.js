@@ -17,6 +17,7 @@ class App extends Component {
         this.state = {
             itinerary: {},
             upsales: [],
+            bags:[],
             loadingUpsales : 0
         };
 
@@ -38,7 +39,13 @@ class App extends Component {
 
         this.setState({ upsales: OtaStore.getUpsales()});
 
+
+        OtaActions.getBaggages();
+
+        this.setState({bags: OtaStore.getBags()});
         console.log(self.state);
+
+
     }
 
 
@@ -55,7 +62,7 @@ class App extends Component {
                    <Itinerary itinerary={this.state.itinerary}/>
 
 
-                    <PassengerList/>
+                    <PassengerList />
 
                     {/*  while loading display spinner  */}
                     { (this.state.loadingUpsales === 0) ?

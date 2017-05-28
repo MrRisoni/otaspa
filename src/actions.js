@@ -32,6 +32,22 @@ export function getUpsales() {
 }
 
 
+export function getBaggages() {
+    dispatcher.dispatch({
+        type: "GET_BAGGAGES",
+        payload: [
+                {
+                    title: "23x45x34 23KG",
+                    price: 22
+                },
+                {
+                    title: "23x45x34 15KG",
+                    price: 12
+                }
+            ]
+    })
+}
+
 export function getItinerary() {
     dispatcher.dispatch({
         type: "GET_ITINERARY",

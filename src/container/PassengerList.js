@@ -9,7 +9,8 @@ class PassengerList extends Component
     {
         super(props);
         this.state = {
-            passengers:[]
+            passengers:[],
+            count : 2
         };
 
 
@@ -18,12 +19,16 @@ class PassengerList extends Component
 
     render()
     {
+        let passengersdiv = [];
+
+        for (var i =0 ; i < this.state.count; i++)
+        {
+            passengersdiv.push(<PassengerCompo id={i+1}/>)
+        }
         return(<div>
 
 
-            <PassengerCompo />
-
-            <PassengerCompo />
+            {passengersdiv}
 
 
         </div>);

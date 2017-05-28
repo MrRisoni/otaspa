@@ -19,6 +19,7 @@ class OtaStore extends EventEmitter {
         };
 
         this.upsales = [];
+        this.baggages = [];
     }
 
 
@@ -52,6 +53,10 @@ class OtaStore extends EventEmitter {
                 this.upsales = action.payload;
                 break;
             }
+            case "GET_BAGGAGES" : {
+                this.baggages = action.payload;
+                break;
+            }
         }
     }
 
@@ -68,6 +73,11 @@ class OtaStore extends EventEmitter {
     getUpsales()
     {
         return this.upsales;
+    }
+
+    getBags()
+    {
+        return this.baggages;
     }
 }
 

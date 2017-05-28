@@ -10,8 +10,20 @@ class Baggage extends Component {
                 <div className="row">
 
                     <div className="panel panel-default">
-                        <div className="panel-heading">Panel Heading</div>
-                        <div className="panel-body">Panel Content</div>
+                        <div className="panel-heading">Select Baggages</div>
+                        <div className="panel-body">
+
+                            <div className="row">
+
+                                <BaggageLeg legTitle={'ATH-MUC'}/>
+                                <BaggageLeg legTitle={'MUC-ATH'}/>
+
+
+
+                            </div>
+
+
+                        </div>
                     </div>
 
                 </div>
