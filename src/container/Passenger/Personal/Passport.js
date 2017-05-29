@@ -43,6 +43,7 @@ class Passport extends Component {
                             Issue Date
                             <div className="col-md-2">
                                 <DatePicker
+                                    className="form-control"
                                     selected={this.state.startDate}
                                     onChange={this.handleChange}
                                 />
@@ -51,6 +52,7 @@ class Passport extends Component {
                             Exp Date
                             <div className="col-md-2">
                                 <DatePicker
+                                    className="form-control"
                                     selected={this.state.startDate}
                                     onChange={this.handleChange}
                                 />

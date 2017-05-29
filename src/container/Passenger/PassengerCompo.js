@@ -5,6 +5,7 @@ import Baggages from './Baggages/Baggage';
 import FarePanel from './UpgradeFare/FarePanel';
 import  InsurancePanel from './Insurance/InsurancePanel';
 import Names from './Personal/Names';
+import Passport from "./Personal/Passport";
 
 class PassengerCompo extends Component {
     constructor(props) {
@@ -58,6 +59,8 @@ class PassengerCompo extends Component {
 
 
                         <Names/>
+
+                        <Passport/>
 
 
                         <InsurancePanel/>
