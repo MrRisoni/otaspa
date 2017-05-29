@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 
 
-import DatePicker from 'react-datepicker';
-import moment from 'moment';
-import 'react-datepicker/dist/react-datepicker.css';
-
 import Baggages from './Baggages/Baggage';
 import FarePanel from './UpgradeFare/FarePanel';
+import  InsurancePanel from './Insurance/InsurancePanel';
+import Names from './Personal/Names';
 
 class PassengerCompo extends Component {
     constructor(props) {
@@ -59,11 +57,15 @@ class PassengerCompo extends Component {
                     <div className="panel-body">
 
 
+                        <Names/>
 
+
+                        <InsurancePanel/>
 
                         <Baggages />
 
                         <FarePanel/>
+
 
 
                     </div>

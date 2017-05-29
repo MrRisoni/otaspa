@@ -7,7 +7,6 @@ class Baggage extends Component {
         return (<div className="row">
             <div className="col-md-12">
 
-                <div className="row">
 
                     <div className="panel panel-default">
                         <div className="panel-heading">Select Baggages</div>
@@ -25,8 +24,6 @@ class Baggage extends Component {
 
                         </div>
                     </div>
-
-                </div>
 
             </div>
         </div>);

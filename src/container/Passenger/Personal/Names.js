@@ -48,6 +48,7 @@ class Names extends Component {
 
                             <div className="col-md-2">
                                 <DatePicker
+                                    className="form-control"
                                     selected={this.state.startDate}
                                     onChange={this.handleChange}
                                 />
@@ -72,9 +73,7 @@ class Names extends Component {
 
                         </div>
 
-                        gender type surname name
 
-                        DOB
 
                     </div>
                 </div>
