@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import ReduxApp from './ReduxApp';
 import './index.css';
 
 
-let apiURL = 'http://localhost:8000';
+import { createStore } from 'redux'
+import OtaSpaApp from './reducers'
+let store = createStore(OtaSpaApp);
 
+import {getUpsales} from './redux_actions';
 
 ReactDOM.render(
-     <App apiURL={apiURL}/>,
+     <ReduxApp/>,
       document.getElementById('root')
     );

@@ -17,7 +17,8 @@ class PassengerCompo extends Component {
                 type: 0,
                 name: '',
                 surname: '',
-                dob: ''
+                dob: '',
+                fullname : ''
             },
             passport: {
                 issueCountry: [],
@@ -54,7 +55,7 @@ class PassengerCompo extends Component {
             <div className="col-md-10">
 
                 <div className="panel panel-default">
-                    <div className="panel-heading">Passenger # {this.props.id} </div>
+                    <div className="panel-heading">Passenger # {this.props.id} {this.state.personal.fullname}</div>
                     <div className="panel-body">
 
 
