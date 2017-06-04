@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
+import {connect} from 'redux';
 
+
+import {getUpsales} from './redux_actions';
 
 
 class ReduxApp extends Component {
@@ -13,10 +16,28 @@ class ReduxApp extends Component {
         return (
            <div>
                Redux App
+               {this.props.upsales[0].title}
 
             </div>
         );
     }
 }
 
-export default ReduxApp;
+
+const mapStateToProps = (state) => {
+    return {
+        upsales : state.upsales
+    }
+};
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setUpsales : (upsales) => {
+            dispatch(getUpsales());
+        }
+    }
+};
+
+export default  connect(mapStateToProps ,mapDispatchToProps)(ReduxApp);
+
