@@ -9,6 +9,9 @@ function spa(state = {}, action) {
             return Object.assign({}, state, {itinerary : action.payload});
         case "GET_PAPCOUNT":
             return Object.assign({}, state, { pap_types : action.payload});
+        case "GET_BAGGAGES":
+            return Object.assign({}, state, { baggages : action.payload});
+
         default:
             return state
     }

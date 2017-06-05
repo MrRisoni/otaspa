@@ -34,7 +34,8 @@
   "keywords": [
     "OTA",
     "SPA",
-    "React"
+    "React",
+    "Redux"
   ],
   "author": "Vaggelis Katanias",
   "license": "ISC",

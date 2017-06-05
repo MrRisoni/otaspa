@@ -14,8 +14,8 @@ class FarePanel extends Component {
 
                             <div className="row">
 
-                                <FareBox/>
-                                <FareBox/>
+                                <FareBox id="normal"/>
+                                <FareBox id="upgraded"/>
 
                             </div>
 

@@ -44,6 +44,23 @@ export  function getPassengerCount() {
 }
 
 
+
+export  function getPassengers() {
+    return {
+        type : "GET_PAPCOUNT",
+        payload : [{
+            type: "ADT",
+            name : '',
+            surname: '',
+            bod: '',
+            insurance : 0,
+            fare : 0,
+            bag : 0
+        }]
+    }
+}
+
+
 export function getItinerary() {
     return {
         type: "GET_ITINERARY",

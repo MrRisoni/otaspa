@@ -13,6 +13,7 @@ let store = createStore(OtaSpaApp);
 store.dispatch(ReduxActions.getUpsales());
 store.dispatch(ReduxActions.getItinerary());
 store.dispatch(ReduxActions.getPassengerCount());
+store.dispatch(ReduxActions.getBaggages());
 
 
 ReactDOM.render(

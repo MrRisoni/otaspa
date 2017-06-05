@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
 
 import BaggageLeg from './BaggageLeg';
 
-class Baggage extends Component {
+
+
+class BaggageList extends Component {
     render() {
         return (<div className="row">
             <div className="col-md-12">
@@ -14,8 +18,8 @@ class Baggage extends Component {
 
                             <div className="row">
 
-                                <BaggageLeg legTitle={'ATH-MUC'}/>
-                                <BaggageLeg legTitle={'MUC-ATH'}/>
+                                <BaggageLeg legTitle={'ATH-MUC'} bags={this.props.bags}/>
+                                <BaggageLeg legTitle={'MUC-ATH'} bags={this.props.bags}/>
 
 
 
@@ -31,4 +35,11 @@ class Baggage extends Component {
 }
 
 
-export default Baggage;
+function mapStateToProps(state) {
+    return {
+        bags : state.spa.baggages
+    }
+}
+
+export default connect(mapStateToProps)(BaggageList);
+

@@ -8,7 +8,7 @@ class FareBox extends Component {
             <div className="panel panel-default">
                 <div className="panel-body">
                     <p>Description</p>
-                    <input type="radio" value="option1" checked={true}/>
+                    <input type="radio" value={this.props.id} checked={true}/>
                 </div>
             </div>
         </div>);

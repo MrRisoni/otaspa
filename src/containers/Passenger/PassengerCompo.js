@@ -1,17 +1,12 @@
 import React, {Component} from 'react';
-
-
-
-{/* import Baggages from './Baggages/Baggage';
-import FarePanel from './UpgradeFare/FarePanel';
-import  InsurancePanel from './Insurance/InsurancePanel';
-
-*/}
+import {connect} from 'react-redux';
 
 
 import Names from './Personal/Names';
 import Passport from "./Personal/Passport";
-
+import BaggageList from './Baggages/BaggageList';
+import FarePanel from './UpgradeFare/FarePanel';
+import  InsurancePanel from './Insurance/InsurancePanel';
 
 
 class PassengerCompo extends Component {
@@ -34,17 +29,10 @@ class PassengerCompo extends Component {
 
 
                         <Names/>
-
-                           <Passport/>
-
-                        {/*
+                        <Passport/>
+                        <BaggageList />
                         <InsurancePanel/>
-
-                        <Baggages />
-
                         <FarePanel/>
-
-*/}
 
                     </div>
                 </div>
