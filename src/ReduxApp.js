@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import FontAwesome from 'react-fontawesome';
 
 
+import Itinerary from './containers/Trip/Itinerary';
 import UpsaleList from './containers/UpsaleList';
 import PriceBox from './containers/PriceBox';
 
@@ -19,6 +20,12 @@ class ReduxApp extends Component {
                <div className="row">
 
                    <div className="col-md-10">
+
+
+                       <Itinerary/>
+
+
+                       <PassengerList />
 
 
                        {/*  while loading display spinner  */}
