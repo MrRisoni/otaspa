@@ -39,9 +39,7 @@ export function getBaggages() {
 export  function getPassengerCount() {
     return {
         type : "GET_PAPCOUNT",
-        payload : {
-            count :3
-        }
+        payload : ['ADT', 'ADT', 'CNN']
     }
 }
 

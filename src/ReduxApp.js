@@ -4,6 +4,7 @@ import FontAwesome from 'react-fontawesome';
 
 import Itinerary from './containers/Trip/Itinerary';
 import UpsaleList from './containers/UpsaleList';
+import PassengerList from './containers/PassengerList';
 import PriceBox from './containers/PriceBox';
 
 

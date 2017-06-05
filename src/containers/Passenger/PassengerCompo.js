@@ -6,12 +6,11 @@ import React, {Component} from 'react';
 import FarePanel from './UpgradeFare/FarePanel';
 import  InsurancePanel from './Insurance/InsurancePanel';
 
-import Names from './Personal/Names';
-import Passport from "./Personal/Passport";
 */}
 
 
 import Names from './Personal/Names';
+import Passport from "./Personal/Passport";
 
 
 
@@ -20,9 +19,6 @@ class PassengerCompo extends Component {
         super(props);
 
     }
-
-
-
 
     componentDidMount() {
 
@@ -33,15 +29,15 @@ class PassengerCompo extends Component {
             <div className="col-md-10">
 
                 <div className="panel panel-default">
-                    <div className="panel-heading">Passenger # {this.props.id} {this.state.personal.fullname}</div>
+                    <div className="panel-heading">Passenger # {this.props.id} </div>
                     <div className="panel-body">
 
 
                         <Names/>
 
-                        {/*   <Passport/>
+                           <Passport/>
 
-
+                        {/*
                         <InsurancePanel/>
 
                         <Baggages />
