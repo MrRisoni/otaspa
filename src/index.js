@@ -2,13 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReduxApp from './ReduxApp';
 import './index.css';
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { Provider } from 'react-redux';
+import { createStore  } from 'redux';
+
 
 import  * as ReduxActions from './redux_actions';
 
-import OtaSpaApp from './reducers'
+import OtaSpaApp from './reducers';
+
 let store = createStore(OtaSpaApp);
+
 
 store.dispatch(ReduxActions.getUpsales());
 store.dispatch(ReduxActions.getItinerary());
