@@ -1,22 +1,47 @@
 import React, {Component} from 'react';
-import {connect} from 'redux';
+import FontAwesome from 'react-fontawesome';
 
 
-import {getUpsales} from './redux_actions';
+import UpsaleList from './containers/UpsaleList';
+import PriceBox from './containers/PriceBox';
 
 
 class ReduxApp extends Component {
     constructor(props) {
         super(props);
 
-    }
 
+    }
 
     render() {
         return (
            <div>
-               Redux App
-               {this.props.upsales[0].title}
+               <div className="row">
+
+                   <div className="col-md-10">
+
+
+                       {/*  while loading display spinner  */}
+                           <FontAwesome
+                               className='fa-spinner'
+                               name='spinner'
+                               size='4x'
+                               spin
+                               style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
+                           />
+
+
+                       <UpsaleList/>
+
+
+                   </div>
+
+
+                   <div className="col-md-2 ">
+                       <PriceBox/>
+                   </div>
+
+               </div>
 
             </div>
         );
@@ -24,20 +49,5 @@ class ReduxApp extends Component {
 }
 
 
-const mapStateToProps = (state) => {
-    return {
-        upsales : state.upsales
-    }
-};
-
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setUpsales : (upsales) => {
-            dispatch(getUpsales());
-        }
-    }
-};
-
-export default  connect(mapStateToProps ,mapDispatchToProps)(ReduxApp);
+export default  ReduxApp
 

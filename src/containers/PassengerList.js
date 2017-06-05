@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 
-import PassengerCompo from '../container/Passenger/PassengerCompo';
+import PassengerCompo from './/Passenger/PassengerCompo';
 
 class PassengerList extends Component
 {

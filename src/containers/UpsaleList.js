@@ -1,21 +1,17 @@
 import React, {Component} from 'react';
 
-import Upsale from '../Upsale';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+
+import Upsale from '.././components/Upsale';
 
 class UpsaleList extends Component {
     constructor(props) {
         super(props);
 
-        console.log(this.props.upsales);
-
-        this.handleUpsales = this.handleUpsales.bind(this);
-    }
-
-    handleUpsales(id, checked) {
-        console.log('handleUpsales' + id + ' status ' + checked);
-        this.props.AppHandler(id, checked); // update state of App Component
 
     }
+
 
     render() {
         return (
@@ -27,7 +23,7 @@ class UpsaleList extends Component {
                         <div className="panel-body">
 
                             {this.props.upsales.map(upsl => {
-                                return ( <Upsale key={upsl.id} obj={upsl} parentHandler={this.handleUpsales}/>)
+                                return ( <Upsale key={upsl.id} obj={upsl}/>)
                             })}
 
 
@@ -39,5 +35,10 @@ class UpsaleList extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        upsales : state.spa.upsales
+    }
+}
 
-export default UpsaleList;
+export default connect(mapStateToProps)(UpsaleList);

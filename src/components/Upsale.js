@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-import * as OtaActions from "./actions";
 
 
 class Upsale extends Component {
@@ -23,9 +22,7 @@ class Upsale extends Component {
             this.setState({selected: true});
         }
 
-
-        console.log('local handler ' + this.props.obj.id + ' status ' + this.state.selected);
-        OtaActions.checkedUpsale(this.props.obj.id, this.state.selected);
+       console.log('local handler ' + this.props.obj.id + ' status ' + this.state.selected);
     }
 
     render() {

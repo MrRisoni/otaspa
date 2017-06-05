@@ -5,10 +5,10 @@ import * as OtaActions from "./actions";
 import OtaStore from "./OtaStore";
 
 
-import PriceBox from './PriceBox';
-import Itinerary from './container/Itinerary';
-import UpsaleList from './container/UpsaleList';
-import PassengerList from './container/PassengerList';
+import PriceBox from './containers/PriceBox';
+import Itinerary from './containers/Trip/Itinerary';
+import UpsaleList from './containers/UpsaleList';
+import PassengerList from './containers/PassengerList';
 
 
 class App extends Component {
