@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import { connect } from 'react-redux'
 
 
 class Upsale extends Component {
@@ -23,6 +24,8 @@ class Upsale extends Component {
         }
 
        console.log('local handler ' + this.props.obj.id + ' status ' + this.state.selected);
+
+        this.props.clickedUpsale({ id : this.props.obj.id , selected : this.state.selected});
     }
 
     render() {
@@ -56,4 +59,23 @@ class Upsale extends Component {
 }
 
 
-export default Upsale;
+const mapStateToProps = (state) => {
+    return {
+
+    }
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        clickedUpsale: (upsl) => {
+            dispatch({
+                type: "BUY_UPSALE",
+                payload: upsl
+            });
+        }
+    };
+};
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Upsale);

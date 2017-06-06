@@ -1,19 +1,9 @@
 import React, {Component} from 'react';
 
+import {connect} from 'react-redux';
+
 
 class PriceBox extends Component {
-    constructor(props)
-    {
-        super(props);
-
-
-    }
-
-    componentDidMount() {
-
-
-    }
-
     render() {
 
         return (
@@ -27,13 +17,13 @@ class PriceBox extends Component {
 
 
                                 <h4>Upsales</h4>
-                                {/* {this.state.pricing.upsales.map ( (upsl) => {
+                                {this.props.upsales.map ( (upsl) => {
                                     return (<div>{upsl.title}</div>)
-                                })} */}
+                                })}
 
 
 
-                                <h2>Total Price : </h2>
+                                <h2>Total Price : {this.props.total}</h2>
 
                             </div>
                         </div>
@@ -48,4 +38,11 @@ class PriceBox extends Component {
 }
 
 
-export default PriceBox;
+
+function mapStateToProps(state) {
+    return {
+        total : state.spa.priceBox.total,
+        upsales : state.spa.priceBox.upsales
+    }
+}
+export default connect(mapStateToProps)(PriceBox);
