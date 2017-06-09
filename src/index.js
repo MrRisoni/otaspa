@@ -18,7 +18,6 @@ store.dispatch(ReduxActions.getItinerary());
 store.dispatch(ReduxActions.getPassengerCount());
 store.dispatch(ReduxActions.getBaggages());
 
-
 ReactDOM.render(
     <Provider store={store}>
         <ReduxApp />

@@ -25,7 +25,7 @@ class Upsale extends Component {
 
        console.log('local handler ' + this.props.obj.id + ' status ' + this.state.selected);
 
-        this.props.clickedUpsale({ id : this.props.obj.id , selected : this.state.selected});
+        this.props.clickedUpsale({ id : this.props.obj.id , title: this.props.obj.title, selected : this.state.selected});
     }
 
     render() {
@@ -63,7 +63,7 @@ const mapStateToProps = (state) => {
     return {
 
     }
-}
+};
 
 
 const mapDispatchToProps = (dispatch) => {

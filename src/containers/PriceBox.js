@@ -18,8 +18,11 @@ class PriceBox extends Component {
 
                                 <h4>Upsales</h4>
                                 {this.props.upsales.map ( (upsl) => {
-                                    return (<div>{upsl.title}</div>)
+                                    if (upsl.selected) {
+                                        return (<div>{upsl.title} - {upsl.price}</div>)
+                                    }
                                 })}
+
 
 
 

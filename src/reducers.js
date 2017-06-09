@@ -14,7 +14,12 @@ const initialState = {
 function spa(state = initialState, action) {
     switch (action.type) {
         case "GET_UPSALES":
-            return Object.assign({} ,state , {upsales :  action.payload});
+            var newstatte =  Object.assign({} ,state , {upsales :  action.payload});
+            var newPriceBox = newstatte.priceBox;
+            newPriceBox.upsales = action.payload;
+            
+            return Object.assign({} ,newstatte , {priceBox :  newPriceBox});
+
         case "GET_ITINERARY":
             return Object.assign({}, state, {itinerary : action.payload});
         case "GET_PAPCOUNT":
@@ -23,15 +28,28 @@ function spa(state = initialState, action) {
             return Object.assign({}, state, { baggages : action.payload});
         case "BUY_UPSALE":
             let previousUpsales = state.priceBox.upsales;
+            console.log('reducers');
             console.log(action.payload);
 
-            if (action.payload.selected) {
-                previousUpsales.push(action.payload.id);
-            }
+            var total = 0;
+            console.log('previous upsales');
+            console.log(previousUpsales);
+            previousUpsales.forEach( function (upsl) {
+                if (upsl.id === action.payload.id) {
+                    upsl.selected = action.payload.selected;
+                }
+
+                if (upsl.selected) {
+                    total += upsl.price;
+                }
+
+            });
 
             let priceBox = state.priceBox;
             priceBox.upsales =previousUpsales;
+            priceBox.total =total;
 
+            console.log(priceBox);
             return Object.assign({}, state, { priceBox : priceBox});
 
 
