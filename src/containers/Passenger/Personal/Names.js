@@ -38,13 +38,7 @@ class Names extends Component {
                                 </select>
                             </div>
 
-                            <div className="col-md-2">
-                                <select className="form-control" id={this.props.selectID} onChange={this.localHandler}>
-                                    <option>Adult</option>
-                                    <option>Child</option>
-                                    <option>Infant</option>
-                                </select>
-                            </div>
+
 
                             <div className="col-md-2">
                                 <DatePicker

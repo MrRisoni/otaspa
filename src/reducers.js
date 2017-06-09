@@ -17,8 +17,10 @@ function spa(state = initialState, action) {
             var newstatte =  Object.assign({} ,state , {upsales :  action.payload});
             var newPriceBox = newstatte.priceBox;
             newPriceBox.upsales = action.payload;
-            
+
             return Object.assign({} ,newstatte , {priceBox :  newPriceBox});
+
+
 
         case "GET_ITINERARY":
             return Object.assign({}, state, {itinerary : action.payload});
@@ -47,6 +49,10 @@ function spa(state = initialState, action) {
 
             let priceBox = state.priceBox;
             priceBox.upsales =previousUpsales;
+
+
+
+
             priceBox.total =total;
 
             console.log(priceBox);

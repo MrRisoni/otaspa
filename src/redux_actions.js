@@ -19,7 +19,6 @@ export function getUpsales() {
 }
 
 
-
 export function getBaggages() {
     return {
         type: "GET_BAGGAGES",
@@ -36,27 +35,44 @@ export function getBaggages() {
     }
 }
 
-export  function getPassengerCount() {
+export function getPassengerCount() {
     return {
-        type : "GET_PAPCOUNT",
-        payload : ['ADT', 'ADT', 'CNN']
+        type: "GET_PAPCOUNT",
+        payload: ['ADT', 'ADT', 'CNN']
     }
 }
 
 
-
-export  function getPassengers() {
+export function getPassengers() {
     return {
-        type : "GET_PAPCOUNT",
-        payload : [{
+        type: "GET_PAPCOUNT",
+        payload: [{
             type: "ADT",
-            name : '',
+            name: '',
             surname: '',
             bod: '',
-            insurance : 0,
-            fare : 0,
-            bag : 0
-        }]
+            insurance: 0,
+            fare: '',
+            bag: 0
+        },
+            {
+                type: "ADT",
+                name: '',
+                surname: '',
+                bod: '',
+                insurance: 0,
+                fare: '',
+                bag: 0
+            },
+            {
+                type: "CNN",
+                name: '',
+                surname: '',
+                bod: '',
+                insurance: 0,
+                fare: '',
+                bag: 0
+            }]
     }
 }
 
