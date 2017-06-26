@@ -4,11 +4,34 @@ import React, {Component} from 'react';
 
 class BaggageLeg extends Component {
 
+    constructor(props)
+    {
+        super(props);
+
+        this.state = {
+            value : ''
+        };
+        this.handleChange = this.handleChange.bind(this);
+
+    }
+
+    handleChange(event)
+    {
+
+        console.log(event.target.value);
+        this.setState({value: event.target.value});
+
+        this.props.callback({ leg: this.props.legTitle , val:  event.target.value}); // lift state up
+
+    }
 
     render() {
 
 
         var optionsHTML =[];
+
+        optionsHTML.push(<option key="10" value="10">No bag</option>);
+
         // pass either the id or the title as value
         for (var i=0; i < this.props.bags.length; i++) {
             var val =  this.props.bags[i].id;
@@ -27,7 +50,7 @@ class BaggageLeg extends Component {
                         <div className="row">
 
                             <div className="col-md-10">
-                                <select className="form-control">
+                                <select className="form-control" value={this.state.value} onChange={this.handleChange}>
                                     {optionsHTML}
                                 </select>
                             </div>

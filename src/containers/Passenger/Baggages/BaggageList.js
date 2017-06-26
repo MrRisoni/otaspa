@@ -1,12 +1,23 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-
 
 import BaggageLeg from './BaggageLeg';
 
 
-
 class BaggageList extends Component {
+    constructor(props){
+        super(props);
+
+
+        this.getDataFromLeg = this.getDataFromLeg.bind(this);
+    }
+
+    getDataFromLeg(data)
+    {
+        console.log(data);
+        this.props.callback(data);
+    }
+
+
     render() {
         return (<div className="row">
             <div className="col-md-12">
@@ -18,8 +29,13 @@ class BaggageList extends Component {
 
                             <div className="row">
 
-                                <BaggageLeg legTitle={'ATH-MUC'} bags={this.props.bags}/>
-                                <BaggageLeg legTitle={'MUC-ATH'} bags={this.props.bags}/>
+                                <BaggageLeg legTitle={'ATH-MUC'}
+                                            bags={this.props.bagInfo}
+                                            callback={this.getDataFromLeg}/>
+
+                                <BaggageLeg legTitle={'MUC-ATH'}
+                                            bags={this.props.bagInfo}
+                                            callback={this.getDataFromLeg}/>
 
 
 
@@ -35,11 +51,7 @@ class BaggageList extends Component {
 }
 
 
-function mapStateToProps(state) {
-    return {
-        bags : state.spa.baggages
-    }
-}
 
-export default connect(mapStateToProps)(BaggageList);
+
+export default BaggageList;
 

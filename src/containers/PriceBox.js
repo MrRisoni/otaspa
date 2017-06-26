@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-import {connect} from 'react-redux';
-
 
 class PriceBox extends Component {
     render() {
@@ -16,11 +14,10 @@ class PriceBox extends Component {
                             <div className="panel-body">
 
 
-                                <h4>Upsales</h4>
-                                {this.props.upsales.map ( (upsl) => {
-                                    if (upsl.selected) {
-                                        return (<div>{upsl.title} - {upsl.price}</div>)
-                                    }
+                                <h4>** Upsales **</h4>
+
+                                {this.props.upsales.baggages.map ( (bag) => {
+                                    return (<div>{bag.passengerName} : {bag.leg} {bag.title} - {bag.price}</div>)
                                 })}
 
 
@@ -42,10 +39,4 @@ class PriceBox extends Component {
 
 
 
-function mapStateToProps(state) {
-    return {
-        total : state.spa.priceBox.total,
-        upsales : state.spa.priceBox.upsales
-    }
-}
-export default connect(mapStateToProps)(PriceBox);
+export default PriceBox;
