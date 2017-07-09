@@ -14,7 +14,21 @@ class ReduxApp extends Component {
 
         this.state = {
             upsales: {
-                baggages: []
+                baggages: [],
+                extras :  [
+                    {
+                        id: 1,
+                        title: 'SMS',
+                        price: 1.5,
+                        selected: false
+                    },
+                    {
+                        id: 2,
+                        title: 'Web check-in',
+                        price: 3,
+                        selected: false
+                    }
+                ]
             },
             bagInfo: [
                 {
@@ -26,7 +40,19 @@ class ReduxApp extends Component {
                     price: 12
                 }
             ],
-            types: ['ADT', 'ADT', 'CNN']
+            types: ['ADT', 'ADT', 'CNN'],
+            netPrices: [
+                {
+                    type: 'ADT',
+                    price: 125.68
+                },
+                {
+                    type: 'CNN',
+                    price: 85.00
+                }
+            ],
+            totalPrice: 0,
+
 
 
 
@@ -34,11 +60,40 @@ class ReduxApp extends Component {
 
         this.updateAppState = this.updateAppState.bind(this);
 
+        this.calculateTotalPrice = this.calculateTotalPrice.bind(this);
     }
+
+    calculateTotalPrice()
+    {
+
+        console.log('Redux App');
+        let self = this;
+
+        let price =0;
+        self.state.types.forEach( function (type) {
+
+            self.state.netPrices.forEach( function (netPerType) {
+                if (netPerType.type === type) {
+                    price += netPerType.price;
+                }
+            });
+
+        });
+
+        self.setState({totalPrice : price});
+    }
+
 
     updateAppState(data)
     {
         console.log(data);
+        this.calculateTotalPrice();
+    }
+
+
+    componentDidMount()
+    {
+        this.calculateTotalPrice();
     }
 
     render() {
@@ -69,14 +124,15 @@ class ReduxApp extends Component {
                         />
 
 
-                        <UpsaleList/>
+                        <UpsaleList upsales={this.state.upsales.extras}/>
 
 
                     </div>
 
 
                     <div className="col-md-2 ">
-                        <PriceBox upsales={this.state.upsales}/>
+                        <PriceBox upsales={this.state.upsales}
+                                total={this.state.totalPrice}/>
                     </div>
 
                 </div>

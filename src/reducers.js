@@ -13,15 +13,6 @@ const initialState = {
 
 function spa(state = initialState, action) {
     switch (action.type) {
-        case "GET_UPSALES":
-            var newstatte =  Object.assign({} ,state , {upsales :  action.payload});
-            var newPriceBox = newstatte.priceBox;
-            newPriceBox.upsales = action.payload;
-
-            return Object.assign({} ,newstatte , {priceBox :  newPriceBox});
-
-
-
         case "GET_ITINERARY":
             return Object.assign({}, state, {itinerary : action.payload});
         case "GET_PAPCOUNT":

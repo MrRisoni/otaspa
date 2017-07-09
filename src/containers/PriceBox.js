@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 class PriceBox extends Component {
     render() {
 
+
         return (
             <div className="pricebox">
                 <div className="row">
@@ -12,6 +13,9 @@ class PriceBox extends Component {
                         <div className="panel panel-default">
                             <div className="panel-heading">Price Analysis</div>
                             <div className="panel-body">
+
+
+                                <h4>** Net price **</h4>
 
 
                                 <h4>** Upsales **</h4>

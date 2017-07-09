@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-
 import Upsale from '.././components/Upsale';
 
 class UpsaleList extends Component {
@@ -35,10 +32,5 @@ class UpsaleList extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        upsales : state.spa.upsales
-    }
-}
 
-export default connect(mapStateToProps)(UpsaleList);
+export default UpsaleList;
