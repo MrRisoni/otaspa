@@ -19,35 +19,6 @@ function spa(state = initialState, action) {
             return Object.assign({}, state, { pap_types : action.payload});
         case "GET_BAGGAGES":
             return Object.assign({}, state, { baggages : action.payload});
-        case "BUY_UPSALE":
-            let previousUpsales = state.priceBox.upsales;
-            console.log('reducers');
-            console.log(action.payload);
-
-            var total = 0;
-            console.log('previous upsales');
-            console.log(previousUpsales);
-            previousUpsales.forEach( function (upsl) {
-                if (upsl.id === action.payload.id) {
-                    upsl.selected = action.payload.selected;
-                }
-
-                if (upsl.selected) {
-                    total += upsl.price;
-                }
-
-            });
-
-            let priceBox = state.priceBox;
-            priceBox.upsales =previousUpsales;
-
-
-
-
-            priceBox.total =total;
-
-            console.log(priceBox);
-            return Object.assign({}, state, { priceBox : priceBox});
 
 
         default:

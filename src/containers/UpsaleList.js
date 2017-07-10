@@ -7,8 +7,18 @@ class UpsaleList extends Component {
         super(props);
 
 
+        this.clickedUpsale = this.clickedUpsale.bind(this);
     }
 
+
+    clickedUpsale(data)
+    {
+
+        console.log('Upsale List Component ');
+        console.log(data);
+
+        this.props.updateApp(data);
+    }
 
     render() {
         return (
@@ -20,7 +30,9 @@ class UpsaleList extends Component {
                         <div className="panel-body">
 
                             {this.props.upsales.map(upsl => {
-                                return ( <Upsale key={upsl.id} obj={upsl}/>)
+                                return ( <Upsale key={upsl.id}
+                                                 obj={upsl}
+                                                 clickedUpsale={this.clickedUpsale}/>)
                             })}
 
 

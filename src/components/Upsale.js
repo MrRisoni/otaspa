@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-import { connect } from 'react-redux'
-
 
 class Upsale extends Component {
     constructor(props) {
@@ -59,23 +57,5 @@ class Upsale extends Component {
 }
 
 
-const mapStateToProps = (state) => {
-    return {
 
-    }
-};
-
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        clickedUpsale: (upsl) => {
-            dispatch({
-                type: "BUY_UPSALE",
-                payload: upsl
-            });
-        }
-    };
-};
-
-
-export default connect(mapStateToProps,mapDispatchToProps)(Upsale);
+export default Upsale;

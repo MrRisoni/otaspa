@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import FontAwesome from 'react-fontawesome';
 
 
 import Itinerary from './containers/Trip/Itinerary';
@@ -90,6 +89,11 @@ class ReduxApp extends Component {
         this.calculateTotalPrice();
     }
 
+    buyUpsale(data)
+    {
+        console.log('App Component');
+        console.log(data);
+    }
 
     componentDidMount()
     {
@@ -112,17 +116,6 @@ class ReduxApp extends Component {
                             updateAppState={this.updateAppState}
                             types={this.state.types}
                         />
-
-
-                        {/*  while loading display spinner  */}
-                        <FontAwesome
-                            className='fa-spinner'
-                            name='spinner'
-                            size='4x'
-                            spin
-                            style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
-                        />
-
 
                         <UpsaleList upsales={this.state.upsales.extras}/>
 
