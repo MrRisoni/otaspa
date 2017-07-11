@@ -17,6 +17,8 @@ class PriceBox extends Component {
 
                                 <h4>** Net price **</h4>
 
+                                {this.props.netPrice}
+
 
                                 <h4>** Upsales **</h4>
 
@@ -24,6 +26,11 @@ class PriceBox extends Component {
                                     return (<div>{bag.passengerName} : {bag.leg} {bag.title} - {bag.price}</div>)
                                 })}
 
+                                {this.props.extras.map ( (xtr) => {
+                                    if (xtr.selected) {
+                                        return (<div>{xtr.title} - {xtr.price}</div>)
+                                    }
+                                })}
 
 
 

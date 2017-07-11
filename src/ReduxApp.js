@@ -12,22 +12,23 @@ class ReduxApp extends Component {
         super(props);
 
         this.state = {
+            extras :  [
+                {
+                    id: 1,
+                    title: 'SMS',
+                    price: 1.5,
+                    selected: false
+                },
+                {
+                    id: 2,
+                    title: 'Web check-in',
+                    price: 3,
+                    selected: false
+                }
+            ],
             upsales: {
                 baggages: [],
-                extras :  [
-                    {
-                        id: 1,
-                        title: 'SMS',
-                        price: 1.5,
-                        selected: false
-                    },
-                    {
-                        id: 2,
-                        title: 'Web check-in',
-                        price: 3,
-                        selected: false
-                    }
-                ]
+
             },
             bagInfo: [
                 {
@@ -50,6 +51,7 @@ class ReduxApp extends Component {
                     price: 85.00
                 }
             ],
+            totalNetPrice : 0,
             totalPrice: 0,
 
 
@@ -60,6 +62,9 @@ class ReduxApp extends Component {
         this.updateAppState = this.updateAppState.bind(this);
 
         this.calculateTotalPrice = this.calculateTotalPrice.bind(this);
+
+        this.buyUpsale = this.buyUpsale.bind(this);
+
     }
 
     calculateTotalPrice()
@@ -69,17 +74,27 @@ class ReduxApp extends Component {
         let self = this;
 
         let price =0;
+        let totalNetPrice =0;
         self.state.types.forEach( function (type) {
 
             self.state.netPrices.forEach( function (netPerType) {
                 if (netPerType.type === type) {
                     price += netPerType.price;
+                    totalNetPrice += netPerType.price;
                 }
             });
 
         });
 
-        self.setState({totalPrice : price});
+        self.state.extras.map ( (upsl) => {
+            if (upsl.selected) {
+                price += upsl.price;
+            }
+        });
+
+         self.setState({totalPrice : price});
+        self.setState({totalNetPrice : totalNetPrice});
+
     }
 
 
@@ -91,8 +106,25 @@ class ReduxApp extends Component {
 
     buyUpsale(data)
     {
+
+        let self = this;
+
         console.log('App Component');
         console.log(data);
+
+        let previousUpsales = self.state.extras;
+
+        previousUpsales.map ( (upsl) => {
+           if (upsl.id === data.id) {
+               console.log('Upsale match');
+               upsl.selected = data.selected
+           }
+        });
+
+        self.setState({extras : previousUpsales });
+
+        this.calculateTotalPrice();
+
     }
 
     componentDidMount()
@@ -117,14 +149,18 @@ class ReduxApp extends Component {
                             types={this.state.types}
                         />
 
-                        <UpsaleList upsales={this.state.upsales.extras}/>
+                        <UpsaleList upsales={this.state.extras}
+                                    updateApp={this.buyUpsale}/>
 
 
                     </div>
 
 
                     <div className="col-md-2 ">
-                        <PriceBox upsales={this.state.upsales}
+                        <PriceBox
+                                netPrice={this.state.totalNetPrice}
+                                upsales={this.state.upsales}
+                                extras={this.state.extras}
                                 total={this.state.totalPrice}/>
                     </div>
 
