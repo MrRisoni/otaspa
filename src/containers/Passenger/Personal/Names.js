@@ -10,8 +10,8 @@ class Names extends Component {
         super(props);
         this.state = {
             startDate: moment(),
-            surname:'',
-            name:''
+            surname: '',
+            name: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.changeName = this.changeName.bind(this);
@@ -27,23 +27,19 @@ class Names extends Component {
     }
 
 
-
-
-    changeName(event)
-    {
+    changeName(event) {
         let self = this;
         console.log('changeName');
         self.setState({name: event.target.value});
-        this.props.updateNames({ id: this.props.papid, name: self.state.name, surname : self.state.surname });
+        this.props.updateNames({id: this.props.papid, name: self.state.name, surname: self.state.surname});
     }
 
 
-    changeSurName(event)
-    {
+    changeSurName(event) {
         let self = this;
         console.log('changeSurName');
         self.setState({surname: event.target.value});
-        this.props.updateNames({ id: this.props.papid, name: self.state.name, surname : self.state.surname });
+        this.props.updateNames({id: this.props.papid, name: self.state.name, surname: self.state.surname});
 
     }
 
@@ -66,7 +62,6 @@ class Names extends Component {
                             </div>
 
 
-
                             <div className="col-md-2">
                                 <DatePicker
                                     className="form-control"
@@ -82,17 +77,18 @@ class Names extends Component {
                         <div className="row">
 
                             <div className="col-md-6">
-                                <input type="text"  value={this.state.surname} placeholder="Surname" onChange={this.changeSurName} className="form-control"/>
+                                <input type="text" value={this.state.surname} placeholder="Surname"
+                                       onChange={this.changeSurName} className="form-control"/>
                             </div>
 
 
                             <div className="col-md-6">
-                                <input type="text"  value={this.state.name} placeholder="Name" onChange={this.changeName} className="form-control"/>
+                                <input type="text" value={this.state.name} placeholder="Name" onChange={this.changeName}
+                                       className="form-control"/>
                             </div>
 
 
                         </div>
-
 
 
                     </div>

@@ -18,13 +18,18 @@ class PassengerCompo extends Component {
             <div className="col-md-10">
 
                 <div className="panel panel-default">
-                    <div className="panel-heading">Passenger # {this.props.id} Type </div>
+                    <div className="panel-heading">Passenger # {this.props.id} Type</div>
                     <div className="panel-body">
 
 
-                        <Names   papid={this.props.id}
-                                 updateNames={this.props.updateNames}/>
+                        <Names papid={this.props.id}
+                               updateNames={this.props.updateNames}/>
 
+
+                        <UpgradeFare
+                            papid={this.props.id}
+                            fareInfo={this.props.fareInfo}
+                            updateFareState={this.props.updateFareState}/>
 
 
                         <BaggageList papid={this.props.id}
@@ -32,12 +37,10 @@ class PassengerCompo extends Component {
                                      updateAppBags={this.props.updateAppBags}
                         />
 
-                        <InsurancePanel/>
+                        <InsurancePanel papid={this.props.id}
+                                        insuranceInfo={this.props.insuranceInfo}
+                        />
 
-                        <UpgradeFare
-                            papid={this.props.id}
-                            fareInfo={this.props.fareInfo}
-                            updateFareState={this.props.updateFareState} />
 
                     </div>
                 </div>

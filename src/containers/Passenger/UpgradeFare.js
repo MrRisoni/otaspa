@@ -6,14 +6,14 @@ class UpgradeFare extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedOption : 'normal'
+            selectedOption: 'normal'
         };
 
         this.handleOptionChange = this.handleOptionChange.bind(this);
     }
 
 
-    handleOptionChange (ev) {
+    handleOptionChange(ev) {
         var self = this;
         console.log(ev.target.value);
         console.log('Fare change for pap ' + this.props.papid);
@@ -22,7 +22,7 @@ class UpgradeFare extends Component {
             selectedOption: ev.target.value
         });
 
-        this.props.updateFareState({ papid : this.props.papid,  fare:ev.target.value});
+        this.props.updateFareState({papid: this.props.papid, fare: ev.target.value});
 
     }
 
@@ -51,8 +51,6 @@ class UpgradeFare extends Component {
                                 </div>
 
 
-
-
                                 <div className="col-md-6">
 
                                     <div className="panel panel-default">
@@ -66,8 +64,6 @@ class UpgradeFare extends Component {
                                 </div>
 
 
-
-
                             </div>
 
 
@@ -79,8 +75,6 @@ class UpgradeFare extends Component {
         );
     }
 }
-
-
 
 
 export default UpgradeFare;

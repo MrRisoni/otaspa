@@ -21,9 +21,9 @@ class Upsale extends Component {
             this.setState({selected: true});
         }
 
-       console.log('local handler ' + this.props.obj.id + ' status ' + this.state.selected);
+        console.log('local handler ' + this.props.obj.id + ' status ' + this.state.selected);
 
-        this.props.clickedUpsale({ id : this.props.obj.id , title: this.props.obj.title, selected : this.state.selected});
+        this.props.clickedUpsale({id: this.props.obj.id, title: this.props.obj.title, selected: this.state.selected});
     }
 
     render() {
@@ -55,7 +55,6 @@ class Upsale extends Component {
             </div>)
     }
 }
-
 
 
 export default Upsale;

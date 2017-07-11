@@ -23,28 +23,25 @@ class PriceBox extends Component {
                                 <h4>** Upsales **</h4>
 
                                 <hr/>
-                                {this.props.passengers.map ( (pap) => {
+                                {this.props.passengers.map((pap) => {
                                     return (<div>
-                                                    {pap.surname} {pap.name}
-                                                <br/>{pap.fareTitle} - {pap.farePrice}
+                                        {pap.surname} {pap.name}
+                                        <br/>{pap.fareTitle} - {pap.farePrice}
 
-                                                <br/>{this.props.legs[0]}: {pap.bag.dep} {pap.bagPrices.dep}
-                                                <br/>{this.props.legs[1]}: {pap.bag.ret} {pap.bagPrices.ret}
+                                        <br/>{this.props.legs[0]}: {pap.bag.dep} {pap.bagPrices.dep}
+                                        <br/>{this.props.legs[1]}: {pap.bag.ret} {pap.bagPrices.ret}
 
 
-                                                <hr/>
-                                            </div>)
+                                        <hr/>
+                                    </div>)
                                 })}
 
 
-
-
-                                {this.props.extras.map ( (xtr) => {
+                                {this.props.extras.map((xtr) => {
                                     if (xtr.selected) {
                                         return (<div>{xtr.title} - {xtr.price}</div>)
                                     }
                                 })}
-
 
 
                                 <h2>Total Price : {this.props.total}</h2>
@@ -60,7 +57,6 @@ class PriceBox extends Component {
     }
 
 }
-
 
 
 export default PriceBox;

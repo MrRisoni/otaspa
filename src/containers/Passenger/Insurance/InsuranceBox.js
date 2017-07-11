@@ -7,8 +7,27 @@ class InsuranceBox extends Component {
 
             <div className="panel panel-default">
                 <div className="panel-body">
-                    <p>Description</p>
-                    <input type="radio" value="option1" checked={true}/>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <p> {this.props.data.title} </p>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-md-4"></div>
+                        <div className="col-md-4">
+                            {this.props.data.price}
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-md-4"></div>
+                        <div className="col-md-4">
+                            <input type="radio" value="option1" checked={true}/>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>);

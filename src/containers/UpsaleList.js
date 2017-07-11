@@ -11,8 +11,7 @@ class UpsaleList extends Component {
     }
 
 
-    clickedUpsale(data)
-    {
+    clickedUpsale(data) {
 
         console.log('Upsale List Component ');
         console.log(data);

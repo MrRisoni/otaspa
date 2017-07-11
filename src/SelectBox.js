@@ -1,26 +1,24 @@
 import React, {Component} from 'react';
 
-class SelectBox extends Component
-{
-    constructor(props)
-    {
+class SelectBox extends Component {
+    constructor(props) {
         super(props);
 
         this.localHandler = this.localHandler.bind(this);
     }
 
-    localHandler(event)
-    {
-        console.log('Local Change Handler '  + event.target.value );
+    localHandler(event) {
+        console.log('Local Change Handler ' + event.target.value);
     }
-    render()
-    {
 
-        var optionsHTML =[];
+    render() {
+
+        var optionsHTML = [];
         // pass either the id or the title as value
-        for (var i=0; i < this.props.optionsList.length; i++) {
+        for (var i = 0; i < this.props.optionsList.length; i++) {
             var val = (this.props.idAsValue) ? this.props.optionsList[i].id : this.props.optionsList[i].title;
-            optionsHTML.push(<option key={this.props.optionsList[i].id} value={val}>{this.props.optionsList[i].title}</option>);
+            optionsHTML.push(<option key={this.props.optionsList[i].id}
+                                     value={val}>{this.props.optionsList[i].title}</option>);
         }
 
         return (

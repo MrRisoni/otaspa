@@ -29,7 +29,7 @@ class App extends Component {
             upsales: {
                 baggages: [],
             },
-            legs :[ 'ATH-MUC', 'MUC-ATH'],
+            legs: ['ATH-MUC', 'MUC-ATH'],
             fareInfo: [{
                 id: 0,
                 description: 'Light',
@@ -40,67 +40,89 @@ class App extends Component {
                 price: 30
             }
             ],
+            insuranceInfo: [
+                {
+                    id: 1,
+                    title: "No insurance",
+                    price: 0
+                },
+                {
+                    id: 2,
+                    title: "Globy Classic",
+                    price: 13.56
+                },
+                {
+                    id: 3,
+                    title: "Globy Cancellation",
+                    price: 25.68
+                },
+                {
+                    id: 4,
+                    title: "Globy Schengen",
+                    price: 39.45
+                }
+            ],
             bagInfo: [
                 {
-                    id : 1,
+                    id: 1,
                     title: "23x45x34 23KG",
                     price: 22
                 },
                 {
-                    id : 8,
+                    id: 8,
                     title: "23x45x34 15KG",
                     price: 12
                 }
             ],
-            passengers : [
+            passengers: [
                 {
-                    id : 1,
-                    surname:'',
-                    name:'',
-                    insurance:0,
-                    fare:0,
-                    fareTitle :'Light',
-                    farePrice :0,
-                    bag : {
-                        dep :'',
+                    id: 1,
+                    surname: '',
+                    name: '',
+                    insurance: 0,
+                    fare: 0,
+                    fareTitle: 'Light',
+                    farePrice: 0,
+                    bag: {
+                        dep: '',
                         ret: ''
                     },
-                    bagPrices : {
-                        dep :0,
+                    bagPrices: {
+                        dep: 0,
                         ret: 0
                     }
                 },
                 {
-                    id : 2,
-                    surname:'',
-                    name:'',
-                    insurance:0,
-                    fare:0,
-                    fareTitle :'Light',
-                    farePrice :0,
-                    bag : {
-                        dep :'',
+                    id: 2,
+                    surname: '',
+                    name: '',
+                    insurance: 0,
+                    fare: 0,
+                    fareTitle: 'Light',
+                    farePrice: 0,
+                    bag: {
+                        dep: '',
                         ret: ''
                     },
-                    bagPrices : {
-                        dep :0,
+                    bagPrices: {
+                        dep: 0,
                         ret: 0
                     }
                 },
                 {
-                    id : 3,
-                    surname:'',
-                    name:'',
-                    insurance:0,
-                    fare:0,
-                    fareTitle :'Light',
-                    farePrice :0,
-                    bag : {
-                        dep :'',
+                    id: 3,
+                    surname: '',
+                    name: '',
+                    insurance: 0,
+                    fare: 0,
+                    fareTitle: 'Light',
+                    farePrice: 0,
+                    bag: {
+                        dep: '',
                         ret: ''
                     },
-                    bagPrices : {
-                        dep :0,
+                    bagPrices: {
+                        dep: 0,
                         ret: 0
                     }
                 }
@@ -225,7 +247,7 @@ class App extends Component {
 
         self.state.fareInfo.forEach((fr) => {
 
-            self.state.passengers.forEach( (pap) => {
+            self.state.passengers.forEach((pap) => {
 
                 if (pap.fare === fr.id) {
                     price += fr.price;
@@ -235,22 +257,18 @@ class App extends Component {
         });
 
 
-        self.state.passengers.forEach( (pap) => {
-            price += pap.bagPrices.dep +  pap.bagPrices.ret;
+        self.state.passengers.forEach((pap) => {
+            price += pap.bagPrices.dep + pap.bagPrices.ret;
         });
 
 
-            self.setState({totalPrice: price});
+        self.setState({totalPrice: price});
         self.setState({totalNetPrice: totalNetPrice});
 
     }
 
 
-
-
-
-    updateAppBags(data)
-    {
+    updateAppBags(data) {
         let self = this;
 
         console.log('App Component updateBagApp');
@@ -287,8 +305,7 @@ class App extends Component {
     }
 
 
-    updateFareState(data)
-    {
+    updateFareState(data) {
         let self = this;
 
         console.log('App Component');
@@ -318,8 +335,7 @@ class App extends Component {
     }
 
 
-    updateAppNames(data)
-    {
+    updateAppNames(data) {
         let self = this;
 
         console.log('App Component');
@@ -376,6 +392,7 @@ class App extends Component {
                             bagInfo={this.state.bagInfo}
                             types={this.state.types}
                             fareInfo={this.state.fareInfo}
+                            insuranceInfo={this.state.insuranceInfo}
                             updateFareState={this.updateFareState}
                             updateNames={this.updateAppNames}
                             updateAppBags={this.updateAppBags}

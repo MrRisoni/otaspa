@@ -3,6 +3,19 @@ import React, {Component} from 'react';
 import InsuranceBox from './InsuranceBox';
 
 class InsurancePanel extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedOption: 0
+        };
+
+        this.handleOptionChange = this.handleOptionChange.bind(this);
+    }
+
+    handleOptionChange() {
+
+    }
+
     render() {
         return (<div className="row">
                 <div className="col-md-12">
@@ -11,13 +24,10 @@ class InsurancePanel extends Component {
                         <div className="panel-heading">Select Insurance</div>
                         <div className="panel-body">
 
-
                             <div className="row">
-                                <InsuranceBox/>
-                                <InsuranceBox/>
-                                <InsuranceBox/>
-                                <InsuranceBox/>
-
+                                {this.props.insuranceInfo.map((item, index) => {
+                                    return (<InsuranceBox data={item}/>)
+                                })}
                             </div>
 
 
