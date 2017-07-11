@@ -6,15 +6,6 @@ import BaggageLeg from './BaggageLeg';
 class BaggageList extends Component {
     constructor(props){
         super(props);
-
-
-        this.getDataFromLeg = this.getDataFromLeg.bind(this);
-    }
-
-    getDataFromLeg(data)
-    {
-        console.log(data);
-        this.props.callback(data);
     }
 
 
@@ -29,13 +20,15 @@ class BaggageList extends Component {
 
                             <div className="row">
 
-                                <BaggageLeg legTitle={'ATH-MUC'}
+                                <BaggageLeg papid={this.props.papid}
+                                            legTitle={'ATH-MUC'}
                                             bags={this.props.bagInfo}
-                                            callback={this.getDataFromLeg}/>
+                                            updateAppBags={this.props.updateAppBags}/>
 
-                                <BaggageLeg legTitle={'MUC-ATH'}
+                                <BaggageLeg papid={this.props.papid}
+                                            legTitle={'MUC-ATH'}
                                             bags={this.props.bagInfo}
-                                            callback={this.getDataFromLeg}/>
+                                            updateAppBags={this.props.updateAppBags}/>
 
 
 

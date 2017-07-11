@@ -10,17 +10,6 @@ import  InsurancePanel from './Insurance/InsurancePanel';
 class PassengerCompo extends Component {
     constructor(props) {
         super(props);
-
-
-        this.getSelectedBags = this.getSelectedBags.bind(this);
-
-
-    }
-
-    getSelectedBags(data)
-    {
-        console.log(data);
-        this.props.updatePapList({ passengerid : this.props.id, leg: data.title, descr: data.val})
     }
 
 
@@ -38,7 +27,11 @@ class PassengerCompo extends Component {
 
 
 
-                        <BaggageList bagInfo={this.props.bagInfo} callback={this.getSelectedBags}/>
+                        <BaggageList papid={this.props.id}
+                                     bagInfo={this.props.bagInfo}
+                                     updateAppBags={this.props.updateAppBags}
+                        />
+
                         <InsurancePanel/>
 
                         <UpgradeFare

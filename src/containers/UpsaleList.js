@@ -17,7 +17,7 @@ class UpsaleList extends Component {
         console.log('Upsale List Component ');
         console.log(data);
 
-        this.props.updateApp(data);
+        this.props.buyUpsale(data);
     }
 
     render() {

@@ -20,8 +20,9 @@ class BaggageLeg extends Component {
 
         console.log(event.target.value);
         this.setState({value: event.target.value});
+        console.log(this.props.papid);
 
-        this.props.callback({ leg: this.props.legTitle , val:  event.target.value}); // lift state up
+       this.props.updateAppBags({ papid: this.props.papid, leg: this.props.legTitle , bagid:  event.target.value});
 
     }
 

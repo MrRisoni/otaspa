@@ -8,16 +8,7 @@ class PassengerList extends Component
     constructor(props)
     {
         super(props);
-
-        this.updateAppState = this.updateAppState.bind(this);
    }
-
-
-    updateAppState(data)
-    {
-        this.props.updateAppState(data);
-    }
-
 
 
     render()
@@ -29,7 +20,7 @@ class PassengerList extends Component
             passengersdiv.push(<PassengerCompo id={i+1}
                                                bagInfo={this.props.bagInfo}
                                                type={this.props.types[i]}
-                                               updatePapList={this.props.updateAppState}
+                                               updateAppBags={this.props.updateAppBags}
                                                updateFareState={this.props.updateFareState}
                                                fareInfo={this.props.fareInfo}
                                                updateNames={this.props.updateNames}

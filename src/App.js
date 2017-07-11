@@ -174,8 +174,6 @@ class App extends Component {
 
         };
 
-        this.updateAppState = this.updateAppState.bind(this);
-
         this.calculateTotalPrice = this.calculateTotalPrice.bind(this);
 
         this.buyUpsale = this.buyUpsale.bind(this);
@@ -183,6 +181,9 @@ class App extends Component {
         this.updateFareState = this.updateFareState.bind(this);
 
         this.updateAppNames = this.updateAppNames.bind(this);
+
+        this.updateAppBags = this.updateAppBags.bind(this);
+
 
     }
 
@@ -228,10 +229,17 @@ class App extends Component {
     }
 
 
-    updateAppState(data) {
+
+
+
+    updateAppBags(data)
+    {
+        let self = this;
+
+        console.log('App Component updateBagApp');
         console.log(data);
-        this.calculateTotalPrice();
     }
+
 
     updateFareState(data)
     {
@@ -240,9 +248,10 @@ class App extends Component {
         console.log('App Component');
         console.log(data);
 
-        let passengers = this.state.passengers;
+        let passengers = self.state.passengers;
 
         passengers.forEach((pap) => {
+            console.log(data.papid + ' ' + pap.id);
             if (pap.id === data.papid) {
                 pap.fare = (data.fare === 'flex') ? 1 : 0;
 
@@ -270,11 +279,12 @@ class App extends Component {
         console.log('App Component');
         console.log(data);
 
-        let passengers = this.state.passengers;
+        let passengers = self.state.passengers;
+
 
         passengers.forEach((pap) => {
-            if (pap.id === data.papid) {
 
+            if (pap.id === data.id) {
                 pap.surname = data.surname;
                 pap.name = data.name;
             }
@@ -318,15 +328,15 @@ class App extends Component {
 
                         <PassengerList
                             bagInfo={this.state.bagInfo}
-                            updateAppState={this.updateAppState}
                             types={this.state.types}
                             fareInfo={this.state.fareInfo}
                             updateFareState={this.updateFareState}
                             updateNames={this.updateAppNames}
+                            updateAppBags={this.updateAppBags}
                         />
 
                         <UpsaleList upsales={this.state.extras}
-                                    updateApp={this.buyUpsale}/>
+                                    buyUpsale={this.buyUpsale}/>
 
                     </div>
 

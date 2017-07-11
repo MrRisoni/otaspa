@@ -29,25 +29,20 @@ class Names extends Component {
 
 
 
-    changeName()
+    changeName(event)
     {
         let self = this;
         console.log('changeName');
-        this.setState({name: event.target.value});
-
-        console.log(this.state);
-      //  this.props.updateNames({ id: this.props.papid, name: self.state.name, surname : self.state.surname });
+        self.setState({name: event.target.value});
+        this.props.updateNames({ id: this.props.papid, name: self.state.name, surname : self.state.surname });
     }
 
 
-    changeSurName()
+    changeSurName(event)
     {
         let self = this;
         console.log('changeSurName');
         self.setState({surname: event.target.value});
-
-        console.log(this.state);
-
         this.props.updateNames({ id: this.props.papid, name: self.state.name, surname : self.state.surname });
 
     }
@@ -87,12 +82,12 @@ class Names extends Component {
                         <div className="row">
 
                             <div className="col-md-6">
-                                <input type="text"  value={this.state.surname} onChange={this.changeSurName} className="form-control"/>
+                                <input type="text"  value={this.state.surname} placeholder="Surname" onChange={this.changeSurName} className="form-control"/>
                             </div>
 
 
                             <div className="col-md-6">
-                                <input type="text"  value={this.state.name} onChange={this.changeName} className="form-control"/>
+                                <input type="text"  value={this.state.name} placeholder="Name" onChange={this.changeName} className="form-control"/>
                             </div>
 
 
