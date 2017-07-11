@@ -22,6 +22,12 @@ class PriceBox extends Component {
 
                                 <h4>** Upsales **</h4>
 
+
+                                {this.props.passengers.map ( (pap) => {
+                                    return (<div>{pap.fareTitle} - {pap.farePrice}</div>)
+                                })}
+
+
                                 {this.props.upsales.baggages.map ( (bag) => {
                                     return (<div>{bag.passengerName} : {bag.leg} {bag.title} - {bag.price}</div>)
                                 })}

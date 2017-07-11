@@ -22,7 +22,7 @@ class UpgradeFare extends Component {
             selectedOption: ev.target.value
         });
 
-        this.props.clickedFare({ papid : this.props.id, price: 30, fare:ev.target.value});
+        this.props.clickedFare({ papid : this.props.papid,  fare:ev.target.value});
     }
 
     render() {
@@ -41,9 +41,9 @@ class UpgradeFare extends Component {
 
                                     <div className="panel panel-default">
                                         <div className="panel-body">
-                                            <p>Description</p>
-                                            <input type="radio" value="normal"
-                                                   checked={this.state.selectedOption === 'normal'}
+                                            <p>{this.props.fareInfo[0].description}</p>
+                                            <input type="radio" value="light"
+                                                   checked={this.state.selectedOption === 'light'}
                                                    onChange={this.handleOptionChange}/>
                                         </div>
                                     </div>
@@ -56,9 +56,9 @@ class UpgradeFare extends Component {
 
                                     <div className="panel panel-default">
                                         <div className="panel-body">
-                                            <p>Description</p>
-                                            <input type="radio" value="upgraded"
-                                                   checked={this.state.selectedOption === 'upgraded'}
+                                            <p>{this.props.fareInfo[1].description}</p>
+                                            <input type="radio" value="flex"
+                                                   checked={this.state.selectedOption === 'flex'}
                                                    onChange={this.handleOptionChange}/>
                                         </div>
                                     </div>

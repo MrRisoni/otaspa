@@ -30,14 +30,61 @@ class App extends Component {
                 baggages: [],
 
             },
+            fareInfo: [{
+                id: 0,
+                description: 'Light',
+                price: 0
+            }, {
+                id: 1,
+                description: 'Flex',
+                price: 30
+            }
+            ],
             bagInfo: [
                 {
+                    id : 1,
                     title: "23x45x34 23KG",
                     price: 22
                 },
                 {
+                    id : 8,
                     title: "23x45x34 15KG",
                     price: 12
+                }
+            ],
+            passengers : [
+                {
+                    id : 1,
+                    insurance:0,
+                    fare:0,
+                    fareTitle :'Light',
+                    farePrice :0,
+                    bag : {
+                        dep :'',
+                        ret: ''
+                    }
+                },
+                {
+                    id : 2,
+                    insurance:0,
+                    fare:0,
+                    fareTitle :'Light',
+                    farePrice :0,
+                    bag : {
+                        dep :'',
+                        ret: ''
+                    }
+                },
+                {
+                    id : 3,
+                    insurance:0,
+                    fare:0,
+                    fareTitle :'Light',
+                    farePrice :0,
+                    bag : {
+                        dep :'',
+                        ret: ''
+                    }
                 }
             ],
             types: ['ADT', 'ADT', 'CNN'],
@@ -127,6 +174,9 @@ class App extends Component {
 
         this.buyUpsale = this.buyUpsale.bind(this);
 
+        this.updateFareState = this.updateFareState.bind(this);
+
+
     }
 
     calculateTotalPrice() {
@@ -147,11 +197,23 @@ class App extends Component {
 
         });
 
-        self.state.extras.map((upsl) => {
+        self.state.extras.forEach((upsl) => {
             if (upsl.selected) {
                 price += upsl.price;
             }
         });
+
+        self.state.fareInfo.forEach((fr) => {
+
+            self.state.passengers.forEach( (pap) => {
+
+                if (pap.fare === fr.id) {
+                    price += fr.price;
+                }
+
+            });
+        });
+
 
         self.setState({totalPrice: price});
         self.setState({totalNetPrice: totalNetPrice});
@@ -162,6 +224,36 @@ class App extends Component {
     updateAppState(data) {
         console.log(data);
         this.calculateTotalPrice();
+    }
+
+    updateFareState(data)
+    {
+        let self = this;
+
+        console.log('App Component');
+        console.log(data);
+
+        let passengers = this.state.passengers;
+
+        passengers.forEach((pap) => {
+            if (pap.id === data.papid) {
+                pap.fare = (data.fare === 'flex') ? 1 : 0;
+
+                pap.fareTitle = data.fare;
+
+                self.state.fareInfo.forEach((fr) => {
+                    if (fr.id === pap.fare) {
+                        pap.farePrice = fr.price;
+                    }
+                });
+            }
+        });
+
+
+        self.setState({passengers: passengers});
+
+        this.calculateTotalPrice();
+
     }
 
     buyUpsale(data) {
@@ -205,6 +297,8 @@ class App extends Component {
                             bagInfo={this.state.bagInfo}
                             updateAppState={this.updateAppState}
                             types={this.state.types}
+                            fareInfo={this.state.fareInfo}
+                            updateFareState = {this.updateFareState}
                         />
 
                         <UpsaleList upsales={this.state.extras}
@@ -219,7 +313,9 @@ class App extends Component {
                             netPrice={this.state.totalNetPrice}
                             upsales={this.state.upsales}
                             extras={this.state.extras}
-                            total={this.state.totalPrice}/>
+                            total={this.state.totalPrice}
+                            fareInfo={this.state.fareInfo}
+                            passengers={this.state.passengers}/>
                     </div>
 
                 </div>

@@ -13,6 +13,7 @@ class PassengerCompo extends Component {
 
 
         this.getSelectedBags = this.getSelectedBags.bind(this);
+        this.clickedFare = this.clickedFare.bind(this);
 
 
     }
@@ -23,8 +24,12 @@ class PassengerCompo extends Component {
         this.props.updatePapList({ passengerid : this.props.id, leg: data.title, descr: data.val})
     }
 
-    componentDidMount() {
+    clickedFare(data)
+    {
+        console.log('Passenger  compo ');
+        console.log(data);
 
+        this.props.updateListWithFare(data);
     }
 
     render() {
@@ -39,7 +44,11 @@ class PassengerCompo extends Component {
                         <Names/>
                         <BaggageList bagInfo={this.props.bagInfo} callback={this.getSelectedBags}/>
                         <InsurancePanel/>
-                        <UpgradeFare papid={this.props.id}/>
+
+                        <UpgradeFare
+                            papid={this.props.id}
+                            fareInfo={this.props.fareInfo}
+                            clickedFare={this.clickedFare}/>
 
                     </div>
                 </div>
