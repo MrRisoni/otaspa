@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-
 import Leg from './Leg';
 
 class Itinerary extends Component {
@@ -43,12 +40,6 @@ class Itinerary extends Component {
 }
 
 
-function mapStateToProps(state) {
-    return {
-        itinerary : state.spa.itinerary
-    }
-}
-
-export default connect(mapStateToProps)(Itinerary);
+export default Itinerary;
 
 

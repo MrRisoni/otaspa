@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 
-class Carousel extends Component {
+class CarCarousel extends Component {
     constructor()
     {
         super();
@@ -80,4 +80,4 @@ class Carousel extends Component {
 }
 
 
-export default Carousel;
+export default CarCarousel;

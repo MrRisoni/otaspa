@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 
 
-import { connect } from 'react-redux'
-
-
 class UpgradeFare extends Component {
 
     constructor(props) {
@@ -83,23 +80,6 @@ class UpgradeFare extends Component {
 }
 
 
-const mapStateToProps = (state) => {
-    return {
-
-    }
-};
 
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        clickedFare: (fare_type) => {
-            dispatch({
-                type: "FARE_CHANGE",
-                payload: fare_type
-            });
-        }
-    };
-};
-
-
-export default connect(mapStateToProps,mapDispatchToProps)(UpgradeFare);
+export default UpgradeFare;

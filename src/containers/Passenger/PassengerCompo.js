@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 
 
 import Names from './Personal/Names';
-import Passport from "./Personal/Passport";
 import BaggageList from './Baggages/BaggageList';
 import UpgradeFare from './UpgradeFare';
 import  InsurancePanel from './Insurance/InsurancePanel';
@@ -39,7 +37,6 @@ class PassengerCompo extends Component {
 
 
                         <Names/>
-                        <Passport/>
                         <BaggageList bagInfo={this.props.bagInfo} callback={this.getSelectedBags}/>
                         <InsurancePanel/>
                         <UpgradeFare papid={this.props.id}/>
