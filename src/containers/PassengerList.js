@@ -10,9 +10,6 @@ class PassengerList extends Component
         super(props);
 
         this.updateAppState = this.updateAppState.bind(this);
-        this.updateListWithFare = this.updateListWithFare.bind(this);
-
-
    }
 
 
@@ -21,12 +18,7 @@ class PassengerList extends Component
         this.props.updateAppState(data);
     }
 
-    updateListWithFare(data)
-    {
-        console.log('Passenger List');
-        console.log(data);
-        this.props.updateFareState(data);
-    }
+
 
     render()
     {
@@ -38,7 +30,7 @@ class PassengerList extends Component
                                                bagInfo={this.props.bagInfo}
                                                type={this.props.types[i]}
                                                updatePapList={this.props.updateAppState}
-                                               updateListWithFare={this.updateListWithFare}
+                                               updateFareState={this.props.updateFareState}
                                                fareInfo={this.props.fareInfo}
                                                updateNames={this.props.updateNames}
 

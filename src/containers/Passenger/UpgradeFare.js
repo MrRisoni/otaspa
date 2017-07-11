@@ -22,7 +22,8 @@ class UpgradeFare extends Component {
             selectedOption: ev.target.value
         });
 
-        this.props.clickedFare({ papid : this.props.papid,  fare:ev.target.value});
+        this.props.updateFareState({ papid : this.props.papid,  fare:ev.target.value});
+
     }
 
     render() {
