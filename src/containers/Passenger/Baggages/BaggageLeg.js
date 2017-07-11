@@ -17,12 +17,16 @@ class BaggageLeg extends Component {
 
     handleChange(event)
     {
+        let self = this;
 
         console.log(event.target.value);
-        this.setState({value: event.target.value});
+        self.setState({value: event.target.value});
         console.log(this.props.papid);
 
-       this.props.updateAppBags({ papid: this.props.papid, leg: this.props.legTitle , bagid:  event.target.value});
+       this.props.updateAppBags({ papid: this.props.papid,
+           leg: this.props.legTitle ,
+           legType: this.props.legType,
+           bagid:  event.target.value});
 
     }
 

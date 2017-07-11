@@ -27,14 +27,17 @@ class PriceBox extends Component {
                                     return (<div>
                                                     {pap.surname} {pap.name}
                                                 <br/>{pap.fareTitle} - {pap.farePrice}
+
+                                                <br/>{this.props.legs[0]}: {pap.bag.dep} {pap.bagPrices.dep}
+                                                <br/>{this.props.legs[1]}: {pap.bag.ret} {pap.bagPrices.ret}
+
+
                                                 <hr/>
                                             </div>)
                                 })}
 
 
-                                {this.props.upsales.baggages.map ( (bag) => {
-                                    return (<div>{bag.passengerName} : {bag.leg} {bag.title} - {bag.price}</div>)
-                                })}
+
 
                                 {this.props.extras.map ( (xtr) => {
                                     if (xtr.selected) {

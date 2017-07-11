@@ -28,8 +28,8 @@ class App extends Component {
             ],
             upsales: {
                 baggages: [],
-
             },
+            legs :[ 'ATH-MUC', 'MUC-ATH'],
             fareInfo: [{
                 id: 0,
                 description: 'Light',
@@ -64,6 +64,10 @@ class App extends Component {
                     bag : {
                         dep :'',
                         ret: ''
+                    },
+                    bagPrices : {
+                        dep :0,
+                        ret: 0
                     }
                 },
                 {
@@ -77,6 +81,10 @@ class App extends Component {
                     bag : {
                         dep :'',
                         ret: ''
+                    },
+                    bagPrices : {
+                        dep :0,
+                        ret: 0
                     }
                 },
                 {
@@ -90,6 +98,10 @@ class App extends Component {
                     bag : {
                         dep :'',
                         ret: ''
+                    },
+                    bagPrices : {
+                        dep :0,
+                        ret: 0
                     }
                 }
             ],
@@ -223,7 +235,12 @@ class App extends Component {
         });
 
 
-        self.setState({totalPrice: price});
+        self.state.passengers.forEach( (pap) => {
+            price += pap.bagPrices.dep +  pap.bagPrices.ret;
+        });
+
+
+            self.setState({totalPrice: price});
         self.setState({totalNetPrice: totalNetPrice});
 
     }
@@ -238,6 +255,35 @@ class App extends Component {
 
         console.log('App Component updateBagApp');
         console.log(data);
+
+
+        let passengers = self.state.passengers;
+
+        passengers.forEach((pap) => {
+            console.log(data.papid + ' ' + pap.id);
+
+            if (pap.id === data.papid) {
+
+
+                self.state.bagInfo.forEach((bag) => {
+                    console.log(bag.id + ' ' + data.bagid);
+                    if (bag.id == data.bagid) {
+                        if (data.legType === 'dep') {
+                            pap.bag.dep = bag.title;
+                            pap.bagPrices.dep = bag.price;
+                        }
+                        if (data.legType === 'ret') {
+                            pap.bag.ret = bag.title;
+                            pap.bagPrices.ret = bag.price;
+                        }
+                    }
+                });
+            }
+        });
+
+        self.setState({passengers: passengers});
+
+        this.calculateTotalPrice();
     }
 
 
@@ -347,7 +393,8 @@ class App extends Component {
                             extras={this.state.extras}
                             total={this.state.totalPrice}
                             fareInfo={this.state.fareInfo}
-                            passengers={this.state.passengers}/>
+                            passengers={this.state.passengers}
+                            legs={this.state.legs}/>
                     </div>
 
                 </div>

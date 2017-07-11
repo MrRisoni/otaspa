@@ -23,11 +23,13 @@ class BaggageList extends Component {
                                 <BaggageLeg papid={this.props.papid}
                                             legTitle={'ATH-MUC'}
                                             bags={this.props.bagInfo}
+                                            legType="dep"
                                             updateAppBags={this.props.updateAppBags}/>
 
                                 <BaggageLeg papid={this.props.papid}
                                             legTitle={'MUC-ATH'}
                                             bags={this.props.bagInfo}
+                                            legType="ret"
                                             updateAppBags={this.props.updateAppBags}/>
 
 
