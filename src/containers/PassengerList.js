@@ -12,7 +12,8 @@ class PassengerList extends Component
         this.updateAppState = this.updateAppState.bind(this);
         this.updateListWithFare = this.updateListWithFare.bind(this);
 
-    }
+
+   }
 
 
     updateAppState(data)
@@ -38,7 +39,10 @@ class PassengerList extends Component
                                                type={this.props.types[i]}
                                                updatePapList={this.props.updateAppState}
                                                updateListWithFare={this.updateListWithFare}
-                                               fareInfo={this.props.fareInfo}/>)
+                                               fareInfo={this.props.fareInfo}
+                                               updateNames={this.props.updateNames}
+
+            />)
         }
         return(<div>
 

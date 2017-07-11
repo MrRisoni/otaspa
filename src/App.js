@@ -55,6 +55,8 @@ class App extends Component {
             passengers : [
                 {
                     id : 1,
+                    surname:'',
+                    name:'',
                     insurance:0,
                     fare:0,
                     fareTitle :'Light',
@@ -66,6 +68,8 @@ class App extends Component {
                 },
                 {
                     id : 2,
+                    surname:'',
+                    name:'',
                     insurance:0,
                     fare:0,
                     fareTitle :'Light',
@@ -77,6 +81,8 @@ class App extends Component {
                 },
                 {
                     id : 3,
+                    surname:'',
+                    name:'',
                     insurance:0,
                     fare:0,
                     fareTitle :'Light',
@@ -176,6 +182,7 @@ class App extends Component {
 
         this.updateFareState = this.updateFareState.bind(this);
 
+        this.updateAppNames = this.updateAppNames.bind(this);
 
     }
 
@@ -249,11 +256,31 @@ class App extends Component {
             }
         });
 
-
         self.setState({passengers: passengers});
 
         this.calculateTotalPrice();
 
+    }
+
+
+    updateAppNames(data)
+    {
+        let self = this;
+
+        console.log('App Component');
+        console.log(data);
+
+        let passengers = this.state.passengers;
+
+        passengers.forEach((pap) => {
+            if (pap.id === data.papid) {
+
+                pap.surname = data.surname;
+                pap.name = data.name;
+            }
+        });
+
+        self.setState({passengers: passengers});
     }
 
     buyUpsale(data) {
@@ -273,9 +300,7 @@ class App extends Component {
         });
 
         self.setState({extras: previousUpsales});
-
         this.calculateTotalPrice();
-
     }
 
     componentDidMount() {
@@ -289,24 +314,21 @@ class App extends Component {
 
                     <div className="col-md-10">
 
-
                         <Itinerary itinerary={this.state.itinerary}/>
-
 
                         <PassengerList
                             bagInfo={this.state.bagInfo}
                             updateAppState={this.updateAppState}
                             types={this.state.types}
                             fareInfo={this.state.fareInfo}
-                            updateFareState = {this.updateFareState}
+                            updateFareState={this.updateFareState}
+                            updateNames={this.updateAppNames}
                         />
 
                         <UpsaleList upsales={this.state.extras}
                                     updateApp={this.buyUpsale}/>
 
-
                     </div>
-
 
                     <div className="col-md-2 ">
                         <PriceBox
@@ -324,7 +346,6 @@ class App extends Component {
         );
     }
 }
-
 
 export default  App
 

@@ -41,7 +41,11 @@ class PassengerCompo extends Component {
                     <div className="panel-body">
 
 
-                        <Names/>
+                        <Names   papid={this.props.id}
+                                 updateNames={this.props.updateNames}/>
+
+
+
                         <BaggageList bagInfo={this.props.bagInfo} callback={this.getSelectedBags}/>
                         <InsurancePanel/>
 

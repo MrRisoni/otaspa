@@ -22,9 +22,13 @@ class PriceBox extends Component {
 
                                 <h4>** Upsales **</h4>
 
-
+                                <hr/>
                                 {this.props.passengers.map ( (pap) => {
-                                    return (<div>{pap.fareTitle} - {pap.farePrice}</div>)
+                                    return (<div>
+                                                    {pap.surname} {pap.name}
+                                                <br/>{pap.fareTitle} - {pap.farePrice}
+                                                <hr/>
+                                            </div>)
                                 })}
 
 

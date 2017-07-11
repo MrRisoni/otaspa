@@ -6,18 +6,50 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
 class Names extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = {
-            startDate: moment()
+            startDate: moment(),
+            surname:'',
+            name:''
         };
         this.handleChange = this.handleChange.bind(this);
+        this.changeName = this.changeName.bind(this);
+        this.changeSurName = this.changeSurName.bind(this);
+
+
     }
 
     handleChange(date) {
         this.setState({
             startDate: date
         });
+    }
+
+
+
+
+    changeName()
+    {
+        let self = this;
+        console.log('changeName');
+        this.setState({name: event.target.value});
+
+        console.log(this.state);
+      //  this.props.updateNames({ id: this.props.papid, name: self.state.name, surname : self.state.surname });
+    }
+
+
+    changeSurName()
+    {
+        let self = this;
+        console.log('changeSurName');
+        self.setState({surname: event.target.value});
+
+        console.log(this.state);
+
+        this.props.updateNames({ id: this.props.papid, name: self.state.name, surname : self.state.surname });
+
     }
 
     render() {
@@ -54,14 +86,13 @@ class Names extends Component {
 
                         <div className="row">
 
-
                             <div className="col-md-6">
-                                <input type="text" placeholder="Surname" className="form-control"/>
+                                <input type="text"  value={this.state.surname} onChange={this.changeSurName} className="form-control"/>
                             </div>
 
 
                             <div className="col-md-6">
-                                <input type="text" placeholder="Name" className="form-control"/>
+                                <input type="text"  value={this.state.name} onChange={this.changeName} className="form-control"/>
                             </div>
 
 
