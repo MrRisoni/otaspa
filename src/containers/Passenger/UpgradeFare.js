@@ -24,6 +24,8 @@ class UpgradeFare extends Component {
 
         this.props.updateFareState({papid: this.props.papid, fare: ev.target.value});
 
+        this.props.liftFareInfoUp(ev.target.value);
+
     }
 
     render() {

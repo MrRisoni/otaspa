@@ -369,10 +369,22 @@ class App extends Component {
 
                 pap.fareTitle = data.fare;
 
-                self.state.fareInfo.forEach((fr) => {
+                // on upgraded fare remove bags
+                if (pap.fareTitle === 'flex') {
+
+                    pap.bag.dep = '';
+                    pap.bag.ret = '';
+
+                    pap.bagPrices.dep = 0;
+                    pap.bagPrices.ret = 0;
+
+                }
+
+                    self.state.fareInfo.forEach((fr) => {
                     if (fr.id === pap.fare) {
                         pap.farePrice = fr.price;
                     }
+
                 });
             }
         });

@@ -10,8 +10,27 @@ import  InsurancePanel from './InsurancePanel';
 class PassengerCompo extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            fareUpgrade : false
+        };
+
+        this.liftFareInfo = this.liftFareInfo.bind(this);
     }
 
+    liftFareInfo(data)
+    {
+        var self = this;
+        console.log('lift fare info');
+        console.log(data);
+
+        if (data === 'light') {
+            self.setState({fareUpgrade: 0});
+        }
+        else {
+            self.setState({fareUpgrade: 1});
+        }
+
+    }
 
     render() {
         return (<div className="row">
@@ -29,11 +48,13 @@ class PassengerCompo extends Component {
                         <UpgradeFare
                             papid={this.props.id}
                             fareInfo={this.props.fareInfo}
-                            updateFareState={this.props.updateFareState}/>
+                            updateFareState={this.props.updateFareState}
+                            liftFareInfoUp={this.liftFareInfo}/>
 
 
                         <BaggageList papid={this.props.id}
                                      bagInfo={this.props.bagInfo}
+                                     upgradedFare={this.state.fareUpgrade}
                                      updateAppBags={this.props.updateAppBags}
                         />
 
