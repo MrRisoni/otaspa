@@ -15,7 +15,18 @@ class PassengerCompo extends Component {
         };
 
         this.liftFareInfo = this.liftFareInfo.bind(this);
+
+        this.removePassengerLocal = this.removePassengerLocal.bind(this);
     }
+
+    removePassengerLocal()
+    {
+
+        console.log(this.props.id);
+
+        this.props.removePassenger(this.props.id);
+    }
+
 
     liftFareInfo(data)
     {
@@ -61,6 +72,21 @@ class PassengerCompo extends Component {
 
                         />
 
+
+                        {this.props.addedLater.map( (later_id) => {
+                            if (later_id === this.props.id) {
+                                return (<div className="row">
+                                    <div className="col-md-4"></div>
+                                    <div className="col-md-4">
+                                        <button onClick={this.removePassengerLocal} className="btn btn-danger btn-sm">Remove this Passenger</button>
+                                    </div>
+                                    <div className="col-md-4"></div>
+                                </div>)
+                            }
+                            else {
+                                return (<div></div>);
+                            }
+                        })}
 
                     </div>
                 </div>

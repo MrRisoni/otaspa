@@ -18,7 +18,8 @@ class PassengerList extends Component {
                                                insuranceInfo={this.props.insuranceInfo}
                                                updateNames={this.props.updateNames}
                                                updateAppInsurance={this.props.updateAppInsurance}
-
+                                               addedLater={this.props.addedLater}
+                                               removePassenger={this.props.removePassenger}
 
             />)
         }

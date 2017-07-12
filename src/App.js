@@ -93,8 +93,7 @@ class App extends Component {
                     bagPrices: {
                         dep: 0,
                         ret: 0
-                    },
-                    addedLater: false
+                    }
                 },
                 {
                     id: 2,
@@ -114,8 +113,7 @@ class App extends Component {
                     bagPrices: {
                         dep: 0,
                         ret: 0
-                    },
-                    addedLater: false
+                    }
                 },
                 {
                     id: 3,
@@ -135,10 +133,10 @@ class App extends Component {
                     bagPrices: {
                         dep: 0,
                         ret: 0
-                    },
-                    addedLater: false
+                    }
                 }
             ],
+            addedLater :[],
             types: ['ADT', 'ADT', 'CNN'],
             netPrices: [
                 {
@@ -228,6 +226,7 @@ class App extends Component {
         this.updateAppInsurance = this.updateAppInsurance.bind(this);
 
         this.addPassenger = this.addPassenger.bind(this);
+        this.removePassenger = this.removePassenger.bind(this);
 
     }
 
@@ -259,16 +258,37 @@ class App extends Component {
                 bagPrices: {
                     dep: 0,
                     ret: 0
-                },
-                addedLater: true
+                }
             };
 
         passengers.push(newpap);
 
+        let addedLater = self.state.addedLater;
+
+        addedLater.push(newid);
 
         self.setState({types : types});
         self.setState({passengers : passengers});
+        self.setState({addedLater : addedLater});
 
+        this.calculateTotalPrice();
+    }
+
+    removePassenger(data)
+    {
+        var self = this;
+
+        let types = self.state.types;
+        let passengers = self.state.passengers;
+        let addedLater = self.state.addedLater;
+
+        passengers.pop();
+        types.pop();
+        addedLater.pop();
+
+        self.setState({types : types});
+        self.setState({passengers : passengers});
+        self.setState({addedLater : addedLater});
 
         this.calculateTotalPrice();
     }
@@ -479,6 +499,8 @@ class App extends Component {
                             updateNames={this.updateAppNames}
                             updateAppBags={this.updateAppBags}
                             updateAppInsurance={this.updateAppInsurance}
+                            addedLater={this.state.addedLater}
+                            removePassenger={this.removePassenger}
                         />
 
                         <div className="row">
