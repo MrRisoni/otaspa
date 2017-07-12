@@ -93,7 +93,8 @@ class App extends Component {
                     bagPrices: {
                         dep: 0,
                         ret: 0
-                    }
+                    },
+                    addedLater: false
                 },
                 {
                     id: 2,
@@ -113,7 +114,8 @@ class App extends Component {
                     bagPrices: {
                         dep: 0,
                         ret: 0
-                    }
+                    },
+                    addedLater: false
                 },
                 {
                     id: 3,
@@ -133,7 +135,8 @@ class App extends Component {
                     bagPrices: {
                         dep: 0,
                         ret: 0
-                    }
+                    },
+                    addedLater: false
                 }
             ],
             types: ['ADT', 'ADT', 'CNN'],
@@ -224,8 +227,52 @@ class App extends Component {
         this.updateAppBags = this.updateAppBags.bind(this);
         this.updateAppInsurance = this.updateAppInsurance.bind(this);
 
+        this.addPassenger = this.addPassenger.bind(this);
 
     }
+
+    addPassenger()
+    {
+        let self = this;
+        let types = self.state.types;
+        types.push('ADT');
+
+        let passengers = self.state.passengers;
+
+        let newid = passengers.length + 1;
+
+        let newpap = {
+                id: newid,
+                surname: '',
+                name: '',
+                prefix: '',
+                insurance: 0,
+                insuranceTitle: '',
+                insurancePrice: 0,
+                fare: 0,
+                fareTitle: 'Light',
+                farePrice: 0,
+                bag: {
+                    dep: '',
+                    ret: ''
+                },
+                bagPrices: {
+                    dep: 0,
+                    ret: 0
+                },
+                addedLater: true
+            };
+
+        passengers.push(newpap);
+
+
+        self.setState({types : types});
+        self.setState({passengers : passengers});
+
+
+        this.calculateTotalPrice();
+    }
+
 
     calculateTotalPrice() {
 
@@ -433,6 +480,16 @@ class App extends Component {
                             updateAppBags={this.updateAppBags}
                             updateAppInsurance={this.updateAppInsurance}
                         />
+
+                        <div className="row">
+                            <div className="col-md-4"></div>
+                            <div className="col-md-4">
+                                <button onClick={this.addPassenger} className="btn btn-primary btn-sm">Add Passenger</button>
+                            </div>
+                            <div className="col-md-4"></div>
+                        </div>
+
+                        <br/>
 
                         <UpsaleList upsales={this.state.extras}
                                     buyUpsale={this.buyUpsale}/>
