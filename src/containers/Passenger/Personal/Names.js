@@ -10,21 +10,40 @@ class Names extends Component {
         };
         this.changeName = this.changeName.bind(this);
         this.changeSurName = this.changeSurName.bind(this);
+        this.changePrefix = this.changePrefix.bind(this);
 
+    }
+
+    changePrefix(event)
+    {
+        let self = this;
+        self.setState({prefix: event.target.value});
+
+        this.props.updateNames({id: this.props.papid,
+                                    name: self.state.name,
+                                    surname: self.state.surname,
+                                    prefix: self.state.prefix});
     }
 
      changeName(event) {
         let self = this;
         self.setState({name: event.target.value});
-        this.props.updateNames({id: this.props.papid, name: self.state.name, surname: self.state.surname});
+
+         this.props.updateNames({id: this.props.papid,
+             name: self.state.name,
+             surname: self.state.surname,
+             prefix: self.state.prefix});
     }
 
 
     changeSurName(event) {
         let self = this;
         self.setState({surname: event.target.value});
-        this.props.updateNames({id: this.props.papid, name: self.state.name, surname: self.state.surname});
 
+        this.props.updateNames({id: this.props.papid,
+            name: self.state.name,
+            surname: self.state.surname,
+            prefix: self.state.prefix});
     }
 
     render() {
@@ -38,10 +57,10 @@ class Names extends Component {
                         <div className="row">
 
                             <div className="col-md-2">
-                                <select className="form-control" id={this.props.selectID} onChange={this.localHandler}>
+                                <select className="form-control" id={this.props.selectID} onChange={this.changePrefix}>
                                     <option></option>
-                                    <option>Male</option>
-                                    <option>Female</option>
+                                    <option value="MR">Male</option>
+                                    <option value="MS">Female</option>
                                 </select>
                             </div>
 

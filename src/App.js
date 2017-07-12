@@ -79,6 +79,7 @@ class App extends Component {
                     id: 1,
                     surname: '',
                     name: '',
+                    prefix: '',
                     insurance: 0,
                     insuranceTitle: '',
                     insurancePrice: 0,
@@ -98,6 +99,7 @@ class App extends Component {
                     id: 2,
                     surname: '',
                     name: '',
+                    prefix: '',
                     insurance: 0,
                     insuranceTitle: '',
                     insurancePrice: 0,
@@ -117,6 +119,7 @@ class App extends Component {
                     id: 3,
                     surname: '',
                     name: '',
+                    prefix: '',
                     insurance: 0,
                     insuranceTitle: '',
                     insurancePrice: 0,
@@ -384,6 +387,7 @@ class App extends Component {
             if (pap.id === data.id) {
                 pap.surname = data.surname;
                 pap.name = data.name;
+                pap.prefix = data.prefix;
             }
         });
 

@@ -25,7 +25,7 @@ class PriceBox extends Component {
                                 <hr/>
                                 {this.props.passengers.map((pap, index) => {
                                     return (<div key={index}>
-                                        {pap.surname} {pap.name}
+                                        {pap.prefix} {pap.surname} {pap.name}
                                         <br/>{pap.fareTitle} - {pap.farePrice}
 
                                         <br/> {pap.insuranceTitle} - {pap.insurancePrice}
