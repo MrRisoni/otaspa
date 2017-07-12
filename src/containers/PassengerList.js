@@ -21,6 +21,8 @@ class PassengerList extends Component {
                                                fareInfo={this.props.fareInfo}
                                                insuranceInfo={this.props.insuranceInfo}
                                                updateNames={this.props.updateNames}
+                                               updateAppInsurance={this.props.updateAppInsurance}
+
 
             />)
         }

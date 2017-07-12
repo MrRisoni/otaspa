@@ -28,6 +28,9 @@ class PriceBox extends Component {
                                         {pap.surname} {pap.name}
                                         <br/>{pap.fareTitle} - {pap.farePrice}
 
+                                        <br/>{pap.insuranceTitle} - {pap.insurancePrice}
+
+
                                         <br/>{this.props.legs[0]}: {pap.bag.dep} {pap.bagPrices.dep}
                                         <br/>{this.props.legs[1]}: {pap.bag.ret} {pap.bagPrices.ret}
 

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-import InsuranceBox from './InsuranceBox';
 
 class InsurancePanel extends Component {
     constructor(props) {
@@ -19,6 +18,8 @@ class InsurancePanel extends Component {
         self.setState({selectedOption: ev.target.value});
 
         console.log(this.state);
+
+        this.props.updateAppInsurance({papid : this.props.papid , insuranceID : ev.target.value})
     }
 
     render() {

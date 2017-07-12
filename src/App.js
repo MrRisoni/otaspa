@@ -80,6 +80,8 @@ class App extends Component {
                     surname: '',
                     name: '',
                     insurance: 0,
+                    insuranceTitle: '',
+                    insurancePrice: 0,
                     fare: 0,
                     fareTitle: 'Light',
                     farePrice: 0,
@@ -97,6 +99,8 @@ class App extends Component {
                     surname: '',
                     name: '',
                     insurance: 0,
+                    insuranceTitle: '',
+                    insurancePrice: 0,
                     fare: 0,
                     fareTitle: 'Light',
                     farePrice: 0,
@@ -114,6 +118,8 @@ class App extends Component {
                     surname: '',
                     name: '',
                     insurance: 0,
+                    insuranceTitle: '',
+                    insurancePrice: 0,
                     fare: 0,
                     fareTitle: 'Light',
                     farePrice: 0,
@@ -209,14 +215,11 @@ class App extends Component {
         };
 
         this.calculateTotalPrice = this.calculateTotalPrice.bind(this);
-
         this.buyUpsale = this.buyUpsale.bind(this);
-
         this.updateFareState = this.updateFareState.bind(this);
-
         this.updateAppNames = this.updateAppNames.bind(this);
-
         this.updateAppBags = this.updateAppBags.bind(this);
+        this.updateAppInsurance = this.updateAppInsurance.bind(this);
 
 
     }
@@ -251,6 +254,17 @@ class App extends Component {
 
                 if (pap.fare === fr.id) {
                     price += fr.price;
+                }
+
+            });
+        });
+
+        self.state.insuranceInfo.forEach((ins) => {
+
+            self.state.passengers.forEach((pap) => {
+                console.log(pap.id + ' ' + pap.insurance + ' ' + ins.id);
+                if (pap.insurance == ins.id) {
+                    price += ins.price;
                 }
 
             });
@@ -304,6 +318,41 @@ class App extends Component {
         this.calculateTotalPrice();
     }
 
+
+    updateAppInsurance(data)
+    {
+        let self = this;
+
+        console.log('App Component');
+        console.log(data);
+
+        let passengers = self.state.passengers;
+
+        passengers.forEach((pap) => {
+            //console.log(pap.id + ' ' + data.papid);
+            if (pap.id === data.papid)   {
+                if (data.insuranceID >0 ) {
+                    pap.insurance = parseInt(data.insuranceID);
+                    console.log('bough  insurance');
+                }
+            }
+        });
+
+        self.state.insuranceInfo.forEach((ins) => {
+
+            passengers.forEach((pap) => {
+                if (pap.insurance === ins.id) {
+                    pap.insuranceTitle = ins.title;
+                    pap.insurancePrice = ins.price;
+                }
+            });
+        });
+
+        self.setState({passengers: passengers});
+
+        this.calculateTotalPrice();
+
+    };
 
     updateFareState(data) {
         let self = this;
@@ -396,6 +445,7 @@ class App extends Component {
                             updateFareState={this.updateFareState}
                             updateNames={this.updateAppNames}
                             updateAppBags={this.updateAppBags}
+                            updateAppInsurance={this.updateAppInsurance}
                         />
 
                         <UpsaleList upsales={this.state.extras}
@@ -411,6 +461,7 @@ class App extends Component {
                             total={this.state.totalPrice}
                             fareInfo={this.state.fareInfo}
                             passengers={this.state.passengers}
+                            insuranceInfo={this.state.insuranceInfo}
                             legs={this.state.legs}/>
                     </div>
 

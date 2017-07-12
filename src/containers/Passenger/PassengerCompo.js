@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import Names from './Personal/Names';
 import BaggageList from './Baggages/BaggageList';
 import UpgradeFare from './UpgradeFare';
-import  InsurancePanel from './Insurance/InsurancePanel';
+import  InsurancePanel from './InsurancePanel';
 
 
 class PassengerCompo extends Component {
@@ -39,6 +39,8 @@ class PassengerCompo extends Component {
 
                         <InsurancePanel papid={this.props.id}
                                         insuranceInfo={this.props.insuranceInfo}
+                                        updateAppInsurance={this.props.updateAppInsurance}
+
                         />
 
 
