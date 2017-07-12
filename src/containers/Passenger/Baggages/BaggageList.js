@@ -4,11 +4,6 @@ import BaggageLeg from './BaggageLeg';
 
 
 class BaggageList extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-
     render() {
 
         if (!this.props.upgradedFare) {

@@ -226,7 +226,6 @@ class App extends Component {
 
     calculateTotalPrice() {
 
-        console.log('Redux App');
         let self = this;
 
         let price = 0;
@@ -260,13 +259,10 @@ class App extends Component {
         });
 
         self.state.insuranceInfo.forEach((ins) => {
-
             self.state.passengers.forEach((pap) => {
-                console.log(pap.id + ' ' + pap.insurance + ' ' + ins.id);
                 if (pap.insurance == ins.id) {
                     price += ins.price;
                 }
-
             });
         });
 
@@ -285,20 +281,13 @@ class App extends Component {
     updateAppBags(data) {
         let self = this;
 
-        console.log('App Component updateBagApp');
-        console.log(data);
-
-
         let passengers = self.state.passengers;
 
         passengers.forEach((pap) => {
-            console.log(data.papid + ' ' + pap.id);
 
             if (pap.id === data.papid) {
 
-
                 self.state.bagInfo.forEach((bag) => {
-                    console.log(bag.id + ' ' + data.bagid);
                     if (bag.id == data.bagid) {
                         if (data.legType === 'dep') {
                             pap.bag.dep = bag.title;
@@ -323,17 +312,12 @@ class App extends Component {
     {
         let self = this;
 
-        console.log('App Component');
-        console.log(data);
-
         let passengers = self.state.passengers;
 
         passengers.forEach((pap) => {
-            //console.log(pap.id + ' ' + data.papid);
             if (pap.id === data.papid)   {
                 if (data.insuranceID >0 ) {
                     pap.insurance = parseInt(data.insuranceID);
-                    console.log('bough  insurance');
                 }
             }
         });
@@ -357,13 +341,9 @@ class App extends Component {
     updateFareState(data) {
         let self = this;
 
-        console.log('App Component');
-        console.log(data);
-
         let passengers = self.state.passengers;
 
         passengers.forEach((pap) => {
-            console.log(data.papid + ' ' + pap.id);
             if (pap.id === data.papid) {
                 pap.fare = (data.fare === 'flex') ? 1 : 0;
 
@@ -390,20 +370,14 @@ class App extends Component {
         });
 
         self.setState({passengers: passengers});
-
         this.calculateTotalPrice();
-
     }
 
 
     updateAppNames(data) {
         let self = this;
 
-        console.log('App Component');
-        console.log(data);
-
         let passengers = self.state.passengers;
-
 
         passengers.forEach((pap) => {
 
@@ -420,14 +394,10 @@ class App extends Component {
 
         let self = this;
 
-        console.log('App Component');
-        console.log(data);
-
         let previousUpsales = self.state.extras;
 
         previousUpsales.map((upsl) => {
             if (upsl.id === data.id) {
-                console.log('Upsale match');
                 upsl.selected = data.selected
             }
         });

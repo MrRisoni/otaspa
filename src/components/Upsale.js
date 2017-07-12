@@ -21,8 +21,6 @@ class Upsale extends Component {
             this.setState({selected: true});
         }
 
-        console.log('local handler ' + this.props.obj.id + ' status ' + this.state.selected);
-
         this.props.clickedUpsale({id: this.props.obj.id, title: this.props.obj.title, selected: this.state.selected});
     }
 
@@ -33,7 +31,6 @@ class Upsale extends Component {
 
             <div className="row">
                 <div className="col-md-10">
-
 
                     <div className="checkbox">
                         <label>

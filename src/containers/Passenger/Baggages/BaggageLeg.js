@@ -16,9 +16,7 @@ class BaggageLeg extends Component {
     handleChange(event) {
         let self = this;
 
-        console.log(event.target.value);
         self.setState({value: event.target.value});
-        console.log(this.props.papid);
 
         this.props.updateAppBags({
             papid: this.props.papid,
@@ -31,7 +29,6 @@ class BaggageLeg extends Component {
 
     render() {
 
-
         var optionsHTML = [];
 
         optionsHTML.push(<option key="10" value="10">No bag</option>);
@@ -41,7 +38,6 @@ class BaggageLeg extends Component {
             var val = this.props.bags[i].id;
             optionsHTML.push(<option key={val} value={val}>{this.props.bags[i].title}</option>);
         }
-
 
         return (
             <div className="col-md-6">
@@ -58,7 +54,6 @@ class BaggageLeg extends Component {
                                 </select>
                             </div>
                         </div>
-
 
                     </div>
                 </div>

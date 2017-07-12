@@ -7,17 +7,13 @@ class InsurancePanel extends Component {
         this.state = {
             selectedOption: 1
         };
-
         this.handleOptionChange = this.handleOptionChange.bind(this);
     }
 
     handleOptionChange(ev) {
 
         var self = this;
-        console.log(ev.target.value);
         self.setState({selectedOption: ev.target.value});
-
-        console.log(this.state);
 
         this.props.updateAppInsurance({papid : this.props.papid , insuranceID : ev.target.value})
     }
@@ -33,7 +29,7 @@ class InsurancePanel extends Component {
                             <div className="row">
                                 {this.props.insuranceInfo.map((item, index) => {
                                     {/* Insurance Box Component */}
-                                    return ( <div className="col-md-3">
+                                    return ( <div className="col-md-3" key={index}>
 
                                         <div className="panel panel-default">
                                             <div className="panel-body">

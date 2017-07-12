@@ -15,8 +15,6 @@ class UpgradeFare extends Component {
 
     handleOptionChange(ev) {
         var self = this;
-        console.log(ev.target.value);
-        console.log('Fare change for pap ' + this.props.papid);
 
         self.setState({
             selectedOption: ev.target.value
@@ -36,9 +34,7 @@ class UpgradeFare extends Component {
                         <div className="panel-heading">Select Fare</div>
                         <div className="panel-body">
 
-
                             <div className="row">
-
 
                                 <div className="col-md-6">
 
@@ -51,7 +47,6 @@ class UpgradeFare extends Component {
                                         </div>
                                     </div>
                                 </div>
-
 
                                 <div className="col-md-6">
 

@@ -8,7 +8,6 @@ class SelectBox extends Component {
     }
 
     localHandler(event) {
-        console.log('Local Change Handler ' + event.target.value);
     }
 
     render() {

@@ -4,16 +4,12 @@ import React, {Component} from 'react';
 import PassengerCompo from './/Passenger/PassengerCompo';
 
 class PassengerList extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-
     render() {
         let passengersdiv = [];
 
         for (var i = 0; i < this.props.types.length; i++) {
-            passengersdiv.push(<PassengerCompo id={i + 1}
+            passengersdiv.push(<PassengerCompo key={i}
+                                               id={i + 1}
                                                bagInfo={this.props.bagInfo}
                                                type={this.props.types[i]}
                                                updateAppBags={this.props.updateAppBags}

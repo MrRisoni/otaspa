@@ -20,8 +20,6 @@ class PassengerCompo extends Component {
     liftFareInfo(data)
     {
         var self = this;
-        console.log('lift fare info');
-        console.log(data);
 
         if (data === 'light') {
             self.setState({fareUpgrade: 0});
@@ -29,7 +27,6 @@ class PassengerCompo extends Component {
         else {
             self.setState({fareUpgrade: 1});
         }
-
     }
 
     render() {

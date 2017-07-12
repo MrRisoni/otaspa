@@ -6,15 +6,11 @@ class UpsaleList extends Component {
     constructor(props) {
         super(props);
 
-
         this.clickedUpsale = this.clickedUpsale.bind(this);
     }
 
 
     clickedUpsale(data) {
-
-        console.log('Upsale List Component ');
-        console.log(data);
 
         this.props.buyUpsale(data);
     }

@@ -2,13 +2,10 @@ import React, {Component} from 'react';
 
 class Leg extends Component {
     render() {
-        console.log(this.props.segments);
-
-
         let segmentsDiv = [];
 
         for (let s = 0; s < this.props.segments.length; s++) {
-            segmentsDiv.push(<div className="panel panel-default">
+            segmentsDiv.push(<div key={s} className="panel panel-default">
                 <div className="panel-body">
                     <div className="row">
                         <div className="col-md-4">
@@ -43,7 +40,6 @@ class Leg extends Component {
 
             }
         }
-
 
         return (<div className="row">
             <div className="col-md-12">
