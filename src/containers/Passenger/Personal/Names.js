@@ -50,7 +50,7 @@ class Names extends Component {
         return (<div className="row">
             <div className="col-md-12">
 
-                <div className="panel panel-default">
+                <div className="panel panel-primary">
                     <div className="panel-heading">Fill in your name</div>
                     <div className="panel-body">
 

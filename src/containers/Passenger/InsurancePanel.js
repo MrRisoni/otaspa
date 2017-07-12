@@ -22,7 +22,7 @@ class InsurancePanel extends Component {
         return (<div className="row">
                 <div className="col-md-12">
 
-                    <div className="panel panel-default">
+                    <div className="panel panel-primary">
                         <div className="panel-heading">Select Insurance</div>
                         <div className="panel-body">
 
@@ -31,7 +31,7 @@ class InsurancePanel extends Component {
                                     {/* Insurance Box Component */}
                                     return ( <div className="col-md-3" key={index}>
 
-                                        <div className="panel panel-default">
+                                        <div className="panel panel-primary">
                                             <div className="panel-body">
                                                 <div className="row">
                                                     <div className="col-md-12">

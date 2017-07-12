@@ -20,7 +20,7 @@ class UpsaleList extends Component {
             <div className="row">
                 <div className="col-md-10">
 
-                    <div className="panel panel-default">
+                    <div className="panel panel-primary">
                         <div className="panel-heading">Select upsales</div>
                         <div className="panel-body">
 

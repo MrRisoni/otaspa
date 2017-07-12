@@ -8,12 +8,12 @@ class Itinerary extends Component {
             <div className="col-md-10">
 
 
-                <div className="panel panel-default">
+                <div className="panel panel-primary">
                     <div className="panel-heading">Itinerary</div>
                     <div className="panel-body">
 
 
-                        <div className="panel panel-default">
+                        <div className="panel panel-primary">
                             <div className="panel-heading">{this.props.itinerary.info.fromCity}
                                 - {this.props.itinerary.info.toCity}</div>
                             <div className="panel-body">

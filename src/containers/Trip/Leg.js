@@ -5,7 +5,7 @@ class Leg extends Component {
         let segmentsDiv = [];
 
         for (let s = 0; s < this.props.segments.length; s++) {
-            segmentsDiv.push(<div key={s} className="panel panel-default">
+            segmentsDiv.push(<div key={s} className="panel panel-primary">
                 <div className="panel-body">
                     <div className="row">
                         <div className="col-md-4">
@@ -28,7 +28,7 @@ class Leg extends Component {
             if (this.props.segments[s].waitTime != '') {
 
                 segmentsDiv.push(
-                    <div className="panel panel-default">
+                    <div className="panel panel-primary">
                         <div className="panel-body">
                             <div className="row">
                                 <div className="col-md-5">

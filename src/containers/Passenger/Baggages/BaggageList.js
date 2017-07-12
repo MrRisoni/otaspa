@@ -11,7 +11,7 @@ class BaggageList extends Component {
                 <div className="col-md-12">
 
 
-                    <div className="panel panel-default">
+                    <div className="panel panel-primary">
                         <div className="panel-heading">Select Baggages</div>
                         <div className="panel-body">
 

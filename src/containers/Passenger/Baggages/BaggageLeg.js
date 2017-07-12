@@ -41,7 +41,7 @@ class BaggageLeg extends Component {
 
         return (
             <div className="col-md-6">
-                <div className="panel panel-default">
+                <div className="panel panel-primary">
                     <div className="panel-heading">{this.props.legTitle}</div>
                     <div className="panel-body">
 

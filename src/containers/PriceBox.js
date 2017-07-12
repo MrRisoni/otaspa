@@ -10,7 +10,7 @@ class PriceBox extends Component {
                 <div className="row">
                     <div className="col-md-12">
 
-                        <div className="panel panel-default">
+                        <div className="panel panel-success">
                             <div className="panel-heading">Price Analysis</div>
                             <div className="panel-body">
 

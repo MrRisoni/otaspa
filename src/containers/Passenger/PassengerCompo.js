@@ -44,7 +44,7 @@ class PassengerCompo extends Component {
         return (<div className="row">
             <div className="col-md-10">
 
-                <div className="panel panel-default">
+                <div className="panel panel-primary">
                     <div className="panel-heading">Passenger # {this.props.id} Type {this.props.type} </div>
                     <div className="panel-body">
 

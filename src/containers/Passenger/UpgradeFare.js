@@ -30,7 +30,7 @@ class UpgradeFare extends Component {
         return (<div className="row">
                 <div className="col-md-12">
 
-                    <div className="panel panel-default">
+                    <div className="panel panel-primary">
                         <div className="panel-heading">Select Fare</div>
                         <div className="panel-body">
 
@@ -38,7 +38,7 @@ class UpgradeFare extends Component {
 
                                 <div className="col-md-6">
 
-                                    <div className="panel panel-default">
+                                    <div className="panel panel-primary">
                                         <div className="panel-body">
                                             <p>{this.props.fareInfo[0].description}</p>
                                             <input type="radio" value="light"
@@ -50,7 +50,7 @@ class UpgradeFare extends Component {
 
                                 <div className="col-md-6">
 
-                                    <div className="panel panel-default">
+                                    <div className="panel panel-primary">
                                         <div className="panel-body">
                                             <p>{this.props.fareInfo[1].description}</p>
                                             <input type="radio" value="flex"
