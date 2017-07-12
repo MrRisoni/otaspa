@@ -15,22 +15,28 @@ class Itinerary extends Component {
 
                         <div className="panel panel-primary">
                             <div className="panel-heading">{this.props.itinerary.info.fromCity}
-                                - {this.props.itinerary.info.toCity}</div>
+                                - {this.props.itinerary.info.toCity} {this.props.itinerary.info.depDate}</div>
                             <div className="panel-body">
-                                <div className="row">
-                                    <div className="col-md-8">
-                                        {this.props.itinerary.info.carrier} - {this.props.itinerary.info.depDate}
 
-                                    </div>
-                                </div>
+                               <Leg segments={this.props.itinerary.aller}/>
 
                             </div>
                         </div>
 
-                        <Leg segments={this.props.itinerary.aller}/>
-                        { this.props.itinerary.info.roundTrip ?
-                            <Leg segments={this.props.itinerary.retour}/> : ''
-                        }
+
+
+
+                            <div className="panel panel-primary">
+                                <div className="panel-heading">{this.props.itinerary.info.toCity}
+                                    - {this.props.itinerary.info.fromCity} {this.props.itinerary.info.retDate}</div>
+                                <div className="panel-body">
+
+                                   <Leg segments={this.props.itinerary.retour}/>
+
+                                </div>
+                            </div>
+
+
                     </div>
                 </div>
 

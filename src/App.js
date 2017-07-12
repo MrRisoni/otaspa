@@ -155,6 +155,7 @@ class App extends Component {
                     fromCity: 'Rhodes',
                     toCity: 'London',
                     depDate: 'Fr 23 Jun 2017',
+                    retDate: 'Fr 29 Jun 2017',
                     depTime: '10:10',
                     depAirport: 'ATH',
                     arrTime: '16:00',
@@ -188,30 +189,32 @@ class App extends Component {
                         code: 'BA',
                         waitTime: ''
                     }
-                ], retour: [{
-                    fromCity: 'Rhodes',
-                    toCity: 'Athens',
+                ], retour: [
+                    {
+                        fromCity: 'London',
+                        toCity: 'Athens',
+                        fromAirport: 'LHR, London Intl Arpt',
+                        toAirport: 'ATH, Eleftherios Venizelos Intl Arpt',
+                        duration: '02:30',
+                        depDateTime: '18:20 Freitag, 29 Jun 2017',
+                        arrDateTime: '20:05 Freitag, 29 Jun 2017',
+                        airline: 'British Airways',
+                        code: 'BA',
+                        waitTime: ''
+                    },
+                    {
+                    fromCity: 'Athens',
+                    toCity: 'Rhodes',
                     fromAirport: 'Rhodes Colossus Airport',
                     toAirport: 'ATH, Eleftherios Venizelos Intl Arpt',
                     duration: '00:50',
-                    depDateTime: '10:10 Freitag, 23 Jun 2017',
-                    arrDateTime: '11:05 Freitag, 23 Jun 2017',
+                    depDateTime: '10:10 Freitag, 30 Jun 2017',
+                    arrDateTime: '11:05 Freitag, 30 Jun 2017',
                     airline: 'Olympic Airways',
-                    code: 'A3',
-                    waitTime: '01:20'
-                },
-                    {
-                        fromCity: 'Athens',
-                        toCity: 'London',
-                        fromAirport: 'ATH, Eleftherios Venizelos Intl Arpt',
-                        toAirport: 'LHR, London Intl Arpt',
-                        duration: '02:30',
-                        depDateTime: '18:20 Freitag, 23 Jun 2017',
-                        arrDateTime: '20:05 Freitag, 23 Jun 2017',
-                        airline: 'British Airways',
-                        code: 'FR',
-                        waitTime: ''
-                    }]
+                    code: 'OA',
+                    waitTime: '14:00'
+                }
+                    ]
 
             }
 
