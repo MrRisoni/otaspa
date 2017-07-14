@@ -11,10 +11,18 @@ class Results extends Component {
 
         return (<div>
 
-            <SearchBar/>
+            <div className="row">
 
-            Results
+                <div className="col-md-12">
+                    <SearchBar/>
+                </div>
+            </div>
 
+            <div className="row">
+                <div className="col-md-12">
+                    Results
+                </div>
+            </div>
         </div>)
     }
 }
