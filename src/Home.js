@@ -32,14 +32,14 @@ class Home extends Component {
 
                     <div key={product_pair[0].id} className="col-md-6">
                         <div className="jumbotron">
-                            <h1> <a href={ '#/' +  product_pair[0].title.toLocaleLowerCase()} >{product_pair[0].title}</a></h1>
+                            <h1> <a href={ '#/search/' +  product_pair[0].title.toLocaleLowerCase()} >{product_pair[0].title}</a></h1>
                         </div>
                     </div>
 
 
                     <div key={product_pair[1].id} className="col-md-6">
                         <div className="jumbotron">
-                            <h1> <a href={ '#/' +  product_pair[1].title.toLocaleLowerCase()} >{product_pair[1].title}</a></h1>
+                            <h1> <a href={ '#/search/' +  product_pair[1].title.toLocaleLowerCase()} >{product_pair[1].title}</a></h1>
                         </div>
                     </div>
 
