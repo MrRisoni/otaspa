@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
 
-import Itinerary from './containers/Trip/Itinerary';
-import UpsaleList from './containers/UpsaleList';
-import PassengerList from './containers/PassengerList';
-import PriceBox from './containers/PriceBox';
+import Itinerary from './old/containers/Trip/Itinerary';
+import UpsaleList from './old/containers/UpsaleList';
+import PassengerList from './old/containers/PassengerList';
+import PriceBox from './old/containers/PriceBox';
 
 
 class App extends Component {

@@ -11,3 +11,8 @@ img {
     height: auto;
     overflow: hidden;
 }
+
+
+.jumbotron h1 {
+    text-align: center;
+}
