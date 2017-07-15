@@ -6,6 +6,7 @@ import UpsaleList from './containers/UpsaleList';
 import PassengerList from './containers/PassengerList';
 import PriceBox from './containers/PriceBox';
 import Contact from './components/Contact';
+import Pay from './components/Pay';
 
 class App extends Component {
     constructor(props) {
@@ -521,6 +522,8 @@ class App extends Component {
 
 
                         <Contact/>
+
+                        <Pay />
 
                     </div>
 
