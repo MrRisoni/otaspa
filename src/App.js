@@ -1,19 +1,12 @@
 import React, {Component} from 'react';
 
-
-<<<<<<< HEAD
 import Itinerary from './old/containers/Trip/Itinerary';
 import UpsaleList from './old/containers/UpsaleList';
 import PassengerList from './old/containers/PassengerList';
 import PriceBox from './old/containers/PriceBox';
-
-=======
-import Itinerary from './containers/Trip/Itinerary';
-import UpsaleList from './containers/UpsaleList';
-import PassengerList from './containers/PassengerList';
-import PriceBox from './containers/PriceBox';
 import Contact from './components/Contact';
->>>>>>> 94f0cbc... contact form
+import Pay from './components/Pay';
+
 
 class App extends Component {
     constructor(props) {
@@ -529,6 +522,8 @@ class App extends Component {
 
 
                         <Contact/>
+
+                        <Pay />
 
                     </div>
 
