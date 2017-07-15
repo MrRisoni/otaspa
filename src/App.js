@@ -5,7 +5,7 @@ import Itinerary from './containers/Trip/Itinerary';
 import UpsaleList from './containers/UpsaleList';
 import PassengerList from './containers/PassengerList';
 import PriceBox from './containers/PriceBox';
-
+import Contact from './components/Contact';
 
 class App extends Component {
     constructor(props) {
@@ -518,6 +518,9 @@ class App extends Component {
 
                         <UpsaleList upsales={this.state.extras}
                                     buyUpsale={this.buyUpsale}/>
+
+
+                        <Contact/>
 
                     </div>
 
