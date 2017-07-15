@@ -1,8 +1,10 @@
 import React, {Component}  from 'react';
 
 import SearchBar from '../SearchBar';
+import  Filters from './Filters';
+import  ResultsList from './ResultsList';
 
-class Results extends Component {
+class SearchPage extends Component {
 
     render() {
 
@@ -19,12 +21,16 @@ class Results extends Component {
             </div>
 
             <div className="row">
-                <div className="col-md-12">
-                    Results
+                <div className="col-md-3">
+                     <Filters/>
+                </div>
+
+                <div className="col-md-9">
+                    <ResultsList/>
                 </div>
             </div>
         </div>)
     }
 }
 
-export default Results;
+export default SearchPage;

@@ -64,6 +64,11 @@ class SearchBar extends Component {
                             <div className="col-md-5">
                                 <DatePicker className="form-control" selected={this.state.date}/>
                             </div>
+
+
+                            <div className="col-md-2">
+                               <button className="btn btn-success">Search</button>
+                            </div>
                         </div>
 
 
