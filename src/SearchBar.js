@@ -13,46 +13,75 @@ class SearchBar extends Component {
     }
 
     render() {
-        return (<div>
+        return (<div className="row">
+            <div className="col-md-12">
 
 
-            <div className="row">
-                <div className="col-md-5">
-                    One Way Round Trip
-                </div>
-            </div>
-
-            <div className="row">
-                <div className="col-md-5">
-                    <input type="text" placeholder="From Airport"
-                           className="form-control"/>
-                </div>
+                <div className="panel panel-primary">
+                    <div className="panel-heading">Search Form</div>
+                    <div className="panel-body">
 
 
-                <div className="col-md-5">
-                    <input type="text" placeholder="To Airport"
-                           className="form-control"/>
-                </div>
-            </div>
+                        <div className="row">
+                            <div className="col-md-5">
+                                One Way
+
+                                <input type="radio"/>
+
+                                Round Trip
 
 
-            <div className="row">
-                <div className="col-md-5">
-                    <DatePicker className="form-control" selected={this.state.date}/>
-                </div>
+                                <input type="radio"/>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div className="row">
+                            <div className="col-md-5">
+                                <input type="text" placeholder="From Airport"
+                                       className="form-control"/>
+                            </div>
 
 
-                <div className="col-md-5">
-                    <DatePicker className="form-control" selected={this.state.date}/>
-                </div>
-            </div>
+                            <div className="col-md-5">
+                                <input type="text" placeholder="To Airport"
+                                       className="form-control"/>
+                            </div>
+                        </div>
+
+
+                        <br/>
 
 
 
-            <div className="row">
-                <div className="col-md-5">
+                        <div className="row">
+                            <div className="col-md-5">
+                                <DatePicker className="form-control" selected={this.state.date}/>
+                            </div>
+
+
+                            <div className="col-md-5">
+                                <DatePicker className="form-control" selected={this.state.date}/>
+                            </div>
+                        </div>
+
+
+                        <br/>
+
+
+                        
+
+                        <div className="row">
+                            <div className="col-md-5">
+
+                            </div>
+                        </div>
 
                     </div>
+
+                </div>
+
             </div>
 
         </div>)
