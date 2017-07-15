@@ -7,7 +7,6 @@ import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
 import SearchPage from './ResultPage/SearchPage';
 
 
-
 ReactDOM.render((
     <Router history={hashHistory}>
         <Route path="/" component={Home} />

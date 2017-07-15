@@ -8,6 +8,11 @@ class ResultsList extends Component {
         return (<div>Results List
 
             <Result/>
+
+
+            <Result/>
+
+
         </div>)
     }
 }
