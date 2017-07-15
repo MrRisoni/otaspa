@@ -6,18 +6,6 @@
     max-height: 100vh;
 }
 
-img {
-    width: 85%;
-    height: auto;
-    overflow: hidden;
-}
-
-
 .jumbotron h1 {
     text-align: center;
-}
-
-
-.img-background {
-
 }

@@ -1,6 +1,6 @@
 import React, {Component}  from 'react';
 
-import SearchBar from '../SearchBar';
+import SearchBar from '../SearchBar/SearchBar';
 import  Filters from './Filters';
 import  ResultsList from './ResultsList';
 

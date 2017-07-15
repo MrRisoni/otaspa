@@ -6,6 +6,7 @@ import PassengerList from './old/containers/PassengerList';
 import PriceBox from './old/containers/PriceBox';
 import Contact from './components/Contact';
 import Pay from './components/Pay';
+import SearchBar from './SearchBar/SearchBar';
 
 
 class App extends Component {
@@ -488,6 +489,16 @@ class App extends Component {
     render() {
         return (
             <div>
+
+
+                <div className="row">
+
+                    <div className="col-md-10">
+                        <SearchBar/>
+                    </div>
+                </div>
+
+
                 <div className="row">
 
                     <div className="col-md-10">

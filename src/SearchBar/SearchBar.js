@@ -4,6 +4,10 @@ import moment from 'moment';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
+
+import SelectPassengers from './SelectPassengers';
+
+
 class SearchBar extends Component {
     constructor(props) {
         super(props);
@@ -78,7 +82,9 @@ class SearchBar extends Component {
                         
 
                         <div className="row">
-                            <div className="col-md-5">
+                            <div className="col-md-12">
+
+                               <SelectPassengers />
 
                             </div>
                         </div>

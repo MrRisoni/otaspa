@@ -13,6 +13,24 @@ class ResultsList extends Component {
             <Result/>
 
 
+            <Result/>
+
+
+            <Result/>
+
+
+            <Result/>
+
+
+            <Result/>
+
+
+            <Result/>
+
+
+            <Result/>
+
+
         </div>)
     }
 }
