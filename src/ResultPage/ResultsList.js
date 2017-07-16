@@ -1,6 +1,6 @@
 import React, {Component}  from 'react';
 
-import ResultCompo from './ResultSet/ResultCompo';
+import ResultCompo from './AirShip/ResultCompo';
 
 class ResultsList extends Component {
     constructor(props){
