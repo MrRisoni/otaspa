@@ -8,11 +8,38 @@ class ResultCompo extends Component {
         return (
 
             <div className="panel panel-primary">
-                <div className="panel-heading">Itinerary Details</div>
+                <div className="panel-heading">
+                    <div className="row">
+                        <div className="col-md-4">
+                            Result Details
+                            Stops : {this.props.data.stops}
+                        </div>
+                        <div className="col-md-4">
+
+                            Duration: {this.props.data.duration.hours}h {this.props.data.duration.minutes}m
+                        </div>
+                        <div className="col-md-4">
+
+                            Waiting time: {this.props.data.waitTime.hours}h {this.props.data.waitTime.minutes}m
+                        </div>
+                    </div>
+                </div>
                 <div className="panel-body">
 
-                    <ResultLeg legs={this.props.data.departLegs}/>
-                    <ResultLeg legs={this.props.data.returnLegs}/>
+                    <ResultLeg legs={this.props.data.departLegs}
+                               duration={this.props.data.depart_leg_duration}
+                               wait={this.props.data.depart_leg_wait}
+                               stops={this.props.data.depart_stops}
+                               waitNonZero={this.props.data.depart_leg_wait_minutes >0}
+                                />
+
+                    <ResultLeg legs={this.props.data.returnLegs}
+                               duration={this.props.data.return_leg_duration}
+                               wait={this.props.data.return_leg_wait}
+                               stops={this.props.data.return_stops}
+                               waitNonZero={this.props.data.return_leg_wait_minutes >0}
+
+                    />
 
                 </div>
 

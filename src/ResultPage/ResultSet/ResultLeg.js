@@ -23,6 +23,8 @@ class ResultLeg extends Component {
 
     render() {
 
+        const lastLeg = this.props.legs.length - 1;
+        const toAirport = this.props.legs[lastLeg].toAirport;
 
         return (
             <div className="panel panel-primary">
@@ -30,8 +32,34 @@ class ResultLeg extends Component {
 
                     <div className="row">
 
-                        <div className="col-md-10">
-                            {this.props.legs[0].toCity}
+                        <div className="col-md-5">
+                            {this.props.legs[0].fromAirport} - {toAirport}
+                        </div>
+
+                        <div className="col-md-5">
+
+                            <div className="row">
+
+                                {this.props.stops > 0 ?
+
+                                    (<div className="col-md-4">
+                                        Stops : {this.props.stops}
+                                    </div>) :
+                                    (<div className="col-md-4"></div>)}
+
+                                <div className="col-md-4">
+
+                                    Duration : {this.props.duration.hours}h {this.props.duration.minutes}m
+                                </div>
+
+                                {this.props.waitNonZero ?
+                                    (<div className="col-md-4">
+                                        Wait time : {this.props.wait.hours}h {this.props.wait.minutes}m
+                                    </div>)
+                                    : (<div className="col-md-4"></div>)}
+
+                            </div>
+
                         </div>
 
 
