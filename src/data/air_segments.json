@@ -5,7 +5,7 @@
       {
         "fromCity": "Rhodes",
         "toCity": "Athens",
-        "fromAirport": "Rhodes, Diagoras Airport",
+        "fromAirport": "RHO, Diagoras Airport",
         "toAirport": "ATH, Eleftherios Venizelos Intl Arpt",
         "depDateTime": "2017-06-23T10:10:00+03:00",
         "arrDateTime": "2017-06-23T10:55:00+03:00",
@@ -35,7 +35,7 @@
         "fromCity": "Athens",
         "toCity": "Rhodes",
         "fromAirport": "ATH, Eleftherios Venizelos Intl Arpt",
-        "toAirport": "Rhodes, Diagoras Airport",
+        "toAirport": "RHO, Diagoras Airport",
         "depDateTime": "2017-06-30T17:00:00+03:00",
         "arrDateTime": "2017-06-30T17:50:00+03:00",
         "airline": "FR,Ryanair"
@@ -48,7 +48,7 @@
       {
         "fromCity": "Rhodes",
         "toCity": "London",
-        "fromAirport": "Rhodes, Diagoras Airport",
+        "fromAirport": "RHO, Diagoras Airport",
         "toAirport": "ATH, Eleftherios Venizelos Intl Arpt",
         "depDateTime": "2017-06-23T12:10:00+03:00",
         "arrDateTime": "2017-06-23T13:35:00+00:00",
@@ -73,7 +73,7 @@
       {
         "fromCity": "Rhodes",
         "toCity": "Athens",
-        "fromAirport": "Rhodes, Diagoras Airport",
+        "fromAirport": "RHO, Diagoras Airport",
         "toAirport": "ATH, Eleftherios Venizelos Intl Arpt",
         "depDateTime": "2017-06-23T10:10:00+03:00",
         "arrDateTime": "2017-06-23T10:55:00+03:00",
@@ -112,7 +112,7 @@
         "fromCity": "Frankfurt",
         "toCity": "Rhodes",
         "fromAirport": "FRA, Franknfurt Venizelos Intl Arpt",
-        "toAirport": "Rhodes, Diagoras Airport",
+        "toAirport": "RHO, Diagoras Airport",
         "depDateTime": "2017-06-30T17:00:00+02:00",
         "arrDateTime": "2017-06-30T19:45:00+03:00",
         "airline": "FR,Ryanair"

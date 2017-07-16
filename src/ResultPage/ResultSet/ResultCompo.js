@@ -38,8 +38,7 @@ class ResultCompo extends Component {
                                wait={this.props.data.return_leg_wait}
                                stops={this.props.data.return_stops}
                                waitNonZero={this.props.data.return_leg_wait_minutes >0}
-
-                    />
+                               />
 
                 </div>
 

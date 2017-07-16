@@ -132,6 +132,7 @@ export default class FakeServer {
 
         });
 
+        console.log(results);
         return results;
 
     }

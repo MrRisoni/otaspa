@@ -59,15 +59,15 @@ class SearchPage extends Component {
             </div>
 
             <div className="row">
-                <div className="col-md-3">
+                <div className="col-md-2">
                     <Filters/>
                 </div>
 
                 {this.state.fetched ?
-                    (<div className="col-md-9">
+                    (<div className="col-md-10">
                         <ResultsList results={this.state.results}
                                      filters={this.state.filters}/>
-                    </div>) : (<div className="col-md-9">
+                    </div>) : (<div className="col-md-10">
 
                         <FontAwesome
                             className='fa fa-spinner fa-spin'
