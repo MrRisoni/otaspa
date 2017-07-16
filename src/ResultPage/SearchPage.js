@@ -5,8 +5,8 @@ import  Filters from './Filters';
 import  ResultsList from './ResultsList';
 import FontAwesome from 'react-fontawesome';
 
-import axios from 'axios';
 
+import  {AirSearch} from './../server_funcs';
 
 class SearchPage extends Component {
     constructor(props) {
@@ -23,22 +23,16 @@ class SearchPage extends Component {
     componentDidMount() {
         console.log('Mounting');
         var self = this;
-        let config = require('../config.json');
-        let apiURL = config.local;
-        console.log(this.props.params);
-        console.log(apiURL);
 
         // just a dummy waiting time
-        setTimeout( function () {
-            axios.get(apiURL + 'air_search').then(function (response) {
-                console.log(response.data);
 
-                self.setState({results: response.data});
+        setTimeout( function () {
+
+                console.log('AirSearch');
+                self.setState({results: AirSearch()});
                 self.setState({fetched: true});
 
-            }).catch(function (error) {
-                console.log(error);
-            });
+
         }, 450);
 
     }
