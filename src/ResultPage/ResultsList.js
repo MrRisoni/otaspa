@@ -3,33 +3,25 @@ import React, {Component}  from 'react';
 import Result from './Result';
 
 class ResultsList extends Component {
+    constructor(props){
+        super(props);
 
+        this.isFiltered = this.isFiltered.bind(this);
+    }
+
+    isFiltered()
+    {
+        return false;
+    }
     render() {
-        return (<div>Results List
+        console.log('ResultList Component');
+        console.log(this.props.results);
 
-            <Result/>
+        return (<div>
 
-
-            <Result/>
-
-
-            <Result/>
-
-
-            <Result/>
-
-
-            <Result/>
-
-
-            <Result/>
-
-
-            <Result/>
-
-
-            <Result/>
-
+            {this.props.results.map( function (res) {
+                return ( <Result data={res}/>)
+            })}
 
         </div>)
     }
