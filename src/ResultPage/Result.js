@@ -22,6 +22,19 @@ class Result extends Component {
     }
 
     render() {
+
+        const finalDepLeg = this.props.data.departLegs.length -1;
+
+        const startDepAirport = this.props.data.departLegs[0].fromAirport;
+        const endDepAirport = this.props.data.departLegs[finalDepLeg].toAirport;
+
+
+        const finalRetLeg = this.props.data.departLegs.length -1;
+
+        const startRetAirport = this.props.data.returnLegs[0].fromAirport;
+        const endRetAirport = this.props.data.returnLegs[finalRetLeg].toAirport;
+
+
         return (
 
 
@@ -31,8 +44,19 @@ class Result extends Component {
                 <div className="panel-heading">Itinerary Details</div>
                 <div className="panel-body">
 
+                    <div className="row">
+
+                        <div className="col-md-10">
+                            {startDepAirport}  - {endDepAirport}
+                        </div>
+
+
+                        <div className="col-md-2">
 
                     <button className="btn btn-sm btn-primary" onClick={this.toggleSegments}>Expand</button>
+                        </div>
+
+                    </div>
                 </div>
 
 
