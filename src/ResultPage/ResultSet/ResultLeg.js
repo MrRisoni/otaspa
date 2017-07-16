@@ -45,6 +45,10 @@ class ResultLeg extends Component {
         const depTime= moment(this.props.legs[0].depDateTime).format('HH:MM');
         const arrTime= moment(this.props.legs[lastLeg].arrDateTime).format('HH:MM');
 
+        const depDate= moment(this.props.legs[0].depDateTime).format('dd DD/MM/YYYY');
+        const arrDate= moment(this.props.legs[lastLeg].arrDateTime).format('dd DD/MM/YYYY');
+
+
         console.log(depTime);
 
         return (
@@ -59,12 +63,13 @@ class ResultLeg extends Component {
 
                                 <Airport  IATA_code={depIATA_Airport}
                                           name={depAirport}
-                                          flyTime={depTime} />
+                                          flyTime={depTime}
+                                          flyDate={depDate}/>
 
                                 <Airport  IATA_code={airIATA_Airport}
                                           name={arrAirport}
-                                          flyTime={arrTime} />
-
+                                          flyTime={arrTime}
+                                          flyDate={arrDate}/>
                             </div>
 
                         </div>
@@ -74,19 +79,19 @@ class ResultLeg extends Component {
 
                             <div className="row">
                                 <div className="col-md-8">
-                                    Stops : {this.props.stops}
+                                    Stops: {this.props.stops}
                                 </div>
                             </div>
 
                             <div className="row">
                                 <div className="col-md-8">
-                                    Duration : {this.props.duration.hours}h {this.props.duration.minutes}m
+                                    Duration: {this.props.duration.hours}h {this.props.duration.minutes}m
                                 </div>
                             </div>
 
                             <div className="row">
                                 <div className="col-md-8">
-                                    Wait time : {this.props.wait.hours}h {this.props.wait.minutes}m
+                                    Wait time: {this.props.wait.hours}h {this.props.wait.minutes}m
                                 </div>
                             </div>
                         </div>

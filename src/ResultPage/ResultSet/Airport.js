@@ -4,11 +4,23 @@ class Airport extends Component
 {
     render()
     {
-        return( <div className="col-md-4">
+        return( <div className="col-md-6">
+
+            <div className="row">
+                <div className="col-md-4">
             {this.props.IATA_code} <br/>
             {this.props.name}
+                </div>
 
-            {this.props.flyTime}
+                <div className="col-md-8">
+                    <b className="flightTime">{this.props.flyTime}</b> <br/>
+                    {this.props.flyDate}
+                </div>
+
+                </div>
+
+
+
         </div>);
     }
 
