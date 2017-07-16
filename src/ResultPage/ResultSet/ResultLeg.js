@@ -5,7 +5,7 @@ import Airport from './Airport';
 
 import moment from 'moment';
 
-import myObject  from '../../time_helpers';
+import timeFunctions  from '../../time_helpers';
 
 class ResultLeg extends Component {
     constructor(props) {
@@ -35,26 +35,7 @@ class ResultLeg extends Component {
 
     render() {
 
-        const lastLeg = this.props.legs.length - 1;
-
-        const depIATA_Airport = this.props.legs[0].fromAirport.substr(0, 3);
-        const depAirport = this.props.legs[0].fromAirport.substr(4);
-
-        const airIATA_Airport = this.props.legs[lastLeg].toAirport.substr(0, 3);
-        const arrAirport = this.props.legs[lastLeg].toAirport.substr(4);
-
-        const depTime = moment(this.props.legs[0].depDateTime).format('HH:MM');
-        const arrTime = moment(this.props.legs[lastLeg].arrDateTime).format('HH:MM');
-
-        const depDate = moment(this.props.legs[0].depDateTime).format('dd DD/MM/YYYY');
-        const arrDate = moment(this.props.legs[lastLeg].arrDateTime).format('dd DD/MM/YYYY');
-
-        const depGMT = this.props.legs[lastLeg].depDateTime.substr(-6);
-        const retGMT = this.props.legs[lastLeg].arrDateTime.substr(-6);
-
-        console.log('extractInfoFromLegs');
-
-        console.log(myObject.extractInfoFromLegs());
+        const timeData= timeFunctions.extractInfoFromLegs(this.props.legs);
 
         return (
             <div className="panel panel-primary">
@@ -66,17 +47,17 @@ class ResultLeg extends Component {
 
                             <div className="row">
 
-                                <Airport IATA_code={depIATA_Airport}
-                                         name={depAirport}
-                                         flyTime={depTime}
-                                         flyDate={depDate}
-                                         gmt={depGMT}/>
+                                <Airport IATA_code={timeData.depIATA_Airport}
+                                         name={timeData.depAirport}
+                                         flyTime={timeData.depTime}
+                                         flyDate={timeData.depDate}
+                                         gmt={timeData.depGMT}/>
 
-                                <Airport IATA_code={airIATA_Airport}
-                                         name={arrAirport}
-                                         flyTime={arrTime}
-                                         flyDate={arrDate}
-                                         gmt={retGMT}/>
+                                <Airport IATA_code={timeData.airIATA_Airport}
+                                         name={timeData.arrAirport}
+                                         flyTime={timeData.arrTime}
+                                         flyDate={timeData.arrDate}
+                                         gmt={timeData.retGMT}/>
                             </div>
 
                         </div>
