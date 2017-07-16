@@ -1,0 +1,28 @@
+{
+  "price" : 175,
+  "stops": 1,
+  "airlines": ["OA","BA"],
+  "departLegs": [
+    {
+      "fromCity": "Rhodes",
+      "toCity": "Athens",
+      "fromAirport": "Rhodes Colossus Airport",
+      "toAirport": "ATH, Eleftherios Venizelos Intl Arpt",
+      "depDateTime": "2017-06-23 T10:10+03:00",
+      "arrDateTime": "2017-06-23 T10:55+03:00",
+      "airline": "OA,Olympic Airways"
+    },
+    {
+      "fromCity": "Athens",
+      "toCity": "London",
+      "fromAirport": "ATH, Eleftherios Venizelos Intl Arpt",
+      "toAirport": "LHR, London Intl Arpt",
+      "depDateTime": "2017-06-23 T18:00+03:00",
+      "arrDateTime": "2017-06-23 T18:00+00:00",
+      "airline": "BA,British Airways"
+    }
+  ],
+  "returnLegs" :[
+
+  ]
+}

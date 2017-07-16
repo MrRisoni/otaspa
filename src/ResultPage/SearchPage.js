@@ -5,6 +5,15 @@ import  Filters from './Filters';
 import  ResultsList from './ResultsList';
 
 class SearchPage extends Component {
+    constructor(props)
+    {
+        super(props);
+        this.state = {
+            filters : {
+                price : {}
+            }
+        }
+    }
 
     render() {
 
