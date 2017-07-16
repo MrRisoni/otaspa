@@ -5,6 +5,7 @@ import Airport from './Airport';
 
 import moment from 'moment';
 
+import myObject  from '../../time_helpers';
 
 class ResultLeg extends Component {
     constructor(props) {
@@ -51,6 +52,9 @@ class ResultLeg extends Component {
         const depGMT = this.props.legs[lastLeg].depDateTime.substr(-6);
         const retGMT = this.props.legs[lastLeg].arrDateTime.substr(-6);
 
+        console.log('extractInfoFromLegs');
+
+        console.log(myObject.extractInfoFromLegs());
 
         return (
             <div className="panel panel-primary">
