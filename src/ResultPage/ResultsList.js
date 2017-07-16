@@ -1,6 +1,6 @@
 import React, {Component}  from 'react';
 
-import Result from './Result';
+import ResultCompo from './ResultSet/ResultCompo';
 
 class ResultsList extends Component {
     constructor(props){
@@ -20,7 +20,7 @@ class ResultsList extends Component {
         return (<div>
 
             {this.props.results.map( function (res) {
-                return ( <Result data={res}/>)
+                return ( <ResultCompo data={res}/>)
             })}
 
         </div>)
