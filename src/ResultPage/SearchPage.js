@@ -6,7 +6,8 @@ import  ResultsList from './ResultsList';
 import FontAwesome from 'react-fontawesome';
 
 
-import  {AirSearch} from './../server_funcs';
+import  FakeServer from './../server_funcs';
+
 
 class SearchPage extends Component {
     constructor(props) {
@@ -26,11 +27,13 @@ class SearchPage extends Component {
 
         // just a dummy waiting time
 
-        setTimeout( function () {
+        setTimeout(function () {
 
-                console.log('AirSearch');
-                self.setState({results: AirSearch()});
-                self.setState({fetched: true});
+            console.log('AirSearch');
+            let fake = new FakeServer();
+
+            self.setState({results: fake.AirSearch()});
+            self.setState({fetched: true});
 
 
         }, 450);
@@ -62,16 +65,16 @@ class SearchPage extends Component {
 
                 {this.state.fetched ?
                     (<div className="col-md-9">
-                    <ResultsList results={this.state.results}
-                                 filters={this.state.filters}/>
-                </div>) : (<div className="col-md-9">
+                        <ResultsList results={this.state.results}
+                                     filters={this.state.filters}/>
+                    </div>) : (<div className="col-md-9">
 
                         <FontAwesome
                             className='fa fa-spinner fa-spin'
                             name='spinner'
                             size='5x'
                             spin
-                            style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+                            style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
                         />
 
                     </div>)

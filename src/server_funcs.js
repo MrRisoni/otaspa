@@ -1,41 +1,45 @@
 // Dummy server that processes fake data
 const moment = require('moment');
-const async = require('async');
-
-var getDuration = function (leg) {
-    let arriveTime = moment(leg.arrDateTime);
-    let depTime = moment(leg.depDateTime);
-    leg.durationMinutes = arriveTime.diff(depTime) / (1000 * 60);
-    leg.duration = {
-        hours: Math.floor(leg.durationMinutes / 60),
-        minutes: leg.durationMinutes % 60
-    };
-
-    leg.waitTimeMinutes = 0;
-    leg.wait = {hours: 0, minutes: 0};
-};
 
 
-var getWaitTime = function (previousLeg, nextLeg) {
-    let previousTime = moment(previousLeg.arrDateTime);
-    let nextTime = moment(nextLeg.depDateTime);
+export default class FakeServer {
+    constructor() {
+    }
 
-    previousLeg.waitTimeMinutes = nextTime.diff(previousTime) / (1000 * 60);
+    getDuration(leg) {
+        let arriveTime = moment(leg.arrDateTime);
+        let depTime = moment(leg.depDateTime);
+        leg.durationMinutes = arriveTime.diff(depTime) / (1000 * 60);
+        leg.duration = {
+            hours: Math.floor(leg.durationMinutes / 60),
+            minutes: leg.durationMinutes % 60
+        };
 
-    previousLeg.wait = {
-        hours: Math.floor(previousLeg.waitTimeMinutes / 60),
-        minutes: previousLeg.waitTimeMinutes % 60
-    };
-
-};
-
-export function AirSearch() {
+        leg.waitTimeMinutes = 0;
+        leg.wait = {hours: 0, minutes: 0};
+    }
 
 
-    // read from json and add extra fields duration wait time stops
-    let results = require('./data/air_segments.json');
+    getWaitTime(previousLeg, nextLeg) {
+        let previousTime = moment(previousLeg.arrDateTime);
+        let nextTime = moment(nextLeg.depDateTime);
 
-    async.series([function (callback) {
+        previousLeg.waitTimeMinutes = nextTime.diff(previousTime) / (1000 * 60);
+
+        previousLeg.wait = {
+            hours: Math.floor(previousLeg.waitTimeMinutes / 60),
+            minutes: previousLeg.waitTimeMinutes % 60
+        };
+
+    }
+
+
+    AirSearch() {
+
+        var self = this;
+
+        // read from json and add extra fields duration wait time stops
+        let results = require('./data/air_segments.json');
 
 
         results.forEach((rsl) => {
@@ -55,7 +59,7 @@ export function AirSearch() {
 
 
             rsl.departLegs.forEach((leg) => {
-                getDuration(leg);
+                self.getDuration(leg);
                 total_duration += leg.durationMinutes;
 
                 rsl.depart_leg_duration_minutes += leg.duration.hours * 60 + leg.duration.minutes;
@@ -63,7 +67,7 @@ export function AirSearch() {
 
 
             rsl.returnLegs.forEach((leg) => {
-                getDuration(leg);
+                self.getDuration(leg);
                 total_duration += leg.durationMinutes;
 
                 rsl.return_leg_duration_minutes += leg.duration.hours * 60 + leg.duration.minutes;
@@ -71,13 +75,13 @@ export function AirSearch() {
 
 
             for (var i = 0; i < rsl.departLegs.length - 1; i++) {
-                getWaitTime(rsl.departLegs[i], rsl.departLegs[i + 1]);
+                self.getWaitTime(rsl.departLegs[i], rsl.departLegs[i + 1]);
 
                 rsl.depart_leg_wait_minutes += rsl.departLegs[i].waitTimeMinutes;
             }
 
             for (var i = 0; i < rsl.returnLegs.length - 1; i++) {
-                getWaitTime(rsl.returnLegs[i], rsl.returnLegs[i + 1]);
+                self.getWaitTime(rsl.returnLegs[i], rsl.returnLegs[i + 1]);
 
                 rsl.return_leg_wait_minutes += rsl.returnLegs[i].waitTimeMinutes;
             }
@@ -128,14 +132,8 @@ export function AirSearch() {
 
         });
 
-        callback(null, results);
-    }], function (err, final) {
+        return results;
 
-        console.log(final[0]);
-        return final[0];
-    });
-
-
-};
-
+    }
+}
 
