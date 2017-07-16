@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 
-
-import Itinerary from './containers/Trip/Itinerary';
-import UpsaleList from './containers/UpsaleList';
-import PassengerList from './containers/PassengerList';
-import PriceBox from './containers/PriceBox';
+import Itinerary from './old/containers/Trip/Itinerary';
+import UpsaleList from './old/containers/UpsaleList';
+import PassengerList from './old/containers/PassengerList';
+import PriceBox from './old/containers/PriceBox';
 import Contact from './components/Contact';
 import Pay from './components/Pay';
+import SearchBar from './SearchBar/SearchBar';
+
 
 class App extends Component {
     constructor(props) {
@@ -149,7 +150,6 @@ class App extends Component {
                     price: 85.00
                 }
             ],
-            hasFlex : false,
             totalNetPrice: 0,
             totalPrice: 0,
             itinerary: {
@@ -489,6 +489,16 @@ class App extends Component {
     render() {
         return (
             <div>
+
+
+                <div className="row">
+
+                    <div className="col-md-10">
+                        <SearchBar/>
+                    </div>
+                </div>
+
+
                 <div className="row">
 
                     <div className="col-md-10">
@@ -506,7 +516,6 @@ class App extends Component {
                             updateAppInsurance={this.updateAppInsurance}
                             addedLater={this.state.addedLater}
                             removePassenger={this.removePassenger}
-                            hasFlex={this.state.hasFlex}
                         />
 
                         <div className="row">
