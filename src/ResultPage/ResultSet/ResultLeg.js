@@ -42,14 +42,15 @@ class ResultLeg extends Component {
         const airIATA_Airport = this.props.legs[lastLeg].toAirport.substr(0, 3);
         const arrAirport = this.props.legs[lastLeg].toAirport.substr(4);
 
-        const depTime= moment(this.props.legs[0].depDateTime).format('HH:MM');
-        const arrTime= moment(this.props.legs[lastLeg].arrDateTime).format('HH:MM');
+        const depTime = moment(this.props.legs[0].depDateTime).format('HH:MM');
+        const arrTime = moment(this.props.legs[lastLeg].arrDateTime).format('HH:MM');
 
-        const depDate= moment(this.props.legs[0].depDateTime).format('dd DD/MM/YYYY');
-        const arrDate= moment(this.props.legs[lastLeg].arrDateTime).format('dd DD/MM/YYYY');
+        const depDate = moment(this.props.legs[0].depDateTime).format('dd DD/MM/YYYY');
+        const arrDate = moment(this.props.legs[lastLeg].arrDateTime).format('dd DD/MM/YYYY');
 
+        const depGMT = this.props.legs[lastLeg].depDateTime.substr(-6);
+        const retGMT = this.props.legs[lastLeg].arrDateTime.substr(-6);
 
-        console.log(depTime);
 
         return (
             <div className="panel panel-primary">
@@ -61,15 +62,17 @@ class ResultLeg extends Component {
 
                             <div className="row">
 
-                                <Airport  IATA_code={depIATA_Airport}
-                                          name={depAirport}
-                                          flyTime={depTime}
-                                          flyDate={depDate}/>
+                                <Airport IATA_code={depIATA_Airport}
+                                         name={depAirport}
+                                         flyTime={depTime}
+                                         flyDate={depDate}
+                                         gmt={depGMT}/>
 
-                                <Airport  IATA_code={airIATA_Airport}
-                                          name={arrAirport}
-                                          flyTime={arrTime}
-                                          flyDate={arrDate}/>
+                                <Airport IATA_code={airIATA_Airport}
+                                         name={arrAirport}
+                                         flyTime={arrTime}
+                                         flyDate={arrDate}
+                                         gmt={retGMT}/>
                             </div>
 
                         </div>

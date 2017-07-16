@@ -14,7 +14,8 @@ class Airport extends Component
 
                 <div className="col-md-8">
                     <b className="flightTime">{this.props.flyTime}</b> <br/>
-                    {this.props.flyDate}
+                    {this.props.flyDate} <br/>
+                    <p className="gmtdiff"> GMT{this.props.gmt} </p>
                 </div>
 
                 </div>
