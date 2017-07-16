@@ -86,6 +86,7 @@ class SearchBar extends Component {
 
                                <SelectPassengers />
 
+order by select boxes price duration segments
                             </div>
                         </div>
 

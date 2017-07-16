@@ -4,6 +4,9 @@ import SearchBar from '../SearchBar/SearchBar';
 import  Filters from './Filters';
 import  ResultsList from './ResultsList';
 
+import axios from 'axios';
+
+
 class SearchPage extends Component {
     constructor(props)
     {
@@ -11,8 +14,26 @@ class SearchPage extends Component {
         this.state = {
             filters : {
                 price : {}
-            }
+            },
+            results : {}
         }
+    }
+
+    componentDidMount()
+    {
+        var self = this;
+        let  config = require('../config.json');
+        let apiURL = config.remote;
+        console.log(this.props.params);
+        console.log(apiURL);
+
+        axios.get(apiURL + 'air_search').then(function (response) {
+           console.log(response.data);
+
+           self.setState( {results : response.data});
+        }).catch(function (error) {
+            console.log(error);
+        });
     }
 
     render() {
@@ -35,7 +56,7 @@ class SearchPage extends Component {
                 </div>
 
                 <div className="col-md-9">
-                    <ResultsList/>
+                    <ResultsList results={this.state.results}/>
                 </div>
             </div>
         </div>)
