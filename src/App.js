@@ -149,6 +149,7 @@ class App extends Component {
                     price: 85.00
                 }
             ],
+            hasFlex : false,
             totalNetPrice: 0,
             totalPrice: 0,
             itinerary: {
@@ -505,6 +506,7 @@ class App extends Component {
                             updateAppInsurance={this.updateAppInsurance}
                             addedLater={this.state.addedLater}
                             removePassenger={this.removePassenger}
+                            hasFlex={this.state.hasFlex}
                         />
 
                         <div className="row">
