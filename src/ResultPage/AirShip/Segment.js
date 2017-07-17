@@ -41,6 +41,22 @@ class Segment extends Component {
                     </div>
 
 
+                    <div className="col-md-3">
+
+
+                        <div className="row">
+                            <div className="col-md-8">
+                                Duration: {this.props.legData.duration.hours}h {this.props.legData.duration.minutes}m
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            <div className="col-md-8">
+                                Wait time: {this.props.legData.wait.hours}h {this.props.legData.wait.minutes}m
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
             </div>
