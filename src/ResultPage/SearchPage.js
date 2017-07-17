@@ -60,7 +60,8 @@ class SearchPage extends Component {
             <div className="row">
 
                 <div className="col-md-12">
-                    <SearchBar searchHandler={this.searchClicked}/>
+                    <SearchBar searchHandler={this.searchClicked}
+                               product={this.props.params.product}/>
                 </div>
             </div>
 

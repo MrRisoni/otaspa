@@ -1,16 +1,20 @@
 import React, {Component} from 'react';
 
+
 import Pay from './components/Pay';
 import Contact from './components/Contact';
+import PriceBox from "./old/containers/PriceBox";
 
 
-class ShipApp extends Component {
+class MasterApp extends Component {
     render()
     {
         return (<div>
 
             itinerary details
             pricebox ???
+
+            <PriceBox/>
             <Contact/>
             <Pay/>
 
@@ -19,4 +23,4 @@ class ShipApp extends Component {
     }
 }
 
-export default ShipApp;
+export default MasterApp;
