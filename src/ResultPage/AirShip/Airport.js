@@ -4,7 +4,11 @@ class Airport extends Component
 {
     render()
     {
-        return( <div className="col-md-6">
+        const defaultColClass = this.props.segmentInvoked === undefined ? "col-md-6" : "col-md-12";
+
+
+        return( <div className={defaultColClass}>
+            {/* when you invoke this from segments component add col-md-12 */}
 
             <div className="row">
                 <div className="col-md-4">

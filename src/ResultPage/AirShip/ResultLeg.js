@@ -3,8 +3,6 @@ import React, {Component}  from 'react';
 import Segment from './Segment';
 import Airport from './Airport';
 
-import moment from 'moment';
-
 import timeFunctions  from '../../time_helpers';
 
 class ResultLeg extends Component {

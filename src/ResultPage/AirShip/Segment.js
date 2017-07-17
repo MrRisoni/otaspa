@@ -1,11 +1,15 @@
 import React, {Component}  from 'react';
+import Airport from "./Airport";
+
+import timeFunctions  from '../../time_helpers';
 
 
 class Segment extends Component {
 
     render() {
 
-        const fromAirport = this.props.legData.fromAirport.substr(0,3);
+        const timeData= timeFunctions.extractInfoFromSingleLeg(this.props.legData);
+
 
         return (
 
@@ -13,7 +17,29 @@ class Segment extends Component {
             <div className="panel panel-primary">
                 <div className="panel-heading"></div>
                 <div className="panel-body">
-                    {fromAirport} - {this.props.legData.toAirport}
+
+                    <div className="col-md-4">
+
+                        <Airport IATA_code={timeData.IATA_Airport}
+                                 name={timeData.Airport}
+                                 flyTime={timeData.flyTime}
+                                 flyDate={timeData.flyDate}
+                                 gmt={timeData.flyGMT}
+                                 segmentInvoked={1}/>
+                    </div>
+
+                    <div className="col-md-4">
+
+                        <Airport IATA_code={timeData.IATA_Airport}
+                                 name={timeData.Airport}
+                                 flyTime={timeData.flyTime}
+                                 flyDate={timeData.flyDate}
+                                 gmt={timeData.flyGMT}
+                                 segmentInvoked={1}/>
+                    </div>
+
+
+
                 </div>
             </div>
         )
