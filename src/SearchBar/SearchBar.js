@@ -13,7 +13,13 @@ class SearchBar extends Component {
         super(props);
         this.state = {
             startDate: moment()
-        }
+        };
+
+        this.handlder = this.handlder.bind(this);
+    }
+
+    handlder() {
+        this.props.searchHandler();
     }
 
     render() {
@@ -71,7 +77,7 @@ class SearchBar extends Component {
 
 
                             <div className="col-md-2">
-                               <button className="btn btn-success">Search</button>
+                               <button className="btn btn-success" onClick={this.handlder}>Search</button>
                             </div>
                         </div>
 

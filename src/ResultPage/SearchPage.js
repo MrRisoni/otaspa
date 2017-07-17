@@ -17,30 +17,33 @@ class SearchPage extends Component {
                 price: {}
             },
             results: {},
-            fetched: false
-        }
+            fetched: false,
+            searched: false
+        };
+
+        this.searchClicked = this.searchClicked.bind(this);
     }
 
-    componentWillMount() {
+    searchClicked() {
         console.log('Mounting');
         console.log(this.props.params);
 
         var self = this;
 
-        // just a dummy waiting time
+        self.setState({searched: true});
 
+
+        // just a dummy waiting time
+        // click button search
         setTimeout(function () {
 
             console.log('AirSearch');
             let fake = new FakeServer(self.props.params.product);
 
-
             self.setState({results: fake.AirSearch()});
             self.setState({fetched: true});
 
-
         }, 450);
-
     }
 
     render() {
@@ -57,7 +60,7 @@ class SearchPage extends Component {
             <div className="row">
 
                 <div className="col-md-12">
-                    <SearchBar/>
+                    <SearchBar searchHandler={this.searchClicked}/>
                 </div>
             </div>
 
@@ -70,14 +73,24 @@ class SearchPage extends Component {
                     (<div className="col-md-10">
                         <ResultsList results={this.state.results}
                                      filters={this.state.filters}/>
-                    </div>) : (<div className="col-md-10">
+                    </div>) :
+                    (<div>
 
-                        <FontAwesome
-                            className='fa fa-spinner fa-spin'
-                            name='spinner'
-                            size='5x'
-                            spin
-                            style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
+
+                        {this.state.searched ?
+                            (<div className="col-md-10">
+
+                                <FontAwesome
+                                    className='fa fa-spinner fa-spin'
+                                    name='spinner'
+                                    size='5x'
+                                    spin
+                                    style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
+                                />
+
+                            </div>) : (<div></div>)
+                        }
+
                         />
 
                     </div>)
