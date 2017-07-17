@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './Home';
-import AirApp from './AirApp';
-import ShipApp from './ShipApp';
-import CarApp from './CarApp';
-import HotelApp from './HotelApp';
-import Success from './Success';
+import AirApp from './BookApps/AirApp';
+import ShipApp from './BookApps/ShipApp';
+import CarApp from './BookApps/CarApp';
+import HotelApp from './BookApps/HotelApp';
+import Success from './BookApps/Success';
 
 
 import './index.css';

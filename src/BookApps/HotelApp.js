@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
-import Pay from './components/Pay';
-import Contact from './components/Contact';
+import Pay from '../components/Pay';
+import Contact from '../components/Contact';
 
 
 class HotelApp extends Component {
