@@ -3,7 +3,8 @@ const moment = require('moment');
 
 
 export default class FakeServer {
-    constructor() {
+    constructor(product) {
+        console.log('fake server class ' + product);
     }
 
     getDuration(leg) {

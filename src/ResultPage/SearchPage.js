@@ -21,8 +21,10 @@ class SearchPage extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         console.log('Mounting');
+        console.log(this.props.params);
+
         var self = this;
 
         // just a dummy waiting time
@@ -30,8 +32,7 @@ class SearchPage extends Component {
         setTimeout(function () {
 
             console.log('AirSearch');
-            console.log(this.props.params);
-            let fake = new FakeServer();
+            let fake = new FakeServer(self.props.params.product);
 
 
             self.setState({results: fake.AirSearch()});
