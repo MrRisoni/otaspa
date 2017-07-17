@@ -30,7 +30,9 @@ class SearchPage extends Component {
         setTimeout(function () {
 
             console.log('AirSearch');
+            console.log(this.props.params);
             let fake = new FakeServer();
+
 
             self.setState({results: fake.AirSearch()});
             self.setState({fetched: true});
