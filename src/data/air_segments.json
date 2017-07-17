@@ -49,7 +49,7 @@
         "fromCity": "Rhodes",
         "toCity": "London",
         "fromAirport": "RHO, Diagoras Airport",
-        "toAirport": "ATH, Eleftherios Venizelos Intl Arpt",
+        "toAirport": "LWG, Gatwick London Arpt",
         "depDateTime": "2017-06-23T12:10:00+03:00",
         "arrDateTime": "2017-06-23T13:35:00+00:00",
         "airline": "EJ,EasyJet Airways"
@@ -60,7 +60,7 @@
         "fromCity": "London",
         "toCity": "Rhodes",
         "fromAirport": "LWG, Gatwick London Arpt",
-        "toAirport": "ATH, Eleftherios Venizelos Intl Arpt",
+        "toAirport": "RHO, Diagoras Airport",
         "depDateTime": "2017-06-30T05:00:00+00:00",
         "arrDateTime": "2017-06-30T13:20:00+03:00",
         "airline": "FR,Ryanair"

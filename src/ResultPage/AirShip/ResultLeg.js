@@ -34,6 +34,8 @@ class ResultLeg extends Component {
     render() {
 
         const timeData= timeFunctions.extractInfoFromLegs(this.props.legs);
+        const diffGMT = (timeData.depGMT === timeData.retGMT) ?  0 : 1;
+
 
         return (
             <div className="panel panel-primary">
@@ -55,7 +57,8 @@ class ResultLeg extends Component {
                                          name={timeData.arrAirport}
                                          flyTime={timeData.arrTime}
                                          flyDate={timeData.arrDate}
-                                         gmt={timeData.retGMT}/>
+                                         gmt={timeData.retGMT}
+                                         diffGMT={diffGMT}/>
                             </div>
 
                         </div>

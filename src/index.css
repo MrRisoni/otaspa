@@ -18,3 +18,8 @@
 .gmtdiff {
     font-size: 75%;
 }
+
+.gmt_warning {
+    color : red;
+    font-weight: bold;
+}

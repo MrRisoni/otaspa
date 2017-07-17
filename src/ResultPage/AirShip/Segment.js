@@ -9,6 +9,7 @@ class Segment extends Component {
     render() {
 
         const timeData= timeFunctions.extractInfoFromSingleLeg(this.props.legData);
+        const diffGMT = (timeData.depGMT === timeData.retGMT) ?  0 : 1;
 
 
         return (
@@ -35,7 +36,8 @@ class Segment extends Component {
                                  flyTime={timeData.arrTime}
                                  flyDate={timeData.arrDate}
                                  gmt={timeData.retGMT}
-                                 segmentInvoked={1}/>
+                                 segmentInvoked={1}
+                                 diffGMT={diffGMT}/>
                     </div>
 
 
