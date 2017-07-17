@@ -11,8 +11,9 @@ function extractInfoFromLegs(legs) {
         airIATA_Airport: legs[lastLeg].toAirport.substr(0, 3),
         arrAirport: legs[lastLeg].toAirport.substr(4),
 
-        depTime: moment(legs[0].depDateTime).format('HH:MM'),
-        arrTime: moment(legs[lastLeg].arrDateTime).format('HH:MM'),
+        depTime: legs[0].depDateTime.substr(11,5),
+        arrTime: legs[lastLeg].arrDateTime.substr(11,5),
+
 
         depDate: moment(legs[0].depDateTime).format('dd DD/MM/YYYY'),
         arrDate: moment(legs[lastLeg].arrDateTime).format('dd DD/MM/YYYY'),
@@ -27,13 +28,20 @@ function extractInfoFromSingleLeg(leg) {
 
 
     return {
-        IATA_Airport: leg.fromAirport.substr(0, 3),
-        Airport: leg.fromAirport.substr(4),
+        depIATA_Airport: leg.fromAirport.substr(0, 3),
+        depAirport: leg.fromAirport.substr(4),
 
-        flyTime: moment(leg.depDateTime).format('HH:MM'),
-        flyDate: moment(leg.depDateTime).format('dd DD/MM/YYYY'),
+        airIATA_Airport: leg.toAirport.substr(0, 3),
+        arrAirport: leg.toAirport.substr(4),
 
-        flyGMT: leg.depDateTime.substr(-6)
+        depTime: leg.depDateTime.substr(11,5),
+        arrTime: leg.arrDateTime.substr(11,5),
+
+        depDate: moment(leg.depDateTime).format('dd DD/MM/YYYY'),
+        arrDate: moment(leg.arrDateTime).format('dd DD/MM/YYYY'),
+
+        depGMT: leg.depDateTime.substr(-6),
+        retGMT: leg.arrDateTime.substr(-6)
     }
 }
 
