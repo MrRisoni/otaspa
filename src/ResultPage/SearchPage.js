@@ -66,13 +66,14 @@ class SearchPage extends Component {
 
             <div className="row">
                 <div className="col-md-2">
-                    <Filters/>
+                    <Filters product={this.props.params.product}/>
                 </div>
 
                 {this.state.fetched ?
                     (<div className="col-md-10">
                         <ResultsList results={this.state.results}
-                                     filters={this.state.filters}/>
+                                     filters={this.state.filters}
+                                     product={this.props.params.product}/>
                     </div>) :
                     (<div>
 
@@ -90,8 +91,6 @@ class SearchPage extends Component {
 
                             </div>) : (<div></div>)
                         }
-
-                        />
 
                     </div>)
                 }

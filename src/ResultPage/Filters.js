@@ -13,6 +13,11 @@ class Filters extends Component {
 
         return (<div>Filters
 
+            price
+            duration
+            stops
+            wait time
+            stars
 
             <Slider />
 

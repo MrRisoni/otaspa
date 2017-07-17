@@ -2,7 +2,7 @@ import React, {Component}  from 'react';
 
 import ResultLeg from './ResultLeg';
 
-class ResultCompo extends Component {
+class AirResultCompo extends Component {
     constructor(props)
     {
         super(props);
@@ -71,4 +71,4 @@ class ResultCompo extends Component {
     }
 }
 
-export default ResultCompo;
+export default AirResultCompo;

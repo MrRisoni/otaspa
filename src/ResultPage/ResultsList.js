@@ -1,6 +1,7 @@
 import React, {Component}  from 'react';
 
-import ResultCompo from './AirShip/ResultCompo';
+import AirResultCompo from './AirShip/AirResultCompo';
+import HotelResultCompo from './Hotel/HotelResultCompo';
 
 class ResultsList extends Component {
     constructor(props){
@@ -13,15 +14,30 @@ class ResultsList extends Component {
     {
         return false;
     }
+
     render() {
         console.log('ResultList Component');
         console.log(this.props.results);
 
+        let  resultListDiv = [];
+
+        if (this.props.product === 'air') {
+            {this.props.results.forEach( function (res) {
+                resultListDiv.push(<AirResultCompo data={res}/>);
+            })}
+        }
+
+        if (this.props.product === 'hotel') {
+            {this.props.results.forEach( function (res) {
+                resultListDiv.push(<HotelResultCompo data={res}/>);
+            })}
+        }
+
+
         return (<div>
 
-            {this.props.results.map( function (res) {
-                return ( <ResultCompo data={res}/>)
-            })}
+
+            {resultListDiv}
 
         </div>)
     }
