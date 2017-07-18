@@ -30,7 +30,7 @@ class HotelResultCompo extends Component {
                            </div>
 
                            <div className="col-md-3">
-                                            Stars
+                                Stars {this.props.data.stars}
                                address <br/>
                                other info  <br/>
                            </div>
@@ -40,7 +40,7 @@ class HotelResultCompo extends Component {
                 <div className="panel-footer">
                     <div className="row">
                         <div className="col-md-5">
-                            <b> Price {this.props.data.totalPrice} </b>
+                            <b> Price {this.props.data.price} </b>
                         </div>
                         <div className="col-md-4"></div>
                         <div className="col-md-3">

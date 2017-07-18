@@ -5,6 +5,7 @@ const moment = require('moment');
 export default class FakeServer {
     constructor(product) {
         console.log('fake server class ' + product);
+        this.product = product;
     }
 
     getDuration(leg) {
@@ -136,6 +137,28 @@ export default class FakeServer {
         console.log(results);
         return results;
 
+    }
+
+
+
+
+    HotelSearch()
+    {
+        let results = require('./data/hotels_segments.json');
+
+        return results;
+    }
+
+
+    getResults() {
+        console.log('Fake server get results');
+        console.log(this.product);
+        if (this.product === 'air') {
+            return this.AirSearch();
+        }
+        else if (this.product === 'hotel') {
+            return this.HotelSearch();
+        }
     }
 }
 

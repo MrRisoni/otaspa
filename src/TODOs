@@ -2,3 +2,24 @@ hotel filters
 hotel result info
 hotel sort stars price
 hotel passengers
+hotel app
+hotel pricebox
+
+ship filters
+ship result info
+ship sort price duration wait time
+ship passengers
+ship app
+ship pricebox
+
+
+
+air filters
+air sort  price duration wait time
+refactor air  app
+
+
+cars
+
+
+
