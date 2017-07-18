@@ -13,12 +13,15 @@ class SearchBar extends Component {
         super(props);
         this.state = {
             startDate: moment(),
-            orderByPrice: 'asc'
+            orderByPrice: 'asc',
+            orderByStars: 'asc'
         };
 
         this.handlder = this.handlder.bind(this);
 
         this.changeOrderPrice = this.changeOrderPrice.bind(this);
+        this.changeOrderStars = this.changeOrderStars.bind(this);
+
     }
 
     handlder() {
@@ -34,7 +37,40 @@ class SearchBar extends Component {
         this.props.updateSearchPageCompo({ price : event.target.value});
     }
 
+    changeOrderStars(event)
+    {
+        console.log('change stars');
+        console.log(event.target.value);
+        var self = this;
+        self.setState({orderByStars : event.target.value});
+        this.props.updateSearchPageCompo({ stars : event.target.value});
+    }
+
     render() {
+
+        let product = this.props.product;
+        console.log('Render SearchBar ' + product);
+
+        let showTo = true;
+        let showStars = false;
+        let showWaitTime = false;
+        let showDurationTime = false;
+
+
+
+        if (this.props.product === 'hotel' ) {
+            showTo = false;
+            showStars = true;
+        }
+
+        if (this.props.product === 'air' ) {
+            showWaitTime = true;
+            showDurationTime = true;
+        }
+
+
+
+
         return (<div className="row">
             <div className="col-md-12">
 
@@ -65,11 +101,11 @@ class SearchBar extends Component {
                                        className="form-control"/>
                             </div>
 
-
-                            <div className="col-md-5">
+                            { showTo ?
+                            (<div className="col-md-5">
                                 <input type="text" placeholder="To Airport"
                                        className="form-control"/>
-                            </div>
+                            </div>) : (<div></div>) }
                         </div>
 
 
@@ -109,6 +145,8 @@ class SearchBar extends Component {
                         </div>
 
 
+                        <br/>
+
                         <div className="row">
                             <div className="col-md-3">
 
@@ -118,6 +156,42 @@ class SearchBar extends Component {
                                     <option key="1" value="desc">Descending</option>
                                 </select>
                             </div>
+
+
+                            { showStars ?
+                                (<div className="col-md-3">
+
+                                    Order By Stars
+                                    <select className="form-control" value={this.state.orderByStars}
+                                            onChange={this.changeOrderStars}>
+                                        <option key="0" value="asc">Ascending</option>
+                                        <option key="1" value="desc">Descending</option>
+                                    </select>
+                                </div>) : (<div></div>)}
+
+
+                            { showWaitTime ?
+                                (<div className="col-md-3">
+
+                                    Order By wait time
+                                    <select className="form-control" value={this.state.orderByPrice}
+                                            onChange={this.changeOrderPrice}>
+                                        <option key="0" value="asc">Ascending</option>
+                                        <option key="1" value="desc">Descending</option>
+                                    </select>
+                                </div>) : (<div></div>)}
+
+
+                            { showDurationTime ?
+                                (<div className="col-md-3">
+
+                                    Order By duration time
+                                    <select className="form-control" value={this.state.orderByPrice}
+                                            onChange={this.changeOrderPrice}>
+                                        <option key="0" value="asc">Ascending</option>
+                                        <option key="1" value="desc">Descending</option>
+                                    </select>
+                                </div>) : (<div></div>)}
                         </div>
 
 

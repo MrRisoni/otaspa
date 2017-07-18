@@ -36,6 +36,18 @@ class ResultsList extends Component {
                     return (a.totalPrice < b.totalPrice) ? 1 : ((b.totalPrice < a.totalPrice) ? -1 : 0);
                }
            }
+
+            if (  orderBy.hasOwnProperty('stars') ) {
+                console.log('property exists ' + orderBy.stars );
+                if (orderBy.stars === 'asc') {
+                    console.log('sort asc');
+                    return (a.stars > b.stars) ? 1 : ((b.stars > a.stars) ? -1 : 0);
+                }
+                else {
+                    console.log('sort desc');
+                    return (a.stars < b.stars) ? 1 : ((b.stars < a.stars) ? -1 : 0);
+                }
+            }
         });
 
 
