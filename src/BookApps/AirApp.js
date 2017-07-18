@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-import Itinerary from './Air/Trip/Itinerary';
 import UpsaleList from './Common/UpsaleList';
 import PassengerList from './Common/PassengerList';
 import PriceBox from '../components/PriceBox';
@@ -493,7 +492,6 @@ class AirApp extends Component {
 
                     <div className="col-md-10">
 
-                        <Itinerary itinerary={this.state.itinerary}/>
 
                         <PassengerList
                             bagInfo={this.state.bagInfo}
