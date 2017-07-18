@@ -70,6 +70,13 @@ class ResultsList extends Component {
             })}
         }
 
+        if (this.props.product === 'ship') {
+            {this.props.results.forEach( function (res) {
+                resultListDiv.push(<hipResultCompo data={res}/>);
+            })}
+        }
+
+
         if (this.props.product === 'hotel') {
             {this.props.results.forEach( function (res) {
                 resultListDiv.push(<HotelResultCompo data={res}/>);

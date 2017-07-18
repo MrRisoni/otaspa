@@ -140,7 +140,15 @@ export default class FakeServer {
     }
 
 
+    ShipSearch()
+    {
+        let results = require('./data/ship_segments.json');
 
+        results.forEach((rsl) => {
+            rsl.totalPrice = rsl.price + 0.12 * rsl.price;
+        });
+        return results;
+    }
 
     HotelSearch()
     {
@@ -161,6 +169,9 @@ export default class FakeServer {
         }
         else if (this.product === 'hotel') {
             return this.HotelSearch();
+        }
+        else if (this.product === 'ship') {
+            return this.ShipSearch();
         }
     }
 }
