@@ -1,25 +1,31 @@
+ship result info
+ship sort price duration wait time
+
+air sort  price duration wait time
+air filters
+
 hotel filters
+ship filters
+
 hotel passengers
 hotel app
 hotel pricebox
 
-ship filters
-ship result info
-ship sort price duration wait time
 ship passengers
 ship app
 ship pricebox
 
+cars  result info
+cars price sort
+cars passengers
+cars app
+cars pricebox
 
-
-air filters
-air sort  price duration wait time
 refactor air  app
 
 
-cars
 
 
-OTA SPA Redux :)
+
 
 
