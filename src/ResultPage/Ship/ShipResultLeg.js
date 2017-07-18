@@ -1,7 +1,7 @@
 import React, {Component}  from 'react';
 
-import Segment from './ShipSegment';
-import Airport from './Port';
+import ShipSegment from './ShipSegment';
+import Port from './Port';
 
 import timeFunctions  from '../../time_helpers';
 
@@ -33,8 +33,12 @@ class ResultLeg extends Component {
 
     render() {
 
-        const timeData= timeFunctions.extractInfoFromLegs(this.props.legs);
+        const timeData= timeFunctions.extractInfoFromShipLegs(this.props.legs);
         const diffGMT = (timeData.depGMT === timeData.retGMT) ?  0 : 1;
+
+        const lastLeg = this.props.legs.length -1;
+        const fromPort = this.props.legs[0].fromPort;
+        const toPort = this.props.legs[lastLeg].toPort;
 
 
         return (
@@ -47,18 +51,17 @@ class ResultLeg extends Component {
 
                             <div className="row">
 
-                                <Airport IATA_code={timeData.depIATA_Airport}
-                                         name={timeData.depAirport}
-                                         flyTime={timeData.depTime}
-                                         flyDate={timeData.depDate}
-                                         gmt={timeData.depGMT}/>
+                                <Port name={fromPort}
+                                      sailTime={timeData.depTime}
+                                      sailDate={timeData.depDate}
+                                      gmt={timeData.depGMT}/>
 
-                                <Airport IATA_code={timeData.airIATA_Airport}
-                                         name={timeData.arrAirport}
-                                         flyTime={timeData.arrTime}
-                                         flyDate={timeData.arrDate}
-                                         gmt={timeData.retGMT}
-                                         diffGMT={diffGMT}/>
+                                <Port
+                                      name={toPort}
+                                      sailTime={timeData.arrTime}
+                                      sailDate={timeData.arrDate}
+                                      gmt={timeData.retGMT}
+                                      diffGMT={diffGMT}/>
                             </div>
 
                         </div>
@@ -99,7 +102,7 @@ class ResultLeg extends Component {
                     (<div className="panel-body">
 
                         {this.props.legs.map((seg, index) => {
-                            return (<Segment legData={seg}
+                            return (<ShipSegment legData={seg}
                                              key={index}/>)
                         })}
 

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class Airport extends Component
+class Port extends Component
 {
     render()
     {
@@ -14,13 +14,12 @@ class Airport extends Component
 
             <div className="row">
                 <div className="col-md-4">
-            {this.props.IATA_code} <br/>
-            {this.props.name}
+                        {this.props.name}
                 </div>
 
                 <div className="col-md-8">
-                    <b className="flightTime">{this.props.flyTime}</b> <br/>
-                    {this.props.flyDate} <br/>
+                    <b className="flightTime">{this.props.sailTime}</b> <br/>
+                    {this.props.sailDate} <br/>
                     <p className={GMTClass}>
                         GMT{this.props.gmt}
                         <br/>
@@ -37,4 +36,4 @@ class Airport extends Component
 
 }
 
-export default Airport
+export default Port

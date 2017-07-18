@@ -1,15 +1,15 @@
 import React, {Component}  from 'react';
-import Airport from "./Port";
+import Port from "./Port";
 
 import timeFunctions  from '../../time_helpers';
 
 
-class Segment extends Component {
+class ShipSegment extends Component {
 
     render() {
 
-        const timeData= timeFunctions.extractInfoFromSingleLeg(this.props.legData);
-        const diffGMT = (timeData.depGMT === timeData.retGMT) ?  0 : 1;
+        const timeData = timeFunctions.extractInfoFromSingleShipLeg(this.props.legData);
+        const diffGMT = (timeData.depGMT === timeData.retGMT) ? 0 : 1;
 
 
         return (
@@ -19,25 +19,26 @@ class Segment extends Component {
                 <div className="panel-heading"></div>
                 <div className="panel-body">
 
+                   <div className="row">
+                       <div className="col-md-12">
+
                     <div className="col-md-4">
 
-                        <Airport IATA_code={timeData.depIATA_Airport}
-                                 name={timeData.depAirport}
-                                 flyTime={timeData.depTime}
-                                 flyDate={timeData.depDate}
-                                 gmt={timeData.depGMT}
-                                 segmentInvoked={1}/>
+                        <Port name={this.props.legData.fromPort}
+                              sailTime={timeData.depTime}
+                              sailDate={timeData.depDate}
+                              gmt={timeData.depGMT}
+                              segmentInvoked={1}/>
                     </div>
 
                     <div className="col-md-4">
 
-                        <Airport IATA_code={timeData.airIATA_Airport}
-                                 name={timeData.arrAirport}
-                                 flyTime={timeData.arrTime}
-                                 flyDate={timeData.arrDate}
-                                 gmt={timeData.retGMT}
-                                 segmentInvoked={1}
-                                 diffGMT={diffGMT}/>
+                        <Port name={this.props.legData.toPort}
+                              sailTime={timeData.arrTime}
+                              sailDate={timeData.arrDate}
+                              gmt={timeData.retGMT}
+                              segmentInvoked={1}
+                              diffGMT={diffGMT}/>
                     </div>
 
 
@@ -57,6 +58,16 @@ class Segment extends Component {
                         </div>
                     </div>
 
+                       </div>
+                   </div>
+
+
+                    <div className="row">
+                        <div className="col-md-12">
+                            Company: {this.props.legData.company} <br/>
+                            <b> Ship Name: {this.props.legData.ship} </b>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -64,4 +75,4 @@ class Segment extends Component {
     }
 }
 
-export default Segment;
+export default ShipSegment;
