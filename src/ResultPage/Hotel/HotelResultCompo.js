@@ -2,18 +2,17 @@ import React, {Component}  from 'react';
 
 
 class HotelResultCompo extends Component {
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
 
         this.proceed = this.proceed.bind(this);
     }
 
-    proceed()
-    {
+    proceed() {
         this.props.router.push('/some/path');
 
     }
+
     render() {
         return (
 
@@ -23,18 +22,43 @@ class HotelResultCompo extends Component {
                 </div>
                 <div className="panel-body">
 
-                       <div className="row">
+                    <div className="row">
 
-                           <div className="col-md-3">
-                                Hotel placeholder Image
-                           </div>
+                        <div className="col-md-5">
+                            <div className="row">
+                                <div className="col-md-5">
 
-                           <div className="col-md-3">
-                                Stars {this.props.data.stars}
-                               address <br/>
-                               other info  <br/>
-                           </div>
-                           </div>
+
+                                <img className="hotel_preview" src="https://s-ec.bstatic.com/images/hotel/270x200/481/48123358.jpg"></img>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div className="col-md-6">
+
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <b> {this.props.data.name} </b>
+                                </div>
+                            </div>
+
+                            <div className="row">
+                                <div className="col-md-6">
+                                    Stars: {this.props.data.stars}
+                                </div>
+                            </div>
+
+
+                            <div className="row">
+                                <div className="col-md-6">
+                                    Address: {this.props.data.address}
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
                 </div>
 
                 <div className="panel-footer">

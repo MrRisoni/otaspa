@@ -23,3 +23,9 @@
     color : red;
     font-weight: bold;
 }
+
+
+.hotel_preview {
+    max-width: 95%;
+    height: auto;
+}

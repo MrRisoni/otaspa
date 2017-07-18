@@ -3,23 +3,25 @@
     "price": 175,
     "name": "Grande Bretagne",
     "stars": 5,
-    "adress" : "Pl Syntagmatos"
+    "address" : "Syntagma Square"
   },
   {
     "price": 380,
     "name": "President",
     "stars": 5,
-    "adress" : "Alexandras 128"
+    "address" : "Alexandras 128"
   },
   {
     "price": 68,
     "name": "Meropi",
     "stars": 3,
-    "adress" : "Papagou 12"
+    "address" : "Papagou 12"
   },
   {
     "price": 60,
-    "name": "Kifisias 179",
-    "stars": 2
+    "name": "Amanda",
+    "stars": 2,
+    "address" : "Kifisias 179"
+
   }
 ]
