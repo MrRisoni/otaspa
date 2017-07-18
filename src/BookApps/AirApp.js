@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
-import Itinerary from '../old/containers/Trip/Itinerary';
-import UpsaleList from '../old/containers/UpsaleList';
-import PassengerList from '../old/containers/PassengerList';
-import PriceBox from '../old/containers/PriceBox';
+import Itinerary from './Air/Trip/Itinerary';
+import UpsaleList from './Common/UpsaleList';
+import PassengerList from './Common/PassengerList';
+import PriceBox from '../components/PriceBox';
 import Contact from '../components/Contact';
 import Pay from '../components/Pay';
 

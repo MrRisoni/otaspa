@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 
 
 import Names from './Personal/Names';
-import BaggageList from './Baggages/BaggageList';
-import UpgradeFare from './UpgradeFare';
-import  InsurancePanel from './InsurancePanel';
+import BaggageList from '../../Air/Baggages/BaggageList';
+import UpgradeFare from '../../Air/UpgradeFare';
+import  InsurancePanel from '../../Air/InsurancePanel';
 
 
 class PassengerCompo extends Component {
