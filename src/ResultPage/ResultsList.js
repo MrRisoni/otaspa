@@ -8,6 +8,8 @@ class ResultsList extends Component {
         super(props);
 
         this.isFiltered = this.isFiltered.bind(this);
+
+        this.filterAndSort = this.filterAndSort.bind(this);
     }
 
     isFiltered()
@@ -15,7 +17,8 @@ class ResultsList extends Component {
         return false;
     }
 
-    render() {
+    filterAndSort()
+    {
         console.log('ResultList Component');
         console.log('Order By');
         console.log(this.props.orderBy);
@@ -29,13 +32,13 @@ class ResultsList extends Component {
                 console.log('property exists ' + orderBy.price );
                 if (orderBy.price === 'asc') {
                     console.log('sort asc');
-                   return (a.totalPrice > b.totalPrice) ? 1 : ((b.totalPrice > a.totalPrice) ? -1 : 0);
+                    return (a.totalPrice > b.totalPrice) ? 1 : ((b.totalPrice > a.totalPrice) ? -1 : 0);
                 }
                 else {
                     console.log('sort desc');
                     return (a.totalPrice < b.totalPrice) ? 1 : ((b.totalPrice < a.totalPrice) ? -1 : 0);
-               }
-           }
+                }
+            }
 
             if (  orderBy.hasOwnProperty('stars') ) {
                 console.log('property exists ' + orderBy.stars );
@@ -51,6 +54,15 @@ class ResultsList extends Component {
         });
 
 
+    }
+
+    render() {
+
+
+        let  resultListDiv = [];
+
+
+        this.filterAndSort();
 
         if (this.props.product === 'air') {
             {this.props.results.forEach( function (res) {
