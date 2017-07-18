@@ -28,58 +28,41 @@ class ResultsList extends Component {
 
         let orderBy = this.props.orderBy;
 
-        // order results by price
+        let sortedProperty = '';
+        let sortingOrder = 'asc';
+
+        if (  orderBy.hasOwnProperty('price') ) {
+            sortedProperty = 'price';
+            sortingOrder =orderBy.price;
+        }
+        if (  orderBy.hasOwnProperty('stars') ) {
+            sortedProperty = 'stars';
+            sortingOrder =orderBy.stars;
+        }
+        if (  orderBy.hasOwnProperty('wait') ) {
+            sortedProperty = 'total_waitMinutes';
+            sortingOrder =orderBy.wait;
+        }
+        if (  orderBy.hasOwnProperty('duration') ) {
+            sortedProperty = 'durationMinutes';
+            sortingOrder =orderBy.duration;
+        }
+
+
+        console.log('key to value');
+        console.log(orderBy[sortedProperty]);
+        // https://stackoverflow.com/questions/4255472/javascript-object-access-variable-property-by-name-as-string
+
         this.props.results.sort(function (a, b) {
-            if (  orderBy.hasOwnProperty('price') ) {
-                console.log('property exists ' + orderBy.price );
-                if (orderBy.price === 'asc') {
-                    console.log('sort asc');
-                    return (a.totalPrice > b.totalPrice) ? 1 : ((b.totalPrice > a.totalPrice) ? -1 : 0);
-                }
-                else {
-                    console.log('sort desc');
-                    return (a.totalPrice < b.totalPrice) ? 1 : ((b.totalPrice < a.totalPrice) ? -1 : 0);
-                }
+            if (sortingOrder === 'asc') {
+                console.log('sort asc');
+                return (a[sortedProperty] > b[sortedProperty]) ? 1 : ((b[sortedProperty] > a[sortedProperty]) ? -1 : 0);
             }
-
-            if (  orderBy.hasOwnProperty('stars') ) {
-                console.log('property exists ' + orderBy.stars );
-                if (orderBy.stars === 'asc') {
-                    console.log('sort asc');
-                    return (a.stars > b.stars) ? 1 : ((b.stars > a.stars) ? -1 : 0);
-                }
-                else {
-                    console.log('sort desc');
-                    return (a.stars < b.stars) ? 1 : ((b.stars < a.stars) ? -1 : 0);
-                }
-            }
-
-            if (  orderBy.hasOwnProperty('wait') ) {
-                console.log('property exists ' + orderBy.wait );
-                if (orderBy.wait === 'asc') {
-                    console.log('sort asc');
-                    return (a.total_waitMinutes > b.total_waitMinutes) ? 1 : ((b.total_waitMinutes > a.total_waitMinutes) ? -1 : 0);
-                }
-                else {
-                    console.log('sort desc');
-                    return (a.total_waitMinutes < b.total_waitMinutes) ? 1 : ((b.total_waitMinutes < a.total_waitMinutes) ? -1 : 0);
-                }
-            }
-
-
-            if (  orderBy.hasOwnProperty('duration') ) {
-                console.log('property exists ' + orderBy.duration );
-                if (orderBy.duration === 'asc') {
-                    console.log('sort asc');
-                    return (a.durationMinutes > b.durationMinutes) ? 1 : ((b.durationMinutes > a.durationMinutes) ? -1 : 0);
-                }
-                else {
-                    console.log('sort desc');
-                    return (a.durationMinutes < b.durationMinutes) ? 1 : ((b.durationMinutes < a.durationMinutes) ? -1 : 0);
-                }
+            else {
+                console.log('sort desc');
+                return (a[sortedProperty] < b[sortedProperty]) ? 1 : ((b[sortedProperty] < a[sortedProperty]) ? -1 : 0);
             }
         });
-
 
     }
 
