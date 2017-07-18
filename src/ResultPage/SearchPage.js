@@ -16,13 +16,33 @@ class SearchPage extends Component {
             filters: {
                 price: {}
             },
+            orderBy: {
+                price: 'asc'
+            },
             results: {},
             fetched: false,
             searched: false
         };
 
         this.searchClicked = this.searchClicked.bind(this);
+        this.updateFiltersFromSearchBar = this.updateFiltersFromSearchBar.bind(this);
+
     }
+
+    updateFiltersFromSearchBar(data)
+    {
+        console.log('Search Page. Received');
+        console.log(data);
+
+        var self = this;
+
+        let order_by = self.state.orderBy;
+
+        order_by = data;
+
+        self.setState({ orderBy : order_by});
+    }
+
 
     searchClicked() {
         console.log('Mounting');
@@ -60,7 +80,8 @@ class SearchPage extends Component {
 
                 <div className="col-md-12">
                     <SearchBar searchHandler={this.searchClicked}
-                               product={this.props.params.product}/>
+                               product={this.props.params.product}
+                               updateSearchPageCompo={this.updateFiltersFromSearchBar}/>
                 </div>
             </div>
 
@@ -73,7 +94,8 @@ class SearchPage extends Component {
                     (<div className="col-md-10">
                         <ResultsList results={this.state.results}
                                      filters={this.state.filters}
-                                     product={this.props.params.product}/>
+                                     product={this.props.params.product}
+                                     orderBy={this.state.orderBy}/>
                     </div>) :
                     (<div>
 

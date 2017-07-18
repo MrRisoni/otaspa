@@ -12,14 +12,26 @@ class SearchBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            startDate: moment()
+            startDate: moment(),
+            orderByPrice: 'asc'
         };
 
         this.handlder = this.handlder.bind(this);
+
+        this.changeOrderPrice = this.changeOrderPrice.bind(this);
     }
 
     handlder() {
         this.props.searchHandler();
+    }
+
+    changeOrderPrice(event)
+    {
+        console.log('change price');
+        console.log(event.target.value);
+        var self = this;
+        self.setState({orderByPrice : event.target.value});
+        this.props.updateSearchPageCompo({ price : event.target.value});
     }
 
     render() {
@@ -92,9 +104,25 @@ class SearchBar extends Component {
 
                                <SelectPassengers />
 
-order by select boxes price duration segments
+                                order by select boxes price duration segments
                             </div>
                         </div>
+
+
+                        <div className="row">
+                            <div className="col-md-3">
+
+                                Order By Price
+                                <select className="form-control" value={this.state.orderByPrice} onChange={this.changeOrderPrice}>
+                                    <option key="0" value="asc">Ascending</option>
+                                    <option key="1" value="desc">Descending</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
 
                     </div>
 

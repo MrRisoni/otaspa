@@ -146,6 +146,9 @@ export default class FakeServer {
     {
         let results = require('./data/hotels_segments.json');
 
+        results.forEach((rsl) => {
+            rsl.totalPrice = rsl.price + 0.12 * rsl.price;
+        });
         return results;
     }
 

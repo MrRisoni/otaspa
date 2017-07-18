@@ -17,9 +17,28 @@ class ResultsList extends Component {
 
     render() {
         console.log('ResultList Component');
-        console.log(this.props.results);
-
+        console.log('Order By');
+        console.log(this.props.orderBy);
         let  resultListDiv = [];
+
+        let orderBy = this.props.orderBy;
+
+        // order results by price
+        this.props.results.sort(function (a, b) {
+            if (  orderBy.hasOwnProperty('price') ) {
+                console.log('property exists ' + orderBy.price );
+                if (orderBy.price === 'asc') {
+                    console.log('sort asc');
+                   return (a.totalPrice > b.totalPrice) ? 1 : ((b.totalPrice > a.totalPrice) ? -1 : 0);
+                }
+                else {
+                    console.log('sort desc');
+                    return (a.totalPrice < b.totalPrice) ? 1 : ((b.totalPrice < a.totalPrice) ? -1 : 0);
+               }
+           }
+        });
+
+
 
         if (this.props.product === 'air') {
             {this.props.results.forEach( function (res) {
