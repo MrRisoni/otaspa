@@ -1,9 +1,4 @@
-ship result info
-ship sort price duration wait time
-
-air sort  price duration wait time
 air filters
-
 hotel filters
 ship filters
 
@@ -20,9 +15,6 @@ cars price sort
 cars passengers
 cars app
 cars pricebox
-
-refactor air  app
-
 
 
 
