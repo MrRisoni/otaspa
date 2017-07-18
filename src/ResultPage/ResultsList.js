@@ -53,6 +53,31 @@ class ResultsList extends Component {
                     return (a.stars < b.stars) ? 1 : ((b.stars < a.stars) ? -1 : 0);
                 }
             }
+
+            if (  orderBy.hasOwnProperty('wait') ) {
+                console.log('property exists ' + orderBy.wait );
+                if (orderBy.wait === 'asc') {
+                    console.log('sort asc');
+                    return (a.total_waitMinutes > b.total_waitMinutes) ? 1 : ((b.total_waitMinutes > a.total_waitMinutes) ? -1 : 0);
+                }
+                else {
+                    console.log('sort desc');
+                    return (a.total_waitMinutes < b.total_waitMinutes) ? 1 : ((b.total_waitMinutes < a.total_waitMinutes) ? -1 : 0);
+                }
+            }
+
+
+            if (  orderBy.hasOwnProperty('duration') ) {
+                console.log('property exists ' + orderBy.duration );
+                if (orderBy.duration === 'asc') {
+                    console.log('sort asc');
+                    return (a.durationMinutes > b.durationMinutes) ? 1 : ((b.durationMinutes > a.durationMinutes) ? -1 : 0);
+                }
+                else {
+                    console.log('sort desc');
+                    return (a.durationMinutes < b.durationMinutes) ? 1 : ((b.durationMinutes < a.durationMinutes) ? -1 : 0);
+                }
+            }
         });
 
 

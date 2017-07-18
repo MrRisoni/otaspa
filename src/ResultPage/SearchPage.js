@@ -18,7 +18,9 @@ class SearchPage extends Component {
             },
             orderBy: {
                 price: 'asc',
-                stars: 'desc'
+                stars: 'desc',
+                wait: 'asc',
+                duration : 'asc'
             },
             results: {},
             fetched: false,
