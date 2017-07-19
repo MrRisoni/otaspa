@@ -1,6 +1,8 @@
 import React, {Component}  from 'react';
 
 import ResultLeg from './ResultLeg';
+import { hashHistory } from 'react-router';
+
 
 class AirResultCompo extends Component {
     constructor(props)
@@ -12,8 +14,8 @@ class AirResultCompo extends Component {
 
     proceed()
     {
-        this.props.router.push('/some/path');
-
+        console.log('submit result');
+        hashHistory.push('/book/air');
     }
     render() {
         return (
