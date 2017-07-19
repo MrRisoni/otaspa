@@ -53,6 +53,19 @@ class ResultsList extends Component {
         console.log(orderBy[sortedProperty]);
         // https://stackoverflow.com/questions/4255472/javascript-object-access-variable-property-by-name-as-string
 
+      /*  console.log('Fiter and Sort');
+        console.log(this.props.filters);
+
+        let minPrice = this.props.filters.price[0];
+        let maxPrice = this.props.filters.price[1];
+
+        console.log('minprice ' + minPrice);
+
+*/
+       /* this.props.results.forEach (  (rsl) =>  {
+           rsl.show = rsl.price >= minPrice && rsl.price <= maxPrice;
+        });*/
+
         this.props.results.sort(function (a, b) {
             if (sortingOrder === 'asc') {
                 console.log('sort asc');
@@ -68,6 +81,7 @@ class ResultsList extends Component {
 
     render() {
 
+        console.log('Render result list');
 
         let  resultListDiv = [];
 
@@ -76,7 +90,7 @@ class ResultsList extends Component {
 
         if (this.props.product === 'air') {
             {this.props.results.forEach( function (res) {
-                resultListDiv.push(<AirResultCompo data={res}/>);
+                    resultListDiv.push(<AirResultCompo data={res}/>);
             })}
         }
 
