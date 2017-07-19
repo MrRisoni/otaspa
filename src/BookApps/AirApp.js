@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 
-import Itinerary from '../old/containers/Trip/Itinerary';
-import UpsaleList from '../old/containers/UpsaleList';
-import PassengerList from '../old/containers/PassengerList';
-import PriceBox from '../old/containers/PriceBox';
+import UpsaleList from './Common/UpsaleList';
+import PassengerList from './Common/PassengerList';
+import PriceBox from '../components/PriceBox';
 import Contact from '../components/Contact';
 import Pay from '../components/Pay';
 
@@ -493,7 +492,6 @@ class AirApp extends Component {
 
                     <div className="col-md-10">
 
-                        <Itinerary itinerary={this.state.itinerary}/>
 
                         <PassengerList
                             bagInfo={this.state.bagInfo}

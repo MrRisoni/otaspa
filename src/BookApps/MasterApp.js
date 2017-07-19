@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 
 import Pay from '../components/Pay';
 import Contact from '../components/Contact';
-import PriceBox from "../old/containers/PriceBox";
+import PriceBox from "../components/PriceBox";
 
 
 class MasterApp extends Component {

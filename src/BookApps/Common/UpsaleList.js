@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import Upsale from '../components/Upsale';
+import Upsale from '../../components/Upsale';
 
 class UpsaleList extends Component {
     constructor(props) {
