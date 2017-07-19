@@ -18,7 +18,9 @@ class SearchPage extends Component {
             },
             orderBy: {
                 price: 'asc',
-                stars: 'desc'
+                stars: 'desc',
+                wait: 'asc',
+                duration : 'asc'
             },
             results: {},
             fetched: false,
@@ -26,11 +28,23 @@ class SearchPage extends Component {
         };
 
         this.searchClicked = this.searchClicked.bind(this);
-        this.updateFiltersFromSearchBar = this.updateFiltersFromSearchBar.bind(this);
-
+        this.updateSortingFromSearchBar = this.updateSortingFromSearchBar.bind(this);
+        this.fetchFilters =  this.fetchFilters.bind(this);
     }
 
-    updateFiltersFromSearchBar(data)
+    fetchFilters(data)
+    {
+        console.log('Search Page Compo');
+        console.log(data);
+        var self = this;
+
+        let filters = self.state.filters;
+        filters[data.attribute] = data.minmax;
+
+        self.setState({filters : filters});
+    }
+
+    updateSortingFromSearchBar(data)
     {
         console.log('Search Page. Received');
         console.log(data);
@@ -82,19 +96,20 @@ class SearchPage extends Component {
                 <div className="col-md-12">
                     <SearchBar searchHandler={this.searchClicked}
                                product={this.props.params.product}
-                               updateSearchPageCompo={this.updateFiltersFromSearchBar}/>
+                               updateSearchPageCompo={this.updateSortingFromSearchBar}/>
                 </div>
             </div>
 
             <div className="row">
                 <div className="col-md-2">
-                    <Filters product={this.props.params.product}/>
+                    {/*
+                    <Filters product={this.props.params.product}
+                             liftUpFilters={this.fetchFilters}/> */}
                 </div>
 
                 {this.state.fetched ?
                     (<div className="col-md-10">
                         <ResultsList results={this.state.results}
-                                     filters={this.state.filters}
                                      product={this.props.params.product}
                                      orderBy={this.state.orderBy}/>
                     </div>) :

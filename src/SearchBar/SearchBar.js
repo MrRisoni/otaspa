@@ -14,13 +14,19 @@ class SearchBar extends Component {
         this.state = {
             startDate: moment(),
             orderByPrice: 'asc',
-            orderByStars: 'asc'
+            orderByStars: 'asc',
+            orderByWaitTime: 'asc',
+            orderByDurationTime: 'asc',
+
         };
 
         this.handlder = this.handlder.bind(this);
 
         this.changeOrderPrice = this.changeOrderPrice.bind(this);
         this.changeOrderStars = this.changeOrderStars.bind(this);
+        this.changeOrderWait = this.changeOrderWait.bind(this);
+        this.changeOrderDuration = this.changeOrderDuration.bind(this);
+
 
     }
 
@@ -46,6 +52,26 @@ class SearchBar extends Component {
         this.props.updateSearchPageCompo({ stars : event.target.value});
     }
 
+
+    changeOrderWait(event)
+    {
+        console.log('change wait time');
+        console.log(event.target.value);
+        var self = this;
+        self.setState({orderByWaitTime : event.target.value});
+        this.props.updateSearchPageCompo({ wait : event.target.value});
+    }
+
+    changeOrderDuration(event)
+    {
+        console.log('change duration time');
+        console.log(event.target.value);
+        var self = this;
+        self.setState({orderByDurationTime : event.target.value});
+        this.props.updateSearchPageCompo({ duration : event.target.value});
+    }
+
+
     render() {
 
         let product = this.props.product;
@@ -63,7 +89,7 @@ class SearchBar extends Component {
             showStars = true;
         }
 
-        if (this.props.product === 'air' ) {
+        if ( (this.props.product === 'air' ) || (this.props.product === 'ship') ) {
             showWaitTime = true;
             showDurationTime = true;
         }
@@ -174,8 +200,8 @@ class SearchBar extends Component {
                                 (<div className="col-md-3">
 
                                     Order By wait time
-                                    <select className="form-control" value={this.state.orderByPrice}
-                                            onChange={this.changeOrderPrice}>
+                                    <select className="form-control" value={this.state.orderByWaitTime}
+                                            onChange={this.changeOrderWait}>
                                         <option key="0" value="asc">Ascending</option>
                                         <option key="1" value="desc">Descending</option>
                                     </select>
@@ -186,8 +212,8 @@ class SearchBar extends Component {
                                 (<div className="col-md-3">
 
                                     Order By duration time
-                                    <select className="form-control" value={this.state.orderByPrice}
-                                            onChange={this.changeOrderPrice}>
+                                    <select className="form-control" value={this.state.orderByDurationTime}
+                                            onChange={this.changeOrderDuration}>
                                         <option key="0" value="asc">Ascending</option>
                                         <option key="1" value="desc">Descending</option>
                                     </select>
