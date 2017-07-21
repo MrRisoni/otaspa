@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
 
-import Pay from '../components/Pay';
-import Contact from '../components/Contact';
-import PriceBox from "../components/PriceBox";
+import Pay from './Common/Pay';
+import Contact from './Common/Contact';
+import PriceBox from "./Common/PriceBox";
 
 
 class MasterApp extends Component {

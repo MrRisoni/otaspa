@@ -164,9 +164,9 @@ class SearchBar extends Component {
                         <div className="row">
                             <div className="col-md-12">
 
-                               <SelectPassengers />
+                               <SelectPassengers numPassengers={this.props.numPassengers}
+                                                 updateAmountPassengers={this.props.updateAmountPassengers}/>
 
-                                order by select boxes price duration segments
                             </div>
                         </div>
 

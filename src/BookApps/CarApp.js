@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
 
-import Pay from '../components/Pay';
-import Contact from '../components/Contact';
+import Pay from './Common/Pay';
+import Contact from './Common/Contact';
 
 
 class CarApp extends Component {

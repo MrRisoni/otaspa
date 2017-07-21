@@ -8,9 +8,23 @@ class SelectPassengers extends Component {
         return (<div>
 
 
-            <PlusMinus passengerType="Adults"/>
-            <PlusMinus passengerType="Children"/>
-            <PlusMinus passengerType="Infants"/>
+            <PlusMinus passengerType="Adults"
+                       papCode="ADT"
+                       number={this.props.numPassengers.adults}
+                       updateAmountPassengers={this.props.updateAmountPassengers}
+            />
+
+            <PlusMinus passengerType="Children"
+                       papCode="CNN"
+                       number={this.props.numPassengers.children}
+                       updateAmountPassengers={this.props.updateAmountPassengers}
+            />
+
+
+            <PlusMinus passengerType="Infants"
+                       papCode="INF"
+                       number={this.props.numPassengers.infants}
+                       updateAmountPassengers={this.props.updateAmountPassengers}/>
 
 
         </div>);

@@ -22,6 +22,7 @@ class SearchPage extends Component {
                 wait: 'asc',
                 duration : 'asc'
             },
+            numPassengers: { adults: 1, children: 0, infants :0},
             results: {},
             fetched: false,
             searched: false
@@ -30,7 +31,47 @@ class SearchPage extends Component {
         this.searchClicked = this.searchClicked.bind(this);
         this.updateSortingFromSearchBar = this.updateSortingFromSearchBar.bind(this);
         this.fetchFilters =  this.fetchFilters.bind(this);
+        this.updateAmountPassengers = this.updateAmountPassengers.bind(this);
     }
+
+
+    updateAmountPassengers(data)
+    {
+        console.log('update amount passengers');
+        console.log(data);
+        var self = this;
+        let num_paps = this.state.numPassengers;
+
+        let papType = '';
+        switch (data.type) {
+            case 'ADT':
+                papType = 'adults';
+                break;
+            case 'CNN':
+                papType = 'children';
+                break;
+            case 'INF':
+                papType = 'infants';
+                break;
+        }
+
+        if (data.sign >0) {
+            num_paps[papType]++;
+        }
+        else {
+            num_paps[papType]--;
+            if (num_paps[papType] <0) {
+                num_paps[papType]=0;
+                if (data.type === 'ADT') {
+                    num_paps[papType]=1;
+                }
+            }
+        }
+
+
+        self.setState({numPassengers : num_paps});
+    }
+
 
     fetchFilters(data)
     {
@@ -96,7 +137,9 @@ class SearchPage extends Component {
                 <div className="col-md-12">
                     <SearchBar searchHandler={this.searchClicked}
                                product={this.props.params.product}
-                               updateSearchPageCompo={this.updateSortingFromSearchBar}/>
+                               updateSearchPageCompo={this.updateSortingFromSearchBar}
+                               numPassengers={this.state.numPassengers}
+                               updateAmountPassengers={this.updateAmountPassengers}/>
                 </div>
             </div>
 

@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 
 import UpsaleList from './Common/UpsaleList';
 import PassengerList from './Common/PassengerList';
-import PriceBox from '../components/PriceBox';
-import Contact from '../components/Contact';
-import Pay from '../components/Pay';
+import PriceBox from './Common/PriceBox';
+import Contact from './Common/Contact';
+import Pay from './Common/Pay';
 
 
 class AirApp extends Component {
