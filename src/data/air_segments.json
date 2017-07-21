@@ -1,6 +1,6 @@
 [
   {
-    "price": 175,
+    "price": { "ADT" : 120, "CNN" : 95, "INF" : 35},
     "departLegs": [
       {
         "fromCity": "Rhodes",
@@ -43,7 +43,7 @@
     ]
   },
   {
-    "price": 150,
+    "price": { "ADT" : 150, "CNN" : 115, "INF" : 70},
     "departLegs": [
       {
         "fromCity": "Rhodes",
@@ -68,7 +68,7 @@
     ]
   },
   {
-    "price": 280,
+    "price": { "ADT" : 280, "CNN" : 200, "INF" : 110},
     "departLegs": [
       {
         "fromCity": "Rhodes",

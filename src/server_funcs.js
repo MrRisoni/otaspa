@@ -3,10 +3,13 @@ const moment = require('moment');
 
 
 export default class FakeServer {
-    constructor(product) {
+    constructor(product, num_passengers) {
         console.log('fake server class ' + product);
+        console.log(num_passengers);
+        this.num_passengers = num_passengers;
         this.product = product;
     }
+
 
     getDuration(leg) {
         let arriveTime = moment(leg.arrDateTime);
@@ -82,7 +85,7 @@ export default class FakeServer {
                 rsl.depart_leg_wait_minutes += rsl.departLegs[i].waitTimeMinutes;
             }
 
-            for (var i = 0; i < rsl.returnLegs.length - 1; i++) {
+            for ( i = 0; i < rsl.returnLegs.length - 1; i++) {
                 self.getWaitTime(rsl.returnLegs[i], rsl.returnLegs[i + 1]);
 
                 rsl.return_leg_wait_minutes += rsl.returnLegs[i].waitTimeMinutes;
@@ -90,7 +93,9 @@ export default class FakeServer {
 
 
             // add extra fee
-            rsl.totalPrice = rsl.price + 0.18 * rsl.price;
+            console.log(rsl.price);
+            let total = rsl.price.ADT * this.num_passengers.adults  + rsl.price.CNN + rsl.price.INF;
+            rsl.totalPrice = total + 0.18 * total;
 
             rsl.durationMinutes = total_duration;
 
@@ -184,7 +189,7 @@ export default class FakeServer {
                 rsl.depart_leg_wait_minutes += rsl.departLegs[i].waitTimeMinutes;
             }
 
-            for (var i = 0; i < rsl.returnLegs.length - 1; i++) {
+            for (i = 0; i < rsl.returnLegs.length - 1; i++) {
                 self.getWaitTime(rsl.returnLegs[i], rsl.returnLegs[i + 1]);
 
                 rsl.return_leg_wait_minutes += rsl.returnLegs[i].waitTimeMinutes;

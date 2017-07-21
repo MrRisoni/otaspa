@@ -113,7 +113,7 @@ class SearchPage extends Component {
         // click button search
         setTimeout(function () {
 
-            let fake = new FakeServer(self.props.params.product);
+            let fake = new FakeServer(self.props.params.product, self.state.numPassengers);
 
             self.setState({results: fake.getResults()});
             self.setState({fetched: true});
