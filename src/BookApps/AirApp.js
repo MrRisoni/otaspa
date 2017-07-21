@@ -64,6 +64,11 @@ class AirApp extends Component {
             ],
             bagInfo: [
                 {
+                    id: 0,
+                    title: "No bag",
+                    price: 0
+                },
+                {
                     id: 1,
                     title: "23x45x34 23KG",
                     price: 22
@@ -73,6 +78,7 @@ class AirApp extends Component {
                     title: "23x45x34 15KG",
                     price: 12
                 }
+
             ],
             passengers: [
                 {

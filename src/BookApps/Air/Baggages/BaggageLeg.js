@@ -31,7 +31,6 @@ class BaggageLeg extends Component {
 
         var optionsHTML = [];
 
-        optionsHTML.push(<option key="10" value="10">No bag</option>);
 
         // pass either the id or the title as value
         for (var i = 0; i < this.props.bags.length; i++) {
