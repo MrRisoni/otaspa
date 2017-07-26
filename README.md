@@ -17,4 +17,13 @@ Products :  Air
 
 Heroku URL : https://intense-caverns-58243.herokuapp.com/
 
+
+
+------------------------------------------------
 See otasparesults repo for progressive sending of results with sockets (Angular front-end)
+
+
+progressively send the results to the client (Angular + Node.js + socket.io)
+
+Live Demo https://morning-oasis-83730.herokuapp.com/#!/
+
