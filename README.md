@@ -16,3 +16,5 @@ Products :  Air
   with reusable components          
 
 Heroku URL : https://intense-caverns-58243.herokuapp.com/
+
+See otasparesults repo for progressive sending of results with sockets (Angular front-end)
