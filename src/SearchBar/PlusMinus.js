@@ -27,22 +27,39 @@ class PlusMinus extends Component {
 
     render()
     {
-        return (<div className="col-md-4">
-
-            {this.props.passengerType}
+        return (<div className="row">
 
 
-            {this.props.number}
 
-            <div className="btn-group">
-                <button type="button" className="btn btn-xs btn-primary" onClick={this.increasePap}>
-                    <span className="glyphicon glyphicon-plus"></span>
-                </button>
+            <div className="col-md-2 col-xs-3">
 
-                <button type="button" className="btn btn-xs btn-primary" onClick={this.decreasePap}>
-                    <span className="glyphicon glyphicon-minus"></span>
-                </button>
+                {this.props.passengerType}
+
+
+</div>
+            <div className="col-md-4 col-xs-4">
+
+                <div className="btn-group">
+                    <button type="button" className="btn btn-xs btn-primary" onClick={this.increasePap}>
+                        <span className="glyphicon glyphicon-plus"></span>
+                    </button>
+
+                    <button type="button" className="btn btn-xs btn-primary" onClick={this.decreasePap}>
+                        <span className="glyphicon glyphicon-minus"></span>
+                    </button>
+                </div>
+
+
+
             </div>
+
+            <div className="col-md-1">
+                    {this.props.number}
+            </div>
+
+
+
+
 
 
 
