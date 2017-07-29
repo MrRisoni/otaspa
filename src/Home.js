@@ -1,4 +1,4 @@
-import React, {Component}  from 'react';
+import React, {Component} from 'react';
 
 
 class Home extends Component {
@@ -26,18 +26,17 @@ class Home extends Component {
 
                 return (<div className="row">
 
-                    <div key={product_pair[0].id} className="col-md-6">
-                        <div className="jumbotron">
-                            <h1> <a href={ '#/search/' +  product_pair[0].title.toLocaleLowerCase()} >{product_pair[0].title}</a></h1>
-                        </div>
-                    </div>
+                    {product_pair.map((single_product, index) => {
 
-
-                    <div key={product_pair[1].id} className="col-md-6">
-                        <div className="jumbotron">
-                            <h1> <a href={ '#/search/' +  product_pair[1].title.toLocaleLowerCase()} >{product_pair[1].title}</a></h1>
-                        </div>
-                    </div>
+                        return (
+                            <div key={single_product.id} className="col-md-6">
+                                <div className="jumbotron">
+                                    <h1><a
+                                        href={'#/search/' + single_product.title.toLocaleLowerCase()}>{single_product.title}</a>
+                                    </h1>
+                                </div>
+                            </div>);
+                    })}
 
 
                 </div>);
