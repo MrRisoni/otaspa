@@ -58,10 +58,7 @@ class AirResultCompo extends Component {
                         <div className="col-md-5">
                             <b> Price {this.props.data.totalPrice} </b>
                         </div>
-                        <div className="col-md-4"></div>
-                        <div className="col-md-3">
-                            <button className="btn  btn-primary" onClick={this.proceed}>Continue</button>
-                        </div>
+
                     </div>
                 </div>
             </div>

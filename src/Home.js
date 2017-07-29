@@ -17,11 +17,7 @@ class Home extends Component {
             [{
                 id: 2,
                 title: "Ship"
-            },
-                {
-                    id: 3,
-                    title: "Car"
-                }]
+            }]
         ];
 
         return (<div>
