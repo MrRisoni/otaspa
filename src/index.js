@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './Home';
+import BookApp from './BookApp';
 
+import { createStore } from 'redux'
+
+const store = createStore({});
 import './index.css';
 
 
 ReactDOM.render(
-    <Home/>
+    <BookApp/>
 , document.getElementById('root'));
