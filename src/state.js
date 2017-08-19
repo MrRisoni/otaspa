@@ -1,4 +1,4 @@
-const store = {
+const state = {
     currencyData: [
         {
             trigram: 'EUR',
@@ -499,4 +499,4 @@ const store = {
 }
 
 
-export default store;
+export default state;

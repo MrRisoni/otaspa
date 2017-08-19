@@ -3,11 +3,20 @@ import ReactDOM from 'react-dom';
 import BookApp from './BookApp';
 
 import { createStore } from 'redux'
+import OtaSpaReduxApp from './reducers/index'
 
-const store = createStore({});
+
+import state from './state'
+
+
+const store = createStore(OtaSpaReduxApp, state);
+
+
 import './index.css';
 
 
 ReactDOM.render(
-    <BookApp/>
+    <Provider store={store}>
+        <BookApp />
+    </Provider>
 , document.getElementById('root'));

@@ -15,3 +15,6 @@ function currencyChanged(state = {}, action) {
 const OtaSpaReduxApp = combineReducers({
     currencyChanged
 })
+
+
+export default OtaSpaReduxApp
