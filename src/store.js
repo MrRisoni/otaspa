@@ -58,6 +58,12 @@ class OtaStore {
         }
     ];
 
+
+    @action changeCurrency(cur) {
+        this.currency = cur;
+        this.currentRate = 4;
+    }
+
 }
 
 

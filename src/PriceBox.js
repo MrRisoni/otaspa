@@ -5,8 +5,28 @@ import {observer, inject} from 'mobx-react';
 @inject('otastore')
 @observer
 class PriceBox extends Component {
+    constructor(props) {
+        super(props);
 
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(ev)
+    {
+        console.log(ev.target.value);
+        this.props.otastore.changeCurrency(ev.target.value);
+    }
     render() {
+
+        let total =0;
+
+
+        this.props.otastore.paxTypes.map((px) => {
+            total += px.count * px.convertedPrice;
+        });
+
+        total = total.toFixed(2);
 
         return (
             <div className="pricebox">
@@ -36,7 +56,7 @@ class PriceBox extends Component {
                             <div className="row">
                                 <div className="col-md-12">
 
-                                    <h3> Total Price : {this.props.totalPrice} {this.props.otastore.currency} </h3>
+                                    <h3> Total Price : {total} {this.props.otastore.currency} </h3>
 
                                 </div>
                             </div>
@@ -45,9 +65,9 @@ class PriceBox extends Component {
 
                     <div className="card-footer bg-light">
 
-                        <select className="form-control">
+                        <select className="form-control"  onChange={this.handleChange}>
                             {this.props.otastore.currencyData.map( (cur) => {
-                                return (<option key={cur.trigram} value="asc">{cur.trigram}</option>)
+                                return (<option key={cur.trigram} value={cur.trigram}>{cur.trigram}</option>)
                             })}
 
                         </select>
