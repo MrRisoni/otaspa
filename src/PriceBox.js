@@ -20,7 +20,6 @@ class PriceBox extends Component {
                         </div>
 
 
-                        Show: {this.props.paxTypes[0].type}
                         {this.props.paxTypes.map((px) => {
                             return (<div className="row">
                                 <div className="col-md-12">
@@ -28,6 +27,17 @@ class PriceBox extends Component {
                                 </div>
                             </div>)
                         })}
+
+                    </div>
+
+                    <div className="card-footer bg-light">
+
+                        <select className="form-control">
+                            {this.props.currencies.map( (cur) => {
+                                return (<option key={cur.trigram} value="asc">{cur.trigram}</option>)
+                            })}
+
+                        </select>
 
                     </div>
                 </div>
@@ -43,6 +53,7 @@ function mapStateToProps(state) {
     return {
         paxTypes: state.paxTypes,
         currency: state.selectedCurrency,
+        currencies : state.currencyData
     };
 }
 

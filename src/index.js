@@ -8,6 +8,28 @@ import OtaSpaReduxApp from './reducers/index'
 
 
 const initState = {
+    currencyData: [
+        {
+            trigram: 'EUR',
+            rate: 1
+        },
+        {
+            trigram: 'USD',
+            rate: 1.17
+        },
+        {
+            trigram: 'CHF',
+            rate: 1.14
+        },
+        {
+            trigram: 'GBP',
+            rate: 0.90
+        },
+        {
+            trigram: 'DKK',
+            rate: 7.43
+        }
+    ],
     paxTypes: [
         {
             type: 'ADT',

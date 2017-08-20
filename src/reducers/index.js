@@ -12,7 +12,14 @@ function selectedCurrency(state = 'EUR', action) {
     }
 }
 
-
+function currencyData( state = [] , action) {
+    switch  (action.type) {
+        case 'CURRENCY_DATA':
+            return action.payload;
+        default:
+            return state;
+    }
+}
 
 function paxTypes(state = [], action) {
     switch (action.type) {
@@ -42,7 +49,8 @@ function paxTypes(state = [], action) {
 
 const OtaSpaReduxApp = combineReducers({
     selectedCurrency,
-    paxTypes
+    paxTypes,
+    currencyData
 })
 
 
