@@ -1,4 +1,4 @@
-const state = {
+const initState = {
     currencyData: [
         {
             trigram: 'EUR',
@@ -499,4 +499,4 @@ const state = {
 }
 
 
-export default state;
+export default initState;

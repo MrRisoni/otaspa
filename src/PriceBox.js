@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import {connect} from 'react-redux';
 
 class PriceBox extends Component {
 
@@ -7,10 +7,17 @@ class PriceBox extends Component {
         return (
 
             <div className="row">
-                Show:
+                Show: {this.props.paxTypes[0].type}
 
             </div>)
     }
 }
 
-export default PriceBox;
+
+function mapStateToProps(state) {
+    return {
+        paxTypes: state.paxTypes
+    };
+}
+
+export default connect(mapStateToProps, {})(PriceBox);
