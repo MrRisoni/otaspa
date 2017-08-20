@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import {observer, inject} from 'mobx-react';
 
+
+@inject('otastore')
+@observer
 class PriceBox extends Component {
 
     render() {
+
         return (
             <div className="pricebox">
 
@@ -20,7 +24,7 @@ class PriceBox extends Component {
                         </div>
 
 
-                        {this.props.paxTypes.map((px) => {
+                        {this.props.otastore.paxTypes.map((px) => {
                             return (<div className="row">
                                 <div className="col-md-12">
                                     {px.count} x {px.name} {px.convertedPrice} {this.props.currency}
@@ -28,12 +32,21 @@ class PriceBox extends Component {
                             </div>)
                         })}
 
+                        <br/>
+                            <div className="row">
+                                <div className="col-md-12">
+
+                                    <h3> Total Price : {this.props.totalPrice} {this.props.otastore.currency} </h3>
+
+                                </div>
+                            </div>
+
                     </div>
 
                     <div className="card-footer bg-light">
 
                         <select className="form-control">
-                            {this.props.currencies.map( (cur) => {
+                            {this.props.otastore.currencyData.map( (cur) => {
                                 return (<option key={cur.trigram} value="asc">{cur.trigram}</option>)
                             })}
 
@@ -48,13 +61,4 @@ class PriceBox extends Component {
     }
 }
 
-
-function mapStateToProps(state) {
-    return {
-        paxTypes: state.paxTypes,
-        currency: state.selectedCurrency,
-        currencies : state.currencyData
-    };
-}
-
-export default connect(mapStateToProps, {})(PriceBox);
+export default PriceBox;

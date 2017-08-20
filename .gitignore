@@ -29,5 +29,7 @@ yarn-error.log*
 /.idea
 .idea/workspace.xml
 **/.idea/workspace.xml
+/config
+/scripts
 
 
