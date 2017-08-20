@@ -1,10 +1,16 @@
 .pricebox {
     position: fixed;
-    top: 2%;
-    right: 2%;
-    overflow-y: auto;
-    max-height: 100vh;
+    width: auto;
+    min-width: 30%;
+    max-width: 30%;
+
 }
+
+
+.analysisCategory {
+    color: yellow;
+}
+
 
 .jumbotron h1 {
     text-align: center;
