@@ -1,3 +1,19 @@
-An attemp to to learn Redux so freaking hard.... 
 
 
+Single Page Application Online Travel Agency Demo
+
+finally after many long ( and frustrating hours of coding)
+
+inspired from kiwi.com
+
+Libraries : React, MobX
+
+Demo URL : https://intense-caverns-58243.herokuapp.com/
+
+
+see vuespa for a more complex app (in Vue.js)
+
+Branch Description :
+
+master: React + MobX aka the app in heroku
+pure_react : initial app with no external management library

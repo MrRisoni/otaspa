@@ -44,7 +44,7 @@ class OtaStore {
         {
             type: 'CNN',
             name: 'Children',
-            count: 1,
+            count: 0,
             netPrice: 275,
             convertedPrice: 275
 
@@ -59,9 +59,44 @@ class OtaStore {
     ];
 
 
+    @observable passengers = [
+            {
+                id: 1,
+                type: 'ADT'
+            },
+            {
+                id: 2,
+                type: 'ADT'
+            }];
+
+
+
+
     @action changeCurrency(cur) {
         this.currency = cur;
-        this.currentRate = 4;
+
+        this.currencyData.forEach( (cd) => {
+            if (cd.trigram === cur) {
+                this.currentRate = cd.rate;
+            }
+        });
+
+
+        this.paxTypes.forEach( (px) => {
+           px.convertedPrice = px.netPrice * this.currentRate;
+
+           px.convertedPrice = px.convertedPrice.toFixed(2);
+        });
+    }
+
+
+    @action addPassenger()
+    {
+        const new_id = this.passengers.length + 1;
+
+        this.passengers.push({ id : new_id, type: 'ADT'});
+
+        this.paxTypes[0].count++;
     }
 
 }
