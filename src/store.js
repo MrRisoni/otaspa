@@ -74,6 +74,22 @@ class OtaStore {
             }];
 
 
+    @observable upsales = [
+        {
+            id :0,
+            title: 'Web-Checkin',
+            price : 3.5,
+            convertedPrice: 3.5,
+            selected: false
+        },
+        {
+            id :1,
+            title: 'SMS Notification',
+            price : 1.5,
+            convertedPrice: 1.5,
+            selected: false
+        }
+    ];
 
 
     @action changeCurrency(cur) {
@@ -136,6 +152,30 @@ class OtaStore {
         }
     }
 
+
+    @observable bagAllowance = [{
+        carrier: 'FR',
+        maxBags: 3,
+        bags: [
+            {
+                id: 1,
+                title: '119 × 119 × 81 cm, 15 kg',
+                price: 12,
+                convertedPrice : 12,
+            },
+            {
+                id: 2,
+                title: '119 × 119 × 81 cm, 30 kg',
+                price: 35,
+                convertedPrice : 35,
+            }
+        ]
+    }]
+
+
+    @observable outboundCarriers = ['FR', 'A3', 'BA'];
+    @observable inboundCarriers =  ['FR', 'A3'];
+    @observable carriers =  ['FR', 'A3', 'BA'];
 
     @observable reasonPassengers = '';
 

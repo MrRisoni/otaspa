@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {observer, inject} from 'mobx-react';
 
+import Bags from '../Bags/Bags';
 
 @inject('otastore')
 class Passenger extends Component {
@@ -79,6 +80,9 @@ class Passenger extends Component {
 
                             </div>
 
+
+
+                            <Bags/>
 
                             <div className="card-footer">
 

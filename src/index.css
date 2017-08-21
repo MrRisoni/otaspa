@@ -20,6 +20,9 @@
     text-align: center;
 }
 
+.bagComponent {
+    margin-top: 5%;
+}
 
 .flightTime {
     font-size: 155%;
