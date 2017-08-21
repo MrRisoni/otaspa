@@ -69,7 +69,7 @@ class OtaStore {
             {
                 id: 1,
                 humanID : 2,
-                active : 2,
+                active : true,
                 type: 'ADT'
             }];
 
@@ -94,6 +94,49 @@ class OtaStore {
     }
 
 
+
+    @action removePassenger(id)
+    {
+        this.reasonPassengers = '';
+        let active_passengers = 0;
+
+
+        this.passengers.forEach( (ps) => {
+            if (ps.active) {
+                active_passengers++;
+            }
+        });
+
+        if ( (active_passengers -1 ) <=0 ) {
+            this.reasonPassengers = 'You must have at least one passenger'
+        }
+        else {
+
+            // check passenger limits
+
+            let type = this.passengers[id].type;
+
+            this.passengers[id].active = false;
+            this.paxTypes.forEach( (px) => {
+                if (px.type === type ) {
+                    px.count--;
+                }
+            });
+
+            // reorder passenger humanIDs
+            let humanID = 1;
+            this.passengers.forEach( (ps) => {
+                if (ps.active) {
+                    ps.humanID = humanID;
+                    humanID++;
+                }
+            })
+
+
+        }
+    }
+
+
     @observable reasonPassengers = '';
 
     @action addPassenger()
@@ -115,7 +158,7 @@ class OtaStore {
             });
             new_human_id++;
 
-            this.passengers.push({ id : new_id, type: 'ADT', humanID: new_human_id});
+            this.passengers.push({ id : new_id, type: 'ADT', humanID: new_human_id, active: true});
 
             this.paxTypes[0].count++;
 
@@ -126,6 +169,8 @@ class OtaStore {
 
     passengersWithinLimits()
     {
+        this.reasonPassengers  = '';
+
         let adult_count = this.paxTypes[0].count;
         let child_count = this.paxTypes[1].count;
         let infant_count = this.paxTypes[2].count;

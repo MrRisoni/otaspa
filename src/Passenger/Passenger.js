@@ -8,29 +8,83 @@ class Passenger extends Component {
         super(props);
 
         this.handleChange = this.handleChange.bind(this);
+        this.removeMe = this.removeMe.bind(this);
+    }
+
+
+    removeMe()
+    {
+        this.props.otastore.removePassenger(this.props.pap.id);
+
     }
 
     handleChange(ev) {
         console.log('Change passenger type');
         console.log(ev.target.value);
-        this.props.otastore.changePaxType( {id:0 , type:ev.target.value});
+        this.props.otastore.changePaxType({id: this.props.pap.id, type: ev.target.value});
     }
 
     render() {
         return (
-            <div>
-
-                <select className="form-control" onChange={this.handleChange}>
-
-                    <option key="ADT" value="ADT">ADT</option>
-                    <option key="CNN" value="CNN">CNN</option>
-                    <option key="INF" value="INF">INF</option>
+            <div className="row passengerCompo">
+                <div className="col-md-12">
 
 
-                </select>
+                    <div className="card bg-light">
+                        <div className="card-header">
+
+                            <div className="row">
+
+                                <div className="col-md-5">
+                                    Passenger # {this.props.pap.humanID}
+                                </div>
+
+                                <div className="col-md-5"></div>
+
+                                <div className="col-md-2">
+                                    <button className="btn btn-sm btn-dark btn-block"> label</button>
+                                </div>
+
+                            </div>
+                        </div>
 
 
-                <div> Component Passenger</div>
+                        <div className="card-body">
+
+
+                            <select className="form-control" onChange={this.handleChange}>
+
+                                <option key="ADT" value="ADT">ADT</option>
+                                <option key="CNN" value="CNN">CNN</option>
+                                <option key="INF" value="INF">INF</option>
+
+
+                            </select>
+
+                        </div>
+
+
+                            <div className="card-footer">
+
+                                <div className="row">
+                                    <div className="col-md-4 offset-md-4">
+
+                                        <button className="btn btn-primary btn-sm btn-danger" onClick={this.removeMe}>Remove this Passenger
+                                        </button>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                    </div>
+
+
+                </div>
+
             </div>
 
         );

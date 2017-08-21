@@ -30,7 +30,9 @@ class PassengerList extends Component {
 
 
                             {this.props.otastore.passengers.map((ps) => {
-                                return (<Passenger/>)
+                                if (ps.active) {
+                                    return (<Passenger pap={ps}/>)
+                                }
                             })}
 
                         </div>
@@ -49,7 +51,7 @@ class PassengerList extends Component {
 
 
                         <div className="row">
-                            <div className="col-md-12">
+                            <div className="col-md-5">
                                 <button className="btn btn-primary btn-success" onClick={this.addPassenger}>Add Passenger
                                 </button>
                             </div>
