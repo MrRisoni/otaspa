@@ -108,6 +108,16 @@ class OtaStore {
 
             px.convertedPrice = px.convertedPrice.toFixed(2);
         });
+
+
+        this.bagAllowance.forEach( (bagRule) => {
+
+            bagRule.bags.forEach( (bag) => {
+                bag.convertedPrice = bag.price * this.currentRate;
+                bag.convertedPrice = bag.convertedPrice.toFixed(2);
+            });
+
+        });
     }
 
 

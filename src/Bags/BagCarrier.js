@@ -5,6 +5,8 @@ import FontAwesome from 'react-fontawesome';
 
 
 @inject('otastore')
+@observer
+
 class BagCarrier extends Component {
 
     render() {
@@ -34,7 +36,7 @@ class BagCarrier extends Component {
 
                         </button>
 
-                        {bag.title} {bag.convertedPrice} </div></div>)
+                        {bag.title} {bag.convertedPrice} {this.props.otastore.currency} </div></div>)
 
                 })}
 
