@@ -3,6 +3,9 @@ import React, {Component} from 'react';
 
 import PriceBox from './PriceBox';
 import PassengerList from './PassengerList';
+import Contact from './Contact';
+import Pay from './Pay';
+
 
 class BookApp extends Component {
 
@@ -14,6 +17,10 @@ class BookApp extends Component {
                 <div className="col-md-8">
 
                     <PassengerList/>
+
+                    <Contact/>
+
+                    <Pay/>
 
                 </div>
 

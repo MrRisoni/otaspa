@@ -6,12 +6,12 @@ class Contact extends Component {
     render() {
         return (
 
-            <div className="row">
-                <div className="col-md-10">
+            <div className="row contactDetails">
+                <div className="col-md-12">
 
-                    <div className="panel panel-primary">
-                        <div className="panel-heading">Contact Details</div>
-                        <div className="panel-body">
+                    <div className="card">
+                        <div className="card-header bg-primary">Contact Details</div>
+                        <div className="card-body">
 
 
                             <div className="row">

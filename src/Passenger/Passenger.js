@@ -6,14 +6,27 @@ import {observer, inject} from 'mobx-react';
 class Passenger extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            showMe: true,
+            label: 'Hide'
+        };
 
         this.handleChange = this.handleChange.bind(this);
         this.removeMe = this.removeMe.bind(this);
+        this.toggle = this.toggle.bind(this);
     }
 
 
-    removeMe()
-    {
+    toggle() {
+        var self = this;
+        const show = !self.state.showMe;
+        const label = (show) ? 'Hide' : 'Show';
+
+        self.setState({showMe: show, label: label});
+
+    }
+
+    removeMe() {
         this.props.otastore.removePassenger(this.props.pap.id);
 
     }
@@ -42,26 +55,29 @@ class Passenger extends Component {
                                 <div className="col-md-5"></div>
 
                                 <div className="col-md-2">
-                                    <button className="btn btn-sm btn-dark btn-block"> label</button>
+                                    <button className="btn btn-sm btn-dark btn-block"
+                                            onClick={this.toggle}> {this.state.label} </button>
                                 </div>
 
                             </div>
                         </div>
 
 
-                        <div className="card-body">
+                        {this.state.showMe &&
+                        <div>
+                            <div className="card-body">
 
 
-                            <select className="form-control" onChange={this.handleChange}>
+                                <select className="form-control" onChange={this.handleChange}>
 
-                                <option key="ADT" value="ADT">ADT</option>
-                                <option key="CNN" value="CNN">CNN</option>
-                                <option key="INF" value="INF">INF</option>
+                                    <option key="ADT" value="ADT">ADT</option>
+                                    <option key="CNN" value="CNN">CNN</option>
+                                    <option key="INF" value="INF">INF</option>
 
 
-                            </select>
+                                </select>
 
-                        </div>
+                            </div>
 
 
                             <div className="card-footer">
@@ -69,7 +85,8 @@ class Passenger extends Component {
                                 <div className="row">
                                     <div className="col-md-4 offset-md-4">
 
-                                        <button className="btn btn-primary btn-sm btn-danger" onClick={this.removeMe}>Remove this Passenger
+                                        <button className="btn btn-primary btn-sm btn-danger" onClick={this.removeMe}>
+                                            Remove this Passenger
                                         </button>
 
 
@@ -78,6 +95,8 @@ class Passenger extends Component {
 
                             </div>
 
+                        </div>
+                        }
 
 
                     </div>

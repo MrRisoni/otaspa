@@ -49,7 +49,7 @@ class PriceBox extends Component {
 
                                 {px.count > 0 &&
                                 <div className="col-md-12"> {px.count}
-                                    x {px.name} {px.convertedPrice} {this.props.currency} </div>
+                                    x {px.name} {px.convertedPrice} {this.props.otastore.currency} </div>
                                 }
 
                             </div>)
