@@ -61,11 +61,15 @@ class OtaStore {
 
     @observable passengers = [
             {
-                id: 1,
+                id: 0,
+                humanID : 1,
+                active : true,
                 type: 'ADT'
             },
             {
-                id: 2,
+                id: 1,
+                humanID : 2,
+                active : 2,
                 type: 'ADT'
             }];
 
@@ -90,13 +94,63 @@ class OtaStore {
     }
 
 
+    @observable reasonPassengers = '';
+
     @action addPassenger()
     {
-        const new_id = this.passengers.length + 1;
+        this.reasonPassengers = '';
+        if ( (this.passengers.length+1) >9) {
+            this.reasonPassengers = 'You have exceeded the number of allowed passengers'
+        }
+        else {
+            const new_id = this.passengers.length ;
+            let new_human_id =0;
 
-        this.passengers.push({ id : new_id, type: 'ADT'});
 
-        this.paxTypes[0].count++;
+            // get the number of active passengers
+            this.passengers.forEach( (ps) => {
+                if (ps.active) {
+                    new_human_id++;
+                }
+            });
+            new_human_id++;
+
+            this.passengers.push({ id : new_id, type: 'ADT', humanID: new_human_id});
+
+            this.paxTypes[0].count++;
+
+            this.passengersWithinLimits()
+        }
+
+    }
+
+    passengersWithinLimits()
+    {
+        let adult_count = this.paxTypes[0].count;
+        let child_count = this.paxTypes[1].count;
+        let infant_count = this.paxTypes[2].count;
+
+        if (adult_count < (child_count + infant_count)) {
+            this.reasonPassengers  = 'More minors than adults';
+        }
+    }
+
+    @action changePaxType(args)
+    {
+        this.passengers[args.id].type = args.type;
+
+        this.paxTypes.forEach((px) => {
+
+            let count = 0;
+            this.passengers.forEach((ps) => {
+                if (ps.type === px.type) {
+                    count++;
+                }
+            });
+            px.count = count;
+        });
+
+        this.passengersWithinLimits()
     }
 
 }

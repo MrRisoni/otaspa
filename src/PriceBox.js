@@ -12,14 +12,14 @@ class PriceBox extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(ev)
-    {
+    handleChange(ev) {
         console.log(ev.target.value);
         this.props.otastore.changeCurrency(ev.target.value);
     }
+
     render() {
 
-        let total =0;
+        let total = 0;
 
 
         this.props.otastore.paxTypes.map((px) => {
@@ -46,27 +46,30 @@ class PriceBox extends Component {
 
                         {this.props.otastore.paxTypes.map((px) => {
                             return (<div className="row">
-                                <div className="col-md-12">
-                                    {px.count} x {px.name} {px.convertedPrice} {this.props.currency}
-                                </div>
+
+                                {px.count > 0 &&
+                                <div className="col-md-12"> {px.count}
+                                    x {px.name} {px.convertedPrice} {this.props.currency} </div>
+                                }
+
                             </div>)
                         })}
 
                         <br/>
-                            <div className="row">
-                                <div className="col-md-12">
+                        <div className="row">
+                            <div className="col-md-12">
 
-                                    <h3> Total Price : {total} {this.props.otastore.currency} </h3>
+                                <h3> Total Price : {total} {this.props.otastore.currency} </h3>
 
-                                </div>
                             </div>
+                        </div>
 
                     </div>
 
                     <div className="card-footer bg-light">
 
-                        <select className="form-control"  onChange={this.handleChange}>
-                            {this.props.otastore.currencyData.map( (cur) => {
+                        <select className="form-control" onChange={this.handleChange}>
+                            {this.props.otastore.currencyData.map((cur) => {
                                 return (<option key={cur.trigram} value={cur.trigram}>{cur.trigram}</option>)
                             })}
 
