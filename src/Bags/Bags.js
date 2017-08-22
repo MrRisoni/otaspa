@@ -24,11 +24,13 @@ class Bags extends Component {
 
 
                         <BagLeg route="departRoute"
+                                passengerid={this.props.passengerid}
                                 legCarriers={this.props.otastore.outboundCarriers}
                         />
 
 
                         <BagLeg route="returnRoute"
+                                passengerid={this.props.passengerid}
                                 legCarriers={this.props.otastore.inboundCarriers}
                         />
 

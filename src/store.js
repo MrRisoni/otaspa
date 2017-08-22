@@ -165,6 +165,7 @@ class OtaStore {
 
     @observable bagAllowance = [{
         carrier: 'FR',
+        title:' Ryanair',
         maxBags: 3,
         bags: [
             {
@@ -183,6 +184,7 @@ class OtaStore {
         },
         {
             carrier: 'A3',
+            title:' Aegean',
             maxBags: 2,
             bags: [{
                 id: 1,
@@ -200,6 +202,7 @@ class OtaStore {
             ]
         },{
             carrier: 'BA',
+            title:' British Airways',
             maxBags: 2,
             bags: [{
                 id: 1,
@@ -220,6 +223,8 @@ class OtaStore {
 
     @observable outboundCarriers = ['FR', 'A3', 'BA'];
     @observable inboundCarriers = ['FR', 'A3'];
+
+
     @observable carriers = ['FR', 'A3', 'BA'];
 
     @observable reasonPassengers = '';

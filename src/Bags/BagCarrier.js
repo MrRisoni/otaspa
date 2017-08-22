@@ -8,12 +8,25 @@ import FontAwesome from 'react-fontawesome';
 @observer
 
 class BagCarrier extends Component {
+    constructor(props)
+    {
+        super(props);
 
+
+        this.buy = this.buy.bind(this);
+    }
+
+    buy(e)
+    {
+        console.log(e.target.id);
+        console.log(this.props.airline.carrier);
+        console.log(this.props.passengerid);
+    }
     render() {
         return (
 
         <div className="card card-primary bagCarrier">
-            <div className="card-header">{this.props.airline.carrier}</div>
+            <div className="card-header">{this.props.airline.title}</div>
 
             <div className="card-body">
 
@@ -25,7 +38,7 @@ class BagCarrier extends Component {
 
 
                         <div className="col-md-12">
-                        <button type="button" className="btn mybtn btn-primary">
+                        <button type="button" className="btn mybtn btn-primary" id={bag.id} onClick={this.buy}>
 
                             <FontAwesome
                                 className='fa fa-plus'

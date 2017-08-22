@@ -80,9 +80,7 @@ class Passenger extends Component {
 
                             </div>
 
-
-
-                            <Bags/>
+                            <Bags passengerid={this.props.pap.id} />
 
                             <div className="card-footer">
 
