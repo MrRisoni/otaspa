@@ -311,10 +311,30 @@ class OtaStore {
     @action
     buyBag(args)
     {
+        console.log('store.buyBag');
+        console.log(args);
         // set a limit
-        let bag_type = { carrier: 'BA', id : 1};
+        let added_bag_type = { carrier: args.carrier, id : args.bag_type_id, title : '', price :0};
 
-        this.passengers[args.passengerid].bags[args.leg].types.push(bag_type);
+        console.log(this.bagAllowance);
+
+        this.bagAllowance.forEach( (bgl) => {
+           if (bgl.carrier === added_bag_type.carrier) {
+               console.log(bgl);
+               bgl.bags.forEach( (bg) => {
+                    // console.log(bg);
+                  if (bg.id == args.bag_type_id) {
+                        added_bag_type.title = bg.title;
+
+                        added_bag_type.price = bg.convertedPrice.toFixed(2);
+                      
+
+                    }
+               });
+           }
+        });
+
+        this.passengers[args.passengerid].bags[args.leg].types.push(added_bag_type);
 
     }
 
