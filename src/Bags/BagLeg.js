@@ -20,6 +20,7 @@ class BagLeg extends Component {
                 if (lgc == bgl.carrier) {
                     bagCarrierArray.push(<BagCarrier
                         passengerid={this.props.passengerid}
+                        leg={this.props.leg}
                         airline={bgl}/>);
                 }
             })

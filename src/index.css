@@ -15,6 +15,9 @@
     color: yellow;
 }
 
+.purchasedLeg {
+    margin-top: 5%;
+}
 
 .jumbotron h1 {
     text-align: center;

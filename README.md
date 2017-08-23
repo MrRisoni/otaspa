@@ -16,4 +16,4 @@ see vuespa for a more complex app (in Vue.js)
 Branch Description :
 
 master: React + MobX aka the app in heroku
-pure_react : initial app with no external state management library
+pure_react : larger version of the app with results page and with no external state management library

@@ -1,45 +1,31 @@
 import React, {Component} from 'react';
+import {observer, inject} from 'mobx-react';
 
 
+@inject('otastore')
+@observer
 class PurchasedBags extends Component {
-
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
 
-            <div class="col-md-6">
-                <div class="purchasedLeg">
+            <div className="col-md-6 purchasedLeg">
 
+                <div className="card">
+                    <div className="card-header bg-info">route</div>
 
-                    <!-- shows what you have purchased -->
-                    <div class="card">
-                        <div class="card-header bg-info">{{route}}</div>
+                    <div className="card-body">
 
-                        <div class="card-body">
+                        {this.props.otastore.passengers[this.props.passengerid].bags[0].types.map( (bg) => {
+                            return (<div> bg </div>)
+                        })}
 
-                            <div v-for="bag in boughtBagsDepart">
-
-                                <div class="row">
-
-                                    <div class="col-md-10">
-
-                                        <button type="button" class="btn mybtn btn-danger" @click="">
-                                        -
-                                    </button> {{bag.title}}  {{bag.carrier}}
-
-                                </div>
-
-                            </div>
-
-                        </div>
                     </div>
-
                 </div>
+
             </div>
-
-    </div>
-
-
-
 
 
         );

@@ -64,13 +64,33 @@ class OtaStore {
             id: 0,
             humanID: 1,
             active: true,
-            type: 'ADT'
+            type: 'ADT',
+            bags: [
+                {
+                    route: 'departLeg',
+                    types: []
+                },
+                {
+                    route: 'returnLeg',
+                    types: []
+                }
+            ]
         },
         {
             id: 1,
             humanID: 2,
             active: true,
-            type: 'ADT'
+            type: 'ADT',
+            bags: [
+                {
+                    route: 'departLeg',
+                    types: []
+                },
+                {
+                    route: 'returnLeg',
+                    types: []
+                }
+            ]
         }];
 
 
@@ -285,6 +305,17 @@ class OtaStore {
         });
 
         this.passengersWithinLimits()
+    }
+
+
+    @action
+    buyBag(args)
+    {
+        // set a limit
+        let bag_type = { carrier: 'BA', id : 1};
+
+        this.passengers[args.passengerid].bags[args.leg].types.push(bag_type);
+
     }
 
 }

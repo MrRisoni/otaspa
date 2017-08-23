@@ -18,9 +18,18 @@ class BagCarrier extends Component {
 
     buy(e)
     {
+        console.log('------------');
         console.log(e.target.id);
         console.log(this.props.airline.carrier);
         console.log(this.props.passengerid);
+        console.log(this.props.leg);
+
+        this.props.otastore.buyBag({
+            passengerid : this.props.passengerid,
+            carrier : this.props.airline.carrier,
+            leg: this.props.leg,
+            bag_type_id : e.target.id
+        });
     }
     render() {
         return (
