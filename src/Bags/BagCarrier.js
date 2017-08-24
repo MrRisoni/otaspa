@@ -35,7 +35,7 @@ class BagCarrier extends Component {
         return (
 
         <div className="card card-primary bagCarrier">
-            <div className="card-header">{this.props.airline.title}</div>
+            <div className="card-header">{this.props.airline.title} Max num {this.props.airline.maxBags}</div>
 
             <div className="card-body">
 

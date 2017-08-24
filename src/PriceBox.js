@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {observer, inject} from 'mobx-react';
-
+import crypto from 'crypto';
 
 @inject('otastore')
 @observer
@@ -24,6 +24,16 @@ class PriceBox extends Component {
 
         this.props.otastore.paxTypes.map((px) => {
             total += px.count * px.convertedPrice;
+        });
+
+        // bags
+
+        this.props.otastore.passengers.map((px) => {
+            px.bags.map((bagLeg, idx) => {
+                bagLeg.types.map((bag) => {
+                    total +=  ( parseFloat(bag.price) * bag.count);
+                });
+            });
         });
 
         total = total.toFixed(2);
@@ -63,21 +73,13 @@ class PriceBox extends Component {
                             </div>
                         </div>
 
-
-                        {this.props.otastore.passengers.map((px) => {
-
-                            return(<div>{px.bags[0].types.length}</div>)
-
-                        })}
-
-
                         {this.props.otastore.passengers.map((px) => {
                             return ( <div key={px.id}> {px.bags.map((bagLeg, idx) => {
                                 return( <div key={idx}> {bagLeg.types.map( (bag) => {
-                                    return (<div key={bag.id} className="row">
+                                    return (<div key={bag.key} className="row">
 
                                         <div className="col-md-12">
-                                            {bag.title}  {bag.price} {this.props.otastore.currency} </div>
+                                            {bag.count} x {bag.title}  {bag.price} {this.props.otastore.currency} </div>
 
 
                                     </div>)

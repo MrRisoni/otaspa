@@ -19,7 +19,7 @@ class PurchasedBags extends Component {
                     <div className="card-body">
 
                         {this.props.otastore.passengers[this.props.passengerid].bags[0].types.map( (bg) => {
-                            return (<div> {bg.carrier} {bg.title}  </div>)
+                            return (<div> {bg.count}  x {bg.carrier} {bg.title}  </div>)
                         })}
 
                     </div>

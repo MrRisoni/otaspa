@@ -191,12 +191,14 @@ class OtaStore {
             {
                 id: 1,
                 title: '119 × 119 × 81 cm, 15 kg',
+                key: 'A77bg5HyL7tW',
                 price: 12,
                 convertedPrice: 12,
             },
             {
                 id: 2,
                 title: '119 × 119 × 81 cm, 30 kg',
+                key: 'FjB9vHukA7sU',
                 price: 35,
                 convertedPrice: 35,
             }
@@ -209,12 +211,14 @@ class OtaStore {
             bags: [{
                 id: 1,
                 title: '12KG',
+                key: 'WzObjBLahEux',
                 price: 12,
                 convertedPrice: 12,
 
             },
                 {
                     id: 2,
+                    key: '56fzjE8uQY5Q',
                     title: '25KG',
                     price: 18,
                     convertedPrice: 18
@@ -226,12 +230,14 @@ class OtaStore {
             maxBags: 2,
             bags: [{
                 id: 1,
+                key: 'gxBzM9RfoeCn',
                 title: '22KG',
                 price: 15,
                 convertedPrice: 15
             },
                 {
                     id: 2,
+                    key: 'QtpVPkQnQkp9',
                     title: '30KG',
                     price: 45,
                     convertedPrice: 45
@@ -309,38 +315,70 @@ class OtaStore {
 
 
     @action
-    buyBag(args)
-    {
+    buyBag(args) {
         console.log('store.buyBag');
         console.log(args);
         // set a limit
-        let added_bag_type = { carrier: args.carrier, id : args.bag_type_id, title : '', price :0};
+        let added_bag_type = {count: 1, carrier: args.carrier,
+                                    id: args.bag_type_id,
+                                    title: '', price: 0,
+                                    key: ''};
 
         console.log(this.bagAllowance);
 
-        this.bagAllowance.forEach( (bgl) => {
-           if (bgl.carrier === added_bag_type.carrier) {
-               console.log(bgl);
-               bgl.bags.forEach( (bg) => {
+        let maxNumber = 0;
+
+        this.bagAllowance.forEach((bgl) => {
+            if (bgl.carrier === added_bag_type.carrier) {
+
+                maxNumber = bgl.maxBags;
+
+                bgl.bags.forEach((bg) => {
                     // console.log(bg);
-                  if (bg.id == args.bag_type_id) {
+                    if (bg.id == args.bag_type_id) {
                         added_bag_type.title = bg.title;
-
+                        added_bag_type.key = bg.key;
                         added_bag_type.price = bg.convertedPrice.toFixed(2);
-
-
                     }
-               });
-           }
+                });
+            }
         });
 
-        this.passengers[args.passengerid].bags[args.leg].types.push(added_bag_type);
-        console.log('bags len' + this.passengers[args.passengerid].bags[args.leg].types.length);
 
-        this.passengers[args.passengerid].bags[args.leg].types.forEach( (bgl) => {
-            console.log(bgl);
-        })
+        // count the number of bags for this specific carrier
+
+        let current_count =0;
+        this.passengers[args.passengerid].bags[args.leg].types.forEach( (bag, idx) => {
+            if (bag.carrier === args.carrier) {
+                current_count = bag.count;
+            }
+        });
+
+
+        if (current_count < maxNumber) {
+
+            let pos = -1;
+            this.passengers[args.passengerid].bags[args.leg].types.forEach((bag, idx) => {
+                if (bag.key === added_bag_type.key) {
+                    pos = idx;
+                }
+            });
+
+            if (pos < 0) {
+                // first time passenger buys this type
+                this.passengers[args.passengerid].bags[args.leg].types.push(added_bag_type);
+            }
+            else {
+                this.passengers[args.passengerid].bags[args.leg].types[pos].count++;
+            }
+        }
+
     }
+
+
+
+
+
 
 }
 
