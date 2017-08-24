@@ -327,7 +327,7 @@ class OtaStore {
                         added_bag_type.title = bg.title;
 
                         added_bag_type.price = bg.convertedPrice.toFixed(2);
-                      
+
 
                     }
                });
@@ -335,7 +335,11 @@ class OtaStore {
         });
 
         this.passengers[args.passengerid].bags[args.leg].types.push(added_bag_type);
+        console.log('bags len' + this.passengers[args.passengerid].bags[args.leg].types.length);
 
+        this.passengers[args.passengerid].bags[args.leg].types.forEach( (bgl) => {
+            console.log(bgl);
+        })
     }
 
 }

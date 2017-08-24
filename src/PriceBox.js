@@ -55,6 +55,40 @@ class PriceBox extends Component {
                             </div>)
                         })}
 
+                        <hr/>
+                        <div className="row">
+                            <div className="col-md-12">
+                                <h4 className="analysisCategory">Upsales</h4>
+                                <hr/>
+                            </div>
+                        </div>
+
+
+                        {this.props.otastore.passengers.map((px) => {
+
+                            return(<div>{px.bags[0].types.length}</div>)
+
+                        })}
+
+
+                        {this.props.otastore.passengers.map((px) => {
+                            return ( <div key={px.id}> {px.bags.map((bagLeg, idx) => {
+                                return( <div key={idx}> {bagLeg.types.map( (bag) => {
+                                    return (<div key={bag.id} className="row">
+
+                                        <div className="col-md-12">
+                                            {bag.title}  {bag.price} {this.props.otastore.currency} </div>
+
+
+                                    </div>)
+                                })} </div>)
+                            })} </div>)
+                        })}
+
+
+
+
+
                         <br/>
                         <div className="row">
                             <div className="col-md-12">
