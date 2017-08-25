@@ -6,7 +6,9 @@ import {Provider} from 'mobx-react';
 import './index.css';
 
 
-import otastore from './store';
+import OtaStore from './store';
+
+const otastore = new OtaStore();
 
 
 ReactDOM.render(

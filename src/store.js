@@ -383,5 +383,4 @@ class OtaStore {
 }
 
 
-const ostastore = new OtaStore();
-export default ostastore;
+export default OtaStore;

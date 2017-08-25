@@ -1,23 +1,34 @@
-import otastore from '../store';
+import OtaStore from '../store';
 
 
 describe('OtaStore', () => {
-    it('creates new todos', () => {
+    it('removes a passenger', () => {
 
+        const otastore = new OtaStore();
+
+        let activePassengers = 0;
         expect(otastore.paxTypes.length).toBe(3)
 
-        otastore.addPassenger();
 
+
+        otastore.removePassenger(1);
         expect(otastore.paxTypes.length).toBe(3);
-        expect(otastore.passengers.length).toBe(3);
 
-        let totalPaxes =0;
-        otastore.paxTypes.forEach( (px) => {
-            totalPaxes += px.count;
-        })
 
-        expect(otastore.passengers.length).toBe(3);
+        expect( countActivePassengers(otastore) ).toBe(1);
+
 
 
     });
 });
+
+function countActivePassengers(store) {
+
+    let active = 0;
+    store.passengers.forEach( (ps) => {
+        if (ps.active) {
+            active++;
+        }
+    });
+    return active;
+}
