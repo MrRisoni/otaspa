@@ -73,6 +73,10 @@ class PriceBox extends Component {
                             </div>
                         </div>
 
+
+                        <h3>Bags</h3>
+                        <hr/>
+
                         {this.props.otastore.passengers.map((px) => {
                             return ( <div key={px.id}> {px.bags.map((bagLeg, idx) => {
                                 return( <div key={idx}> {bagLeg.types.map( (bag) => {
@@ -86,6 +90,9 @@ class PriceBox extends Component {
                                 })} </div>)
                             })} </div>)
                         })}
+
+
+                        <hr/>
 
 
 
