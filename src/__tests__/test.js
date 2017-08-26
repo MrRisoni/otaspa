@@ -20,6 +20,21 @@ describe('OtaStore', () => {
 
 
     });
+
+
+    it('adds a passenger', () => {
+
+        const otastore = new OtaStore();
+
+        otastore.addPassenger();
+
+
+        expect( countActivePassengers(otastore) ).toBe(3);
+        expect( otastore.paxTypes[0].count ).toBe(3);
+
+
+
+    });
 });
 
 function countActivePassengers(store) {

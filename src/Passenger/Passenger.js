@@ -68,19 +68,43 @@ class Passenger extends Component {
                         <div>
                             <div className="card-body">
 
-
-                                <select className="form-control" onChange={this.handleChange}>
-
-                                    <option key="ADT" value="ADT">ADT</option>
-                                    <option key="CNN" value="CNN">CNN</option>
-                                    <option key="INF" value="INF">INF</option>
+                                <div className="row">
 
 
-                                </select>
+                                    <div className="col-md-2">
+                                        <select className="form-control" onChange={this.handleChange}>
 
+                                            <option key="ADT" value="ADT">ADT</option>
+                                            <option key="CNN" value="CNN">CNN</option>
+                                            <option key="INF" value="INF">INF</option>
+                                        </select>
+                                    </div>
+
+
+                                    <div className="col-md-2">
+                                        <select className="form-control">
+                                            <option value="">Gender</option>
+                                            <option value="MR">Male</option>
+                                            <option value="MS">Female</option>
+                                        </select>
+                                    </div>
+
+
+                                    <div className="col-md-5">
+                                        <input type="text" placeholder="Surname"
+                                               className="form-control"/>
+                                    </div>
+
+
+                                    <div className="col-md-3">
+                                        <input type="text" placeholder="Name"
+                                               className="form-control"/>
+                                    </div>
+
+                                </div>
                             </div>
 
-                            <Bags passengerid={this.props.pap.id} />
+                            <Bags passengerid={this.props.pap.id}/>
 
                             <div className="card-footer">
 

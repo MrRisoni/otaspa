@@ -274,7 +274,20 @@ class OtaStore {
             });
             new_human_id++;
 
-            this.passengers.push({id: new_id, type: 'ADT', humanID: new_human_id, active: true});
+            this.passengers.push({id: new_id, type: 'ADT',
+                        humanID: new_human_id,
+                        active: true,
+                        bags: [
+                            {
+                                route: 'departLeg',
+                                types: []
+                            },
+                            {
+                                route: 'returnLeg',
+                                types: []
+                            }
+                        ]
+                        });
 
             this.paxTypes[0].count++;
 
