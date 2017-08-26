@@ -11,8 +11,9 @@ class PurchasedBags extends Component {
     render() {
         return (
 
-            <div className="col-md-6 purchasedLeg">
+            <div className="col-md-6">
 
+                <div className="purchasedLeg">
                 <div className="card">
                     <div className="card-header bg-info">route</div>
 
@@ -24,7 +25,7 @@ class PurchasedBags extends Component {
 
                     </div>
                 </div>
-
+                </div>
             </div>
 
 

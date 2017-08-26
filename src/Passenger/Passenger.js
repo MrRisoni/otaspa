@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {observer, inject} from 'mobx-react';
 
 import Bags from '../Bags/Bags';
+import Insurance from './Insurance';
+
 
 @inject('otastore')
 class Passenger extends Component {
@@ -65,51 +67,56 @@ class Passenger extends Component {
 
 
                         {this.state.showMe &&
-                        <div>
-                            <div className="card-body">
-
-                                <div className="row">
 
 
-                                    <div className="col-md-2">
-                                        <select className="form-control" onChange={this.handleChange}>
+                        <div className="card-body">
 
-                                            <option key="ADT" value="ADT">ADT</option>
-                                            <option key="CNN" value="CNN">CNN</option>
-                                            <option key="INF" value="INF">INF</option>
-                                        </select>
-                                    </div>
+                            <div className="row">
 
 
-                                    <div className="col-md-2">
-                                        <select className="form-control">
-                                            <option value="">Gender</option>
-                                            <option value="MR">Male</option>
-                                            <option value="MS">Female</option>
-                                        </select>
-                                    </div>
+                                <div className="col-md-2">
+                                    <select className="form-control" onChange={this.handleChange}>
 
-
-                                    <div className="col-md-5">
-                                        <input type="text" placeholder="Surname"
-                                               className="form-control"/>
-                                    </div>
-
-
-                                    <div className="col-md-3">
-                                        <input type="text" placeholder="Name"
-                                               className="form-control"/>
-                                    </div>
-
+                                        <option key="ADT" value="ADT">ADT</option>
+                                        <option key="CNN" value="CNN">CNN</option>
+                                        <option key="INF" value="INF">INF</option>
+                                    </select>
                                 </div>
+
+
+                                <div className="col-md-2">
+                                    <select className="form-control">
+                                        <option value="">Gender</option>
+                                        <option value="MR">Male</option>
+                                        <option value="MS">Female</option>
+                                    </select>
+                                </div>
+
+
+                                <div className="col-md-5">
+                                    <input type="text" placeholder="Surname"
+                                           className="form-control"/>
+                                </div>
+
+
+                                <div className="col-md-3">
+                                    <input type="text" placeholder="Name"
+                                           className="form-control"/>
+                                </div>
+
                             </div>
 
+
+                            <Insurance  passengerid={this.props.pap.id}/>
                             <Bags passengerid={this.props.pap.id}/>
 
                             <div className="card-footer">
 
                                 <div className="row">
-                                    <div className="col-md-4 offset-md-4">
+
+                                    <div className="col-md-4"></div>
+
+                                    <div className="col-md-4">
 
                                         <button className="btn btn-primary btn-sm btn-danger" onClick={this.removeMe}>
                                             Remove this Passenger

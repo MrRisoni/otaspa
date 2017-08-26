@@ -18,6 +18,7 @@
 
 .purchasedLeg {
     margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .jumbotron h1 {
@@ -41,6 +42,9 @@
     margin-top: 5%;
 }
 
+.insuranceCard {
+    margin-top: 5%;
+}
 .flightTime {
     font-size: 155%;
 }
