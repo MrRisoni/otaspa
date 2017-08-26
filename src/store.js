@@ -6,6 +6,80 @@ class OtaStore {
     @observable departRoute = 'RHO-LHR';
     @observable returnRoute = 'LGW-RHO';
 
+    @observable
+    itinerary = {
+        info: {
+            departure: {
+                from : '',
+                to: '',
+                depDate: '',
+                retDate: '',
+                stops: 0,
+                waitTime: { hours :0, mins :0},
+                durationTime: { hours :0, mins :0}
+            },
+            return: {
+                from : '',
+                to: '',
+                depDate: '',
+                retDate: '',
+                stops: 0,
+                waitTime: { hours :0, mins :0},
+                durationTime: { hours :0, mins :0}
+            }
+
+        },
+        depSegments: [
+            {
+                fromCity: "Rhodes",
+                toCity: "Athens",
+                fromAirport: "RHO, Diagoras Airport",
+                toAirport: "ATH, Eleftherios Venizelos Intl Arpt",
+                depDateTime: "2017-09-23T10:10:00+03:00",
+                arrDateTime: "2017-09-23T10:55:00+03:00",
+                airline: "FR,Ryanair"
+            },
+            {
+                fromCity: "Athens",
+                toCity: "Paris",
+                fromAirport: "ATH, Eleftherios Venizelos Intl Arpt",
+                toAirport: "CDG, Charles De Gaul Intl Arpt",
+                depDateTime: "2017-09-23T14:00:00+03:00",
+                arrDateTime: "2017-09-23T19:00:00+01:00",
+                airline: "AF,Air France"
+            },
+            {
+                fromCity: "Paris",
+                toCity: "London",
+                fromAirport: "CDG, Charles De Gaul Intl Arpt",
+                toAirport: "LHR, Heathrow London Intl Arpt",
+                depDateTime: "2017-09-24T00:00:00+01:00",
+                arrDateTime: "2017-09-24T00:30:00+00:00",
+                airline: "BA,British Airways"
+            }
+        ],
+        retSegments: [
+            {
+                fromCity: "London",
+                toCity: "Athens",
+                fromAirport: "LGW, Gatwick Airport",
+                toAirport: "ATH, Eleftherios Venizelos Intl Arpt",
+                depDateTime: "2017-10-03T10:10:00+03:00",
+                arrDateTime: "2017-10-03T10:55:00+03:00",
+                airline: "FR,Raynair"
+            },
+            {
+                fromCity: "Athens",
+                toCity: "Rhodes",
+                fromAirport: "ATH, Eleftherios Venizelos Intl Arpt",
+                toAirport: "RHO, Diagoras Airport",
+                depDateTime: "2017-10-24T00:00:00+01:00",
+                arrDateTime: "2017-10-24T00:30:00+00:00",
+                airline: "A3,Aegean Airways"
+            }
+        ]
+    };
+
     @observable currencyData = [
         {
             trigram: 'EUR',
