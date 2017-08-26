@@ -11,7 +11,7 @@ class Airport extends Component {
             <div className="col-md-5">
                 <div className="row">
                     <div
-                        className="col-md-4">RHO<br/>
+                        className="col-md-4">{this.props.iata}<br/>
                         Diagoras Airport
                     </div>
                     <div className="col-md-8"><b

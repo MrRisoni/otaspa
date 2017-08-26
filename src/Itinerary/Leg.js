@@ -12,9 +12,21 @@ class Leg extends Component {
         const stops = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.stops :   this.props.otastore.itinerary.info.return.stops;
 
         const hours = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.waitTime.hours :   this.props.otastore.itinerary.info.return.waitTime.hours;
-
         const minutes = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.waitTime.minutes :   this.props.otastore.itinerary.info.return.waitTime.minutes;
 
+        const whours = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.durationTime.hours :   this.props.otastore.itinerary.info.return.durationTime.hours;
+        const wminutes = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.durationTime.minutes :   this.props.otastore.itinerary.info.return.durationTime.minutes;
+
+
+        let  depIATA = this.props.otastore.itinerary.depSegments[0].fromAirport.substr(0,3);
+        let last_seg = this.props.otastore.itinerary.depSegments.length -1;
+        let arrIATA = this.props.otastore.itinerary.depSegments[last_seg].fromAirport.substr(0,3);
+
+        if (this.props.leg  === 1) {
+            depIATA = this.props.otastore.itinerary.retSegments[0].fromAirport.substr(0,3);
+            last_seg = this.props.otastore.itinerary.retSegments.length -1;
+            arrIATA = this.props.otastore.itinerary.retSegments[last_seg].fromAirport.substr(0,3);
+       }
 
         return (
 
@@ -28,8 +40,9 @@ class Leg extends Component {
                         <div className="row">
 
 
-                            <Airport/>
-                            <Airport/>
+                            <Airport iata={depIATA}/>
+
+                            <Airport iata={arrIATA}/>
 
 
                             <div className="col-md-2">
@@ -53,7 +66,7 @@ class Leg extends Component {
                             </div>
 
                             <div className="col-md-4">
-                                Wait time: h s}m
+                                Wait time: {whours}h  {wminutes}m
                             </div>
                         </div>
 
