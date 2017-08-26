@@ -80,6 +80,13 @@ class OtaStore {
         ]
     };
 
+
+    @action
+    processSegments()
+    {
+        this.itinerary.info.departure.stops =  this.itinerary.depSegments.length -1;
+    }
+
     @observable currencyData = [
         {
             trigram: 'EUR',

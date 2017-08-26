@@ -39,6 +39,7 @@
     "html-webpack-plugin": "2.29.0",
     "mobx": "3.2.2",
     "mobx-react": "4.2.2",
+    "moment": "2.18.1",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.6",

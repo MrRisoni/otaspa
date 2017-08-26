@@ -7,8 +7,7 @@
 
 }
 
-
-.passengerCompo, .contactDetails , .paymentDetails{
+.passengerCompo, .contactDetails , .paymentDetails, .Leg{
     margin-top: 3%;
 }
 
@@ -33,18 +32,11 @@
 }
 
 
-.bagCarrier {
+.bagCarrier ,.itinerary , .bagComponent , .insuranceCard   {
     margin-top: 5%;
 }
 
 
-.bagComponent {
-    margin-top: 5%;
-}
-
-.insuranceCard {
-    margin-top: 5%;
-}
 .flightTime {
     font-size: 155%;
 }

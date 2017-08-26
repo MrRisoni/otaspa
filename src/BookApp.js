@@ -5,6 +5,7 @@ import PriceBox from './PriceBox';
 import PassengerList from './PassengerList';
 import Contact from './Contact';
 import Pay from './Pay';
+import Itinerary from './Itinerary/Itinerary';
 
 
 class BookApp extends Component {
@@ -15,6 +16,8 @@ class BookApp extends Component {
             <div className="row">
 
                 <div className="col-md-8">
+
+                    <Itinerary/>
 
                     <PassengerList/>
 
