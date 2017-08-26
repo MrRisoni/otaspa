@@ -1,12 +1,21 @@
 import React, {Component} from 'react';
+import {observer, inject} from 'mobx-react';
 
 
 import Airport from './Airport';
 
-
+@inject('otastore')
+@observer
 class Leg extends Component {
-
     render() {
+
+        const stops = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.stops :   this.props.otastore.itinerary.info.return.stops;
+
+        const hours = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.waitTime.hours :   this.props.otastore.itinerary.info.return.waitTime.hours;
+
+        const minutes = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.waitTime.minutes :   this.props.otastore.itinerary.info.return.waitTime.minutes;
+
+
         return (
 
             <div className="Leg">
@@ -36,11 +45,11 @@ class Leg extends Component {
                         <div className="row">
 
                             <div className="col-md-4">
-                                Stops:
+                                Stops: {stops}
                             </div>
 
                             <div className="col-md-4">
-                                Duration: h m
+                                Duration: {hours}h  {minutes}m
                             </div>
 
                             <div className="col-md-4">

@@ -1,4 +1,5 @@
 import {observable, action, computed} from 'mobx';
+import moment from 'moment';
 
 class OtaStore {
 
@@ -73,8 +74,8 @@ class OtaStore {
                 toCity: "Rhodes",
                 fromAirport: "ATH, Eleftherios Venizelos Intl Arpt",
                 toAirport: "RHO, Diagoras Airport",
-                depDateTime: "2017-10-24T00:00:00+01:00",
-                arrDateTime: "2017-10-24T00:30:00+00:00",
+                depDateTime: "2017-10-03T16:00:00+03:00",
+                arrDateTime: "2017-10-03T16:55:00+03:00",
                 airline: "A3,Aegean Airways"
             }
         ]
@@ -85,6 +86,38 @@ class OtaStore {
     processSegments()
     {
         this.itinerary.info.departure.stops =  this.itinerary.depSegments.length -1;
+        this.itinerary.info.return.stops =  this.itinerary.retSegments.length -1;
+
+        // departure
+        let depTime = moment(this.itinerary.depSegments[0].depDateTime);
+        let lastseg = this.itinerary.depSegments.length -1;
+        let arrTime = moment(this.itinerary.depSegments[lastseg].arrDateTime);
+
+        let durDepart = arrTime.diff(depTime) / (1000 * 60);
+
+        let wt = {
+            hours: Math.floor(durDepart / 60),
+            minutes: durDepart % 60
+        }
+
+        this.itinerary.info.departure.waitTime = wt;
+
+
+        // return
+        depTime = moment(this.itinerary.retSegments[0].depDateTime);
+        lastseg = this.itinerary.retSegments.length -1;
+        arrTime = moment(this.itinerary.retSegments[lastseg].arrDateTime);
+
+        let durReturn = arrTime.diff(depTime) / (1000 * 60);
+
+        wt = {
+            hours: Math.floor(durReturn / 60),
+            minutes: durReturn % 60
+        }
+
+        this.itinerary.info.return.waitTime = wt;
+
+
     }
 
     @observable currencyData = [
