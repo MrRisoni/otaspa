@@ -65,6 +65,7 @@ class OtaStore {
             humanID: 1,
             active: true,
             type: 'ADT',
+            insuranceInfo :0,
             bags: [
                 {
                     route: 'departLeg',
@@ -80,6 +81,7 @@ class OtaStore {
             id: 1,
             humanID: 2,
             active: true,
+            insuranceInfo :0,
             type: 'ADT',
             bags: [
                 {
@@ -138,6 +140,12 @@ class OtaStore {
             });
 
         });
+
+        this.insuranceInfo.forEach( (ins) => {
+            ins.convertedPrice = ins.price * this.currentRate;
+            ins.convertedPrice = ins.convertedPrice.toFixed(2);
+
+        })
     }
 
 
@@ -246,6 +254,33 @@ class OtaStore {
         }
     ];
 
+    @observable
+    insuranceInfo = [{
+        id: 1,
+        title: 'No insurance',
+        price: 0,
+        convertedPrice: 0
+    },
+        {
+            id: 2,
+            title: 'Globy Classic',
+            price: 5.16,
+            convertedPrice: 5.16
+        },
+        {
+            id: 3,
+            title: 'Globy Cancellation',
+            price: 15.68,
+            convertedPrice: 15.68
+        },
+        {
+            id: 4,
+            title: 'Globy Schengen',
+            price: 22.15,
+            convertedPrice: 22.15
+        }
+    ];
+
 
     @observable outboundCarriers = ['FR', 'A3', 'BA'];
     @observable inboundCarriers = ['FR', 'A3'];
@@ -277,6 +312,7 @@ class OtaStore {
             this.passengers.push({id: new_id, type: 'ADT',
                         humanID: new_human_id,
                         active: true,
+                        insuranceInfo :0,
                         bags: [
                             {
                                 route: 'departLeg',

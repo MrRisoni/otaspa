@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import {observer, inject} from 'mobx-react';
 
-
+@inject('otastore')
+@observer
 class Insurance extends Component {
     constructor(props) {
         super(props);
@@ -40,33 +42,43 @@ class Insurance extends Component {
                                 <div className="col-md-5"></div>
 
                                 <div className="col-md-2">
-                                    <button className="btn btn-sm btn-dark btn-block"> {this.state.label} </button>
+                                    <button className="btn btn-sm btn-dark btn-block"
+                                            onClick={this.toggleMe}> {this.state.label} </button>
                                 </div>
 
                             </div>
 
                         </div>
+
+                        {this.state.showMe &&
 
 
                         <div className="row">
-                            <div className="col-md-4">
 
-                                <div className="card text-center">
-                                    <div className="card-header bg-warning ">
 
+                            {this.props.otastore.insuranceInfo.map((ins) => {
+
+                                return (<div className="col-md-3">
+
+                                    <div className="card text-center">
+                                        <div className="card-header bg-warning ">
+
+                                        </div>
+                                        <div className="card-body">
+                                            {ins.title}
+                                        </div>
+                                        <div className="card-footer">
+                                            {ins.convertedPrice} {this.props.otastore.currency}
+                                        </div>
                                     </div>
-                                    <div className="card-body">
-                                        Basic card example
-                                    </div>
-                                    <div className="card-footer">
 
-                                    </div>
-                                </div>
+                                </div>);
+                            })}
 
-                            </div>
 
                         </div>
 
+                        }
 
                     </div>
 
