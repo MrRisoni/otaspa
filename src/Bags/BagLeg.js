@@ -14,6 +14,7 @@ class BagLeg extends Component {
 
         let bagCarrierArray = [];
 
+
         this.props.otastore.bagAllowance.map((bgl) => {
             this.props.legCarriers.map((lgc) => {
 

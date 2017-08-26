@@ -2,6 +2,10 @@ import {observable, action, computed} from 'mobx';
 
 class OtaStore {
 
+
+    @observable departRoute = 'RHO-LHR';
+    @observable returnRoute = 'LGW-RHO';
+
     @observable currencyData = [
         {
             trigram: 'EUR',

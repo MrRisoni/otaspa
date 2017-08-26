@@ -1,4 +1,4 @@
-
+Work in Progress...
 
 Single Page Application Online Travel Agency Demo
 
@@ -8,12 +8,12 @@ inspired from kiwi.com
 
 Libraries : React, MobX, Jest for testing
 
-Demo URL : https://intense-caverns-58243.herokuapp.com/
+URL : https://intense-caverns-58243.herokuapp.com/
 
 
 see vuespa for a more complex app (in Vue.js)
 
 Branch Description :
 
-master: React + MobX  aka the app in heroku
+master: React + MobX (the app in heroku)
 pure_react : larger version of the app with results page and with no external state management library

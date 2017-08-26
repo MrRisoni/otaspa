@@ -15,7 +15,7 @@ class PurchasedBags extends Component {
 
                 <div className="purchasedLeg">
                 <div className="card">
-                    <div className="card-header bg-info">route</div>
+                    <div className="card-header bg-info"> Purchased</div>
 
                     <div className="card-body">
 

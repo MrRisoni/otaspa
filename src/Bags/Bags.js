@@ -58,14 +58,14 @@ class Bags extends Component {
                     <div className="row">
 
 
-                        <BagLeg route="departRoute"
+                        <BagLeg route={this.props.otastore.departRoute}
                                 passengerid={this.props.passengerid}
                                 legCarriers={this.props.otastore.outboundCarriers}
                                 leg={0}
                         />
 
 
-                        <BagLeg route="returnRoute"
+                        <BagLeg route={this.props.otastore.returnRoute}
                                 passengerid={this.props.passengerid}
                                 legCarriers={this.props.otastore.inboundCarriers}
                                 leg={1}
@@ -78,7 +78,10 @@ class Bags extends Component {
 
 
                     <div className="row">
-                        <PurchasedBags passengerid={this.props.passengerid}
+                        <PurchasedBags leg={0} passengerid={this.props.passengerid}
+                        />
+
+                        <PurchasedBags leg={1} passengerid={this.props.passengerid}
                         />
                     </div>}
 
