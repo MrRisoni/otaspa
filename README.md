@@ -1,11 +1,3 @@
-Work in Progress...
-
-TODOs:
-
-upsales
-names
-css improvements
-tests
 
 Single Page Application Online Travel Agency Demo
 
