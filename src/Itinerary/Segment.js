@@ -7,15 +7,13 @@ import Airport from './Airport';
 
 class Segment extends Component {
 
-    constructor(props)
-    {
+    constructor(props) {
         super();
 
         this.getSegmentData = this.getSegmentData.bind(this);
     }
 
-    getSegmentData(segment)
-    {
+    getSegmentData(segment) {
 
         return {
             depIATA: segment.fromAirport.substr(0, 3),
@@ -24,11 +22,11 @@ class Segment extends Component {
             depAirport: segment.fromAirport.substr(5),
             arrAirport: segment.toAirport.substr(5),
 
-            depTime: segment.depDateTime.substr(11,5),
+            depTime: segment.depDateTime.substr(11, 5),
             depDay: moment(segment.depDateTime).format('dddd'),
             depDate: moment(segment.depDateTime).format('DD MMMM YYYY'),
 
-            arrTime: segment.arrDateTime.substr(11,5),
+            arrTime: segment.arrDateTime.substr(11, 5),
             arrDay: moment(segment.arrDateTime).format('dddd'),
             arrDate: moment(segment.arrDateTime).format('DD MMMM YYYY')
         }
@@ -41,28 +39,33 @@ class Segment extends Component {
 
         return (
 
+            <div className="segments">
 
-                <div className="row">
-                    <div className="col-md-1"></div>
+                <div className="card">
+                    <div className="card-header bg-info"></div>
+                    <div className="card-body">
+
+                        <div className="row">
+                            <div className="col-md-1"></div>
 
 
+                            <Airport iata={obj.depIATA}
+                                     name={obj.depAirport}
+                                     flyTime={obj.depTime}
+                                     day={obj.depDay}
+                                     date={obj.depDate}/>
 
-                        <Airport iata={obj.depIATA}
-                                 name={obj.depAirport}
-                                 flyTime={obj.depTime}
-                                 day={obj.depDay}
-                                 date={obj.depDate}/>
+                            <Airport iata={obj.arrIATA}
+                                     name={obj.arrAirport}
+                                     flyTime={obj.arrTime}
+                                     day={obj.arrDay}
+                                     date={obj.arrDate}/>
 
-                        <Airport iata={obj.arrIATA}
-                                 name={obj.arrAirport}
-                                 flyTime={obj.arrTime}
-                                 day={obj.arrDay}
-                                 date={obj.arrDate}/>
+                        </div>
 
+                    </div>
                 </div>
-
-
-
+            </div>
         );
     }
 }

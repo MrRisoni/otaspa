@@ -32,8 +32,12 @@
 }
 
 
-.bagCarrier ,.itinerary , .bagComponent , .insuranceCard , .segments   {
+.bagCarrier ,.itinerary , .bagComponent , .insuranceCard  {
     margin-top: 5%;
+}
+
+.segments {
+    margin-top: 2%;
 }
 
 

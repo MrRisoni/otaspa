@@ -13,8 +13,22 @@ class Leg extends Component {
     constructor(props) {
         super();
 
+        this.state = {
+            showSegments : false,
+            label: 'Show'
+        };
         this.getAirportData = this.getAirportData.bind(this);
+        this.toggle = this.toggle.bind(this);
+
     }
+
+    toggle() {
+        var self = this;
+        const show = !self.state.showSegments;
+        const label = (show) ? 'Hide' : 'Show';
+        self.setState({showSegments: show, label: label});
+    }
+
 
     getAirportData(segments) {
 
@@ -77,7 +91,7 @@ class Leg extends Component {
                                      date={obj.arrDate}/>
 
                             <div className="col-md-2">
-                                <button className="btn btn-sm btn-primary">Expand</button>
+                                <button className="btn btn-sm btn-primary" onClick={this.toggle}>{this.state.label}</button>
                             </div>
 
                         </div>
@@ -102,11 +116,12 @@ class Leg extends Component {
                         </div>
 
 
-                        <div className="segments">
                             {segments.map((sg, idx) => {
-                                return (<Segment key={idx} segData={sg}/>)
+                                if (this.state.showSegments) {
+                                    return (<Segment key={idx} segData={sg}/>)
+                                }
                             })}
-                        </div>
+
                     </div>
                 </div>
             </div>
