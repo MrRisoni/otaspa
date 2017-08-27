@@ -25,6 +25,9 @@ class Insurance extends Component {
 
         self.setState({checkedInsurance: ev.target.value});
 
+        this.props.otastore.updateInsurance( {id : this.props.passengerid,
+            insurance:ev.target.value });
+
 
     }
 
