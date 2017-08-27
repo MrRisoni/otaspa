@@ -512,6 +512,7 @@ class OtaStore {
         let maxNumber = 0;
 
         this.bagAllowance.forEach((bgl) => {
+
             if (bgl.carrier === added_bag_type.carrier) {
 
                 maxNumber = bgl.maxBags;
@@ -521,7 +522,8 @@ class OtaStore {
                     if (bg.id == args.bag_type_id) {
                         added_bag_type.title = bg.title;
                         added_bag_type.key = bg.key;
-                        added_bag_type.price = bg.convertedPrice.toFixed(2);
+                        console.log(bg);
+                        added_bag_type.price = parseFloat(bg.convertedPrice).toFixed(2);
                     }
                 });
             }
