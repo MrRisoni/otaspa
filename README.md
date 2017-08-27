@@ -1,5 +1,12 @@
 Work in Progress...
 
+TODOs:
+
+upsales
+names
+css improvements
+tests
+
 Single Page Application Online Travel Agency Demo
 
 finally after many long ( and frustrating hours of coding)
@@ -11,7 +18,7 @@ Libraries : React, MobX, Jest for testing
 URL : https://guarded-springs-14047.herokuapp.com/
 
 
-see vuespa for a more complex app (in Vue.js)
+see vuespa for a far more complex app (in Vue.js)
 
 Branch Description :
 
