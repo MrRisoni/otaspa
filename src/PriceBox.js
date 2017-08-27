@@ -84,6 +84,7 @@ class PriceBox extends Component {
                         <div className="col-md-12">
                             #Passenger {px.humanID}
                             {legsDiv}
+                            <hr/>
                         </div>
                     </div>
                 </div>);
@@ -94,17 +95,22 @@ class PriceBox extends Component {
         });
 
 
+        if (bagsDiv.length >0) {
+            bagsDiv.unshift(<h3 key="bags">Bags</h3>);
+            bagsDiv.push(< hr key="bagsHR"/>);
+        }
 
         // *********** Insurance Div ****************
         let insuranceDiv =[];
 
         this.props.otastore.passengers.forEach((px) => {
-            if (px.insuranceInfo >0) {
+            if (px.insuranceInfo > 1) {
 
                 this.props.otastore.insuranceInfo.forEach( (ins) => {
 
                     if (ins.id === px.insuranceInfo) {
-                        insuranceDiv.push( <div key={ins.key} className="row">
+                        const key= ins.key+'papid' + px.id;
+                        insuranceDiv.push( <div key={key} className="row">
                             <div className="col-md-12">
                                 #Passenger {px.humanID} {ins.title} {ins.convertedPrice}
                             </div>
@@ -116,6 +122,10 @@ class PriceBox extends Component {
             }
         });
 
+        if (insuranceDiv.length>0) {
+            insuranceDiv.unshift(<h3 key="insurance">Insurance</h3>);
+            insuranceDiv.push(< hr key="insuranceHR"/>);
+        }
 
 
         // *********** Total Price ****************
@@ -182,20 +192,17 @@ class PriceBox extends Component {
                                 <hr/>
                             </div>
                         </div>
-                        <hr/>
 
 
-                        <h3>Insurance</h3>
+
+
+
                         {insuranceDiv}
 
-                        <hr/>
-                        <h3>Bags</h3>
+
                         {bagsDiv}
 
-                        <hr/>
 
-
-                        <br/>
                         <div className="row">
                             <div className="col-md-12">
 

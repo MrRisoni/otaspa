@@ -189,6 +189,8 @@ class OtaStore {
     @observable passengers = [
         {
             id: 0,
+            name:'',
+            surname:'',
             humanID: 1,
             active: true,
             type: 'ADT',
@@ -207,6 +209,8 @@ class OtaStore {
         },
         {
             id: 1,
+            name:'',
+            surname:'',
             humanID: 2,
             active: true,
             insuranceInfo :0,
@@ -444,6 +448,8 @@ class OtaStore {
 
             this.passengers.push({id: new_id, type: 'ADT',
                         humanID: new_human_id,
+                        name:'',
+                        surname:'',
                         active: true,
                         insuranceInfo :0,
                         totalBags: 0,
@@ -567,6 +573,13 @@ class OtaStore {
         console.log('updateInsurance');
         console.log(args);
         this.passengers[args.id].insuranceInfo= parseInt(args.insurance);
+    }
+
+    @action editName(args)
+    {
+        this.passengers[args.id].name = args.name;
+        this.passengers[args.id].surname = args.surname;
+
     }
 
 

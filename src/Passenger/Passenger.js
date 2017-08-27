@@ -17,6 +17,7 @@ class Passenger extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.removeMe = this.removeMe.bind(this);
         this.toggle = this.toggle.bind(this);
+
     }
 
 
@@ -102,6 +103,7 @@ class Passenger extends Component {
                                 <div className="col-md-3">
                                     <input type="text" placeholder="Name"
                                            className="form-control"/>
+
                                 </div>
 
                             </div>

@@ -5,12 +5,12 @@ finally after many long ( and frustrating hours of coding)
 
 inspired from kiwi.com
 
-Libraries : React, MobX, Jest for testing
+Libraries : React, MobX
 
 URL : https://guarded-springs-14047.herokuapp.com/
 
 
-see vuespa for a far more complex app (in Vue.js)
+see vuespa repo for a far more complex app (in Vue.js)
 
 Branch Description :
 
