@@ -18,17 +18,102 @@ class PriceBox extends Component {
 
     render() {
 
+        //
+        let bagsDiv = [];
+
+        this.props.otastore.passengers.forEach((px) => {
+            let papDiv = [];
+
+            let legsDiv = [];
+            let departLeg = [];
+            let returnLeg = [];
+            let key = '';
+
+            if (px.totalBags > 0) {
+
+                // for each trip leg
+
+
+                px.bags.forEach((bagLeg, idxLeg) => {
+
+                    bagLeg.types.forEach((bag) => {
+
+                        key = px.id+'_leg' + idxLeg + '_bag'+ bag.id;
+                        if (idxLeg === 0) {
+
+                            departLeg.push(<div key={key} className="row">
+                                <div className="col-md-12">
+                                    {bag.count}
+                                    x {bag.title} {bag.price} {this.props.otastore.currency}
+                                </div>
+                            </div>)
+                        }
+                        else {
+                            returnLeg.push(<div  key={key} className="row">
+                                <div className="col-md-12">
+                                    {bag.count}
+                                    x {bag.title} {bag.price} {this.props.otastore.currency}
+                                </div>
+                            </div>)
+                        }
+
+                    });// end bag iteration for each leg
+
+                }); // end leg iteration
+
+                if (departLeg.length > 0) {
+                    legsDiv.push(<div key="depLeg" className="row">
+                        <div className="col-md-12">
+                            Departure
+                        </div>
+                    </div>);
+                    legsDiv.push(departLeg);
+                }
+                else {
+                    legsDiv.push(<div key="retLeg" className="row">
+                        <div className="col-md-12">
+                            Return
+                        </div>
+                    </div>);
+                    legsDiv.push(returnLeg);
+                }
+
+
+                papDiv.push(<div key={px.id} className="passengerBagPriceBox">
+                    <div className="row">
+                        <div className="col-md-12">
+                            #Passenger {px.humanID}
+                            {legsDiv}
+                        </div>
+                    </div>
+                </div>);
+
+                bagsDiv.push(papDiv);
+            }
+
+        });
+
+
         let total = 0;
 
 
-        this.props.otastore.paxTypes.map((px) => {
+        this.props.otastore.paxTypes.forEach((px) => {
             total += px.count * px.convertedPrice;
         });
 
         // bags
 
-        this.props.otastore.passengers.map((px) => {
-            px.bags.map((bagLeg, idx) => {
+        this.props.otastore.passengers.forEach((px) => {
+
+            if (px.insuranceInfo > 0) {
+                this.props.otastore.insuranceInfo.forEach((ins) => {
+                    if (ins.id === px.insuranceInfo) {
+                        total += ins.convertedPrice;
+                    }
+                });
+            }
+
+            px.bags.forEach((bagLeg, idx) => {
                 bagLeg.types.map((bag) => {
                     total += ( parseFloat(bag.price) * bag.count);
                 });
@@ -55,7 +140,6 @@ class PriceBox extends Component {
 
                         {this.props.otastore.paxTypes.map((px) => {
                             return (<div key={px.type} className="row">
-
                                 {px.count > 0 &&
                                 <div className="col-md-12"> {px.count}
                                     x {px.name} {px.convertedPrice} {this.props.otastore.currency} </div>
@@ -65,40 +149,22 @@ class PriceBox extends Component {
                         })}
 
                         <hr/>
+
                         <div className="row">
                             <div className="col-md-12">
                                 <h3>Upsales</h3>
                                 <hr/>
                             </div>
                         </div>
-
-
-                        <h3>Bags</h3>
                         <hr/>
 
-                        {this.props.otastore.passengers.map((px) => {
-                            return ( <div className="passengerBagPriceBox">
-                                <div className="row">
-                                <div className="col-md-12">
-                                    #Passenger {px.humanID}
-                                    <div key={px.id}> {px.bags.map((bagLeg, idx) => {
-                                        return ( <div key={idx}> {bagLeg.types.map((bag) => {
-                                            return (<div key={bag.key} className="row">
 
-                                                <div className="col-md-12">
-                                                    {bag.count}
-                                                    x {bag.title} {bag.price} {this.props.otastore.currency} </div>
+                        <h3>Insurance</h3>
 
 
-                                            </div>)
-                                        })} </div>)
-                                    })} </div>
-                                </div>
-                                </div>
-                                <hr/>
-                            </div>) 
-                        })}
-
+                        <hr/>
+                        <h3>Bags</h3>
+                        {bagsDiv}
 
                         <hr/>
 

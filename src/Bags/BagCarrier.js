@@ -20,9 +20,9 @@ class BagCarrier extends Component {
     {
         console.log('------------');
         console.log(e.target.id);
-        console.log(this.props.airline.carrier);
-        console.log(this.props.passengerid);
-        console.log(this.props.leg);
+        console.log('carrier ' + this.props.airline.carrier);
+        console.log('passengerid ' + this.props.passengerid);
+        console.log('legid ' + this.props.leg);
 
         this.props.otastore.buyBag({
             passengerid : this.props.passengerid,
@@ -49,12 +49,9 @@ class BagCarrier extends Component {
 
                 {this.props.airline.bags.map( (bag) => {
 
-                    return (<div className="row">
-
-
-
+                    return (<div key={bag.key} className="row">
                         <div className="col-md-12">
-                        <button type="button" className="btn mybtn btn-primary" id={bag.id} onClick={this.buy}>
+                        <button type="button" className="btn mybtn btn-primary" id={bag.key} onClick={this.buy}>
 
                             <FontAwesome
                                 className='fa fa-plus'
@@ -64,8 +61,7 @@ class BagCarrier extends Component {
                             />
 
                         </button>
-
-                        {bag.title} {bag.convertedPrice} {this.props.otastore.currency} </div></div>)
+                            {bag.title} {bag.convertedPrice} {this.props.otastore.currency} </div></div>)
 
                 })}
 

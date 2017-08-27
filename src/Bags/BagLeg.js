@@ -19,13 +19,15 @@ class BagLeg extends Component {
             this.props.legCarriers.map((lgc) => {
 
                 if (lgc == bgl.carrier) {
+                    const key = bgl.title + this.props.leg;
                     bagCarrierArray.push(<BagCarrier
+                        key={key}
                         passengerid={this.props.passengerid}
                         leg={this.props.leg}
                         airline={bgl}/>);
                 }
             })
-        })
+        });
 
 
         return (

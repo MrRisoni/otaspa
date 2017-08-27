@@ -11,7 +11,7 @@ class Bags extends Component {
         super(props);
         this.state = {
             showMe: false,
-            label: 'Hide'
+            label: 'Show'
         };
 
         this.toggleMe = this.toggleMe.bind(this);
