@@ -1,73 +1,43 @@
 import React, {Component} from 'react';
 import {observer, inject} from 'mobx-react';
 
-import FontAwesome from 'react-fontawesome';
-
+import SelectBag from './SelectBag';
 
 @inject('otastore')
 @observer
-
 class BagCarrier extends Component {
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
 
-
-        this.buy = this.buy.bind(this);
     }
 
-    buy(e)
-    {
-        console.log('------------');
-        console.log(e.target.id);
-        console.log('carrier ' + this.props.airline.carrier);
-        console.log('passengerid ' + this.props.passengerid);
-        console.log('legid ' + this.props.leg);
-
-        this.props.otastore.buyBag({
-            passengerid : this.props.passengerid,
-            carrier : this.props.airline.carrier,
-            leg: this.props.leg,
-            bag_type_id : e.target.id
-        });
-    }
     render() {
         return (
 
-        <div className="card card-primary bagCarrier">
-            <div className="card-header">
+            <div className="card card-primary bagCarrier">
+                <div className="card-header">
 
-                <div className="row">
-                    <div className="col-md-9">
-                        {this.props.airline.title} Max num {this.props.airline.maxBags}
+                    <div className="row">
+                        <div className="col-md-9">
+                            {this.props.airline.title} Max num {this.props.airline.maxBags}
+                        </div>
                     </div>
                 </div>
+
+                <div className="card-body">
+
+
+                    {this.props.airline.bags.map((bag) => {
+                        return (<SelectBag key={bag.key}
+                                           carrier={this.props.airline.carrier}
+                                           passengerid={this.props.passengerid}
+                                           leg={this.props.leg}
+                                           bagData={bag} />)
+                    })}
+
+
+                </div>
             </div>
-
-            <div className="card-body">
-
-
-                {this.props.airline.bags.map( (bag) => {
-
-                    return (<div key={bag.key} className="row">
-                        <div className="col-md-12">
-                        <button type="button" className="btn mybtn btn-primary" id={bag.key} onClick={this.buy}>
-
-                            <FontAwesome
-                                className='fa fa-plus'
-                                name='plus'
-                                size='2x'
-                                style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
-                            />
-
-                        </button>
-                            {bag.title} {bag.convertedPrice} {this.props.otastore.currency} </div></div>)
-
-                })}
-
-
-            </div>
-        </div>
 
         );
     }

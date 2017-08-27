@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {observer, inject} from 'mobx-react';
+import { inject} from 'mobx-react';
 
 import Bags from '../Bags/Bags';
 import Insurance from './Insurance';

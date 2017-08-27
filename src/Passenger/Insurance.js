@@ -8,7 +8,7 @@ class Insurance extends Component {
         super(props);
         this.state = {
             showMe: false,
-            label: 'Hide',
+            label: 'Show',
             checkedInsurance :1
         };
 

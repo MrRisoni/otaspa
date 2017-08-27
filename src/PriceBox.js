@@ -114,7 +114,7 @@ class PriceBox extends Component {
             }
 
             px.bags.forEach((bagLeg, idx) => {
-                bagLeg.types.map((bag) => {
+                bagLeg.types.forEach((bag) => {
                     total += ( parseFloat(bag.price) * bag.count);
                 });
             });
