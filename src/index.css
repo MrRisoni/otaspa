@@ -11,9 +11,6 @@
     margin-top: 3%;
 }
 
-.analysisCategory {
-    color: yellow;
-}
 
 .purchasedLeg {
     margin-top: 5%;
@@ -31,6 +28,14 @@
     border-radius: 2px;
 }
 
+.pricebox h3 {
+    text-align: center;
+    color: yellow;
+}
+
+.passengerBagPriceBox {
+    margin-top: 3%;
+}
 
 .bagCarrier ,.itinerary , .bagComponent , .insuranceCard  {
     margin-top: 5%;

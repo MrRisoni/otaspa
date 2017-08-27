@@ -11,7 +11,7 @@ class Passenger extends Component {
         super(props);
         this.state = {
             showMe: true,
-            label: 'Hide'
+            label: 'Show'
         };
 
         this.handleChange = this.handleChange.bind(this);

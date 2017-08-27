@@ -7,11 +7,25 @@ class Insurance extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showMe: true,
-            label: 'Hide'
+            showMe: false,
+            label: 'Hide',
+            checkedInsurance :1
         };
 
         this.toggleMe = this.toggleMe.bind(this);
+        this.handleOptionChange = this.handleOptionChange.bind(this);
+
+
+    }
+
+    handleOptionChange(ev)
+    {
+        var self = this;
+        console.log(ev.target.value);
+
+        self.setState({checkedInsurance: ev.target.value});
+
+
     }
 
     toggleMe() {
@@ -58,7 +72,7 @@ class Insurance extends Component {
 
                             {this.props.otastore.insuranceInfo.map((ins) => {
 
-                                return (<div className="col-md-3">
+                                return (<div key={ins.id} className="col-md-3">
 
                                     <div className="card text-center">
                                         <div className="card-header bg-warning ">
@@ -66,6 +80,11 @@ class Insurance extends Component {
                                         </div>
                                         <div className="card-body">
                                             {ins.title}
+
+                                           <input type="radio" value={ins.id}
+                                                  onChange={this.handleOptionChange}
+                                                  checked={this.state.checkedInsurance == ins.id}/>
+
                                         </div>
                                         <div className="card-footer">
                                             {ins.convertedPrice} {this.props.otastore.currency}

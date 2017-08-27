@@ -31,7 +31,7 @@ class PassengerList extends Component {
 
                             {this.props.otastore.passengers.map((ps) => {
                                 if (ps.active) {
-                                    return (<Passenger pap={ps}/>)
+                                    return (<Passenger key={ps.id} pap={ps}/>)
                                 }
                             })}
 

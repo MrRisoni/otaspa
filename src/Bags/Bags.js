@@ -10,7 +10,7 @@ class Bags extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showMe: true,
+            showMe: false,
             label: 'Hide'
         };
 

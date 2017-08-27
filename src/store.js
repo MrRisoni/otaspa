@@ -193,6 +193,7 @@ class OtaStore {
             active: true,
             type: 'ADT',
             insuranceInfo :0,
+            totalBags: 0,
             bags: [
                 {
                     route: 'departLeg',
@@ -209,6 +210,7 @@ class OtaStore {
             humanID: 2,
             active: true,
             insuranceInfo :0,
+            totalBags: 0,
             type: 'ADT',
             bags: [
                 {
@@ -440,6 +442,7 @@ class OtaStore {
                         humanID: new_human_id,
                         active: true,
                         insuranceInfo :0,
+                        totalBags: 0,
                         bags: [
                             {
                                 route: 'departLeg',
@@ -543,6 +546,7 @@ class OtaStore {
             if (pos < 0) {
                 // first time passenger buys this type
                 this.passengers[args.passengerid].bags[args.leg].types.push(added_bag_type);
+                this.passengers[args.passengerid].totalBags++;
             }
             else {
                 this.passengers[args.passengerid].bags[args.leg].types[pos].count++;
@@ -552,6 +556,10 @@ class OtaStore {
     }
 
 
+    @action updateInsurance(args)
+    {
+        this.passengers[args.id].insuranceInfo= args.insurance;
+    }
 
 
 
