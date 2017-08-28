@@ -38,23 +38,27 @@ class PriceBox extends Component {
 
                     bagLeg.types.forEach((bag) => {
 
-                        key = px.id+'_leg' + idxLeg + '_bag'+ bag.key;
-                        if (idxLeg === 0) {
+                        key = px.id + '_leg' + idxLeg + '_bag' + bag.key;
+                        if (bag.count > 0) {
+                            if (idxLeg === 0) {
 
-                            departLeg.push(<div key={key} className="row">
-                                <div className="col-md-12">
-                                    {bag.count}
-                                    x {bag.title} {bag.price} {this.props.otastore.currency}
-                                </div>
-                            </div>)
-                        }
-                        else {
-                            returnLeg.push(<div  key={key} className="row">
-                                <div className="col-md-12">
-                                    {bag.count}
-                                    x {bag.title} {bag.price} {this.props.otastore.currency}
-                                </div>
-                            </div>)
+
+                                departLeg.push(<div key={key} className="row">
+                                    <div className="col-md-12">
+                                        {bag.count}
+                                        x {bag.title} {bag.price} {this.props.otastore.currency}
+                                    </div>
+                                </div>)
+
+                            }
+                            else {
+                                returnLeg.push(<div key={key} className="row">
+                                    <div className="col-md-12">
+                                        {bag.count}
+                                        x {bag.title} {bag.price} {this.props.otastore.currency}
+                                    </div>
+                                </div>)
+                            }
                         }
 
                     });// end bag iteration for each leg
@@ -95,22 +99,22 @@ class PriceBox extends Component {
         });
 
 
-        if (bagsDiv.length >0) {
+        if (bagsDiv.length > 0) {
             bagsDiv.unshift(<h3 key="bags">Bags</h3>);
             bagsDiv.push(< hr key="bagsHR"/>);
         }
 
         // *********** Insurance Div ****************
-        let insuranceDiv =[];
+        let insuranceDiv = [];
 
         this.props.otastore.passengers.forEach((px) => {
             if (px.insuranceInfo > 1) {
 
-                this.props.otastore.insuranceInfo.forEach( (ins) => {
+                this.props.otastore.insuranceInfo.forEach((ins) => {
 
                     if (ins.id === px.insuranceInfo) {
-                        const key= ins.key+'papid' + px.id;
-                        insuranceDiv.push( <div key={key} className="row">
+                        const key = ins.key + 'papid' + px.id;
+                        insuranceDiv.push(<div key={key} className="row">
                             <div className="col-md-12">
                                 #Passenger {px.humanID} {ins.title} {ins.convertedPrice}
                             </div>
@@ -122,7 +126,7 @@ class PriceBox extends Component {
             }
         });
 
-        if (insuranceDiv.length>0) {
+        if (insuranceDiv.length > 0) {
             insuranceDiv.unshift(<h3 key="insurance">Insurance</h3>);
             insuranceDiv.push(< hr key="insuranceHR"/>);
         }
@@ -192,9 +196,6 @@ class PriceBox extends Component {
                                 <hr/>
                             </div>
                         </div>
-
-
-
 
 
                         {insuranceDiv}

@@ -568,6 +568,28 @@ class OtaStore {
     }
 
 
+    @action
+    removeBag(args) {
+        console.log('store.removeBag');
+        console.log(args);
+
+
+        console.log(this.passengers[args.passengerid].bags);
+
+        this.passengers[args.passengerid].bags[args.leg].types.forEach( (bgl) => {
+
+               if (bgl.id == args.bag_type_id) {
+                   bgl.count--;
+                   if (bgl.count <0 ) {
+                       bgl.count =0;
+                   }
+               }
+
+        });
+
+      }
+
+
     @action updateInsurance(args)
     {
         console.log('updateInsurance');
