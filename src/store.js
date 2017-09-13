@@ -419,6 +419,204 @@ class OtaStore {
     ];
 
 
+
+    upgradeFare: [{
+        carrier: "FR",
+        options: [
+            {
+                id: 1,
+                name: 'Light',
+                convertedPrice: 0,
+                price: 0,
+                packages: [{
+                    title: 'cancellation'
+                }]
+            }
+            ]
+    },
+        {
+            carrier: "A3",
+            options: [{
+                id: 1,
+                name: 'Light',
+                convertedPrice: 0,
+                price: 0,
+                packages: [{
+                    title: 'cancellation'
+                }]
+            },
+                {
+                    id: 2,
+                    name: 'Flex',
+                    convertedPrice: 0,
+                    price: 0,
+                    packages: [{
+                        title: 'wifi'
+                    }]
+                }
+                ]
+        },
+        {
+            carrier: "BA",
+            options: [{
+                id: 1,
+                name: 'Basic',
+                convertedPrice: 0,
+                price: 0,
+                packages: [
+                    {
+                        title: 'Hand baggage',
+                        status: 'notincl'
+                    },
+                    {
+                        title: 'Checked baggage',
+                        status: 'notincl'
+                    },
+                    {
+                        title: 'Wifi',
+                        status: 'notincl'
+                    }
+                    ,
+                    {
+                        title: 'Priority Boarding',
+                        status: 'notincl'
+                    },
+                    {
+                        title: 'Lounge Access',
+                        status: 'notincl'
+                    },
+                    {
+                        title: 'Cancellation',
+                        status: 'notincl'
+                    },
+                    {
+                        title: 'Amendment',
+                        status: 'notincl'
+                    }]
+            },
+                {
+                    id: 2,
+                    name: 'Basic Plus',
+                    convertedPrice: 10,
+                    price: 10,
+                    packages: [
+                        {
+                            title: 'Hand baggage',
+                            status: 'free'
+                        },
+                        {
+                            title: 'Checked baggage',
+                            status: 'free'
+                        },
+                        {
+                            title: 'Wifi',
+                            status: 'notinlc'
+                        },
+                        {
+                            title: 'Cancellation',
+                            status: 'fee'
+                        },
+                        {
+                            title: 'Priority Boarding',
+                            status: 'notinlc'
+                        },
+                        {
+                            title: 'Lounge Access',
+                            status: 'notinlc'
+                        },
+                        {
+                            title: 'Amendment',
+                            status: 'notinlc'
+                        }]
+                },
+                {
+                    id: 3,
+                    name: 'Economy Premium',
+                    convertedPrice: 0,
+                    price: 30,
+                    packages: [
+                        {
+                            title: 'Hand baggage',
+                            status: 'free'
+                        },
+                        {
+                            title: 'Checked baggage',
+                            status: 'free'
+                        },
+                        {
+                            title: 'Wifi',
+                            status: 'free'
+                        },
+                        {
+                            title: 'Cancellation',
+                            status: 'free'
+                        }
+                        ,
+                        {
+                            title: 'Priority Boarding',
+                            status: 'free'
+                        },
+                        {
+                            title: 'Lounge Access',
+                            status: 'free'
+                        }
+                        ,
+                        {
+                            title: 'Cancellation',
+                            status: 'free'
+                        }
+                        ,
+                        {
+                            title: 'Amendment',
+                            status: 'free'
+                        }]
+                },
+                {
+                    id: 4,
+                    name: 'Economy Lux',
+                    convertedPrice: 0,
+                    price: 40,
+                    packages: [
+                        {
+                            title: 'Hand baggage',
+                            status: 'free'
+                        },
+                        {
+                            title: 'Checked baggage',
+                            status: 'free'
+                        },
+                        {
+                            title: 'Wifi',
+                            status: 'free'
+                        },
+                        {
+                            title: 'Cancellation',
+                            status: 'free'
+                        }
+                        ,
+                        {
+                            title: 'Priority Boarding',
+                            status: 'free'
+                        },
+                        {
+                            title: 'Lounge Access',
+                            status: 'free'
+                        }
+                        ,
+                        {
+                            title: 'Cancellation',
+                            status: 'free'
+                        }
+                        ,
+                        {
+                            title: 'Amendment',
+                            status: 'free'
+                        }]
+                }
+                ]
+        }
+        ],
+
     @observable outboundCarriers = ['FR', 'A3', 'BA'];
     @observable inboundCarriers = ['FR', 'A3'];
 

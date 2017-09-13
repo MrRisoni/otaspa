@@ -10,7 +10,7 @@ Libraries : React, MobX
 URL : https://guarded-springs-14047.herokuapp.com/
 
 
-see vuespa repo for a far more complex app (in Vue.js)
+see vuespa repo for smaller  Vue.js version
 
 Branch Description :
 
