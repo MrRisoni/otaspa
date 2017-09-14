@@ -420,7 +420,7 @@ class OtaStore {
 
 
 
-    upgradeFare: [{
+    upgradeFare = [{
         carrier: "FR",
         options: [
             {
@@ -615,7 +615,7 @@ class OtaStore {
                 }
                 ]
         }
-        ],
+        ]
 
     @observable outboundCarriers = ['FR', 'A3', 'BA'];
     @observable inboundCarriers = ['FR', 'A3'];
