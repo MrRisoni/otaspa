@@ -7,6 +7,15 @@
 
 }
 
+.loginrow {
+    margin-top: 2%;
+}
+
+.loginform {
+    margin-top: 3%;
+}
+
+
 .passengerCompo, .contactDetails , .paymentDetails, .Leg{
     margin-top: 3%;
 }
