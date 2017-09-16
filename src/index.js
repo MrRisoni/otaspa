@@ -33,9 +33,9 @@ ReactDOM.render(
     <Provider {...stores}>
         <Router history={history}>
             <div>
-                <Route path="/" component={SearchBundle}/>
-                <Route path="/book" component={BookApp}/>
-                <Route path="/manage" component={Login}/>
+                <Route exact path="/" component={SearchBundle}/>
+                <Route exact path="/book" component={BookApp}/>
+                <Route exact path="/manage" component={Login}/>
 
             </div>
         </Router>

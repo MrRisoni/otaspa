@@ -16,6 +16,23 @@
 }
 
 
+ .CarCarousel {
+     margin-top: 5%;
+     margin-bottom: 2%;
+ }
+
+.CarCarousel .btn_next_prev {
+    margin-top: 55%;
+}
+
+.CarCarousel img {
+    margin-top: 12%;
+    height: 75%;
+    width: auto;
+}
+
+
+
 .passengerCompo, .contactDetails , .paymentDetails, .Leg{
     margin-top: 3%;
 }

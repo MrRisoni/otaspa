@@ -6,7 +6,7 @@ inspired from kiwi.com
 
 Libraries : React, MobX
 
-URL : https://guarded-springs-14047.herokuapp.com/
+URL : https://guarded-springs-14047.herokuapp.com/book
 
 Branch Description :
 
