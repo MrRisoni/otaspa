@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
+import {observer, inject} from 'mobx-react';
 
+import Airline from './Airline';
 
+@inject('otastore')
+@observer
 class UpgradeSeat extends Component {
     constructor(props) {
         super(props);
@@ -48,7 +52,17 @@ class UpgradeSeat extends Component {
 
                             </div>
 
+
                         </div>
+
+
+
+                        {this.props.otastore.upgradeFare.map( (carrierPackage) => {
+                            return (<div> <Airline package={carrierPackage} /> </div>)
+                        })}
+
+
+
 
                     </div>
 
