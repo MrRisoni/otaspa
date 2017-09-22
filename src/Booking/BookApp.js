@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 
 import PriceBox from './PriceBox';
 import PassengerList from './PassengerList';
-import Contact from './Contact';
-import Pay from './Pay';
+import Contact from '../Pay/Contact';
+import Pay from '../Pay/Pay';
 import Itinerary from './Itinerary/Itinerary';
 
 

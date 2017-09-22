@@ -10,6 +10,7 @@ import './index.css';
 import BookApp from './Booking/BookApp';
 import SearchBundle from './Booking/Search/SearchBundle';
 import Login from './Manage/Login';
+import Payment from './Pay/Payment';
 
 
 
@@ -35,6 +36,8 @@ ReactDOM.render(
             <div>
                 <Route exact path="/" component={SearchBundle}/>
                 <Route exact path="/book" component={BookApp}/>
+                <Route exact path="/pay" component={Payment}/>
+                <Route exact path="/final" component={BookApp}/>
                 <Route exact path="/manage" component={Login}/>
 
             </div>
