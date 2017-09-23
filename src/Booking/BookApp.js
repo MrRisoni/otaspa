@@ -29,7 +29,9 @@ class BookApp extends Component {
 
             <div className="row">
 
-                <div className="col-md-8">
+                <div className="col-md-1"></div>
+
+                <div className="col-md-6">
 
                     <Itinerary/>
 

@@ -10,7 +10,11 @@ class Payment extends Component {
     render() {
         return (    <div className="row">
 
-                <div className="col-md-8">
+
+                <div className="col-md-1"></div>
+
+
+            <div className="col-md-6">
 
 
                     <Contact/>
