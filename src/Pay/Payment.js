@@ -9,14 +9,25 @@ class Payment extends Component {
 
     render() {
         return (
-            <div className="row  justify-content-center">
 
-                <div className="col-6">
+            <div className="row">
+
+                <div className="col-md-1"></div>
+
+
+
+                <div className="col-md-6">
+
+                    Upsales sms checkin
+
+
+
                     <Contact/>
                     <Pay/>
                 </div>
 
-                <div className="col-4">
+
+                <div className="col-md-4">
                     <PriceBox/>
                 </div>
 

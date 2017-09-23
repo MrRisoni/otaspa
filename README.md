@@ -2,7 +2,7 @@
 Single Page Application Online Travel Agency Demo
 
 
-inspired from kiwi.com
+Largely inspired from kiwi.com
 
 Libraries : React, MobX
 

@@ -27,11 +27,12 @@ class BookApp extends Component {
         const { location, push, goBack } = this.props.routing;
         return (
 
-            <div className="row  justify-content-center">
+            <div className="row">
 
 
+                <div className="col-md-1"></div>
 
-                <div className="col-6">
+                <div className="col-md-6">
 
                     <Itinerary/>
 
@@ -54,7 +55,7 @@ class BookApp extends Component {
                 </div>
 
 
-                <div className="col-4">
+                <div className="col-md-4">
                     <PriceBox/>
                 </div>
 
