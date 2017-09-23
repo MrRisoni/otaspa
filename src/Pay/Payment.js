@@ -1,17 +1,29 @@
 import React, {Component} from 'react';
 
+import Contact from './Contact';
+import Pay from './Pay';
+import PriceBox from '../Booking/PriceBox';
+
 
 class Payment extends Component {
 
     render() {
-        return (   <div className="row paymentDetails">
-                <div className="col-md-12">
+        return (    <div className="row">
 
-                    preseat
-                    upgrade fare
+                <div className="col-md-8">
 
-                    Payment
+
+                    <Contact/>
+
+                    <Pay/>
+
                 </div>
+
+
+                <div className="col-md-4">
+                    <PriceBox/>
+                </div>
+
             </div>
         )
     }
