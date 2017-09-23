@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import FareCarousel from './FareCarousel';
 
 class UpgradeFare extends Component {
     constructor(props) {
@@ -46,8 +47,11 @@ class UpgradeFare extends Component {
 
 
                             </div>
-                            
+
                         </div>
+
+
+                        <FareCarousel/>
 
 
                     </div>
