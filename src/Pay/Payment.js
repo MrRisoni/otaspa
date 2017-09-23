@@ -8,23 +8,15 @@ import PriceBox from '../Booking/PriceBox';
 class Payment extends Component {
 
     render() {
-        return (    <div className="row">
+        return (
+            <div className="row  justify-content-center">
 
-
-                <div className="col-md-1"></div>
-
-
-            <div className="col-md-6">
-
-
+                <div className="col-6">
                     <Contact/>
-
                     <Pay/>
-
                 </div>
 
-
-                <div className="col-md-4">
+                <div className="col-4">
                     <PriceBox/>
                 </div>
 
