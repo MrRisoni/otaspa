@@ -8,19 +8,10 @@ class FareCarousel extends Component {
 
             <div className="row">
                 <div className="col-md-12">
-                    <div className="card  bg-info ">
+                    <div className="card">
 
                         <div className="card-header">
-                            Airline
-
-                            <select className="form-control">
-                                <option value="Light">
-                                    Ryanair
-                                </option>
-                                <option value="Light">
-                                    British
-                                </option>
-                            </select>
+                            Select fare type
                         </div>
 
 
@@ -31,6 +22,22 @@ class FareCarousel extends Component {
                                 <div className="col-md-2">  prev  </div>
 
                                 <div className="col-md-8">
+
+
+
+                                    <div className="card">
+
+                                        <div className="card-header">
+                                            Flex Classic
+                                        </div>
+
+                                        <div className="card-body">
+
+                                            <p>Description</p>
+
+                                            </div>
+
+                                    </div>
 
 
                                 </div>

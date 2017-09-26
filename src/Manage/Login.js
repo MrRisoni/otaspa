@@ -33,33 +33,40 @@ class Login extends Component {
         ]
         return (
 
+<div>
+
+                <div className="row">
 
 
-            <div>
+                    <div className="col-md-2"></div>
+
+                    <div className="col-md-8">
+
+                        {loginMethods.map((logrow) => {
+                            return (   <div className="row loginrow">
+                                {logrow.map((logmethod) => {
+                                    return (<div className="col-md-6" key={logmethod.key}>
 
 
-                {loginMethods.map((logrow) => {
-                    return (   <div className="row loginrow">
-                        {logrow.map((logmethod) => {
-                            return (<div className="col-md-6" key={logmethod.key}>
+                                        <div className="card bg-info">
 
+                                            <div className="card-body">
 
-                                <div className="card bg-info">
+                                                <input type="radio" value={logmethod.key}/>
 
-                                    <div className="card-body">
+                                                {logmethod.title}
 
-                                        <input type="radio" value={logmethod.key}  />
-
-                                        {logmethod.title}
+                                            </div>
 
                                         </div>
 
-                                </div>
-
-                            </div>)
+                                    </div>)
+                                })}
+                            </div> )
                         })}
-                    </div> )
-                })}
+
+                    </div>
+                </div>
 
 
                 <div className="row loginform">
@@ -87,7 +94,7 @@ class Login extends Component {
                 </div>
 
 
-            </div>
+</div>
 
         );
     }
