@@ -278,7 +278,15 @@ class OtaStore {
             ins.convertedPrice = ins.price * this.currentRate;
             ins.convertedPrice = ins.convertedPrice.toFixed(2);
 
-        })
+        });
+
+
+        this.upgradeFare.forEach( (carrier) => {
+            carrier.options.forEach( (pkg) => {
+                pkg.convertedPrice = pkg.price * this.currentRate;
+                pkg.convertedPrice = pkg.convertedPrice.toFixed(2);            });
+
+        });
     }
 
 
@@ -422,6 +430,7 @@ class OtaStore {
 
     upgradeFare = [{
         carrier: "FR",
+        title:' Ryanair',
         options: [
             {
                 id: 1,
@@ -436,6 +445,7 @@ class OtaStore {
     },
         {
             carrier: "A3",
+            title:' Aegean',
             options: [{
                 id: 1,
                 name: 'Light',
@@ -448,8 +458,8 @@ class OtaStore {
                 {
                     id: 2,
                     name: 'Flex',
-                    convertedPrice: 0,
-                    price: 0,
+                    convertedPrice: 15,
+                    price: 15,
                     packages: [{
                         title: 'wifi'
                     }]
@@ -458,6 +468,7 @@ class OtaStore {
         },
         {
             carrier: "BA",
+            title:' British Airways',
             options: [{
                 id: 1,
                 name: 'Basic',
@@ -497,8 +508,8 @@ class OtaStore {
                 {
                     id: 2,
                     name: 'Basic Plus',
-                    convertedPrice: 10,
-                    price: 10,
+                    convertedPrice: 15,
+                    price: 15,
                     packages: [
                         {
                             title: 'Hand baggage',
@@ -532,8 +543,8 @@ class OtaStore {
                 {
                     id: 3,
                     name: 'Economy Premium',
-                    convertedPrice: 0,
-                    price: 30,
+                    convertedPrice: 28,
+                    price: 28,
                     packages: [
                         {
                             title: 'Hand baggage',
@@ -574,8 +585,8 @@ class OtaStore {
                 {
                     id: 4,
                     name: 'Economy Lux',
-                    convertedPrice: 0,
-                    price: 40,
+                    convertedPrice: 36,
+                    price: 36,
                     packages: [
                         {
                             title: 'Hand baggage',
@@ -700,6 +711,11 @@ class OtaStore {
         this.passengersWithinLimits()
     }
 
+    @action
+    buyUpgradeFare(args)
+    {
+
+    }
 
     @action
     buyBag(args) {
