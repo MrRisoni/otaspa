@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-import './SearchBundle.css';
-import Navbar from './Navbar'
 import CarCarousel from './CarCarousel';
 
 class SearchBundle extends Component {

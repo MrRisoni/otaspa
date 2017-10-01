@@ -6,18 +6,14 @@ import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import { Router, Route } from 'react-router';
 import './index.css';
 
-
 import BookApp from './Booking/BookApp';
 import SearchBundle from './Booking/Search/SearchBundle';
-import Login from './Manage/Login';
 import Payment from './Pay/Payment';
-
 
 
 import OtaStore from './store';
 
 const otastore = new OtaStore();
-
 const browserHistory = createBrowserHistory();
 const routingStore = new RouterStore();
 
@@ -25,7 +21,6 @@ const stores = {
     // Key can be whatever you want
     routing: routingStore,
     otastore : otastore
-    // ...other stores
 };
 
 const history = syncHistoryWithStore(browserHistory, routingStore);
@@ -38,8 +33,6 @@ ReactDOM.render(
                 <Route exact path="/book" component={BookApp}/>
                 <Route exact path="/pay" component={Payment}/>
                 <Route exact path="/final" component={BookApp}/>
-                <Route exact path="/manage" component={Login}/>
-
             </div>
         </Router>
     </Provider>

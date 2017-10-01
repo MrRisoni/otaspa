@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { inject} from 'mobx-react';
+import {inject} from 'mobx-react';
 
 import FareCarousel from './FareCarousel';
 
@@ -52,15 +52,12 @@ class BrandedFare extends Component {
 
                         </div>
 
-
-                        {this.props.otastore.BrandedFares.map( (fare) => {
-                            return (<FareCarousel key={fare.key}
-                                                  data={fare}
-                                                  passengerid={this.props.passengerid}
-                                                    />);
-                        })}
-
-
+                            {this.props.otastore.BrandedFares.map((fare) => {
+                                return (<FareCarousel key={fare.key}
+                                                      data={fare}
+                                                      passengerid={this.props.passengerid}
+                                />);
+                            })}
 
                     </div>
                 </div>
