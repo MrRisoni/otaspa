@@ -143,7 +143,7 @@ class PriceBox extends Component {
                        upgradeFareDiv.push(
                            <div className="row">
                                <div className="col-md-12">
-                                   {brand.options[pax_carrier.selection].name}
+                                   #Passenger {pax.humanID} {brand.title}  {brand.options[pax_carrier.selection].name}
                                </div>
                            </div>);
                    }
