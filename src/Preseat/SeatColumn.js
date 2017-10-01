@@ -5,29 +5,19 @@ import SeatRow from './SeatRow';
 class SeatColumn extends Component {
 
     render() {
+
+
+        let RowDiv = [];
+
+        for  (let i =0; i <35; i++)
+        {
+            // how many rows in the fuselage
+            RowDiv.push(<SeatRow />)
+        }
+
         return (
 
-            <div className="row">
-
-
-                <div className="col-md-3">
-                    <SeatRow />
-                </div>
-
-
-                <div className="col-md-3">
-                    <SeatRow />
-                </div>
-
-
-
-
-                <div className="col-md-3">
-                    <SeatRow />
-                </div>
-
-
-            </div>
+            <div className="col-md-3">{RowDiv}</div>
         );
     }
 }

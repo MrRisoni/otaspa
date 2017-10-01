@@ -4,19 +4,18 @@ import React, {Component} from 'react';
 class SeatColumn extends Component {
 
     render() {
+
+        let SeatDiv = [];
+
+        for  (let i =0; i < 3; i++)
+        {
+            // how many seats in a row
+            SeatDiv.push(<div className="col-md-1">X</div>)
+        }
+
         return (
 
-
-            <div className="row">
-
-                <div className="col-md-1">X
-                </div>
-                <div className="col-md-1">X
-                </div>
-                <div className="col-md-1">X
-                </div>
-
-            </div>
+            <div className="row">{SeatDiv}</div>
 
         );
     }
