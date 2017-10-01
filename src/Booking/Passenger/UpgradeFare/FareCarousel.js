@@ -28,6 +28,13 @@ class FareCarousel extends Component {
         }
 
         self.setState({index: idx});
+
+
+        this.props.otastore.buyUpgradeFare({
+            passengerid: this.props.passengerid,
+            carrier: this.props.data.carrier,
+            index: idx
+        });
     }
 
     render() {

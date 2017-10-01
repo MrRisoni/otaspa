@@ -54,7 +54,10 @@ class UpgradeFare extends Component {
 
 
                         {this.props.otastore.upgradeFare.map( (fare) => {
-                            return (<FareCarousel data={fare}/>);
+                            return (<FareCarousel key={fare.key}
+                                                  data={fare}
+                                                  passengerid={this.props.passengerid}
+                                                    />);
                         })}
 
 

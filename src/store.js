@@ -196,6 +196,21 @@ class OtaStore {
             type: 'ADT',
             insuranceInfo :0,
             totalBags: 0,
+            upgradeFare: [{
+                carrier: 'FR',
+                selection: 0,
+                price:0
+            },
+                {
+                    carrier: 'A3',
+                    selection: 0,
+                    price:0
+                },
+                {
+                    carrier: 'BA',
+                    selection: 0,
+                    price:0
+                }],
             bags: [
                 {
                     route: 'departLeg',
@@ -215,6 +230,21 @@ class OtaStore {
             active: true,
             insuranceInfo :0,
             totalBags: 0,
+            upgradeFare: [{
+                carrier: 'FR',
+                selection: 0,
+                price:0
+            },
+                {
+                    carrier: 'A3',
+                    selection: 0,
+                    price:0
+                },
+                {
+                    carrier: 'BA',
+                    selection: 0,
+                    price:0
+                }],
             type: 'ADT',
             bags: [
                 {
@@ -429,6 +459,7 @@ class OtaStore {
 
 
     upgradeFare = [{
+        key: "DNcuuXT5T9O9",
         carrier: "FR",
         title:' Ryanair',
         options: [
@@ -444,6 +475,7 @@ class OtaStore {
             ]
     },
         {
+            key: "Y03dZvtTAwHr",
             carrier: "A3",
             title:' Aegean',
             options: [{
@@ -467,6 +499,7 @@ class OtaStore {
                 ]
         },
         {
+            key: "9Rw5nNyMb3Ot",
             carrier: "BA",
             title:' British Airways',
             options: [{
@@ -662,6 +695,21 @@ class OtaStore {
                         active: true,
                         insuranceInfo :0,
                         totalBags: 0,
+                        upgradeFare: [{
+                            carrier: 'FR',
+                            selection: 0,
+                            price:0
+                        },
+                            {
+                                carrier: 'A3',
+                                selection: 0,
+                                price:0
+                            },
+                            {
+                                carrier: 'BA',
+                                selection: 0,
+                                price:0
+                            }],
                         bags: [
                             {
                                 route: 'departLeg',
@@ -714,6 +762,19 @@ class OtaStore {
     @action
     buyUpgradeFare(args)
     {
+
+        this.passengers[args.passengerid].upgradeFare.forEach(( airline) => {
+            if (airline.carrier == args.carrier) {
+                airline.selection = args.index;
+
+                this.upgradeFare.forEach( (brand) => {
+                    if (brand.carrier == args.carrier) {
+                        airline.price = brand.options[args.index].convertedPrice;
+                    }
+                });
+            }
+        });
+
 
     }
 
