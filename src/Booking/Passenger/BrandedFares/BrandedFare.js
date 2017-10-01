@@ -4,7 +4,7 @@ import { inject} from 'mobx-react';
 import FareCarousel from './FareCarousel';
 
 @inject('otastore')
-class UpgradeFare extends Component {
+class BrandedFare extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -53,7 +53,7 @@ class UpgradeFare extends Component {
                         </div>
 
 
-                        {this.props.otastore.upgradeFare.map( (fare) => {
+                        {this.props.otastore.BrandedFares.map( (fare) => {
                             return (<FareCarousel key={fare.key}
                                                   data={fare}
                                                   passengerid={this.props.passengerid}
@@ -70,6 +70,6 @@ class UpgradeFare extends Component {
     }
 }
 
-export default UpgradeFare;
+export default BrandedFare;
 
 

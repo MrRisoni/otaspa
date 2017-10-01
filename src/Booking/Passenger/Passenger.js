@@ -3,7 +3,7 @@ import { inject} from 'mobx-react';
 
 import Bags from './Bags/Bags';
 import Insurance from './Insurance';
-import UpgradeFare from './UpgradeFare/UpgradeFare';
+import BrandedFare from './BrandedFares/BrandedFare';
 
 
 @inject('otastore')
@@ -112,7 +112,7 @@ class Passenger extends Component {
 
                             <Insurance  passengerid={this.props.pap.id}/>
 
-                            <UpgradeFare  passengerid={this.props.pap.id}/>
+                            <BrandedFare  passengerid={this.props.pap.id}/>
 
                             <Bags passengerid={this.props.pap.id}/>
 

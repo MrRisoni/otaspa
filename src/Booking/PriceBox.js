@@ -132,15 +132,15 @@ class PriceBox extends Component {
         }
 
 
-        let upgradeFareDiv = [];
+        let brandedFareDiv = [];
         this.props.otastore.passengers.forEach((pax) => {
 
-            pax.upgradeFare.forEach( (pax_carrier) => {
+            pax.brandedFare.forEach( (pax_carrier) => {
 
-                this.props.otastore.upgradeFare.forEach( (brand) => {
+                this.props.otastore.BrandedFares.forEach( (brand) => {
                    if (brand.carrier == pax_carrier.carrier) {
 
-                       upgradeFareDiv.push(
+                       brandedFareDiv.push(
                            <div className="row">
                                <div className="col-md-12">
                                    #Passenger {pax.humanID} {brand.title}  {brand.options[pax_carrier.selection].name}
@@ -180,7 +180,7 @@ class PriceBox extends Component {
             });
 
 
-            px.upgradeFare.forEach( (fare) => {
+            px.brandedFare.forEach( (fare) => {
                 total += parseFloat(fare.price);
             });
         });
@@ -231,7 +231,7 @@ class PriceBox extends Component {
 
                         {bagsDiv}
 
-                        {upgradeFareDiv}
+                        {brandedFareDiv}
 
 
                         <div className="row">

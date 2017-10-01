@@ -196,7 +196,7 @@ class OtaStore {
             type: 'ADT',
             insuranceInfo :0,
             totalBags: 0,
-            upgradeFare: [{
+            brandedFare: [{
                 carrier: 'FR',
                 selection: 0,
                 price:0
@@ -230,7 +230,7 @@ class OtaStore {
             active: true,
             insuranceInfo :0,
             totalBags: 0,
-            upgradeFare: [{
+            brandedFare: [{
                 carrier: 'FR',
                 selection: 0,
                 price:0
@@ -311,7 +311,7 @@ class OtaStore {
         });
 
 
-        this.upgradeFare.forEach( (carrier) => {
+        this.BrandedFares.forEach( (carrier) => {
             carrier.options.forEach( (pkg) => {
                 pkg.convertedPrice = pkg.price * this.currentRate;
                 pkg.convertedPrice = pkg.convertedPrice.toFixed(2);            });
@@ -458,7 +458,7 @@ class OtaStore {
 
 
 
-    upgradeFare = [{
+    BrandedFares = [{
         key: "DNcuuXT5T9O9",
         carrier: "FR",
         title:' Ryanair',
@@ -695,7 +695,7 @@ class OtaStore {
                         active: true,
                         insuranceInfo :0,
                         totalBags: 0,
-                        upgradeFare: [{
+                        brandedFare: [{
                             carrier: 'FR',
                             selection: 0,
                             price:0
@@ -760,14 +760,14 @@ class OtaStore {
     }
 
     @action
-    buyUpgradeFare(args)
+    buyBrandedFare(args)
     {
 
-        this.passengers[args.passengerid].upgradeFare.forEach(( airline) => {
+        this.passengers[args.passengerid].brandedFare.forEach(( airline) => {
             if (airline.carrier == args.carrier) {
                 airline.selection = args.index;
 
-                this.upgradeFare.forEach( (brand) => {
+                this.BrandedFares.forEach( (brand) => {
                     if (brand.carrier == args.carrier) {
                         airline.price = brand.options[args.index].convertedPrice;
                     }
