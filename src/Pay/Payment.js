@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import Contact from './Contact';
 import Pay from './Pay';
 import PriceBox from '../Booking/PriceBox';
+import Preseat from '../Preseat/Preseat';
 
 
 class Payment extends Component {
@@ -21,7 +22,7 @@ class Payment extends Component {
                     Upsales sms checkin
 
 
-
+                    <Preseat/>
                     <Contact/>
                     <Pay/>
                 </div>
