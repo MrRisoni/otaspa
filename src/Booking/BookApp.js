@@ -59,6 +59,8 @@ class BookApp extends Component {
                     <PriceBox/>
                 </div>
 
+
+
             </div>
 
         );

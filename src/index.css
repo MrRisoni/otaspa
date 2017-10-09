@@ -4,8 +4,17 @@
     min-width: 30%;
     max-width: 30%;
     margin-top: 3%;
-
 }
+
+.seatShow {
+    position: fixed;
+    width: auto;
+    min-width: 30%;
+    max-width: 30%;
+    margin-top: 3%;
+}
+
+
 
 .loginrow {
     margin-top: 2%;
