@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import Contact from './Contact';
 import Pay from './Pay';
-import PriceBox from '../Booking/PriceBox';
+import PriceBox from '../Booking/SideBar';
 import Preseat from '../Preseat/Preseat';
 
 

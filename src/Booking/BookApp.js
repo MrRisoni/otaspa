@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { inject, observer } from 'mobx-react';
 
 
-import PriceBox from './PriceBox';
+import PriceBox from './SideBar';
 import PassengerList from './PassengerList';
 import Itinerary from './Itinerary/Itinerary';
 

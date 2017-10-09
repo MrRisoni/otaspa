@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {observer, inject} from 'mobx-react';
 
+import SeatShow from '../Preseat/SeatShow';
+
 @inject('otastore')
 @observer
-class PriceBox extends Component {
+class SideBar extends Component {
     constructor(props) {
         super(props);
 
@@ -193,6 +195,8 @@ class PriceBox extends Component {
         return (
             <div className="pricebox">
 
+                <SeatShow/>
+
                 <div className="card bg-info">
                     <div className="card-header"><b>Price Analysis </b></div>
                     <div className="card-body text-white">
@@ -228,7 +232,6 @@ class PriceBox extends Component {
 
                         {insuranceDiv}
 
-
                         {bagsDiv}
 
                         {brandedFareDiv}
@@ -256,10 +259,8 @@ class PriceBox extends Component {
                     </div>
                 </div>
             </div>
-
-
         )
     }
 }
 
-export default PriceBox;
+export default SideBar;
