@@ -8,10 +8,15 @@ class Preseat extends Component {
 
 
         let ColDiv = [];
-        for (let i = 0; i < 3; i++) {
-            // how many columns in the aircaft fuselage
-            const colIDs = ['A', 'B', 'C' ,'D'];
-            ColDiv.push(<SeatColumn key={i} colID={colIDs[i]}/>)
+        let ColHeaders = [];
+
+        const alphabet  = ['A', 'B', 'C', 'D'];
+
+        for (let i = 0; i < 4; i++) {
+            // how many columns in the aircraft fuselage
+            ColDiv.push(<SeatColumn key={i} colID={i}/>)
+
+            ColHeaders.push(<div className="col-md-3" key={alphabet[i]} >{alphabet[i]}</div> )
         }
         return (
 
@@ -21,6 +26,10 @@ class Preseat extends Component {
                     <div className="card">
                         <div className="card-header  bg-primary">Select your Seat</div>
                         <div className="card-body">
+
+                            <div className="row">
+                                {ColHeaders}
+                            </div>
 
                             <div className="row">
                                 {ColDiv}

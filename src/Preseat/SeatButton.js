@@ -11,7 +11,7 @@ class SeatButton extends Component {
 
     handleClick()
     {
-        console.log("Click seat");
+        console.log("Click seat " + this.props.col + ' ' + this.props.row);
     }
     render() {
 
@@ -20,7 +20,7 @@ class SeatButton extends Component {
         return (
 
             <div className="col-md-1">
-                <button className={classAvailability}>
+                <button onClick={this.handleClick} className={classAvailability}>
                </button>
             </div>
 
