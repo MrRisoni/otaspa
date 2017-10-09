@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 import './SeatRow.css';
 
+import SeatButton from './SeatButton';
+
 class SeatColumn extends Component {
 
     render() {
@@ -10,8 +12,8 @@ class SeatColumn extends Component {
 
         for  (let i =0; i < 3; i++)
         {
-            // how many seats in a row
-            SeatDiv.push(<div className="col-md-1">X</div>)
+            const key= "seatbut_" + this.props.colID + this.props.rowID;
+            SeatDiv.push(<SeatButton key={key}/>)
         }
 
         return (

@@ -3,7 +3,10 @@ import React, {Component} from 'react';
 import SeatRow from './SeatRow';
 
 class SeatColumn extends Component {
-
+    constructor(props)
+    {
+        super();
+    }
     render() {
 
 
@@ -11,8 +14,9 @@ class SeatColumn extends Component {
 
         for  (let i =0; i <35; i++)
         {
+            let key = "col_" + this.props.colID + "_row_" + i;
             // how many rows in the fuselage
-            RowDiv.push(<SeatRow />)
+            RowDiv.push(<SeatRow key={key} colID={this.props.colID} rowID={i}/>)
         }
 
         return (
