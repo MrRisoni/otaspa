@@ -65,7 +65,7 @@ class FareCarousel extends Component {
                                         <FontAwesome
                                             className='fa fa-backward'
                                             name='backward'
-                                            size='2x'
+                                            size='1x'
                                             style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
                                         />
                                     </button>
@@ -81,6 +81,8 @@ class FareCarousel extends Component {
                                         <div className="card-header">
 
                                             <div className="row">
+
+
                                                 <div className="col-md-7">
                                                     {this.props.data.options[this.state.index].name}
                                                 </div>
@@ -113,7 +115,7 @@ class FareCarousel extends Component {
                                         <FontAwesome
                                             className='fa fa-forward'
                                             name='forward'
-                                            size='2x'
+                                            size='1x'
                                             style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
                                         />
                                     </button>
