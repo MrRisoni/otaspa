@@ -9,4 +9,4 @@ install: npm install
 
 script: npm test
 
-before_deploy: npm run build
+after_success: npm run build
