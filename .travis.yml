@@ -1,12 +1,16 @@
 language: node_js
 
-
 node_js:
-  - "7"
 
-
+- '7'
 install: npm install
 
 script: npm test
 
-after_success: npm run start
+before_deploy: npm run build
+
+deploy:
+  provider: heroku
+  app: evening-chamber-45171
+  api_key:
+    secure: 2bB8/YLvZ1aTthGbad2JIpHUuu7ru/Mg8IL4Y/tDLvCNk4nfqKElT8Zbhz/63LZN2PFMfFNacJPCSN7yN5IxUz+aIATNh7g0MLVh59BvwmVaoQ+adDqEucQnKdufVqMqEHd8CK53ksjDTV/iPiURwErsby8zsBPIuxD6KYaf0Aorf3lsjLC/IJT7y7G8IdUgaFAj/YqIimHs/GqaHNKHCNjnK4W5NNLAJMec2fjv4XV9cvOdMnyIfjwsw+Ho7GdXPQQuT4MDSnpnGsfbZ6Gps+wx4R6S00Ty2lcLdyua2m77V+egpyv4//pSj6ovV8cmyDvhTG8FnSDqpnk8SL7LmlcdZ0rNeW/BNPmdRl2iPJcw+O/kzjwtm85NguXyWTVCjrTIjXgr3jOx+Luhj32VWhA37gxCnUksaz4JHRR36Ju5AVLF6rk45R0saYsCARbNIy5ixArYq4+QnCKBBz2A8E7/mFhUwVkRzftWImW5DNwbTYjmugkf+sR0B7PqOeh3EaZkOrAR5W7YgIZkzNLtRkmt+YYhXa40C18y2l/MyY8NxdSWb1bCJIy3E9DnIjIBc+djLO/rdA0Gnmq+wdGTjVonjlMe1v0dHNrvrjaThHCKdA6uJt5F2jmqIcBL/XY6Kf29Fj5DhRkKMVzMBwZQfjPeclqrproS5uzKlRtbf3c=
