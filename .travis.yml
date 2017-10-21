@@ -4,13 +4,13 @@ node_js:
   - "8"
 
 before_install:
-    - yarn add nwb
+    - npm i -g npm@4.2.0
 
-install: yarn install
+install: npm install
 
-script: yarn test
+script: npm test
 
-before_deploy: yarn run build
+before_deploy: npm run build
 
 deploy:
   provider: heroku
