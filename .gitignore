@@ -15,21 +15,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-/node_modules
 /.idea
 *.xml
 /bower_components
 *.mp3
 *.log
 *.env
-*.xml
-./idea
-*.xml
-/.idea/workspace.xml
-/.idea
-.idea/workspace.xml
-**/.idea/workspace.xml
-/config
 /scripts
 
 
