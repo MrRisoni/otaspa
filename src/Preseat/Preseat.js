@@ -28,6 +28,31 @@ class Preseat extends Component {
                         <div className="card-body">
 
                             <div className="row">
+
+                                <div className="col-md-12">
+                                    <div className="card">
+                                        <div className="card-header  bg-primary">Select Leg</div>
+                                        <div className="card-body">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div className="row">
+
+                                <div className="col-md-12">
+                                    <div className="card">
+                                        <div className="card-header  bg-primary">Select Leg</div>
+                                        <div className="card-body">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="row">
                                 {ColHeaders}
                             </div>
 
