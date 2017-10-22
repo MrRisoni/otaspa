@@ -1,23 +1,19 @@
 language: node_js
-
 node_js:
-  - "8"
-
+- '8'
 cache:
   directories:
-    - "node_modules"
-
+  - node_modules
 before_install:
-    - npm i -g npm@latest
-
+- npm i -g npm@latest
 install: npm install
-
 script: npm test
-
 before_deploy: npm run build
+
+
 
 deploy:
   provider: heroku
   api_key:
-    secure: "Aw/3K33mIxEHjGZLpeleUtOo/p6NoZju6oZSUR7fS5Ci55SWDsNrsvctQx9xhMIUypd0Cm9nAV+S6a8QcL0I116jpijyL+4OU+1cuOdHs9w5Sh4taDbjygYrwYwLEdmT8IY8JOUBMMZ2OJOECf+zaoGX0ikfBDCc6JrRnLgzqafrbep7zqg5aiydEMU3FVfZqfXpGp1XTz4taU0Tu50kiTLqo2xiqYBVTCWpS2Eso3/5Up4dPXZTMezSNRZURd55RLLb9iebngOwQJJPR2qua6FzM1rD6b6Ud3nTNusyilBkZNvRf6vF7p5je4EoU9Ympb48sgLiUjfVIV7FC0N0XDl7TAZhS3jlp0NGZ+mV4/Q6pHZNIRAvOTyV4IIV+zMZqS+N0co3q+QMljxRdU3181sZpFXQCX/1VPUctCZZ2jGoGoK95J+GZUl1EgYPOTHV6A6GiddGvWdq3rJO39aq4row6eQyHFVn+z9PoMcnLOh7B10K2XvGpuEa67kIP1OSGUcA8cx5Dca48HDcZgeP6HEw+0y1TKU+qLFzAy6E1dnU390widxPNzw56CUf5r2YrRdxFKVmnSskqPRTkn6STeWJB8ihq/QcN3raWD+1eaInH0KoD5GcNqvO/JRfK8e+VyAXfQof5n60WRvDfYs/yeWDN100G04pE4enKhQzz+g="
+    secure: xkjVfNnM7QtNVGMscTdKDTq5mA4QtWBEiRsngceT6YB0dGV9fb7Yx40madfPHOh3uDr3JkM4Pu+VKe6kQVOZNfdR22G3GiTJxWUKVx5ADek6ewN96wdHuaxcTFJhv3FpeL/uTXVZGBoI8zQvvXn0yS5Jj6k6968w6aLei6pablYRkIflCKR7ZOTd7H3LTepKlhnHuPQoD7vn8ri38yBfy5OuRJK0AAr2mcwztaBbcPXPZJG/2e9rOlKxd6T8CEYyl7Mco42wlGViA/rmDbhr9f2hwB5Cpj71yxdnh7hLgTbSeMmGPJO/MNuPU1tvAOm40gUVg/s+jWQdH0WlLlMDcCJP1JfcBWufDCmThfDlnEGqynwjJRpsQ/OKm/KiRcu30eF/IxoMPwyyhO+9nCmYJMjUju2OeeSBi7h9mDKCx/4U3zE4Qcm6LyHQJe1UpqtwkzmR1NYG7Uq0wwjYeDvB9VmVThPj16m31hqe+hflWXiiYz6BAmHPaPtLugGllvBQQpqdCnzghm6pw66WtozJLKrAqDJgi7T3a4ZlX1H3PHp9jHEQzlNeA+ByIKPuwNfd6NDoiBUnnsbLrU2IPZGlbXBvHNmyWtI9SuNCP+8R7BYvhzcdu1Q8yEs/WhQnV8SahfYcftSH1QIbjxzSrA9UKKowEzht8/2BxT+zX8rwTGI=
   app: evening-chamber-45171
