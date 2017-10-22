@@ -18,6 +18,14 @@ class PassengerList extends Component {
 
     render() {
 
+        let passengerDiv = [];
+
+        this.props.otastore.passengers.forEach((ps) => {
+            if (ps.active) {
+                passengerDiv.push(<Passenger key={ps.id} pap={ps}/>)
+            }
+        })
+
         return (
             <div className="row">
 
@@ -28,12 +36,7 @@ class PassengerList extends Component {
 
                         <div className="col-md-12">
 
-
-                            {this.props.otastore.passengers.map((ps) => {
-                                if (ps.active) {
-                                    return (<Passenger key={ps.id} pap={ps}/>)
-                                }
-                            })}
+                            {passengerDiv}
 
                         </div>
                     </div>

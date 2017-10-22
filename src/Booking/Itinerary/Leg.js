@@ -66,6 +66,15 @@ class Leg extends Component {
         let segments = (this.props.leg === 0) ? this.props.otastore.itinerary.depSegments : this.props.otastore.itinerary.retSegments;
 
 
+        let segmentsDiv = [];
+
+
+        segments.forEach((sg, idx) => {
+            if (this.state.showSegments) {
+                segmentsDiv.push(<Segment key={idx} segData={sg}/>);
+            }
+        })
+
         return (
 
             <div className="Leg">
@@ -116,11 +125,7 @@ class Leg extends Component {
                         </div>
 
 
-                            {segments.map((sg, idx) => {
-                                if (this.state.showSegments) {
-                                    return (<Segment key={idx} segData={sg}/>)
-                                }
-                            })}
+                        {segmentsDiv}
 
                     </div>
                 </div>

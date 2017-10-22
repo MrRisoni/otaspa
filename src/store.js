@@ -869,7 +869,8 @@ class OtaStore {
     {
         console.log('updateInsurance');
         console.log(args);
-        this.passengers[args.id].insuranceInfo= parseInt(args.insurance);
+        this.passengers[args.id].insuranceInfo= parseInt(args.insurance,10);
+
     }
 
     @action editName(args)

@@ -6,6 +6,7 @@ import BagRemoval from './BagRemoval'
 @inject('otastore')
 @observer
 class PurchasedBags extends Component {
+    // eslint-disable-next-line
     constructor(props) {
         super(props);
     }

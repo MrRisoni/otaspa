@@ -6,6 +6,7 @@ import SelectBag from './SelectBag';
 @inject('otastore')
 @observer
 class BagCarrier extends Component {
+    // eslint-disable-next-line
     constructor(props) {
         super(props);
 
