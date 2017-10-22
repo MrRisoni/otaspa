@@ -23,7 +23,7 @@ class BookApp extends Component {
     }
 
     render() {
-
+        // eslint-disable-next-line
         const { location, push, goBack } = this.props.routing;
         return (
 

@@ -140,7 +140,7 @@ class SideBar extends Component {
             pax.brandedFare.forEach( (pax_carrier) => {
 
                 this.props.otastore.BrandedFares.forEach( (brand) => {
-                   if (brand.carrier == pax_carrier.carrier) {
+                   if (brand.carrier === pax_carrier.carrier) {
 
                        brandedFareDiv.push(
                            <div className="row">

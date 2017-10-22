@@ -86,7 +86,7 @@ class Insurance extends Component {
 
                                            <input type="radio" value={ins.id}
                                                   onChange={this.handleOptionChange}
-                                                  checked={this.state.checkedInsurance == ins.id}/>
+                                                  checked={this.state.checkedInsurance === ins.id}/>
 
                                         </div>
                                         <div className="card-footer">

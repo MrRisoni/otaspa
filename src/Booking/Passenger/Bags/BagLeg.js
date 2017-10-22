@@ -19,7 +19,7 @@ class BagLeg extends Component {
         this.props.otastore.bagAllowance.forEach((bgl) => {
             this.props.legCarriers.forEach((lgc) => {
 
-                if (lgc == bgl.carrier) {
+                if (lgc === bgl.carrier) {
                     const key = bgl.title + this.props.leg;
                     bagCarrierArray.push(<BagCarrier
                         key={key}

@@ -1,4 +1,4 @@
-import {observable, action, computed} from 'mobx';
+import {observable, action} from 'mobx';
 import moment from 'moment';
 
 class OtaStore {
@@ -764,11 +764,11 @@ class OtaStore {
     {
 
         this.passengers[args.passengerid].brandedFare.forEach(( airline) => {
-            if (airline.carrier == args.carrier) {
+            if (airline.carrier === args.carrier) {
                 airline.selection = args.index;
 
                 this.BrandedFares.forEach( (brand) => {
-                    if (brand.carrier == args.carrier) {
+                    if (brand.carrier === args.carrier) {
                         airline.price = brand.options[args.index].convertedPrice;
                     }
                 });
@@ -800,7 +800,7 @@ class OtaStore {
 
                 bgl.bags.forEach((bg) => {
                     // console.log(bg);
-                    if (bg.id == args.bag_type_id) {
+                    if (bg.id === args.bag_type_id) {
                         added_bag_type.title = bg.title;
                         added_bag_type.key = bg.key;
                         console.log(bg);
@@ -853,7 +853,7 @@ class OtaStore {
 
         this.passengers[args.passengerid].bags[args.leg].types.forEach( (bgl) => {
 
-               if (bgl.id == args.bag_type_id) {
+               if (bgl.id === args.bag_type_id) {
                    bgl.count--;
                    if (bgl.count <0 ) {
                        bgl.count =0;
