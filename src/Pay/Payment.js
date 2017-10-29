@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import Contact from './Contact';
 import Pay from './Pay';
 import PriceBox from '../Booking/SideBar';
-import Preseat from '../Preseat/Preseat';
 
 
 class Payment extends Component {
@@ -15,18 +14,10 @@ class Payment extends Component {
 
                 <div className="col-md-1"></div>
 
-
-
                 <div className="col-md-6">
-
-                    Upsales sms checkin
-
-
-                    <Preseat/>
                     <Contact/>
                     <Pay/>
                 </div>
-
 
                 <div className="col-md-4">
                     <PriceBox/>

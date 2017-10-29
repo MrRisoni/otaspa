@@ -7,6 +7,7 @@ import PassengerList from './PassengerList';
 import Itinerary from './Itinerary/Itinerary';
 
 @inject('routing')
+@inject('otastore')
 @observer
 class BookApp extends Component {
 
@@ -32,7 +33,11 @@ class BookApp extends Component {
         const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
         const windowBottom = windowHeight + window.pageYOffset;
         console.log(windowBottom);
+
+        this.props.otastore.changeHeight( windowBottom);
+
     }
+
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
     }

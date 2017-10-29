@@ -1,15 +1,12 @@
 
-Single Page Application Online Travel Agency Demo
+Online Travel Agency Booking Demo
 
+Largely inspired from kiwi.com as well as other sites
 
-Largely inspired from kiwi.com
-
-Libraries : React, MobX
+Front-End Stack : React, MobX, TravisCI
+Back-End Stack (a wip ): Java,Spring,Hibernate,MongoDB
 
 URL : https://evening-chamber-45171.herokuapp.com/book
 
-Branch Description :
 
-master: React + MobX (the app in heroku)
 
-pure_react : larger version of the app with results page and with no external state management library (unfinished branch)

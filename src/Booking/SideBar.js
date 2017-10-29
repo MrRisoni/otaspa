@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {observer, inject} from 'mobx-react';
 
-import SeatShow from '../Preseat/SeatShow';
+import SeatShow from '../Upsales/Preseat/SeatShow';
 
 @inject('otastore')
 @observer
@@ -18,9 +18,8 @@ class SideBar extends Component {
         this.props.otastore.changeCurrency(ev.target.value);
     }
 
-    render() {
-
-        //
+    getBagsDiv()
+    {
         let bagsDiv = [];
 
         this.props.otastore.passengers.forEach((px) => {
@@ -106,7 +105,11 @@ class SideBar extends Component {
             bagsDiv.push(< hr key="bagsHR"/>);
         }
 
-        // *********** Insurance Div ****************
+        return bagsDiv;
+    }
+
+    getInsuranceDiv()
+    {
         let insuranceDiv = [];
 
         this.props.otastore.passengers.forEach((px) => {
@@ -133,28 +136,38 @@ class SideBar extends Component {
             insuranceDiv.push(< hr key="insuranceHR"/>);
         }
 
+    }
 
+    getBrandedFares()
+    {
         let brandedFareDiv = [];
         this.props.otastore.passengers.forEach((pax) => {
 
             pax.brandedFare.forEach( (pax_carrier) => {
 
                 this.props.otastore.BrandedFares.forEach( (brand) => {
-                   if (brand.carrier === pax_carrier.carrier) {
+                    if (brand.carrier === pax_carrier.carrier) {
 
-                       brandedFareDiv.push(
-                           <div className="row">
-                               <div className="col-md-12">
-                                   #Passenger {pax.humanID} {brand.title}  {brand.options[pax_carrier.selection].name}
-                               </div>
-                           </div>);
-                   }
+                        brandedFareDiv.push(
+                            <div className="row">
+                                <div className="col-md-12">
+                                    #Passenger {pax.humanID} {brand.title}  {brand.options[pax_carrier.selection].name}
+                                </div>
+                            </div>);
+                    }
                 });
             });
         });
+    }
 
+    render() {
 
-            // *********** Total Price ****************
+        //
+        let bagsDiv = this.getBagsDiv();
+        let insuranceDiv = this.getInsuranceDiv();
+        let brandedFareDiv = this.getBrandedFares();
+
+        // *********** Total Price ****************
 
         let total = 0;
 
@@ -192,8 +205,10 @@ class SideBar extends Component {
 
         total = total.toFixed(2);
 
+        let priceBoxStyle = {marginTop :  this.props.otastore.priceBoxMargin + '%'};
+        console.log('new pricebox style ' + priceBoxStyle);
         return (
-            <div className="pricebox">
+            <div className="pricebox" style={priceBoxStyle}>
 
                 <SeatShow/>
 

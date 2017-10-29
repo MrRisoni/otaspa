@@ -881,6 +881,14 @@ class OtaStore {
     }
 
 
+    @observable
+    priceBoxMargin =5;
+
+    @action changeHeight(newHeight){
+        this.priceBoxMargin = 34;
+    }
+
+
 
 
 }
