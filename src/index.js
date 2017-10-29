@@ -9,6 +9,7 @@ import './index.css';
 import BookApp from './Booking/BookApp';
 import SearchBundle from './Booking/Search/SearchBundle';
 import Payment from './Pay/Payment';
+import Upsales from './Upsales/Upsales';
 
 
 import OtaStore from './store';
@@ -31,6 +32,7 @@ ReactDOM.render(
             <div>
                 <Route exact path="/" component={SearchBundle}/>
                 <Route exact path="/book" component={BookApp}/>
+                <Route exact path="/upsales" component={Upsales}/>
                 <Route exact path="/pay" component={Payment}/>
                 <Route exact path="/final" component={BookApp}/>
             </div>
