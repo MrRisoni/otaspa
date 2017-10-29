@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {observer, inject} from 'mobx-react';
 
-import Passenger from './Passenger/Passenger';
+import Passenger from './Passenger';
 
 @inject('otastore')
 @observer

@@ -66,7 +66,7 @@ class BookApp extends Component {
 
                         </div>
                         <div className="col-md-4">
-                            <button className="btn btn-success btn-lg" onClick={() => push('/pay')}>Continue</button>
+                            <button className="btn btn-success btn-lg" onClick={() => push('/upsales')}>Continue</button>
 
                         </div>
 

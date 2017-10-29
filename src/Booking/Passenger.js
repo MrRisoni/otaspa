@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
-import { inject} from 'mobx-react';
-
-import Bags from './Bags/Bags';
-import Insurance from './Insurance';
-import BrandedFare from './BrandedFares/BrandedFare';
+import {inject} from 'mobx-react';
 
 
 @inject('otastore')
@@ -75,7 +71,6 @@ class Passenger extends Component {
 
                             <div className="row">
 
-
                                 <div className="col-md-2">
                                     <select className="form-control" onChange={this.handleChange}>
 
@@ -84,7 +79,6 @@ class Passenger extends Component {
                                         <option key="INF" value="INF">INF</option>
                                     </select>
                                 </div>
-
 
                                 <div className="col-md-2">
                                     <select className="form-control">
@@ -109,33 +103,26 @@ class Passenger extends Component {
 
                             </div>
 
+                        </div>
+                        }
 
-                            <Insurance  passengerid={this.props.pap.id}/>
+                        <div className="card-footer">
 
-                            <BrandedFare  passengerid={this.props.pap.id}/>
+                            <div className="row">
 
-                            <Bags passengerid={this.props.pap.id}/>
+                                <div className="col-md-4"></div>
 
-                            <div className="card-footer">
+                                <div className="col-md-4">
 
-                                <div className="row">
-
-                                    <div className="col-md-4"></div>
-
-                                    <div className="col-md-4">
-
-                                        <button className="btn btn-primary btn-sm btn-danger" onClick={this.removeMe}>
-                                            Remove this Passenger
-                                        </button>
+                                    <button className="btn btn-primary btn-sm btn-danger" onClick={this.removeMe}>
+                                        Remove this Passenger
+                                    </button>
 
 
-                                    </div>
                                 </div>
-
                             </div>
 
                         </div>
-                        }
 
 
                     </div>
