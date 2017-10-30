@@ -875,6 +875,7 @@ class OtaStore {
 
     @action editName(args)
     {
+        console.log(args);
         this.passengers[args.id].name = args.name;
         this.passengers[args.id].surname = args.surname;
 
@@ -885,8 +886,18 @@ class OtaStore {
     priceBoxMargin =5;
 
     @action changeHeight(newHeight){
-        this.priceBoxMargin = 34;
+
+        if (newHeight <= 622) {
+            this.priceBoxMargin = 5;
+        }
+        else {
+            this.priceBoxMargin = (165.0/(1200 - 622)) *( newHeight  - 622) ;
+        }
+        console.log(this.priceBoxMargin);
+
+
     }
+
 
 
 

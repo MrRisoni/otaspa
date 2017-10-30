@@ -27,12 +27,12 @@ class BookApp extends Component {
 
     handleScroll() {
         const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-        console.log(windowHeight);
+       // console.log(windowHeight);
        // const body = document.body;
        // const html = document.documentElement;
        // const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
         const windowBottom = windowHeight + window.pageYOffset;
-        console.log(windowBottom);
+        //console.log(windowBottom);
 
         this.props.otastore.changeHeight( windowBottom);
 
@@ -40,6 +40,7 @@ class BookApp extends Component {
 
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
+
     }
 
     render() {

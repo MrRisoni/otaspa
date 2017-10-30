@@ -8,12 +8,14 @@ class Passenger extends Component {
         super(props);
         this.state = {
             showMe: true,
-            label: 'Show'
+            label: 'Show',
+            surname : ''
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.removeMe = this.removeMe.bind(this);
         this.toggle = this.toggle.bind(this);
+        this.editSurname = this.editSurname.bind(this);
 
     }
 
@@ -37,6 +39,18 @@ class Passenger extends Component {
         console.log(ev.target.value);
         this.props.otastore.changePaxType({id: this.props.pap.id, type: ev.target.value});
     }
+
+    editSurname(ev) {
+        this.setState({surname: ev.target.value});
+
+        this.props.otastore.editName(
+            {
+                name: '',
+                surname: ev.target.value,
+                id: this.props.pap.id
+            });
+    }
+
 
     render() {
         return (
@@ -91,7 +105,8 @@ class Passenger extends Component {
 
                                 <div className="col-md-5">
                                     <input type="text" placeholder="Surname"
-                                           className="form-control"/>
+                                           value={this.state.surname}
+                                           onChange={this.editSurname} className="form-control"/>
                                 </div>
 
 
