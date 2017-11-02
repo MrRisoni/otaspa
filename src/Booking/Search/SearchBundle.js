@@ -1,9 +1,21 @@
 import React, {Component} from 'react';
 
 import CarCarousel from './CarCarousel';
+import OtaSpaDatePicker from './../OtaSpaDatePicker';
 
 class SearchBundle extends Component {
 
+    constructor(props)
+    {
+        super(props);
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick()
+    {
+        console.log('clicked text');
+    }
     render() {
         return (
 
@@ -14,13 +26,14 @@ class SearchBundle extends Component {
 
 
                     <div className="col-md-4">
-                        <input type="text" class="form-control" id="fromAirport" placeholder="From"/>
+                        <input type="text" className="form-control" onClick={this.handleClick} id="fromAirport" placeholder="From"/>
+                        <OtaSpaDatePicker/>
                     </div>
 
                     <div className="col-md-3"></div>
 
                     <div className="input-group col-md-4">
-                        <input type="text" class="form-control" id="toAirport" placeholder="To"/>
+                        <input type="text" className="form-control" id="toAirport" placeholder="To"/>
                     </div>
 
 
