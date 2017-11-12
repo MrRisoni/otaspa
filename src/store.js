@@ -8,6 +8,9 @@ class OtaStore {
     @observable returnRoute = 'LGW-RHO';
 
     @observable
+    priceBoxMargin =5;
+
+    @observable
     itinerary = {
         info: {
             departure: {
@@ -81,53 +84,6 @@ class OtaStore {
         ]
     };
 
-
-    @action
-    processSegments()
-    {
-        this.itinerary.info.departure.stops =  this.itinerary.depSegments.length -1;
-        this.itinerary.info.return.stops =  this.itinerary.retSegments.length -1;
-
-        this.itinerary.info.departure.waitTime = this.findDuration(this.itinerary.depSegments);
-        this.itinerary.info.return.waitTime = this.findWaitTime(this.itinerary.depSegments);
-
-        this.itinerary.info.departure.durationTime = this.findDuration(this.itinerary.retSegments);
-        this.itinerary.info.return.waitTime = this.findWaitTime(this.itinerary.retSegments);
-
-    }
-
-    findDuration(segments)
-    {
-        const depTime = moment(segments[0].depDateTime);
-        const lastseg = segments.length -1;
-        const arrTime = moment(segments[lastseg].arrDateTime);
-
-
-        let durReturn = arrTime.diff(depTime) / (1000 * 60);
-
-        return {
-            hours: Math.floor(durReturn / 60),
-            minutes: durReturn % 60
-        }
-    }
-
-    findWaitTime(segments){
-        let wait=0;
-
-        for (let s =0; s < segments.length -1; s++)
-        {
-            let depTime = moment(segments[s].depDateTime);
-            let arrTime = moment(segments[s+1].arrDateTime);
-
-            wait += arrTime.diff(depTime) / (1000 * 60);
-
-        }
-
-        return {
-            hours: Math.floor(wait / 60),
-            minutes: wait % 60
-        }
-    }
 
     @observable currencyData = [
         {
@@ -259,6 +215,7 @@ class OtaStore {
         }];
 
 
+
     @observable upsales = [
         {
             id: 0,
@@ -276,90 +233,6 @@ class OtaStore {
         }
     ];
 
-
-    @action
-    changeCurrency(cur) {
-        this.currency = cur;
-
-        this.currencyData.forEach((cd) => {
-            if (cd.trigram === cur) {
-                this.currentRate = cd.rate;
-            }
-        });
-
-
-        this.paxTypes.forEach((px) => {
-            px.convertedPrice = px.netPrice * this.currentRate;
-
-            px.convertedPrice = px.convertedPrice.toFixed(2);
-        });
-
-
-        this.bagAllowance.forEach( (bagRule) => {
-
-            bagRule.bags.forEach( (bag) => {
-                bag.convertedPrice = bag.price * this.currentRate;
-                bag.convertedPrice = bag.convertedPrice.toFixed(2);
-            });
-
-        });
-
-        this.insuranceInfo.forEach( (ins) => {
-            ins.convertedPrice = ins.price * this.currentRate;
-            ins.convertedPrice = ins.convertedPrice.toFixed(2);
-
-        });
-
-
-        this.BrandedFares.forEach( (carrier) => {
-            carrier.options.forEach( (pkg) => {
-                pkg.convertedPrice = pkg.price * this.currentRate;
-                pkg.convertedPrice = pkg.convertedPrice.toFixed(2);            });
-
-        });
-    }
-
-
-    @action
-    removePassenger(id) {
-        this.reasonPassengers = '';
-        let active_passengers = 0;
-
-
-        this.passengers.forEach((ps) => {
-            if (ps.active) {
-                active_passengers++;
-            }
-        });
-
-        if ((active_passengers - 1 ) <= 0) {
-            this.reasonPassengers = 'You must have at least one passenger'
-        }
-        else {
-
-            // check passenger limits
-
-            let type = this.passengers[id].type;
-
-            this.passengers[id].active = false;
-            this.paxTypes.forEach((px) => {
-                if (px.type === type) {
-                    px.count--;
-                }
-            });
-
-            // reorder passenger humanIDs
-            let humanID = 1;
-            this.passengers.forEach((ps) => {
-                if (ps.active) {
-                    ps.humanID = humanID;
-                    humanID++;
-                }
-            })
-
-
-        }
-    }
 
 
     @observable bagAllowance = [{
@@ -382,7 +255,7 @@ class OtaStore {
                 convertedPrice: 35,
             }
         ]
-        },
+    },
         {
             carrier: 'A3',
             title:' Aegean',
@@ -472,7 +345,7 @@ class OtaStore {
                     title: 'cancellation'
                 }]
             }
-            ]
+        ]
     },
         {
             key: "Y03dZvtTAwHr",
@@ -496,7 +369,7 @@ class OtaStore {
                         title: 'wifi'
                     }]
                 }
-                ]
+            ]
         },
         {
             key: "9Rw5nNyMb3Ot",
@@ -657,9 +530,9 @@ class OtaStore {
                             status: 'free'
                         }]
                 }
-                ]
+            ]
         }
-        ]
+    ]
 
     @observable outboundCarriers = ['FR', 'A3', 'BA'];
     @observable inboundCarriers = ['FR', 'A3'];
@@ -668,6 +541,163 @@ class OtaStore {
     @observable carriers = ['FR', 'A3', 'BA'];
 
     @observable reasonPassengers = '';
+
+    /*************  FUNCTIONS ****************/
+
+
+    passengersWithinLimits() {
+        this.reasonPassengers = '';
+
+        let adult_count = this.paxTypes[0].count;
+        let child_count = this.paxTypes[1].count;
+        let infant_count = this.paxTypes[2].count;
+
+        if (adult_count < (child_count + infant_count)) {
+            this.reasonPassengers = 'More minors than adults';
+        }
+    }
+
+    findDuration(segments)
+    {
+        const depTime = moment(segments[0].depDateTime);
+        const lastseg = segments.length -1;
+        const arrTime = moment(segments[lastseg].arrDateTime);
+
+
+        let durReturn = arrTime.diff(depTime) / (1000 * 60);
+
+        return {
+            hours: Math.floor(durReturn / 60),
+            minutes: durReturn % 60
+        }
+    }
+
+    findWaitTime(segments){
+        let wait=0;
+
+        for (let s =0; s < segments.length -1; s++)
+        {
+            let depTime = moment(segments[s].depDateTime);
+            let arrTime = moment(segments[s+1].arrDateTime);
+
+            wait += arrTime.diff(depTime) / (1000 * 60);
+
+        }
+
+        return {
+            hours: Math.floor(wait / 60),
+            minutes: wait % 60
+        }
+    }
+
+
+
+
+
+
+
+    /*************  ACTIONS ****************/
+
+    @action
+    changeCurrency(cur) {
+        this.currency = cur;
+
+        this.currencyData.forEach((cd) => {
+            if (cd.trigram === cur) {
+                this.currentRate = cd.rate;
+            }
+        });
+
+
+        this.paxTypes.forEach((px) => {
+            px.convertedPrice = px.netPrice * this.currentRate;
+
+            px.convertedPrice = px.convertedPrice.toFixed(2);
+        });
+
+
+        this.bagAllowance.forEach( (bagRule) => {
+
+            bagRule.bags.forEach( (bag) => {
+                bag.convertedPrice = bag.price * this.currentRate;
+                bag.convertedPrice = bag.convertedPrice.toFixed(2);
+            });
+
+        });
+
+        this.insuranceInfo.forEach( (ins) => {
+            ins.convertedPrice = ins.price * this.currentRate;
+            ins.convertedPrice = ins.convertedPrice.toFixed(2);
+
+        });
+
+
+        this.BrandedFares.forEach( (carrier) => {
+            carrier.options.forEach( (pkg) => {
+                pkg.convertedPrice = pkg.price * this.currentRate;
+                pkg.convertedPrice = pkg.convertedPrice.toFixed(2);            });
+
+        });
+    }
+
+
+    @action
+    removePassenger(id) {
+        this.reasonPassengers = '';
+        let active_passengers = 0;
+
+
+        this.passengers.forEach((ps) => {
+            if (ps.active) {
+                active_passengers++;
+            }
+        });
+
+        if ((active_passengers - 1 ) <= 0) {
+            this.reasonPassengers = 'You must have at least one passenger'
+        }
+        else {
+
+            // check passenger limits
+
+            let type = this.passengers[id].type;
+
+            this.passengers[id].active = false;
+            this.paxTypes.forEach((px) => {
+                if (px.type === type) {
+                    px.count--;
+                }
+            });
+
+            // reorder passenger humanIDs
+            let humanID = 1;
+            this.passengers.forEach((ps) => {
+                if (ps.active) {
+                    ps.humanID = humanID;
+                    humanID++;
+                }
+            })
+
+
+        }
+    }
+
+
+
+    @action
+    processSegments()
+    {
+        this.itinerary.info.departure.stops =  this.itinerary.depSegments.length -1;
+        this.itinerary.info.return.stops =  this.itinerary.retSegments.length -1;
+
+        this.itinerary.info.departure.waitTime = this.findDuration(this.itinerary.depSegments);
+        this.itinerary.info.return.waitTime = this.findWaitTime(this.itinerary.depSegments);
+
+        this.itinerary.info.departure.durationTime = this.findDuration(this.itinerary.retSegments);
+        this.itinerary.info.return.waitTime = this.findWaitTime(this.itinerary.retSegments);
+
+    }
+
 
     @action
     addPassenger() {
@@ -729,17 +759,7 @@ class OtaStore {
 
     }
 
-    passengersWithinLimits() {
-        this.reasonPassengers = '';
 
-        let adult_count = this.paxTypes[0].count;
-        let child_count = this.paxTypes[1].count;
-        let infant_count = this.paxTypes[2].count;
-
-        if (adult_count < (child_count + infant_count)) {
-            this.reasonPassengers = 'More minors than adults';
-        }
-    }
 
     @action
     changePaxType(args) {
@@ -882,9 +902,6 @@ class OtaStore {
     }
 
 
-    @observable
-    priceBoxMargin =5;
-
     @action changeHeight(newHeight){
 
         if (newHeight <= 622) {
@@ -897,9 +914,6 @@ class OtaStore {
 
 
     }
-
-
-
 
 
 }
