@@ -5,8 +5,8 @@ configure({ adapter: new Adapter() });
 
 import {shallow, mount, render} from 'enzyme';
 
-import PassengerList from '../PassengerList';
-import Passenger from '../Passenger';
+import PassengerList from '../Booking/PassengerList';
+import Passenger from '../Booking/Passenger';
 
 
 describe('A suite', function () {
@@ -19,7 +19,6 @@ describe('A suite', function () {
         const wrapper = mount(<PassengerList/>);
         expect(wrapper.find('.passengerCompo').length).toBe(2);
         expect(wrapper.find(Passenger).length).toBe(2);
-
     });
 
 
@@ -33,6 +32,7 @@ describe('A suite', function () {
         expect(wrapper.find('.passengerCompo').length).toBe(3);
 
     });
+
 
 
 
