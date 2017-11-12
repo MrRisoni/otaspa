@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import {inject} from 'mobx-react';
 
 
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+
+import 'react-datepicker/dist/react-datepicker.css';
+
 @inject('otastore')
 class Passenger extends Component {
     constructor(props) {
@@ -9,7 +14,8 @@ class Passenger extends Component {
         this.state = {
             showMe: true,
             label: 'Show',
-            surname : ''
+            surname : '',
+            startDate: moment()
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -139,15 +145,15 @@ class Passenger extends Component {
                             <br/>
                             <div className="row">
                                 <div className="col-md-6">
-                                    <select className="form-control" onChange={this.handleChange}>
-                                        <option key="" value="">Nationality</option>
-                                    </select>
+                                    <DatePicker  className="form-control"
+                                        selected={this.state.startDate}
+                                    />
                                 </div>
 
                                 <div className="col-md-6">
-                                    <select className="form-control" onChange={this.handleChange}>
-                                        <option key="" value="">Issue Country</option>
-                                    </select>
+                                        <DatePicker className="form-control"
+                                            selected={this.state.startDate}
+                                        />
                                 </div>
                             </div>
 

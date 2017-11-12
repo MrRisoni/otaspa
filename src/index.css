@@ -8,19 +8,6 @@
 }
 
 
-
-.loginrow {
-    margin-top: 2%;
-}
-
-.loginform {
-    margin-top: 3%;
-}
-
-.fareCarousel {
-    margin-top: 3%;
-}
-
 .preSeatPaxSelector {
     margin-bottom: 5px;
     margin-top: 5px;
@@ -70,7 +57,7 @@
     border-radius: 2px;
 }
 
-.pricebox h3 {
+.pricebox h4 {
     text-align: center;
     color: yellow;
 }

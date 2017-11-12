@@ -53,7 +53,7 @@ class BookApp extends Component {
 
                 <div className="col-md-1"></div>
 
-                <div className="col-md-6">
+                <div className="col-md-8">
 
                     <Itinerary/>
 
@@ -76,7 +76,7 @@ class BookApp extends Component {
                 </div>
 
 
-                <div className="col-md-4">
+                <div className="col-md-3">
                     <PriceBox/>
                 </div>
 

@@ -101,7 +101,7 @@ class SideBar extends Component {
 
 
         if (bagsDiv.length > 0) {
-            bagsDiv.unshift(<h3 key="bags">Bags</h3>);
+            bagsDiv.unshift(<h4 key="bags">Bags</h4>);
             bagsDiv.push(< hr key="bagsHR"/>);
         }
 
@@ -132,7 +132,7 @@ class SideBar extends Component {
         });
 
         if (insuranceDiv.length > 0) {
-            insuranceDiv.unshift(<h3 key="insurance">Insurance</h3>);
+            insuranceDiv.unshift(<h4 key="insurance">Insurance</h4>);
             insuranceDiv.push(< hr key="insuranceHR"/>);
         }
 
@@ -219,7 +219,7 @@ class SideBar extends Component {
                         <div className="row">
 
                             <div className="col-md-12">
-                                <h3>Ticket Price</h3>
+                                <h4>Ticket Price</h4>
                                 <hr/>
                             </div>
                         </div>
@@ -239,7 +239,7 @@ class SideBar extends Component {
 
                         <div className="row">
                             <div className="col-md-12">
-                                <h3>Upsales</h3>
+                                <h4>Upsales</h4>
                                 <hr/>
                             </div>
                         </div>
@@ -255,7 +255,7 @@ class SideBar extends Component {
                         <div className="row">
                             <div className="col-md-12">
 
-                                <h3> Total Price : {total} {this.props.otastore.currency} </h3>
+                                <h4> Total Price : {total} {this.props.otastore.currency} </h4>
 
                             </div>
                         </div>
