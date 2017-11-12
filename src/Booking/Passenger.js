@@ -118,6 +118,40 @@ class Passenger extends Component {
 
                             </div>
 
+
+
+                            <br/>
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <select className="form-control" onChange={this.handleChange}>
+                                        <option key="" value="">Nationality</option>
+                                    </select>
+                                </div>
+
+                                <div className="col-md-6">
+                                    <select className="form-control" onChange={this.handleChange}>
+                                        <option key="" value="">Issue Country</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <br/>
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <select className="form-control" onChange={this.handleChange}>
+                                        <option key="" value="">Nationality</option>
+                                    </select>
+                                </div>
+
+                                <div className="col-md-6">
+                                    <select className="form-control" onChange={this.handleChange}>
+                                        <option key="" value="">Issue Country</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
                         </div>
                         }
 

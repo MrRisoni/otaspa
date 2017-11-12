@@ -1,9 +1,8 @@
 on scroll down page, scroll pricebox
 clean up code
-add unit tests
+add unit tests (enzyme test)
 more routes (home, search,book,upsales,pay)
 DatePicker with prices
 Hotels
 Cars
 Preseat
-Manage My Booking
