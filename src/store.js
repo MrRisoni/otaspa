@@ -916,6 +916,13 @@ class OtaStore {
     }
 
 
+    @action
+    validatePassengers()
+    {
+        // validates passenger fields
+        return true;
+    }
+
 }
 
 

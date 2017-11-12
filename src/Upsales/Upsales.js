@@ -37,7 +37,7 @@ class Upsales extends Component {
 
                 <div className="col-md-1"></div>
 
-                <div className="col-md-6">
+                <div className="col-md-7">
                     <PassengerUpsaleList/>
 
                 </div>

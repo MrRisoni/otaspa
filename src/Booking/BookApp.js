@@ -16,7 +16,19 @@ class BookApp extends Component {
 
 
         this.moveToPay = this.moveToPay.bind(this);
+        this.moveToUpsales = this.moveToUpsales.bind(this);
+
         this.handleScroll = this.handleScroll.bind(this);
+
+    }
+
+    moveToUpsales()
+    {
+        // eslint-disable-next-line
+        const { location, push, goBack } = this.props.routing;
+        if (this.props.otastore.validatePassengers()) {
+            push('/upsales');
+        }
 
     }
 
@@ -44,8 +56,7 @@ class BookApp extends Component {
     }
 
     render() {
-        // eslint-disable-next-line
-        const { location, push, goBack } = this.props.routing;
+
         return (
 
             <div className="row">
@@ -67,7 +78,7 @@ class BookApp extends Component {
 
                         </div>
                         <div className="col-md-4">
-                            <button className="btn btn-success btn-lg" onClick={() => push('/upsales')}>Continue</button>
+                            <button className="btn btn-success btn-lg" onClick={this.moveToUpsales}>Continue</button>
 
                         </div>
 
