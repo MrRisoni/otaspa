@@ -21,10 +21,26 @@ describe('A suite', function () {
     beforeEach( () => {
         testStore = {
             passengers: [
-                {value: "todo1", id: 111, complete: false},
-                {value: "todo2", id: 222, complete: false},
-                {value: "todo3", id: 333, complete: false},
-            ]
+                {
+                    id: 0,
+                    name:'',
+                    surname:'',
+                    humanID: 1,
+                    active: true,
+                    type: 'ADT',
+                    insuranceInfo :0,
+                    totalBags: 0
+                },
+                {
+                    id: 1,
+                    name:'',
+                    surname:'',
+                    humanID: 2,
+                    active: true,
+                    insuranceInfo :0,
+                    totalBags: 0,
+                    type: 'ADT'
+                }]
         }
     });
 
