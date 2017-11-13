@@ -9,21 +9,9 @@ import PurchasedBags from './PurchasedBags';
 class Bags extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            showMe: false,
-            label: 'Show'
-        };
 
-        this.toggleMe = this.toggleMe.bind(this);
     }
 
-    toggleMe() {
-        var self = this;
-
-        let showme = !self.state.showMe;
-        let btn = (showme) ? 'Hide' : 'Show';
-        self.setState({showMe: showme, label: btn});
-    }
 
     render() {
         return (
@@ -46,44 +34,44 @@ class Bags extends Component {
 
                             <div className="col-md-2">
                                 <button className="btn btn-sm btn-dark btn-block"
-                                        onClick={this.toggleMe}> {this.state.label} </button>
+                                        data-toggle="collapse" data-target={`#bagsCollapse${this.props.passengerid}`} aria-expanded="false" aria-controls="collapseExample">
+                                     Toggle Bags </button>
                             </div>
                         </div>
 
                     </div>
 
-                    {this.state.showMe &&
+                    <div className="collapse show" id={`bagsCollapse${this.props.passengerid}`}>
 
 
-                    <div className="row">
+                            <div className="row">
 
 
-                        <BagLeg route={this.props.otastore.departRoute}
-                                passengerid={this.props.passengerid}
-                                legCarriers={this.props.otastore.outboundCarriers}
-                                leg={0}
-                        />
+                                <BagLeg route={this.props.otastore.departRoute}
+                                        passengerid={this.props.passengerid}
+                                        legCarriers={this.props.otastore.outboundCarriers}
+                                        leg={0}
+                                />
 
 
-                        <BagLeg route={this.props.otastore.returnRoute}
-                                passengerid={this.props.passengerid}
-                                legCarriers={this.props.otastore.inboundCarriers}
-                                leg={1}
-                        />
+                                <BagLeg route={this.props.otastore.returnRoute}
+                                        passengerid={this.props.passengerid}
+                                        legCarriers={this.props.otastore.inboundCarriers}
+                                        leg={1}
+                                />
+
+                            </div>
+
+
+                            <div className="row">
+                                <PurchasedBags leg={0} passengerid={this.props.passengerid}
+                                />
+
+                                <PurchasedBags leg={1} passengerid={this.props.passengerid}
+                                />
+                            </div>
 
                     </div>
-                    }
-
-                    {this.state.showMe &&
-
-
-                    <div className="row">
-                        <PurchasedBags leg={0} passengerid={this.props.passengerid}
-                        />
-
-                        <PurchasedBags leg={1} passengerid={this.props.passengerid}
-                        />
-                    </div>}
 
 
                 </div>
