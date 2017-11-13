@@ -33,6 +33,7 @@ ReactDOM.render(
                 <Route exact path="/" component={SearchBundle}/>
                 <Route exact path="/passengers" component={BookApp}/>
                 <Route exact path="/upsales" component={Upsales}/>
+                <Route exact path="/preseat" component={Upsales}/>
                 <Route exact path="/pay" component={Payment}/>
                 <Route exact path="/final" component={BookApp}/>
             </div>

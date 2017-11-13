@@ -41,7 +41,7 @@ class Bags extends Component {
 
                     </div>
 
-                    <div className="collapse show" id={`bagsCollapse${this.props.passengerid}`}>
+                    <div className="collapse " id={`bagsCollapse${this.props.passengerid}`}>
 
 
                             <div className="row">

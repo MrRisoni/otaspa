@@ -56,7 +56,7 @@ class BrandedFare extends Component {
                         </div>
 
 
-                        <div className="collapse show" id={`brandedCollapse${this.props.passengerid}`}>
+                        <div className="collapse" id={`brandedCollapse${this.props.passengerid}`}>
 
                             {this.props.otastore.BrandedFares.map((fare) => {
                                     return (<FareCarousel key={fare.key}

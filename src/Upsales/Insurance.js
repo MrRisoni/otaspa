@@ -63,7 +63,7 @@ class Insurance extends Component {
                     </div>
                 </div>
 
-                <div className="collapse show" id={`insuranceCollapse${this.props.passengerid}`}>
+                <div className="collapse" id={`insuranceCollapse${this.props.passengerid}`}>
 
                     <div className="row">
                         <div className="col-md-12">

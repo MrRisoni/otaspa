@@ -30,9 +30,9 @@ class PassengerUpsale extends Component {
 
                             <Insurance passengerid={this.props.pap.id}/>
 
-                                {/*     <BrandedFare  passengerid={this.props.pap.id}/>
+                             <BrandedFare  passengerid={this.props.pap.id}/>
 
-                        <Bags passengerid={this.props.pap.id}/>*/}
+                            <Bags passengerid={this.props.pap.id}/>
 
 
 
