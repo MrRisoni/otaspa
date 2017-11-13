@@ -148,14 +148,14 @@ class Passenger extends Component {
                             <br/>
                             <div className="row">
                                 <div className="col-md-6">
-                                    <label for="birthday">BirthDate</label>
+                                    <label htmlFor="birthday">BirthDate</label>
                                     <DatePicker  className="form-control"
                                         selected={this.state.startDate}
                                     />
                                 </div>
 
                                 <div className="col-md-6">
-                                    <label for="birthday">Expiration Date</label>
+                                    <label htmlFor="birthday">Expiration Date</label>
                                         <DatePicker className="form-control"
                                             selected={this.state.startDate}
                                         />

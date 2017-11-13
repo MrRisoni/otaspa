@@ -13,22 +13,9 @@ class Leg extends Component {
     constructor(props) {
         super();
 
-        this.state = {
-            showSegments : false,
-            label: 'Show'
-        };
         this.getAirportData = this.getAirportData.bind(this);
-        this.toggle = this.toggle.bind(this);
 
     }
-
-    toggle() {
-        var self = this;
-        const show = !self.state.showSegments;
-        const label = (show) ? 'Hide' : 'Show';
-        self.setState({showSegments: show, label: label});
-    }
-
 
     getAirportData(segments) {
 
@@ -62,18 +49,13 @@ class Leg extends Component {
 
         let obj = (this.props.leg === 0) ? this.getAirportData(this.props.otastore.itinerary.depSegments) : this.getAirportData(this.props.otastore.itinerary.retSegments);
 
-
         let segments = (this.props.leg === 0) ? this.props.otastore.itinerary.depSegments : this.props.otastore.itinerary.retSegments;
-
 
         let segmentsDiv = [];
 
-
         segments.forEach((sg, idx) => {
-            if (this.state.showSegments) {
-                segmentsDiv.push(<Segment key={idx} segData={sg}/>);
-            }
-        })
+            segmentsDiv.push(<Segment key={idx} segData={sg}/>);
+        });
 
         return (
 
@@ -100,7 +82,10 @@ class Leg extends Component {
                                      date={obj.arrDate}/>
 
                             <div className="col-md-2">
-                                <button className="btn btn-sm btn-primary" onClick={this.toggle}>{this.state.label}</button>
+                                <button className="btn btn-sm btn-primary"
+                                data-toggle="collapse" data-target={`#segmentsCollapse${this.props.leg}`} aria-expanded="false" aria-controls="collapseExample">
+                                Toggle Segments
+                                </button>
                             </div>
 
                         </div>
@@ -125,7 +110,9 @@ class Leg extends Component {
                         </div>
 
 
-                        {segmentsDiv}
+                        <div className="collapse" id={`segmentsCollapse${this.props.leg}`}>
+                            {segmentsDiv}
+                        </div>
 
                     </div>
                 </div>
