@@ -927,7 +927,7 @@ class OtaStore {
     validateNameSurname(input)
     {
 
-        return false;
+        return input.search(/[^a-zA-Z]+/) === -1;
     }
 
 }

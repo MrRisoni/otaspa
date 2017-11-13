@@ -13,13 +13,22 @@ class Passenger extends Component {
         super(props);
         this.state = {
             surname : '',
-            startDate: moment(),
-            errorStyle : {}
+            name: '',
+            startDate: moment()
+
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.removeMe = this.removeMe.bind(this);
         this.editSurname = this.editSurname.bind(this);
+        this.editName = this.editName.bind(this);
+
+        this.addBadStyle = this.addBadStyle.bind(this);
+        this.addGoodStyle = this.addGoodStyle.bind(this);
+
+
+
+
 
     }
 
@@ -43,6 +52,8 @@ class Passenger extends Component {
 
         if (this.props.otastore.validateNameSurname(fieldInput)) {
 
+
+
             this.props.otastore.editName(
             {
                 name: '',
@@ -50,14 +61,61 @@ class Passenger extends Component {
                 id: this.props.pap.id
             });
 
+            this.addGoodStyle(document.getElementById('#paxSurame' + this.props.pap.id));
+
 
         }
         else {
-            this.setState({errorStyle: { color: 'red', 'border-width' : 'thick',
-            'border-style' : 'solid', 'border-color': 'red'}});
+            this.addBadStyle(document.getElementById('#paxSurname' + this.props.pap.id));
         }
     }
 
+    editName(ev) {
+        const fieldInput =  ev.target.value.toUpperCase();
+
+        this.setState({name: fieldInput});
+
+       // console.log(document.getElementById('#paxSurname' + this.props.pap.id));
+
+
+        if (this.props.otastore.validateNameSurname(fieldInput)) {
+
+
+
+            this.props.otastore.editName(
+                {
+                    name: '',
+                    surname: fieldInput,
+                    id: this.props.pap.id
+                });
+
+            //document.getElementById('#paxSurname' + this.props.pap.id).style.color = 'red';
+            this.addGoodStyle(document.getElementById('#paxName' + this.props.pap.id));
+        }
+        else {
+            this.addBadStyle(document.getElementById('#paxName' + this.props.pap.id));
+        }
+    }
+
+    addBadStyle(elm)
+    {
+        // console.log(document.getElementById('#paxSurname' + this.props.pap.id));
+        console.log(elm);
+        elm.style.color = 'red';
+
+       /* badStyle: { color: 'red', 'border-width' : 'thick',
+            'border-style' : 'solid', 'border-color': 'red'}*/
+    }
+
+    addGoodStyle(elm)
+    {
+        console.log(elm);
+        elm.style.color = 'black';
+/*
+        goodStyle : { color: '', 'border-width' : '0px',
+            'border-style' : '', 'border-color': ''},*/
+
+    }
 
     render() {
         return (
@@ -111,17 +169,18 @@ class Passenger extends Component {
 
 
                                 <div className="col-md-5">
-                                    <input type="text" placeholder="Surname" id={`#paxSurname${this.props.pap.id}`}
+                                    <input type="text" placeholder="Surname"
+                                           id={`#paxSurname${this.props.pap.id}`}
                                            value={this.state.surname}
-                                           style={this.state.errorStyle}
                                            onChange={this.editSurname} className="form-control"/>
 
                                 </div>
 
 
                                 <div className="col-md-3">
-                                    <input type="text" placeholder="Name"
-                                           className="form-control"/>
+                                    <input type="text" placeholder="Name" id={`#paxName${this.props.pap.id}`}
+                                           value={this.state.name}
+                                           onChange={this.editName} className="form-control"/>
 
                                 </div>
 
