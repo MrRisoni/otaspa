@@ -44,7 +44,10 @@ class BrandedFare extends Component {
 
                                 <div className="col-md-2">
                                     <button className="btn btn-sm btn-dark btn-block"
-                                            onClick={this.toggleMe}> {this.state.label} </button>
+                                        data-toggle="collapse"
+                                        data-target={`#brandedCollapse${this.props.passengerid}`}
+                                        aria-expanded="false" aria-controls="collapseExample">
+                                        Toggle </button>
                                 </div>
 
 
@@ -52,12 +55,17 @@ class BrandedFare extends Component {
 
                         </div>
 
+
+                        <div className="collapse show" id={`brandedCollapse${this.props.passengerid}`}>
+
                             {this.props.otastore.BrandedFares.map((fare) => {
-                                return (<FareCarousel key={fare.key}
-                                                      data={fare}
-                                                      passengerid={this.props.passengerid}
-                                />);
-                            })}
+                                    return (<FareCarousel key={fare.key}
+                                                          data={fare}
+                                                          passengerid={this.props.passengerid}
+                                    />);
+                                })}
+
+                        </div>
 
                     </div>
                 </div>
