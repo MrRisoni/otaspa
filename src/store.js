@@ -923,6 +923,13 @@ class OtaStore {
         return true;
     }
 
+    @action
+    validateNameSurname(input)
+    {
+
+        return false;
+    }
+
 }
 
 

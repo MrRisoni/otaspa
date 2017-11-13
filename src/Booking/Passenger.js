@@ -13,7 +13,8 @@ class Passenger extends Component {
         super(props);
         this.state = {
             surname : '',
-            startDate: moment()
+            startDate: moment(),
+            errorStyle : {}
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -36,14 +37,25 @@ class Passenger extends Component {
     }
 
     editSurname(ev) {
-        this.setState({surname: ev.target.value});
+        const fieldInput =  ev.target.value.toUpperCase();
 
-        this.props.otastore.editName(
+        this.setState({surname: fieldInput});
+
+        if (this.props.otastore.validateNameSurname(fieldInput)) {
+
+            this.props.otastore.editName(
             {
                 name: '',
-                surname: ev.target.value,
+                surname: fieldInput,
                 id: this.props.pap.id
             });
+
+
+        }
+        else {
+            this.setState({errorStyle: { color: 'red', 'border-width' : 'thick',
+            'border-style' : 'solid', 'border-color': 'red'}});
+        }
     }
 
 
@@ -82,7 +94,7 @@ class Passenger extends Component {
 
                                 <div className="col-md-2">
                                     <select className="form-control" onChange={this.handleChange}>
-
+                                        <option key="" value="">Age Group</option>
                                         <option key="ADT" value="ADT">ADT</option>
                                         <option key="CNN" value="CNN">CNN</option>
                                         <option key="INF" value="INF">INF</option>
@@ -99,9 +111,11 @@ class Passenger extends Component {
 
 
                                 <div className="col-md-5">
-                                    <input type="text" placeholder="Surname"
+                                    <input type="text" placeholder="Surname" id={`#paxSurname${this.props.pap.id}`}
                                            value={this.state.surname}
+                                           style={this.state.errorStyle}
                                            onChange={this.editSurname} className="form-control"/>
+
                                 </div>
 
 
@@ -134,12 +148,14 @@ class Passenger extends Component {
                             <br/>
                             <div className="row">
                                 <div className="col-md-6">
+                                    <label for="birthday">BirthDate</label>
                                     <DatePicker  className="form-control"
                                         selected={this.state.startDate}
                                     />
                                 </div>
 
                                 <div className="col-md-6">
+                                    <label for="birthday">Expiration Date</label>
                                         <DatePicker className="form-control"
                                             selected={this.state.startDate}
                                         />

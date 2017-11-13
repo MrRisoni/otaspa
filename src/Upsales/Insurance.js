@@ -7,7 +7,7 @@ class Insurance extends Component {
     constructor(props) {
         super(props);
         this.state = {
-             checkedInsurance: 1
+            checkedInsurance: 1
         };
 
         this.handleOptionChange = this.handleOptionChange.bind(this);
@@ -31,10 +31,10 @@ class Insurance extends Component {
     render() {
         return (
 
-            <div className="insuranceCard">
 
                 <div className="row">
                     <div className="col-md-12">
+                        <div className="insuranceCard">
 
 
                         <div className="alert alert-success" role="alert">
@@ -52,14 +52,22 @@ class Insurance extends Component {
                                             data-toggle="collapse"
                                             data-target={`#insuranceCollapse${this.props.passengerid}`}
                                             aria-expanded="false" aria-controls="collapseExample">
-                                        Toggle insurance </button>
+                                        Toggle
+                                    </button>
                                 </div>
 
                             </div>
 
                         </div>
 
-                        <div className="collapse show" id={`insuranceCollapse${this.props.passengerid}`}>
+                    </div>
+                </div>
+
+                <div className="collapse show" id={`insuranceCollapse${this.props.passengerid}`}>
+
+                    <div className="row">
+                        <div className="col-md-12">
+
 
                             <div className="row">
 
@@ -92,9 +100,13 @@ class Insurance extends Component {
                             </div>
 
                         </div>
+
                     </div>
 
                 </div>
+
+
+
             </div>
 
         );

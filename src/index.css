@@ -33,9 +33,12 @@
 }
 
 
-.passengerCompo, .contactDetails , .paymentDetails, .Leg{
+.passengerCompo, .contactDetails , .paymentDetails, .Leg, .passengerUpsaleCompo
+{
     margin-top: 3%;
 }
+
+
 
 .addOnePassenger {
     margin-top: 2%;

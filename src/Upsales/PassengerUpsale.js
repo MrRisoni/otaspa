@@ -11,32 +11,36 @@ class PassengerUpsale extends Component {
     render() {
         return (
 
-            <div className="card bg-light">
-                <div className="card-header">
+            <div className="row passengerUpsaleCompo">
+                <div className="col-md-12">
 
-                    <div className="row">
+                    <div className="card bg-light">
+                        <div className="card-header">
 
-                        <div className="col-md-5">
-                            Passenger # {this.props.pap.humanID}
+                            <div className="row">
 
-                            {this.props.pap.surname}
+                                <div className="col-md-5">
+                                    Passenger # {this.props.pap.humanID}
+
+                                    {this.props.pap.surname}
+                                </div>
+
+                            </div>
+
+
+                            <Insurance passengerid={this.props.pap.id}/>
+
+                                {/*     <BrandedFare  passengerid={this.props.pap.id}/>
+
+                        <Bags passengerid={this.props.pap.id}/>*/}
+
+
+
                         </div>
-
-                        {this.props.pap.surname}
-
-
-                        <Insurance  passengerid={this.props.pap.id}/>
-
-                        <BrandedFare  passengerid={this.props.pap.id}/>
-
-                        <Bags passengerid={this.props.pap.id}/>
-
-
                     </div>
+
                 </div>
             </div>
-
-
 
 
         );
