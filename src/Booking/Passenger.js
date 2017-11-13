@@ -12,28 +12,17 @@ class Passenger extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showMe: true,
-            label: 'Show',
             surname : '',
             startDate: moment()
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.removeMe = this.removeMe.bind(this);
-        this.toggle = this.toggle.bind(this);
         this.editSurname = this.editSurname.bind(this);
 
     }
 
 
-    toggle() {
-        var self = this;
-        const show = !self.state.showMe;
-        const label = (show) ? 'Hide' : 'Show';
-
-        self.setState({showMe: show, label: label});
-
-    }
 
     removeMe() {
         this.props.otastore.removePassenger(this.props.pap.id);
@@ -77,17 +66,17 @@ class Passenger extends Component {
 
                                 <div className="col-md-2">
                                     <button className="btn btn-sm btn-dark btn-block"
-                                            onClick={this.toggle}> {this.state.label} </button>
+                                            data-toggle="collapse" data-target={`#passengerCollapse${this.props.pap.id}`} aria-expanded="false" aria-controls="collapseExample">
+                                            Toggle </button>
                                 </div>
 
                             </div>
                         </div>
 
 
-                        {this.state.showMe &&
+                        <div className="collapse show" id={`passengerCollapse${this.props.pap.id}`}>
 
-
-                        <div className="card-body">
+                                <div className="card-body">
 
                             <div className="row">
 
@@ -159,7 +148,8 @@ class Passenger extends Component {
 
 
                         </div>
-                        }
+
+                        </div>
 
                         <div className="card-footer">
 
