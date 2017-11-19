@@ -12,7 +12,7 @@ class Passenger extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            surname : '',
+            surname: '',
             name: '',
             startDate: moment()
 
@@ -27,11 +27,7 @@ class Passenger extends Component {
         this.addGoodStyle = this.addGoodStyle.bind(this);
 
 
-
-
-
     }
-
 
 
     removeMe() {
@@ -46,20 +42,19 @@ class Passenger extends Component {
     }
 
     editSurname(ev) {
-        const fieldInput =  ev.target.value.toUpperCase();
+        const fieldInput = ev.target.value.toUpperCase();
 
         this.setState({surname: fieldInput});
 
         if (this.props.otastore.validateNameSurname(fieldInput)) {
 
 
-
             this.props.otastore.editName(
-            {
-                name: '',
-                surname: fieldInput,
-                id: this.props.pap.id
-            });
+                {
+                    name: '',
+                    surname: fieldInput,
+                    id: this.props.pap.id
+                });
 
             this.addGoodStyle(document.getElementById('#paxSurame' + this.props.pap.id));
 
@@ -71,15 +66,14 @@ class Passenger extends Component {
     }
 
     editName(ev) {
-        const fieldInput =  ev.target.value.toUpperCase();
+        const fieldInput = ev.target.value.toUpperCase();
 
         this.setState({name: fieldInput});
 
-       // console.log(document.getElementById('#paxSurname' + this.props.pap.id));
+        // console.log(document.getElementById('#paxSurname' + this.props.pap.id));
 
 
         if (this.props.otastore.validateNameSurname(fieldInput)) {
-
 
 
             this.props.otastore.editName(
@@ -97,23 +91,21 @@ class Passenger extends Component {
         }
     }
 
-    addBadStyle(elm)
-    {
+    addBadStyle(elm) {
         // console.log(document.getElementById('#paxSurname' + this.props.pap.id));
         console.log(elm);
         elm.style.color = 'red';
 
-       /* badStyle: { color: 'red', 'border-width' : 'thick',
-            'border-style' : 'solid', 'border-color': 'red'}*/
+        /* badStyle: { color: 'red', 'border-width' : 'thick',
+             'border-style' : 'solid', 'border-color': 'red'}*/
     }
 
-    addGoodStyle(elm)
-    {
+    addGoodStyle(elm) {
         console.log(elm);
         elm.style.color = 'black';
-/*
-        goodStyle : { color: '', 'border-width' : '0px',
-            'border-style' : '', 'border-color': ''},*/
+        /*
+                goodStyle : { color: '', 'border-width' : '0px',
+                    'border-style' : '', 'border-color': ''},*/
 
     }
 
@@ -136,8 +128,11 @@ class Passenger extends Component {
 
                                 <div className="col-md-2">
                                     <button className="btn btn-sm btn-dark btn-block"
-                                            data-toggle="collapse" data-target={`#passengerCollapse${this.props.pap.id}`} aria-expanded="false" aria-controls="collapseExample">
-                                            Toggle </button>
+                                            data-toggle="collapse"
+                                            data-target={`#passengerCollapse${this.props.pap.id}`} aria-expanded="false"
+                                            aria-controls="collapseExample">
+                                        Toggle
+                                    </button>
                                 </div>
 
                             </div>
@@ -146,83 +141,98 @@ class Passenger extends Component {
 
                         <div className="collapse show" id={`passengerCollapse${this.props.pap.id}`}>
 
-                                <div className="card-body">
+                            <div className="card-body">
 
-                            <div className="row">
+                                <div className="row">
 
-                                <div className="col-md-2">
-                                    <select className="form-control" onChange={this.handleChange}>
-                                        <option key="" value="">Age Group</option>
-                                        <option key="ADT" value="ADT">ADT</option>
-                                        <option key="CNN" value="CNN">CNN</option>
-                                        <option key="INF" value="INF">INF</option>
-                                    </select>
+                                    <div className="col-md-2">
+                                        <select className="form-control" onChange={this.handleChange}>
+                                            <option key="" value="">Age Group</option>
+                                            <option key="ADT" value="ADT">ADT</option>
+                                            <option key="CNN" value="CNN">CNN</option>
+                                            <option key="INF" value="INF">INF</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="col-md-2">
+                                        <select className="form-control">
+                                            <option value="">Gender</option>
+                                            <option value="MR">Male</option>
+                                            <option value="MS">Female</option>
+                                        </select>
+                                    </div>
+
+
+                                    <div className="col-md-5">
+                                        <input type="text" placeholder="Surname"
+                                               id={`#paxSurname${this.props.pap.id}`}
+                                               value={this.state.surname}
+                                               onChange={this.editSurname} className="form-control"/>
+
+                                    </div>
+
+
+                                    <div className="col-md-3">
+                                        <input type="text" placeholder="Name" id={`#paxName${this.props.pap.id}`}
+                                               value={this.state.name}
+                                               onChange={this.editName} className="form-control"/>
+
+                                    </div>
+
                                 </div>
 
-                                <div className="col-md-2">
-                                    <select className="form-control">
-                                        <option value="">Gender</option>
-                                        <option value="MR">Male</option>
-                                        <option value="MS">Female</option>
-                                    </select>
-                                </div>
-
-
-                                <div className="col-md-5">
-                                    <input type="text" placeholder="Surname"
-                                           id={`#paxSurname${this.props.pap.id}`}
-                                           value={this.state.surname}
-                                           onChange={this.editSurname} className="form-control"/>
-
-                                </div>
-
-
-                                <div className="col-md-3">
-                                    <input type="text" placeholder="Name" id={`#paxName${this.props.pap.id}`}
-                                           value={this.state.name}
-                                           onChange={this.editName} className="form-control"/>
-
-                                </div>
-
-                            </div>
-
-
-
-                            <br/>
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <select className="form-control" onChange={this.handleChange}>
-                                        <option key="" value="">Nationality</option>
-                                    </select>
-                                </div>
-
-                                <div className="col-md-6">
-                                    <select className="form-control" onChange={this.handleChange}>
-                                        <option key="" value="">Issue Country</option>
-                                    </select>
-                                </div>
-                            </div>
-
-
-                            <br/>
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <label htmlFor="birthday">BirthDate</label>
-                                    <DatePicker  className="form-control"
-                                        selected={this.state.startDate}
-                                    />
-                                </div>
-
-                                <div className="col-md-6">
-                                    <label htmlFor="birthday">Expiration Date</label>
+                                <br/>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <label htmlFor="birthday">BirthDate</label>
                                         <DatePicker className="form-control"
-                                            selected={this.state.startDate}
+                                                    selected={this.state.startDate}
                                         />
+                                    </div>
+
                                 </div>
+
+                                <button className="btn btn-primary" type="button" data-toggle="collapse" data-target=".collapsePassports" aria-expanded="false" aria-controls="collapsePassports">
+                                    Button with data-target
+                                </button>
+
+                                <div className="collapsePassports">
+
+                                    <br/>
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <select className="form-control" onChange={this.handleChange}>
+                                                <option key="" value="">Nationality</option>
+                                            </select>
+                                        </div>
+
+                                        <div className="col-md-6">
+                                            <select className="form-control" onChange={this.handleChange}>
+                                                <option key="" value="">Issue Country</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <br/>
+                                    <div className="row">
+
+                                        <div className="col-md-6">
+                                            <input type="text" placeholder="Passport No"
+                                                   className="form-control"/>
+                                        </div>
+
+                                        <div className="col-md-6">
+                                            <label htmlFor="birthday">Expiration Date</label>
+                                            <DatePicker className="form-control"
+                                                        selected={this.state.startDate}
+                                            />
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
-
-
-                        </div>
 
                         </div>
 
