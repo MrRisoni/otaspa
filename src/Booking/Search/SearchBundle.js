@@ -5,50 +5,55 @@ import OtaSpaDatePicker from './../OtaSpaDatePicker';
 
 class SearchBundle extends Component {
 
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
 
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick()
-    {
+    handleClick() {
         console.log('clicked text');
     }
+
     render() {
         return (
 
-            <div>
 
+            <div className="row searchBar">
 
-                <div className="row">
+                <div className="col-md-1"></div>
 
+                <div className="col-md-2">
+                    <input type="text" className="form-control" onClick={this.handleClick} id="fromAirport"
+                           placeholder="From"/>
+                    {/* <OtaSpaDatePicker/> */}
+                </div>
 
-                    <div className="col-md-4">
-                        <input type="text" className="form-control" onClick={this.handleClick} id="fromAirport" placeholder="From"/>
-                        <OtaSpaDatePicker/>
-                    </div>
-
-                    <div className="col-md-3"></div>
-
-                    <div className="input-group col-md-4">
-                        <input type="text" className="form-control" id="toAirport" placeholder="To"/>
-                    </div>
-
-
+                <div className=" col-md-2">
+                    <input type="text" className="form-control" id="toAirport" placeholder="To"/>
                 </div>
 
 
-                <CarCarousel />
+                <div className=" col-md-2">
+                    <input type="text" className="form-control" id="depDate" placeholder="Departure"/>
+                </div>
 
+
+                <div className=" col-md-2">
+                    <input type="text" className="form-control" id="retDate" placeholder="Return"/>
+                </div>
+
+
+                <div className=" col-md-2">
+                    <input type="text" className="form-control" id="cabClass" placeholder="Class & Passengers"/>
+                </div>
             </div>
 
 
-    );
+        );
     }
-    }
+}
 
-    export default SearchBundle;
+export default SearchBundle;
 
 

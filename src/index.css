@@ -3,6 +3,14 @@
     min-width: 30%;
 }
 
+.searchBar {
+    margin-top: 15%;
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #bfc9ff;
+    margin-left: 2%;
+    margin-right: 2%
+}
 .seatShow {
     margin-bottom: 3%;
 }
