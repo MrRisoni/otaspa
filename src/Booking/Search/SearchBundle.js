@@ -4,6 +4,7 @@ import CarCarousel from './CarCarousel';
 import OtaSpaDatePicker from './../OtaSpaDatePicker';
 import SearchBar from "./SearchBar";
 import SimpleExample from "./SimpleExample";
+import AirlineFlasher from "./AirlineFlasher";
 
 
 class SearchBundle extends Component {
@@ -25,6 +26,7 @@ class SearchBundle extends Component {
 
             <div>
                 <SearchBar/>
+                <AirlineFlasher/>
                 <SimpleExample/>
             </div>
 
