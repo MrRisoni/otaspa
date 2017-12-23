@@ -23,7 +23,7 @@ class PassengerList extends Component {
         let countriesList = [];
 
         {this.props.otastore.countries.map( (country) => {
-            countriesList.push(<option key={country.code} value={country.name}>{country.name}</option>);
+            countriesList.push(<option key={country.code} value={country.code}>{country.name}</option>);
         })}
 
 

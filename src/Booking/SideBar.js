@@ -206,7 +206,7 @@ class SideBar extends Component {
         total = total.toFixed(2);
 
         let priceBoxStyle = {marginTop :  this.props.otastore.priceBoxMargin + '%'};
-        console.log('new pricebox style ' + priceBoxStyle);
+      //  console.log('new pricebox style ' + priceBoxStyle);
         return (
             <div className="pricebox" style={priceBoxStyle}>
 

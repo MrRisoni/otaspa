@@ -16,8 +16,8 @@ class Passenger extends Component {
         this.state = {
             surname: '',
             name: '',
-            startDate: moment()
-
+            dob: moment(),
+            expires: moment()
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -27,8 +27,11 @@ class Passenger extends Component {
 
 
         this.editPassport= this.editPassport.bind(this);
-        this.editNation = this.editNation.bind(this);
-        this.editIssue = this.editIssue.bind(this);
+        this.changeNation = this.changeNation.bind(this);
+        this.changeIssue = this.changeIssue.bind(this);
+
+        this.changeDOB = this.changeDOB(this);
+        this.changeExpiry= this.changeExpiry(this);
 
 
         this.addBadStyle = this.addBadStyle.bind(this);
@@ -37,6 +40,7 @@ class Passenger extends Component {
         console.log('Pax Combo Constructor');
         console.log(this.props.otastore.countries.length);
     }
+
 
 
     removeMe() {
@@ -64,15 +68,50 @@ class Passenger extends Component {
 
     }
 
-    editNation(ev)
+    changeNation(ev)
     {
         const fieldInput = ev.target.value.toUpperCase();
+        console.log(fieldInput);
+
+        this.props.otastore.editPaxElement(
+            {
+                value: fieldInput,
+                property: 'nationality',
+                id: this.props.pap.id
+            });
+
     }
 
-    editIssue(ev)
+    changeIssue(ev)
     {
         const fieldInput = ev.target.value.toUpperCase();
+        console.log(fieldInput);
+
+        this.props.otastore.editPaxElement(
+            {
+                value: fieldInput,
+                property: 'issue',
+                id: this.props.pap.id
+            });
     }
+
+    changeDOB(date)
+    {
+        console.log(date);
+        this.setState({
+            dob: date
+        });
+    }
+
+
+    changeExpiry(date)
+    {
+        console.log(date);
+        this.setState({
+            expires: date
+        });
+    }
+
 
     editSurname(ev) {
         const fieldInput = ev.target.value.toUpperCase();
@@ -230,7 +269,8 @@ class Passenger extends Component {
                                     <div className="col-md-6">
                                         <label htmlFor="birthday">BirthDate</label>
                                         <DatePicker className="form-control"
-                                                    selected={this.state.startDate}
+                                                    selected={this.state.dob}
+                                                    onChange={this.changeDOB}
                                         />
                                     </div>
 
@@ -245,14 +285,14 @@ class Passenger extends Component {
                                     <br/>
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <select className="form-control" onChange={this.handleChange}>
+                                            <select className="form-control" onChange={this.changeNation}>
                                                 <option key="" value="">Nationality</option>
                                                 {this.props.countriesList}
                                             </select>
                                         </div>
 
                                         <div className="col-md-6">
-                                            <select className="form-control" onChange={this.handleChange}>
+                                            <select className="form-control" onChange={this.changeIssue}>
                                                 <option key="" value="">Issue Country</option>
                                                 {this.props.countriesList}
                                             </select>
@@ -271,8 +311,9 @@ class Passenger extends Component {
 
                                         <div className="col-md-6">
                                             <label htmlFor="birthday">Expiration Date</label>
-                                            <DatePicker className="form-control"
-                                                        selected={this.state.startDate}
+                                            <DatePicker
+                                                        selected={this.state.expires}
+                                                        onChange={this.changeExpiry}
                                             />
                                         </div>
                                     </div>

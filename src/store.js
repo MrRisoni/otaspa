@@ -740,6 +740,11 @@ class OtaStore {
                         active: true,
                         insuranceInfo :0,
                         totalBags: 0,
+                        dob:'',
+                        passport:'',
+                        issue:'',
+                        nationality:'',
+                        expires:'',
                         brandedFare: [{
                             carrier: 'FR',
                             selection: 0,
@@ -925,8 +930,6 @@ class OtaStore {
         else {
             this.priceBoxMargin = (165.0/(1200 - 622)) *( newHeight  - 622) ;
         }
-        console.log(this.priceBoxMargin);
-
 
     }
 
