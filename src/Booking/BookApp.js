@@ -59,7 +59,10 @@ class BookApp extends Component {
         var self = this;
         console.log('mounting...');
 
-        axios.get('http://localhost:4800/api/countries')
+        let api = process.env.BACK_END_URL || 'http://localhost:4800';
+        console.log(api);
+
+        axios.get(api + '/api/countries')
             .then(function (response) {
                 console.log(response.data);
                 self.props.otastore.setCountries(response.data);
