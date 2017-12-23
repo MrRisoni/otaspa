@@ -147,6 +147,11 @@ class OtaStore {
             id: 0,
             name:'',
             surname:'',
+            dob:'',
+            passport:'',
+            issue:'',
+            nationality:'',
+            expires:'',
             humanID: 1,
             active: true,
             type: 'ADT',
@@ -183,6 +188,11 @@ class OtaStore {
             name:'',
             surname:'',
             humanID: 2,
+            dob:'',
+            passport:'',
+            issue:'',
+            nationality:'',
+            expires:'',
             active: true,
             insuranceInfo :0,
             totalBags: 0,
@@ -893,13 +903,13 @@ class OtaStore {
 
     }
 
-    @action editName(args)
+    @action
+    editPaxElement(args)
     {
-        console.log(args);
-        this.passengers[args.id].name = args.name;
-        this.passengers[args.id].surname = args.surname;
-
+        this.passengers[args.id][args.property] = args.value;
+        console.log(this.passengers[args.id]);
     }
+
 
 
     @action changeHeight(newHeight){
@@ -916,19 +926,7 @@ class OtaStore {
     }
 
 
-    @action
-    validatePassengers()
-    {
-        // validates passenger fields
-        return true;
-    }
 
-    @action
-    validateNameSurname(input)
-    {
-
-        return input.search(/[^a-zA-Z]+/) === -1;
-    }
 
 }
 

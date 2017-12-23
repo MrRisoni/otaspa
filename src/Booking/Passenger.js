@@ -5,6 +5,8 @@ import {inject} from 'mobx-react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
+import ValidatePassengers from './ValidatePassengers';
+
 import 'react-datepicker/dist/react-datepicker.css';
 
 @inject('otastore')
@@ -22,6 +24,12 @@ class Passenger extends Component {
         this.removeMe = this.removeMe.bind(this);
         this.editSurname = this.editSurname.bind(this);
         this.editName = this.editName.bind(this);
+
+
+        this.editPassport= this.editPassport.bind(this);
+        this.editNation = this.editNation.bind(this);
+        this.editIssue = this.editIssue.bind(this);
+
 
         this.addBadStyle = this.addBadStyle.bind(this);
         this.addGoodStyle = this.addGoodStyle.bind(this);
@@ -41,29 +49,58 @@ class Passenger extends Component {
         this.props.otastore.changePaxType({id: this.props.pap.id, type: ev.target.value});
     }
 
+    editPassport(ev)
+    {
+        const fieldInput = ev.target.value.toUpperCase();
+        console.log(ev.target.value);
+
+        this.props.otastore.editPaxElement(
+            {
+                value: fieldInput,
+                property: 'passport',
+                id: this.props.pap.id
+            });
+
+    }
+
+    editNation(ev)
+    {
+        const fieldInput = ev.target.value.toUpperCase();
+    }
+
+    editIssue(ev)
+    {
+        const fieldInput = ev.target.value.toUpperCase();
+    }
+
     editSurname(ev) {
         const fieldInput = ev.target.value.toUpperCase();
 
         this.setState({surname: fieldInput});
 
-        if (this.props.otastore.validateNameSurname(fieldInput)) {
+        const VP = new ValidatePassengers();
+
+        if (VP.validateNameSurname(fieldInput)) {
 
 
-            this.props.otastore.editName(
+            this.props.otastore.editPaxElement(
                 {
-                    name: '',
-                    surname: fieldInput,
+                    value: fieldInput,
+                    property: 'surname',
                     id: this.props.pap.id
                 });
 
-            this.addGoodStyle(document.getElementById('#paxSurame' + this.props.pap.id));
+
+            //this.addGoodStyle(document.getElementById('#paxSurame' + this.props.pap.id));
 
 
         }
         else {
-            this.addBadStyle(document.getElementById('#paxSurname' + this.props.pap.id));
+           // this.addBadStyle(document.getElementById('#paxSurname' + this.props.pap.id));
         }
     }
+
+
 
     editName(ev) {
         const fieldInput = ev.target.value.toUpperCase();
@@ -73,21 +110,22 @@ class Passenger extends Component {
         // console.log(document.getElementById('#paxSurname' + this.props.pap.id));
 
 
-        if (this.props.otastore.validateNameSurname(fieldInput)) {
+        const VP = new ValidatePassengers();
 
+        if (VP.validateNameSurname(fieldInput)) {
 
-            this.props.otastore.editName(
+            this.props.otastore.editPaxElement(
                 {
-                    name: '',
-                    surname: fieldInput,
+                    value: fieldInput,
+                    property: 'name',
                     id: this.props.pap.id
                 });
 
             //document.getElementById('#paxSurname' + this.props.pap.id).style.color = 'red';
-            this.addGoodStyle(document.getElementById('#paxName' + this.props.pap.id));
+            //this.addGoodStyle(document.getElementById('#paxName' + this.props.pap.id));
         }
         else {
-            this.addBadStyle(document.getElementById('#paxName' + this.props.pap.id));
+           // this.addBadStyle(document.getElementById('#paxName' + this.props.pap.id));
         }
     }
 
@@ -219,6 +257,7 @@ class Passenger extends Component {
 
                                         <div className="col-md-6">
                                             <input type="text" placeholder="Passport No"
+                                                   onChange={this.editPassport}
                                                    className="form-control"/>
                                         </div>
 

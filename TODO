@@ -1,12 +1,14 @@
 on scroll down page, scroll pricebox
 clean up code
 add unit tests (enzyme test)
+add logic unit tests
 DatePicker with prices
 Hotels
 Cars
 Preseat
 Search Page and filters
-React Leaflet a la kiwi ??
+React Leaflet a la kiwi ?? React google maps
 i18n
 Validation in Passenger route ( no empty fields)
 Fake Result server
+more and lots more and way lots more

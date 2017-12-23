@@ -7,9 +7,12 @@ const PORT = process.env.PORT || 4800;
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, 'app/build')));
 
+app.get('/api/countries', (req,res) => {
+
+});
 
 // All remaining requests return the React app, so it can handle routing.
-app.get('*', function(request, response) {
+app.get('*',  (req,res) => {
   response.sendFile(path.resolve(__dirname, 'app/build', 'index.html'));
 });
 
