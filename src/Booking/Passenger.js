@@ -149,6 +149,11 @@ class Passenger extends Component {
     }
 
     render() {
+
+        let nations = [];
+
+
+
         return (
             <div className="row passengerCompo">
                 <div className="col-md-12">
@@ -242,14 +247,14 @@ class Passenger extends Component {
                                         <div className="col-md-6">
                                             <select className="form-control" onChange={this.handleChange}>
                                                 <option key="" value="">Nationality</option>
-                                                <option key="" value="">{this.props.otastore.countries[0].name}</option>
-
+                                                {this.props.countriesList}
                                             </select>
                                         </div>
 
                                         <div className="col-md-6">
                                             <select className="form-control" onChange={this.handleChange}>
                                                 <option key="" value="">Issue Country</option>
+                                                {this.props.countriesList}
                                             </select>
                                         </div>
                                     </div>

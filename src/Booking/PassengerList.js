@@ -20,11 +20,20 @@ class PassengerList extends Component {
 
         let passengerDiv = [];
 
+        let countriesList = [];
+
+        {this.props.otastore.countries.map( (country) => {
+            countriesList.push(<option key={country.code} value={country.name}>{country.name}</option>);
+        })}
+
+
         this.props.otastore.passengers.forEach((ps) => {
             if (ps.active) {
-                passengerDiv.push(<Passenger key={ps.id} pap={ps}/>)
+                passengerDiv.push(<Passenger key={ps.id}
+                                             pap={ps}
+                                             countriesList={countriesList}/>)
             }
-        })
+        });
 
         return (
             <div className="row">
