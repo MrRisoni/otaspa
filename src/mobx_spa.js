@@ -14,7 +14,7 @@ const models = require('./models');
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static(path.resolve(__dirname, 'app/build')));
+app.use(express.static(path.resolve(__dirname, '../build')));
 
 app.get('/api/countries', (req, res) => {
     models.CountryModel.findAll(
@@ -29,7 +29,7 @@ app.get('/api/countries', (req, res) => {
 
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'app/build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
 });
 
 app.listen(PORT, function () {
