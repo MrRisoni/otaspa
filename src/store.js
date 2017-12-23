@@ -1,5 +1,6 @@
 import {observable, action} from 'mobx';
 import moment from 'moment';
+import axios from 'axios';
 
 class OtaStore {
 
@@ -9,6 +10,10 @@ class OtaStore {
 
     @observable
     priceBoxMargin =5;
+
+    @observable
+    countries = [];
+
 
     @observable
     itinerary = {
@@ -926,6 +931,16 @@ class OtaStore {
     }
 
 
+    @action
+    setCountries(data)
+    {
+        console.log('Setting countries');
+        this.countries = data;
+        console.log(this.countries.length);
+
+
+
+    }
 
 
 }

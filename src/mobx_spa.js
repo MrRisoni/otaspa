@@ -2,20 +2,36 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
+const http = require('http').Server(app);
+const bodyParser = require('body-parser');
+
 const PORT = process.env.PORT || 4800;
 
-// Priority serve any static files.
+const Sequelize = require('sequelize');
+const cors = require('cors');
+
+const models = require('./models');
+
+app.use(bodyParser.json());
+app.use(cors());
 app.use(express.static(path.resolve(__dirname, 'app/build')));
 
-app.get('/api/countries', (req,res) => {
+app.get('/api/countries', (req, res) => {
+    models.CountryModel.findAll(
+        { order: [
+                ['name', 'ASC']
+            ]
+        }).then(result => {
+        res.send(result);
+    });
 
 });
 
 // All remaining requests return the React app, so it can handle routing.
-app.get('*',  (req,res) => {
-  response.sendFile(path.resolve(__dirname, 'app/build', 'index.html'));
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'app/build', 'index.html'));
 });
 
 app.listen(PORT, function () {
-  console.log(`Listening on port ${PORT}`);
+    console.log(`Listening on port ${PORT}`);
 });

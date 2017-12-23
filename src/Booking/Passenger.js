@@ -34,7 +34,8 @@ class Passenger extends Component {
         this.addBadStyle = this.addBadStyle.bind(this);
         this.addGoodStyle = this.addGoodStyle.bind(this);
 
-
+        console.log('Pax Combo Constructor');
+        console.log(this.props.otastore.countries.length);
     }
 
 
@@ -241,6 +242,8 @@ class Passenger extends Component {
                                         <div className="col-md-6">
                                             <select className="form-control" onChange={this.handleChange}>
                                                 <option key="" value="">Nationality</option>
+                                                <option key="" value="">{this.props.otastore.countries[0].name}</option>
+
                                             </select>
                                         </div>
 

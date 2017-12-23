@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import { inject, observer } from 'mobx-react';
 
-
 import PriceBox from './SideBar';
 import PassengerList from './PassengerList';
 import Itinerary from './Itinerary/Itinerary';
+import axios from "axios/index";
+import FontAwesome from 'react-fontawesome';
+
 
 @inject('routing')
 @inject('otastore')
@@ -14,6 +16,9 @@ class BookApp extends Component {
     constructor(props) {
         super(props);
 
+        this.state= {
+            fetchedCountries:false
+        };
 
         this.moveToPay = this.moveToPay.bind(this);
         this.moveToUpsales = this.moveToUpsales.bind(this);
@@ -50,52 +55,74 @@ class BookApp extends Component {
 
     }
 
+    componentWillMount() {
+        var self = this;
+        console.log('mounting...');
+
+        axios.get('http://localhost:4800/api/countries')
+            .then(function (response) {
+                console.log(response.data);
+                self.props.otastore.setCountries(response.data);
+
+                self.setState({fetchedCountries:true});
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
+    }
+
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
-
     }
 
     render() {
 
-        return (
 
-            <div className="row">
-
-
-                <div className="col-md-1"></div>
-
-                <div className="col-md-8">
-
-                    <Itinerary/>
-
-                    <PassengerList/>
-
-                    <br/>
-                    <br/>
+           if (this.state.fetchedCountries) {
+                return (
 
                     <div className="row">
-                        <div className="col-md-4">
 
+
+                        <div className="col-md-1"></div>
+
+                        <div className="col-md-8">
+
+                            <Itinerary/>
+
+                            <PassengerList/>
+
+                            <br/>
+                            <br/>
+
+                            <div className="row">
+                                <div className="col-md-4">
+                                </div>
+                                <div className="col-md-4">
+                                    <button className="btn btn-success btn-lg" onClick={this.moveToUpsales}>Continue
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        <div className="col-md-4">
-                            <button className="btn btn-success btn-lg" onClick={this.moveToUpsales}>Continue</button>
 
+                        <div className="col-md-3">
+                            <PriceBox/>
                         </div>
-
                     </div>
-
-                </div>
-
-
-                <div className="col-md-3">
-                    <PriceBox/>
-                </div>
-
-
-
-            </div>
-
-        );
+                );
+            }
+            else {
+               return(<FontAwesome
+                   className='super-crazy-colors'
+                   name='spinner'
+                   size='4x'
+                   spin
+                   style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
+               />)
+           }
     }
 }
 
