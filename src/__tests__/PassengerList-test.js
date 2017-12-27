@@ -10,8 +10,8 @@ const doc = jsdom.jsdom('<!doctype html><html><body></body></html>');
 global.document = doc;
 global.window = doc.defaultView;
 
-import PassengerList from '../Booking/PassengerList';
-import Passenger from '../Booking/Passenger';
+import PassengerList from '../Booking/Passengers/PassengerList';
+import Passenger from '../Booking/Passengers/Passenger';
 
 
 describe('A suite', function () {

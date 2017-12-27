@@ -2,10 +2,13 @@ import React, {Component} from 'react';
 import { inject, observer } from 'mobx-react';
 
 import PriceBox from './SideBar';
-import PassengerList from './PassengerList';
+import PassengerList from './Passengers/PassengerList';
 import Itinerary from './Itinerary/Itinerary';
 import axios from "axios/index";
 import FontAwesome from 'react-fontawesome';
+
+
+import ValidatePassengers from './Passengers/ValidatePassengers';
 
 
 @inject('routing')
@@ -20,7 +23,6 @@ class BookApp extends Component {
             fetchedCountries:false
         };
 
-        this.moveToPay = this.moveToPay.bind(this);
         this.moveToUpsales = this.moveToUpsales.bind(this);
 
         this.handleScroll = this.handleScroll.bind(this);
@@ -30,17 +32,15 @@ class BookApp extends Component {
     moveToUpsales()
     {
         // eslint-disable-next-line
+        const valData = new ValidatePassengers();
+
         const { location, push, goBack } = this.props.routing;
-        if (this.props.otastore.validatePassengers()) {
+        if (valData.validate(this.props.otastore.passengers)) {
             push('/upsales');
         }
 
     }
 
-    moveToPay()
-    {
-
-    }
 
     handleScroll() {
         const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;

@@ -6,7 +6,7 @@ import {RouterStore, syncHistoryWithStore} from 'mobx-react-router';
 import {Router, Route} from 'react-router';
 import './index.css';
 
-import BookApp from './Booking/BookApp';
+import BookApp from './Booking/PassengerPage';
 import SearchBundle from './Booking/Search/SearchBundle';
 import Payment from './Pay/Payment';
 import Upsales from './Upsales/Upsales';

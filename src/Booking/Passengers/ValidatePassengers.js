@@ -5,7 +5,8 @@ class ValidatePassengers {
 
 
     validate(papList) {
-
+        console.log('Validator Passengers');
+        console.log(papList.length);
     }
 
 

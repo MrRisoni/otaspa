@@ -30,8 +30,8 @@ class Passenger extends Component {
         this.changeNation = this.changeNation.bind(this);
         this.changeIssue = this.changeIssue.bind(this);
 
-        this.changeDOB = this.changeDOB(this);
-        this.changeExpiry= this.changeExpiry(this);
+        this.changeDOB = this.changeDOB.bind(this);
+        this.changeExpiry= this.changeExpiry.bind(this);
 
 
         this.addBadStyle = this.addBadStyle.bind(this);
@@ -203,13 +203,21 @@ class Passenger extends Component {
 
                             <div className="row">
 
-                                <div className="col-md-5">
+                                <div className="col-md-3">
                                     Passenger # {this.props.pap.humanID}
                                 </div>
 
-                                <div className="col-md-5"></div>
+                                <div className="col-md-4">
+                                    <select className="form-control" onChange={this.handleChange}>
+                                        <option key="" value="">Select Age</option>
+                                        <option key="ADT" value="ADT">Adult</option>
+                                        <option key="CNN" value="CNN">Child</option>
+                                        <option key="INF" value="INF">Infant</option>
+                                    </select>
+                                </div>
 
-                                <div className="col-md-2">
+
+                                <div className="col-md-2 offset-md-3">
                                     <button className="btn btn-sm btn-dark btn-block"
                                             data-toggle="collapse"
                                             data-target={`#passengerCollapse${this.props.pap.id}`} aria-expanded="false"
@@ -228,16 +236,8 @@ class Passenger extends Component {
 
                                 <div className="row">
 
-                                    <div className="col-md-2">
-                                        <select className="form-control" onChange={this.handleChange}>
-                                            <option key="" value="">Age Group</option>
-                                            <option key="ADT" value="ADT">ADT</option>
-                                            <option key="CNN" value="CNN">CNN</option>
-                                            <option key="INF" value="INF">INF</option>
-                                        </select>
-                                    </div>
 
-                                    <div className="col-md-2">
+                                    <div className="col-md-3">
                                         <select className="form-control">
                                             <option value="">Gender</option>
                                             <option value="MR">Male</option>
@@ -269,6 +269,7 @@ class Passenger extends Component {
                                     <div className="col-md-6">
                                         <label htmlFor="birthday">BirthDate</label>
                                         <DatePicker className="form-control"
+                                                    dateFormat="DD/MM/YYYY"
                                                     selected={this.state.dob}
                                                     onChange={this.changeDOB}
                                         />
@@ -276,8 +277,10 @@ class Passenger extends Component {
 
                                 </div>
 
+                                <br/>
+
                                 <button className="btn btn-primary" type="button" data-toggle="collapse" data-target=".collapsePassports" aria-expanded="false" aria-controls="collapsePassports">
-                                    Button with data-target
+                                    Add Passports after the booking
                                 </button>
 
                                 <div className="collapsePassports">
@@ -285,6 +288,7 @@ class Passenger extends Component {
                                     <br/>
                                     <div className="row">
                                         <div className="col-md-6">
+                                            <label htmlFor="birthday">Nationality</label>
                                             <select className="form-control" onChange={this.changeNation}>
                                                 <option key="" value="">Nationality</option>
                                                 {this.props.countriesList}
@@ -292,6 +296,7 @@ class Passenger extends Component {
                                         </div>
 
                                         <div className="col-md-6">
+                                            <label htmlFor="birthday">Issuing Country</label>
                                             <select className="form-control" onChange={this.changeIssue}>
                                                 <option key="" value="">Issue Country</option>
                                                 {this.props.countriesList}
@@ -304,6 +309,7 @@ class Passenger extends Component {
                                     <div className="row">
 
                                         <div className="col-md-6">
+                                            <label htmlFor="birthday">Passport No</label>
                                             <input type="text" placeholder="Passport No"
                                                    onChange={this.editPassport}
                                                    className="form-control"/>
@@ -311,9 +317,10 @@ class Passenger extends Component {
 
                                         <div className="col-md-6">
                                             <label htmlFor="birthday">Expiration Date</label>
-                                            <DatePicker
-                                                        selected={this.state.expires}
-                                                        onChange={this.changeExpiry}
+                                            <DatePicker className="form-control"
+                                                    dateFormat="DD/MM/YYYY"
+                                                    selected={this.state.expires}
+                                                    onChange={this.changeExpiry}
                                             />
                                         </div>
                                     </div>
