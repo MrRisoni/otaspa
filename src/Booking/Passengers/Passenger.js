@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {inject} from 'mobx-react';
 
-import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import Passport from './Passport';
 import Names from './Names';
+import Miles from './Miles';
 
 @inject('otastore')
 class Passenger extends Component {
@@ -83,10 +83,13 @@ class Passenger extends Component {
 
                                 <Names pap_id={this.props.pap.id}/>
 
-                                <br/>
+                                <Miles pap_id={this.props.pap.id}/>
 
                                 <Passport pap_id={this.props.pap.id}
                                           countriesList={this.props.countriesList}/>
+
+
+
                             </div>
 
                         </div>

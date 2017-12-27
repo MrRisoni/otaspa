@@ -3,6 +3,14 @@
     min-width: 30%;
 }
 
+.milesDiv {
+    margin-top: 25px;
+}
+
+.passportDiv{
+    margin-top: 25px;
+}
+
 .leaflet-container {
     height: 360px;
     width: 860px;

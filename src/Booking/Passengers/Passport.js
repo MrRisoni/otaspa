@@ -74,13 +74,13 @@ class Passport extends Component {
 
     render() {
         return (
-            <div>
+            <div className="passportDiv">
                 <button className="btn btn-primary" type="button" data-toggle="collapse"
                         data-target=".collapsePassports" aria-expanded="false" aria-controls="collapsePassports">
                     Add Passports after the booking
                 </button>
 
-                <div className="collapsePassports">
+                <div className="collapse collapsePassports">
 
                     <br/>
                     <div className="row">

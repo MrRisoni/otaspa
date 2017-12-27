@@ -102,7 +102,6 @@ class Names extends Component {
                                id={`#paxSurname${this.props.pap_id}`}
                                value={this.state.surname}
                                onChange={this.editSurname} className="form-control"/>
-
                     </div>
 
 
@@ -110,7 +109,6 @@ class Names extends Component {
                         <input type="text" placeholder="Name" id={`#paxName${this.props.pap_id}`}
                                value={this.state.name}
                                onChange={this.editName} className="form-control"/>
-
                     </div>
 
                 </div>
