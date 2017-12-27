@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import {inject} from 'mobx-react';
 
-
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
-import ValidatePassengers from './ValidatePassengers';
-
 import 'react-datepicker/dist/react-datepicker.css';
+import Passport from './Passport';
+import Names from './Names';
 
 @inject('otastore')
 class Passenger extends Component {
@@ -20,177 +19,32 @@ class Passenger extends Component {
             expires: moment()
         };
 
-        this.handleChange = this.handleChange.bind(this);
+        this.changeAge = this.changeAge.bind(this);
         this.removeMe = this.removeMe.bind(this);
-        this.editSurname = this.editSurname.bind(this);
-        this.editName = this.editName.bind(this);
 
 
-        this.editPassport= this.editPassport.bind(this);
-        this.changeNation = this.changeNation.bind(this);
-        this.changeIssue = this.changeIssue.bind(this);
 
-        this.changeDOB = this.changeDOB.bind(this);
-        this.changeExpiry= this.changeExpiry.bind(this);
-
-
-        this.addBadStyle = this.addBadStyle.bind(this);
-        this.addGoodStyle = this.addGoodStyle.bind(this);
-
-        console.log('Pax Combo Constructor');
-        console.log(this.props.otastore.countries.length);
     }
 
 
+
+    changeAge(ev) {
+        console.log('Change passenger type');
+        console.log(ev.target.value);
+        this.props.otastore.changePaxType({id: this.props.pap.id, type: ev.target.value});
+    }
 
     removeMe() {
         this.props.otastore.removePassenger(this.props.pap.id);
 
     }
 
-    handleChange(ev) {
-        console.log('Change passenger type');
-        console.log(ev.target.value);
-        this.props.otastore.changePaxType({id: this.props.pap.id, type: ev.target.value});
-    }
-
-    editPassport(ev)
-    {
-        const fieldInput = ev.target.value.toUpperCase();
-        console.log(ev.target.value);
-
-        this.props.otastore.editPaxElement(
-            {
-                value: fieldInput,
-                property: 'passport',
-                id: this.props.pap.id
-            });
-
-    }
-
-    changeNation(ev)
-    {
-        const fieldInput = ev.target.value.toUpperCase();
-        console.log(fieldInput);
-
-        this.props.otastore.editPaxElement(
-            {
-                value: fieldInput,
-                property: 'nationality',
-                id: this.props.pap.id
-            });
-
-    }
-
-    changeIssue(ev)
-    {
-        const fieldInput = ev.target.value.toUpperCase();
-        console.log(fieldInput);
-
-        this.props.otastore.editPaxElement(
-            {
-                value: fieldInput,
-                property: 'issue',
-                id: this.props.pap.id
-            });
-    }
-
-    changeDOB(date)
-    {
-        console.log(date);
-        this.setState({
-            dob: date
-        });
-    }
 
 
-    changeExpiry(date)
-    {
-        console.log(date);
-        this.setState({
-            expires: date
-        });
-    }
-
-
-    editSurname(ev) {
-        const fieldInput = ev.target.value.toUpperCase();
-
-        this.setState({surname: fieldInput});
-
-        const VP = new ValidatePassengers();
-
-        if (VP.validateNameSurname(fieldInput)) {
-
-
-            this.props.otastore.editPaxElement(
-                {
-                    value: fieldInput,
-                    property: 'surname',
-                    id: this.props.pap.id
-                });
-
-
-            //this.addGoodStyle(document.getElementById('#paxSurame' + this.props.pap.id));
-
-
-        }
-        else {
-           // this.addBadStyle(document.getElementById('#paxSurname' + this.props.pap.id));
-        }
-    }
-
-
-
-    editName(ev) {
-        const fieldInput = ev.target.value.toUpperCase();
-
-        this.setState({name: fieldInput});
-
-        // console.log(document.getElementById('#paxSurname' + this.props.pap.id));
-
-
-        const VP = new ValidatePassengers();
-
-        if (VP.validateNameSurname(fieldInput)) {
-
-            this.props.otastore.editPaxElement(
-                {
-                    value: fieldInput,
-                    property: 'name',
-                    id: this.props.pap.id
-                });
-
-            //document.getElementById('#paxSurname' + this.props.pap.id).style.color = 'red';
-            //this.addGoodStyle(document.getElementById('#paxName' + this.props.pap.id));
-        }
-        else {
-           // this.addBadStyle(document.getElementById('#paxName' + this.props.pap.id));
-        }
-    }
-
-    addBadStyle(elm) {
-        // console.log(document.getElementById('#paxSurname' + this.props.pap.id));
-        console.log(elm);
-        elm.style.color = 'red';
-
-        /* badStyle: { color: 'red', 'border-width' : 'thick',
-             'border-style' : 'solid', 'border-color': 'red'}*/
-    }
-
-    addGoodStyle(elm) {
-        console.log(elm);
-        elm.style.color = 'black';
-        /*
-                goodStyle : { color: '', 'border-width' : '0px',
-                    'border-style' : '', 'border-color': ''},*/
-
-    }
 
     render() {
 
         let nations = [];
-
 
 
         return (
@@ -279,74 +133,21 @@ class Passenger extends Component {
 
                                 <br/>
 
-                                <button className="btn btn-primary" type="button" data-toggle="collapse" data-target=".collapsePassports" aria-expanded="false" aria-controls="collapsePassports">
-                                    Add Passports after the booking
-                                </button>
 
-                                <div className="collapsePassports">
-
-                                    <br/>
-                                    <div className="row">
-                                        <div className="col-md-6">
-                                            <label htmlFor="birthday">Nationality</label>
-                                            <select className="form-control" onChange={this.changeNation}>
-                                                <option key="" value="">Nationality</option>
-                                                {this.props.countriesList}
-                                            </select>
-                                        </div>
-
-                                        <div className="col-md-6">
-                                            <label htmlFor="birthday">Issuing Country</label>
-                                            <select className="form-control" onChange={this.changeIssue}>
-                                                <option key="" value="">Issue Country</option>
-                                                {this.props.countriesList}
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-                                    <br/>
-                                    <div className="row">
-
-                                        <div className="col-md-6">
-                                            <label htmlFor="birthday">Passport No</label>
-                                            <input type="text" placeholder="Passport No"
-                                                   onChange={this.editPassport}
-                                                   className="form-control"/>
-                                        </div>
-
-                                        <div className="col-md-6">
-                                            <label htmlFor="birthday">Expiration Date</label>
-                                            <DatePicker className="form-control"
-                                                    dateFormat="DD/MM/YYYY"
-                                                    selected={this.state.expires}
-                                                    onChange={this.changeExpiry}
-                                            />
-                                        </div>
-                                    </div>
-
-                                </div>
-
+                                <Passport/>
                             </div>
 
                         </div>
 
                         <div className="card-footer">
-
                             <div className="row">
-
                                 <div className="col-md-4"></div>
-
                                 <div className="col-md-4">
-
                                     <button className="btn btn-primary btn-sm btn-danger" onClick={this.removeMe}>
                                         Remove this Passenger
                                     </button>
-
-
                                 </div>
                             </div>
-
                         </div>
 
 
