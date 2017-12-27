@@ -22,8 +22,6 @@ class Passenger extends Component {
         this.changeAge = this.changeAge.bind(this);
         this.removeMe = this.removeMe.bind(this);
 
-
-
     }
 
 
@@ -40,12 +38,7 @@ class Passenger extends Component {
     }
 
 
-
-
     render() {
-
-        let nations = [];
-
 
         return (
             <div className="row passengerCompo">
@@ -88,61 +81,19 @@ class Passenger extends Component {
 
                             <div className="card-body">
 
-                                <div className="row">
-
-
-                                    <div className="col-md-3">
-                                        <select className="form-control">
-                                            <option value="">Gender</option>
-                                            <option value="MR">Male</option>
-                                            <option value="MS">Female</option>
-                                        </select>
-                                    </div>
-
-
-                                    <div className="col-md-5">
-                                        <input type="text" placeholder="Surname"
-                                               id={`#paxSurname${this.props.pap.id}`}
-                                               value={this.state.surname}
-                                               onChange={this.editSurname} className="form-control"/>
-
-                                    </div>
-
-
-                                    <div className="col-md-3">
-                                        <input type="text" placeholder="Name" id={`#paxName${this.props.pap.id}`}
-                                               value={this.state.name}
-                                               onChange={this.editName} className="form-control"/>
-
-                                    </div>
-
-                                </div>
-
-                                <br/>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <label htmlFor="birthday">BirthDate</label>
-                                        <DatePicker className="form-control"
-                                                    dateFormat="DD/MM/YYYY"
-                                                    selected={this.state.dob}
-                                                    onChange={this.changeDOB}
-                                        />
-                                    </div>
-
-                                </div>
+                                <Names pap_id={this.props.pap.id}/>
 
                                 <br/>
 
-
-                                <Passport/>
+                                <Passport pap_id={this.props.pap.id}
+                                          countriesList={this.props.countriesList}/>
                             </div>
 
                         </div>
 
                         <div className="card-footer">
                             <div className="row">
-                                <div className="col-md-4"></div>
-                                <div className="col-md-4">
+                                <div className="col-md-4 offset-md-4">
                                     <button className="btn btn-primary btn-sm btn-danger" onClick={this.removeMe}>
                                         Remove this Passenger
                                     </button>

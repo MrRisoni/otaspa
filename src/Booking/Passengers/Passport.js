@@ -30,7 +30,7 @@ class Passport extends Component {
             {
                 value: fieldInput,
                 property: 'passport',
-                id: this.props.pap.id
+                id: this.props.pap_id
             });
 
     }
@@ -44,7 +44,7 @@ class Passport extends Component {
             {
                 value: fieldInput,
                 property: 'nationality',
-                id: this.props.pap.id
+                id: this.props.pap_id
             });
 
     }
@@ -67,7 +67,7 @@ class Passport extends Component {
             {
                 value: fieldInput,
                 property: 'issue',
-                id: this.props.pap.id
+                id: this.props.pap_id
             });
     }
 

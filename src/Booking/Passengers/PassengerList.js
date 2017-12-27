@@ -64,8 +64,7 @@ class PassengerList extends Component {
 
                     <div className="addOnePassenger">
                         <div className="row">
-                            <div className="col-md-4"></div>
-                            <div className="col-md-4">
+                            <div className="col-md-4 offset-md-4">
                                 <button className="btn btn-primary btn-success" onClick={this.addPassenger}>Add
                                     Passenger
                                 </button>

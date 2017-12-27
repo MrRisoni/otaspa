@@ -21,16 +21,16 @@ class Names extends Component {
 
 
         this.changeGender = this.changeGender.bind(this);
-        this.removeMe = this.removeMe.bind(this);
         this.editSurname = this.editSurname.bind(this);
         this.editName = this.editName.bind(this);
-
         this.changeDOB = this.changeDOB.bind(this);
-
 
     }
 
+    changeGender()
+    {
 
+    }
 
     changeDOB(date) {
         console.log(date);
@@ -38,8 +38,6 @@ class Names extends Component {
             dob: date
         });
     }
-
-
 
 
     editSurname(ev) {
@@ -55,7 +53,7 @@ class Names extends Component {
                 {
                     value: fieldInput,
                     property: 'surname',
-                    id: this.props.pap.id
+                    id: this.props.pap_id
                 });
 
         }
@@ -77,16 +75,59 @@ class Names extends Component {
                 {
                     value: fieldInput,
                     property: 'name',
-                    id: this.props.pap.id
+                    id: this.props.pap_id
                 });
 
         }
     }
 
-    render()
-    {
+    render() {
 
-        return(<div>sdsds</div>)
+        return (
+            <div>
+                <div className="row">
+
+
+                    <div className="col-md-3">
+                        <select className="form-control">
+                            <option value="">Gender</option>
+                            <option value="MR">Male</option>
+                            <option value="MS">Female</option>
+                        </select>
+                    </div>
+
+
+                    <div className="col-md-5">
+                        <input type="text" placeholder="Surname"
+                               id={`#paxSurname${this.props.pap_id}`}
+                               value={this.state.surname}
+                               onChange={this.editSurname} className="form-control"/>
+
+                    </div>
+
+
+                    <div className="col-md-3">
+                        <input type="text" placeholder="Name" id={`#paxName${this.props.pap_id}`}
+                               value={this.state.name}
+                               onChange={this.editName} className="form-control"/>
+
+                    </div>
+
+                </div>
+
+                <br/>
+                <div className="row">
+                    <div className="col-md-6">
+                        <label htmlFor="birthday">BirthDate</label>
+                        <DatePicker className="form-control"
+                                    dateFormat="DD/MM/YYYY"
+                                    selected={this.state.dob}
+                                    onChange={this.changeDOB}
+                        />
+                    </div>
+                </div>
+            </div>
+        )
     }
 }
 
