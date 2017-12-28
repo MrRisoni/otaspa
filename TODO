@@ -1,5 +1,5 @@
 on scroll down page, scroll pricebox
-clean up code
+clean up code ( add comments)
 add unit tests (enzyme test)
 add logic unit tests
 DatePicker with prices

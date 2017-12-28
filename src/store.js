@@ -44,27 +44,39 @@ class OtaStore {
                 toCity: "Athens",
                 fromAirport: "RHO, Diagoras Airport",
                 toAirport: "ATH, Eleftherios Venizelos Intl Arpt",
-                depDateTime: "2017-09-23T10:10:00+03:00",
-                arrDateTime: "2017-09-23T10:55:00+03:00",
-                airline: "FR,Ryanair"
+                depDateTime: "2018-09-23T10:10:00+03:00",
+                arrDateTime: "2018-09-23T10:55:00+03:00",
+                airline: "FR,Ryanair",
+                img: {
+                    url: "https://logos-download.com/wp-content/uploads/2016/03/Ryanair_logo_small.png",
+                    width: 100
+                }
             },
             {
                 fromCity: "Athens",
                 toCity: "Paris",
                 fromAirport: "ATH, Eleftherios Venizelos Intl Arpt",
                 toAirport: "CDG, Charles De Gaul Intl Arpt",
-                depDateTime: "2017-09-23T14:00:00+03:00",
-                arrDateTime: "2017-09-23T19:00:00+01:00",
-                airline: "AF,Air France"
+                depDateTime: "2018-09-23T14:00:00+03:00",
+                arrDateTime: "2018-09-23T19:00:00+01:00",
+                airline: "AF,Air France",
+                img: {
+                    url: "https://logos-download.com/wp-content/uploads/2016/03/Ryanair_logo_small.png",
+                    width: 100
+                }
             },
             {
                 fromCity: "Paris",
                 toCity: "London",
                 fromAirport: "CDG, Charles De Gaul Intl Arpt",
                 toAirport: "LHR, Heathrow London Intl Arpt",
-                depDateTime: "2017-09-24T00:00:00+01:00",
-                arrDateTime: "2017-09-24T00:30:00+00:00",
-                airline: "BA,British Airways"
+                depDateTime: "2018-09-24T00:00:00+01:00",
+                arrDateTime: "2018-09-24T00:30:00+00:00",
+                airline: "BA,British Airways",
+                img: {
+                    url: "https://logos-download.com/wp-content/uploads/2016/03/Ryanair_logo_small.png",
+                    width: 100
+                }
             }
         ],
         retSegments: [
@@ -73,18 +85,26 @@ class OtaStore {
                 toCity: "Athens",
                 fromAirport: "LGW, Gatwick Airport",
                 toAirport: "ATH, Eleftherios Venizelos Intl Arpt",
-                depDateTime: "2017-10-03T10:10:00+03:00",
-                arrDateTime: "2017-10-03T10:55:00+03:00",
-                airline: "FR,Raynair"
+                depDateTime: "2018-10-03T10:10:00+03:00",
+                arrDateTime: "2018-10-03T10:55:00+03:00",
+                airline: "FR,Raynair",
+                img: {
+                    url: "https://logos-download.com/wp-content/uploads/2016/03/Ryanair_logo_small.png",
+                    width: 100
+                }
             },
             {
                 fromCity: "Athens",
                 toCity: "Rhodes",
                 fromAirport: "ATH, Eleftherios Venizelos Intl Arpt",
                 toAirport: "RHO, Diagoras Airport",
-                depDateTime: "2017-10-03T16:00:00+03:00",
-                arrDateTime: "2017-10-03T16:55:00+03:00",
-                airline: "A3,Aegean Airways"
+                depDateTime: "2018-10-03T16:00:00+03:00",
+                arrDateTime: "2018-10-03T16:55:00+03:00",
+                airline: "A3,Aegean Airways",
+                img: {
+                    url: "https://logos-download.com/wp-content/uploads/2016/03/Ryanair_logo_small.png",
+                    width: 100
+                }
             }
         ]
     };

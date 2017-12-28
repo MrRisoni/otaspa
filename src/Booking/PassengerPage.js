@@ -94,6 +94,11 @@ class BookApp extends Component {
 
                             <Itinerary/>
 
+                            <br/>
+                            <div className="alert alert-primary" role="alert">
+                                Fill in the passenger data
+                            </div>
+
                             <PassengerList/>
 
                             <br/>

@@ -28,7 +28,11 @@ class Segment extends Component {
 
             arrTime: segment.arrDateTime.substr(11, 5),
             arrDay: moment(segment.arrDateTime).format('dddd'),
-            arrDate: moment(segment.arrDateTime).format('DD MMMM YYYY')
+            arrDate: moment(segment.arrDateTime).format('DD MMMM YYYY'),
+
+            img: segment.img,
+            fromCity : segment.fromCity,
+            toCity: segment.toCity
         }
     }
 
@@ -36,6 +40,8 @@ class Segment extends Component {
 
 
         let obj = this.getSegmentData(this.props.segData);
+
+        console.log(obj);
 
         return (
 
@@ -46,16 +52,21 @@ class Segment extends Component {
                     <div className="card-body">
 
                         <div className="row">
-                            <div className="col-md-1"></div>
+                            <div className="col-md-2">
+                                <img width={obj.img.width}
+                                     src={obj.img.url} />
+                            </div>
 
 
                             <Airport iata={obj.depIATA}
+                                     city={obj.fromCity}
                                      name={obj.depAirport}
                                      flyTime={obj.depTime}
                                      day={obj.depDay}
                                      date={obj.depDate}/>
 
                             <Airport iata={obj.arrIATA}
+                                     city={obj.toCity}
                                      name={obj.arrAirport}
                                      flyTime={obj.arrTime}
                                      day={obj.arrDay}

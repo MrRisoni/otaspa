@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 const Airport = function (props) {
     return (
@@ -6,6 +6,8 @@ const Airport = function (props) {
             <div className="row">
                 <div className="col-md-4">{props.iata}<br/>
                     {props.name}
+                    <br/>
+                    {props.city}
                 </div>
                 <div className="col-md-8"><b
                     className="flightTime">{props.flyTime}</b> <br/>

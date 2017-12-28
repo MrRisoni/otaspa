@@ -51,6 +51,7 @@ class Leg extends Component {
 
         let segments = (this.props.leg === 0) ? this.props.otastore.itinerary.depSegments : this.props.otastore.itinerary.retSegments;
 
+        let segTitle = (this.props.leg === 0) ? "Departure" : "Return";
         let segmentsDiv = [];
 
         segments.forEach((sg, idx) => {
@@ -60,9 +61,11 @@ class Leg extends Component {
         return (
 
             <div className="Leg">
-                <div className="card card-primary">
+                <div className="card  bg-light mb-3 border-primary mb-3">
 
-                    <div className="card-header"></div>
+                    <div className="card-header">
+                        {segTitle}
+                    </div>
 
                     <div className="card-body">
 
@@ -84,7 +87,7 @@ class Leg extends Component {
                             <div className="col-md-2">
                                 <button className="btn btn-sm btn-primary"
                                 data-toggle="collapse" data-target={`#segmentsCollapse${this.props.leg}`} aria-expanded="false" aria-controls="collapseExample">
-                                Toggle Segments
+                                Expand
                                 </button>
                             </div>
 
