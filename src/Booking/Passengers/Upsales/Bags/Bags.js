@@ -33,7 +33,7 @@ class Bags extends Component {
                             <div className="col-md-5"></div>
 
                             <div className="col-md-2">
-                                <button className="btn btn-sm btn-dark btn-block"
+                                <button className="btn btn-sm btn-dark btn-block btnToggle"
                                         data-toggle="collapse" data-target={`#bagsCollapse${this.props.passengerid}`} aria-expanded="false" aria-controls="collapseExample">
                                      Toggle Bags </button>
                             </div>

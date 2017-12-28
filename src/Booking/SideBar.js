@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {observer, inject} from 'mobx-react';
 
-import SeatShow from '../Upsales/Preseat/SeatShow';
+import SeatShow from '../UpsalesPage/Preseat/SeatShow';
 
 @inject('otastore')
 @observer

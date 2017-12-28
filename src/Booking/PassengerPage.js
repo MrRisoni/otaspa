@@ -106,14 +106,27 @@ class BookApp extends Component {
 
                             <Itinerary/>
 
-                            <br/>
+
                             <div className="alert alert-primary" role="alert">
-                                Fill in the passenger data
+                                <div className="row">
+                                    <div className="col-md-3">
+                                        Fill in the passenger data
+                                    </div>
+
+                                    <div className="col-md-2 offset-md-7">
+                                        <button className="btn btn-sm btn-dark btn-block btnToggle"
+                                                data-toggle="collapse"
+                                                data-target={`#passengerListCollapse`} aria-expanded="false"
+                                                aria-controls="collapseExample">
+                                            Toggle
+                                        </button>
+                                    </div>
+
+                                </div>
                             </div>
 
                             <PassengerList/>
 
-                            <br/>
                             <br/>
 
                             <div className="row">

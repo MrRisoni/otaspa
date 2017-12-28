@@ -15,12 +15,6 @@ class BagRemoval extends Component {
     }
 
     remove(e) {
-        console.log('---remove ------');
-        console.log(this.props.bagData.id);
-        console.log('carrier ' + this.props.bagData.carrier);
-        console.log('passengerid ' + this.props.passengerid);
-        console.log('legid ' + this.props.leg);
-
 
         this.props.otastore.removeBag( { passengerid: this.props.passengerid,
             carrier: this.props.carrier,
@@ -36,7 +30,7 @@ class BagRemoval extends Component {
 
             <div className="row">
                 <div className="col-md-12">
-                    <button type="button" className="btn mybtn btn-danger" onClick={this.remove}>
+                    <button type="button" className="btn mybtn btnRemoveBags btn-danger" onClick={this.remove}>
 
 
                         <FontAwesome
@@ -47,8 +41,6 @@ class BagRemoval extends Component {
                         />
 
                     </button>
-
-
                         {this.props.bagData.count} x {this.props.bagData.carrier}
                         {this.props.bagData.title}
                 </div>

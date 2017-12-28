@@ -36,7 +36,7 @@ class PassengerList extends Component {
         });
 
         return (
-            <div className="row">
+            <div className="row show" id="passengerListCollapse">
 
                 <div className="col-md-12">
 

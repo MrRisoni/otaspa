@@ -8,6 +8,9 @@ import Passport from './Passport';
 import Names from './Names';
 import Miles from './Miles';
 
+import Insurance from './Upsales/Insurance';
+import Bags from './Upsales/Bags/Bags';
+
 @inject('otastore')
 class Passenger extends Component {
     constructor(props) {
@@ -65,7 +68,7 @@ class Passenger extends Component {
 
 
                                 <div className="col-md-2 offset-md-3">
-                                    <button className="btn btn-sm btn-dark btn-block"
+                                    <button className="btn btn-sm btn-dark btn-block btnToggle"
                                             data-toggle="collapse"
                                             data-target={`#passengerCollapse${this.props.pap.id}`} aria-expanded="false"
                                             aria-controls="collapseExample">
@@ -88,6 +91,16 @@ class Passenger extends Component {
                                 <Passport pap_id={this.props.pap.id}
                                           countriesList={this.props.countriesList}/>
 
+
+                                <div className="alert alert-info" role="alert">
+                                    Pick extra upsales your trip!
+                                </div>
+
+                                <br/>
+                                {/* Upsales */}
+                                <Insurance passengerid={this.props.pap.id}/>
+
+                                <Bags passengerid={this.props.pap.id}/>
 
 
                             </div>

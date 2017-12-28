@@ -7,6 +7,14 @@
     margin-top: 25px;
 }
 
+body, input[type="text"], option, select
+{
+    font-size : 14px
+}
+
+.btnToggle {
+    font-size: 10px;
+}
 .passportDiv{
     margin-top: 25px;
 }
@@ -61,11 +69,17 @@
     margin-left: 5px;
 }
 
+.btnToggle {
+    width: 78px !important;
+}
 
 .passengerCompo, .contactDetails , .paymentDetails, .Leg, .passengerUpsaleCompo
 {
     margin-top: 3%;
 }
+
+
+
 
 .upgradefare {
     margin-top: 5%;
@@ -89,7 +103,9 @@
     padding: 3px 5px;
     font-size: 5px;
     border-radius: 2px;
+    margin-right: 5px;
 }
+
 
 .pricebox h4 {
     text-align: center;
