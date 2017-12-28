@@ -31,80 +31,56 @@ class Insurance extends Component {
     render() {
         return (
 
+            <div className="insuranceCard">
 
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="insuranceCard">
+                <div className="alert alert-success" role="alert">
+                    <div className="row">
 
+                        <div className="col-md-4">
+                            Select an Insurance
+                        </div>
 
-                        <div className="alert alert-success" role="alert">
-
-                            <div className="row">
-
-                                <div className="col-md-4">
-                                    Select an Insurance
-                                </div>
-
-                                <div className="col-md-2 offset-md-5">
-                                    <button className="btn btn-sm btn-dark btn-block"
-                                            data-toggle="collapse"
-                                            data-target={`#insuranceCollapse${this.props.passengerid}`}
-                                            aria-expanded="false" aria-controls="collapseExample">
-                                        Toggle
-                                    </button>
-                                </div>
-
-                            </div>
-
+                        <div className="col-md-2 offset-md-5">
+                            <button className="btn btn-sm btn-dark btn-block"
+                                    data-toggle="collapse"
+                                    data-target={`#insuranceCollapse${this.props.passengerid}`}
+                                    aria-expanded="false" aria-controls="collapseExample">
+                                Toggle
+                            </button>
                         </div>
 
                     </div>
                 </div>
+
 
                 <div className="collapse" id={`insuranceCollapse${this.props.passengerid}`}>
 
                     <div className="row">
-                        <div className="col-md-12">
+                        {this.props.otastore.insuranceInfo.map((ins) => {
 
+                            return (<div key={ins.id} className="col-md-3">
 
-                            <div className="row">
+                                <div className="card text-center">
+                                    <div className="card-header bg-warning">{ins.title}</div>
 
+                                    <div className="card-body">
+                                        {ins.description}
 
-                                {this.props.otastore.insuranceInfo.map((ins) => {
+                                        <input type="radio" value={ins.id}
+                                               onChange={this.handleOptionChange}
+                                               checked={this.state.checkedInsurance == ins.id}/>
 
-                                    return (<div key={ins.id} className="col-md-3">
+                                    </div>
 
-                                        <div className="card text-center">
-                                            <div className="card-header bg-warning ">
+                                    <div className="card-footer">
+                                        {ins.convertedPrice} {this.props.otastore.currency}
+                                    </div>
+                                </div>
 
-                                            </div>
-                                            <div className="card-body">
-                                                {ins.title}
-
-                                                <input type="radio" value={ins.id}
-                                                       onChange={this.handleOptionChange}
-                                                       checked={this.state.checkedInsurance == ins.id}/>
-
-                                            </div>
-                                            <div className="card-footer">
-                                                {ins.convertedPrice} {this.props.otastore.currency}
-                                            </div>
-                                        </div>
-
-                                    </div>);
-                                })}
-
-
-                            </div>
-
-                        </div>
-
+                            </div>);
+                        })}
                     </div>
-
                 </div>
-
-
-
             </div>
 
         );
