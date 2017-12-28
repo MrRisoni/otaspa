@@ -12,7 +12,7 @@ import Payment from './Pay/Payment';
 import Upsales from './Upsales/Upsales';
 
 
-import OtaStore from './stores/store';
+import OtaStore from './stores/OtaStore';
 import ItineraryStore from './stores/ItineraryStore';
 
 const otastore = new OtaStore();
