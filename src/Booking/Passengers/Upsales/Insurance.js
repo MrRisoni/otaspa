@@ -41,13 +41,11 @@ class Insurance extends Component {
 
                             <div className="row">
 
-                                <div className="col-md-5">
+                                <div className="col-md-4">
                                     Select an Insurance
                                 </div>
 
-                                <div className="col-md-5"></div>
-
-                                <div className="col-md-2">
+                                <div className="col-md-2 offset-md-5">
                                     <button className="btn btn-sm btn-dark btn-block"
                                             data-toggle="collapse"
                                             data-target={`#insuranceCollapse${this.props.passengerid}`}
@@ -85,7 +83,7 @@ class Insurance extends Component {
 
                                                 <input type="radio" value={ins.id}
                                                        onChange={this.handleOptionChange}
-                                                       checked={this.state.checkedInsurance === ins.id}/>
+                                                       checked={this.state.checkedInsurance == ins.id}/>
 
                                             </div>
                                             <div className="card-footer">

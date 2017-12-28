@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {inject} from 'mobx-react';
 
-import Insurance from './Insurance';
 import Bags from './Bags/Bags';
 import BrandedFare from './BrandedFares/BrandedFare';
 
@@ -28,7 +27,6 @@ class PassengerUpsale extends Component {
                             </div>
 
 
-                            <Insurance passengerid={this.props.pap.id}/>
 
                              <BrandedFare  passengerid={this.props.pap.id}/>
 

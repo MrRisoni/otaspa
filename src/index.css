@@ -7,6 +7,11 @@
     margin-top: 25px;
 }
 
+body, input[type="text"], option, select
+{
+    font-size : 14px
+}
+
 .passportDiv{
     margin-top: 25px;
 }
@@ -66,6 +71,8 @@
 {
     margin-top: 3%;
 }
+
+
 
 .upgradefare {
     margin-top: 5%;

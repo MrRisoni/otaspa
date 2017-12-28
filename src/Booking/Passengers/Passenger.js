@@ -8,6 +8,8 @@ import Passport from './Passport';
 import Names from './Names';
 import Miles from './Miles';
 
+import Insurance from './Upsales/Insurance';
+
 @inject('otastore')
 class Passenger extends Component {
     constructor(props) {
@@ -88,6 +90,14 @@ class Passenger extends Component {
                                 <Passport pap_id={this.props.pap.id}
                                           countriesList={this.props.countriesList}/>
 
+
+                                <div className="alert alert-info" role="alert">
+                                    Pick extra upsales your trip!
+                                </div>
+
+                                <br/>
+                                {/* Upsales */}
+                                <Insurance passengerid={this.props.pap.id}/>
 
 
                             </div>
