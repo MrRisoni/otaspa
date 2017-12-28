@@ -9,6 +9,7 @@ import Names from './Names';
 import Miles from './Miles';
 
 import Insurance from './Upsales/Insurance';
+import Bags from './Upsales/Bags/Bags';
 
 @inject('otastore')
 class Passenger extends Component {
@@ -98,6 +99,8 @@ class Passenger extends Component {
                                 <br/>
                                 {/* Upsales */}
                                 <Insurance passengerid={this.props.pap.id}/>
+
+                                <Bags passengerid={this.props.pap.id}/>
 
 
                             </div>

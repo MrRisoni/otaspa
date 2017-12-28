@@ -40,7 +40,7 @@ class Insurance extends Component {
                             Select an Insurance
                         </div>
 
-                        <div className="col-md-2 offset-md-5">
+                        <div className="col-md-2 offset-md-6">
                             <button className="btn btn-sm btn-dark btn-block btnToggle"
                                     data-toggle="collapse"
                                     data-target={`#insuranceCollapse${this.props.passengerid}`}

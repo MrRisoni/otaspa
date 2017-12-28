@@ -80,6 +80,7 @@ body, input[type="text"], option, select
 
 
 
+
 .upgradefare {
     margin-top: 5%;
 }
@@ -102,7 +103,9 @@ body, input[type="text"], option, select
     padding: 3px 5px;
     font-size: 5px;
     border-radius: 2px;
+    margin-right: 5px;
 }
+
 
 .pricebox h4 {
     text-align: center;

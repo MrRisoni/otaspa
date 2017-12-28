@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {inject} from 'mobx-react';
 
-import Bags from './Bags/Bags';
 import BrandedFare from './BrandedFares/BrandedFare';
 
 @inject('otastore')
@@ -30,7 +29,6 @@ class PassengerUpsale extends Component {
 
                              <BrandedFare  passengerid={this.props.pap.id}/>
 
-                            <Bags passengerid={this.props.pap.id}/>
 
 
 
