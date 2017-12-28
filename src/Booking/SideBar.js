@@ -183,7 +183,7 @@ class SideBar extends Component {
             if (px.insuranceInfo > 0) {
                 this.props.otastore.insuranceInfo.forEach((ins) => {
                     if (ins.id === px.insuranceInfo) {
-                        total += ins.convertedPrice;
+                        total += parseFloat(ins.convertedPrice);
                     }
                 });
             }
@@ -202,7 +202,7 @@ class SideBar extends Component {
 
 
 
-
+        console.log('total ' + total);
         total = total.toFixed(2);
 
         let priceBoxStyle = {marginTop :  this.props.otastore.priceBoxMargin + '%'};
