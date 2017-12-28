@@ -7,7 +7,7 @@ import Itinerary from './Itinerary/Itinerary';
 import axios from "axios/index";
 import FontAwesome from 'react-fontawesome';
 
-
+import './PassengerPage.css';
 import ValidatePassengers from './Passengers/ValidatePassengers';
 
 
@@ -58,8 +58,9 @@ class BookApp extends Component {
     componentWillMount() {
         var self = this;
         console.log('mounting...');
+        let settings = require('../env_settings');
 
-        let api = process.env.BACK_END_URL || 'http://localhost:4800';
+        let api = settings.BACK_END_URL;
         console.log(api);
 
         axios.get(api + '/api/countries')
@@ -89,10 +90,7 @@ class BookApp extends Component {
 
                     <div className="row">
 
-
-                        <div className="col-md-1"></div>
-
-                        <div className="col-md-8">
+                        <div className="col-md-8 offset-md-1">
 
                             <Itinerary/>
 

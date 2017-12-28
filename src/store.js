@@ -917,7 +917,6 @@ class OtaStore {
     editPaxElement(args)
     {
         this.passengers[args.id][args.property] = args.value;
-        console.log(this.passengers[args.id]);
     }
 
 

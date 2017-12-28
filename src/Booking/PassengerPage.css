@@ -1,0 +1,11 @@
+.textInputErr {
+    color:red;
+    display: inline-block;
+}
+
+
+.errorBorder {
+    border: 2px;
+    border-style: solid;
+    border-color:red;
+}

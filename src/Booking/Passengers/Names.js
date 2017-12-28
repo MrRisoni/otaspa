@@ -6,6 +6,7 @@ import moment from 'moment';
 
 import ValidatePassengers from './ValidatePassengers';
 
+import Error from '../../Error';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -16,7 +17,10 @@ class Names extends Component {
         this.state = {
             surname: '',
             name: '',
-            dob: moment()
+            dob: moment(),
+            showSurnameErr: false,
+            showNameErr: false
+
         };
 
 
@@ -56,6 +60,16 @@ class Names extends Component {
                     id: this.props.pap_id
                 });
 
+
+            this.setState({
+                showSurnameErr: false
+            });
+
+        }
+        else{
+            this.setState({
+                showSurnameErr: true
+            });
         }
 
     }
@@ -78,11 +92,20 @@ class Names extends Component {
                     id: this.props.pap_id
                 });
 
+            this.setState({
+                showNameErr: false
+            });
+
+        }
+        else{
+            this.setState({
+                showNameErr: true
+            });
         }
     }
 
     render() {
-
+        const messages = require('../../messages');
         return (
             <div>
                 <div className="row">
@@ -102,6 +125,9 @@ class Names extends Component {
                                id={`#paxSurname${this.props.pap_id}`}
                                value={this.state.surname}
                                onChange={this.editSurname} className="form-control"/>
+                        <Error show={this.state.showSurnameErr}
+                               class={"textInputErr"}
+                               msg={messages.LETTERS_ONLY}/>
                     </div>
 
 
@@ -109,6 +135,9 @@ class Names extends Component {
                         <input type="text" placeholder="Name" id={`#paxName${this.props.pap_id}`}
                                value={this.state.name}
                                onChange={this.editName} className="form-control"/>
+                        <Error show={this.state.showNameErr}
+                               class={"textInputErr"}
+                               msg={messages.LETTERS_ONLY}/>
                     </div>
 
                 </div>

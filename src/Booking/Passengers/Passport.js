@@ -11,7 +11,8 @@ class Passport extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            expires: moment()
+            expires: moment(),
+            minExpiryDate:moment()
         };
 
 
@@ -112,10 +113,13 @@ class Passport extends Component {
                                    className="form-control"/>
                         </div>
 
+                        {/* min date should be fly date */}
                         <div className="col-md-6">
                             <label htmlFor="birthday">Expiration Date</label>
                             <DatePicker className="form-control"
                                         dateFormat="DD/MM/YYYY"
+                                        minDate={this.state.minExpiryDate}
+                                        openToDate={this.state.minExpiryDate}
                                         selected={this.state.expires}
                                         onChange={this.changeExpiry}
                             />
