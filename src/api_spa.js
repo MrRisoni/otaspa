@@ -14,7 +14,6 @@ const models = require('./models');
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static(path.resolve(__dirname, '../app/build')));
 
 app.get('/api/countries', (req, res) => {
     models.CountryModel.findAll(
@@ -27,9 +26,10 @@ app.get('/api/countries', (req, res) => {
 
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../app/build', 'index.html'));
+app.get('/api/insurance', (req, res) => {
+    res.send(require('./serverData/insurance'));
 });
+
 
 app.listen(PORT, function () {
     console.log(`Listening on port ${PORT}`);
