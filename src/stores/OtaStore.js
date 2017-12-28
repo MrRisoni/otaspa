@@ -230,35 +230,7 @@ class OtaStore {
     ];
 
     @observable
-    insuranceInfo = [{
-        id: 1,
-        title: 'No insurance',
-        key: 'pl2m7rgefxdE',
-        price: 0,
-        convertedPrice: 0
-    },
-        {
-            id: 2,
-            title: 'Globy Classic',
-            key: 'tzOzzkrt1KPz',
-            price: 5.16,
-            convertedPrice: 5.16
-        },
-        {
-            id: 3,
-            title: 'Globy Cancellation',
-            key: 'SZ273rT800q1',
-            price: 15.68,
-            convertedPrice: 15.68
-        },
-        {
-            id: 4,
-            title: 'Globy Schengen',
-            key: 'MJWCbFKU3Z4T',
-            price: 22.15,
-            convertedPrice: 22.15
-        }
-    ];
+    insuranceInfo = [];
 
 
 
@@ -792,10 +764,14 @@ class OtaStore {
         console.log('Setting countries');
         this.countries = data;
         console.log(this.countries.length);
-
-
-
     }
+
+    @action
+    setInsurance(data)
+    {
+        this.insuranceInfo = data;
+    }
+
 
 
 }
