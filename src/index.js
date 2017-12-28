@@ -12,15 +12,19 @@ import Payment from './Pay/Payment';
 import Upsales from './Upsales/Upsales';
 
 
-import OtaStore from './store';
+import OtaStore from './stores/store';
+import ItineraryStore from './stores/ItineraryStore';
 
 const otastore = new OtaStore();
+const itinerary_store = new ItineraryStore();
+
 const browserHistory = createBrowserHistory();
 const routingStore = new RouterStore();
 
 const stores = {
     routing: routingStore,
-    otastore: otastore
+    otastore: otastore,
+    ItineraryStore: itinerary_store
 };
 
 const history = syncHistoryWithStore(browserHistory, routingStore);

@@ -147,7 +147,7 @@ class ItineraryStore {
         }
     }
 
-
+    @action
     processSegments()
     {
         this.itinerary.info.departure.stops =  this.itinerary.depSegments.length -1;

@@ -4,11 +4,12 @@ import {observer, inject} from 'mobx-react';
 
 import Leg from './Leg';
 
-@inject('otastore')
+
+@inject('ItineraryStore')
 @observer
 class Itinerary extends Component {
     componentDidMount() {
-        this.props.otastore.processSegments();
+        this.props.ItineraryStore.processSegments();
     }
     render() {
         return (

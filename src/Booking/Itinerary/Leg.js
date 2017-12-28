@@ -7,7 +7,7 @@ import Airport from './Airport';
 import Segment from './Segment';
 
 
-@inject('otastore')
+@inject('ItineraryStore')
 @observer
 class Leg extends Component {
     constructor(props) {
@@ -43,17 +43,17 @@ class Leg extends Component {
 
     render() {
 
-        const stops = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.stops : this.props.otastore.itinerary.info.return.stops;
+        const stops = (this.props.leg === 0) ? this.props.ItineraryStore.itinerary.info.departure.stops : this.props.ItineraryStore.itinerary.info.return.stops;
 
-        const hours = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.waitTime.hours : this.props.otastore.itinerary.info.return.waitTime.hours;
-        const minutes = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.waitTime.minutes : this.props.otastore.itinerary.info.return.waitTime.minutes;
+        const hours = (this.props.leg === 0) ? this.props.ItineraryStore.itinerary.info.departure.waitTime.hours : this.props.ItineraryStore.itinerary.info.return.waitTime.hours;
+        const minutes = (this.props.leg === 0) ? this.props.ItineraryStore.itinerary.info.departure.waitTime.minutes : this.props.ItineraryStore.itinerary.info.return.waitTime.minutes;
 
-        const whours = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.durationTime.hours : this.props.otastore.itinerary.info.return.durationTime.hours;
-        const wminutes = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.durationTime.minutes : this.props.otastore.itinerary.info.return.durationTime.minutes;
+        const whours = (this.props.leg === 0) ? this.props.ItineraryStore.itinerary.info.departure.durationTime.hours : this.props.ItineraryStore.itinerary.info.return.durationTime.hours;
+        const wminutes = (this.props.leg === 0) ? this.props.ItineraryStore.itinerary.info.departure.durationTime.minutes : this.props.ItineraryStore.itinerary.info.return.durationTime.minutes;
 
-        let obj = (this.props.leg === 0) ? this.getAirportData(this.props.otastore.itinerary.depSegments) : this.getAirportData(this.props.otastore.itinerary.retSegments);
+        let obj = (this.props.leg === 0) ? this.getAirportData(this.props.ItineraryStore.itinerary.depSegments) : this.getAirportData(this.props.ItineraryStore.itinerary.retSegments);
 
-        let segments = (this.props.leg === 0) ? this.props.otastore.itinerary.depSegments : this.props.otastore.itinerary.retSegments;
+        let segments = (this.props.leg === 0) ? this.props.ItineraryStore.itinerary.depSegments : this.props.ItineraryStore.itinerary.retSegments;
 
         let segTitle = (this.props.leg === 0) ? "Departure" : "Return";
         let segmentsDiv = [];
