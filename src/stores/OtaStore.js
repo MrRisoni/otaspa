@@ -1,11 +1,7 @@
 import {observable, action} from 'mobx';
-import moment from 'moment';
-import axios from 'axios';
 
 class OtaStore {
 
-    @observable
-    priceBoxMargin =5;
 
     @observable
     countries = [];
@@ -788,16 +784,6 @@ class OtaStore {
 
 
 
-    @action changeHeight(newHeight){
-
-        if (newHeight <= 622) {
-            this.priceBoxMargin = 5;
-        }
-        else {
-            this.priceBoxMargin = (165.0/(1200 - 622)) *( newHeight  - 622) ;
-        }
-
-    }
 
 
     @action

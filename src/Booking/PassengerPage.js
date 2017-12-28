@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react';
 import PriceBox from './SideBar';
 import PassengerList from './Passengers/PassengerList';
 import Itinerary from './Itinerary/Itinerary';
-import axios from "axios/index";
+import axios from 'axios';
 import FontAwesome from 'react-fontawesome';
 
 import './PassengerPage.css';
@@ -13,6 +13,7 @@ import ValidatePassengers from './Passengers/ValidatePassengers';
 
 @inject('routing')
 @inject('otastore')
+@inject('htmlStore')
 @observer
 class BookApp extends Component {
 
@@ -51,7 +52,7 @@ class BookApp extends Component {
         const windowBottom = windowHeight + window.pageYOffset;
         //console.log(windowBottom);
 
-        this.props.otastore.changeHeight( windowBottom);
+        this.props.htmlStore.changeHeight( windowBottom);
 
     }
 

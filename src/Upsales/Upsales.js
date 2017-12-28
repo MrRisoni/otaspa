@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import { inject, observer } from 'mobx-react';
 
 import PriceBox from '../Booking/SideBar';
-import Preseat from "./Preseat/Preseat";
 import PassengerUpsaleList from './PassengerUpsaleList';
 
-@inject('otastore')
+@inject('htmlStore')
 @observer
 class Upsales extends Component {
     constructor(props) {
@@ -22,7 +21,7 @@ class Upsales extends Component {
         const windowBottom = windowHeight + window.pageYOffset;
         //console.log(windowBottom);
 
-        this.props.otastore.changeHeight( windowBottom);
+        this.props.htmlStore.changeHeight( windowBottom);
 
     }
 
@@ -35,9 +34,7 @@ class Upsales extends Component {
 
             <div className="row">
 
-                <div className="col-md-1"></div>
-
-                <div className="col-md-7">
+                <div className="col-md-7 offset-md-1">
                     <PassengerUpsaleList/>
 
                 </div>
