@@ -39,9 +39,21 @@ class FinalPage extends Component {
 
             let passengersDiv = {};
 
+            let priceRows = [];
+
+            this.props.otastore.paxTypes.forEach( (pax) => {
+               if (pax.count >0) {
+                   priceRows.push({
+                       title:  pax.name + ' x ' + pax.count,
+                       value: (pax.count * pax.convertedPrice).toFixed(2)
+                   })
+               }
+            });
+
             let priceData = {
                 title:'PriceAnalysis',
-                headers: ['Description', 'Value']
+                headers: ['Description', 'Value'],
+                rows: priceRows
             };
 
 

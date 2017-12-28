@@ -4,7 +4,19 @@ const CardTable = function (props) {
     console.log(props);
 
     let rows = [];
+
     let reactKey = 0;
+    let headers = [];
+    for (var i = 0; i < props.data.headers.length; i++)
+    {
+        headers.push(<th key={i}>{props.data.headers[i]}</th>)
+    }
+
+    for (var i = 0; i < props.data.rows.length; i++)
+    {
+
+    }
+
    /* for(let variable in props.data) {
 
         let  context = "";
@@ -22,14 +34,13 @@ const CardTable = function (props) {
             <div className="card-body">
                 <table className="table table-striped table-bordered table-hover">
                     <thead>
-
+                        <tr>
+                            {headers}
+                        </tr>
                     </thead>
                     <tbody>
 
                     </tbody>
-                    <tfoot>
-
-                    </tfoot>
                 </table>
             </div>
         </div>
