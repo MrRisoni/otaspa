@@ -3,8 +3,9 @@ import React, {Component} from 'react';
 
 class Pay extends Component {
 
+
     render() {
-        return (   <div className="row paymentDetails">
+        return (<div className="row paymentDetails">
                 <div className="col-md-12">
 
                     <div className="card">
@@ -52,16 +53,6 @@ class Pay extends Component {
 
                             <br/>
 
-                            <div className="row">
-                                <div className="col-md-4">
-
-                                </div>
-                                <div className="col-md-4">
-                                    <button className="btn btn-success btn-lg">Complete Payment</button>
-
-                                </div>
-
-                            </div>
 
                         </div>
                     </div>

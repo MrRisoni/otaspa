@@ -166,68 +166,7 @@ class OtaStore {
 
 
 
-    @observable bagAllowance = [{
-        carrier: 'FR',
-        title:' Ryanair',
-        maxBags: 3,
-        bags: [
-            {
-                id: 1,
-                title: '119 × 119 × 81 cm, 15 kg',
-                key: 'A77bg5HyL7tW',
-                price: 12,
-                convertedPrice: 12,
-            },
-            {
-                id: 2,
-                title: '119 × 119 × 81 cm, 30 kg',
-                key: 'FjB9vHukA7sU',
-                price: 35,
-                convertedPrice: 35,
-            }
-        ]
-    },
-        {
-            carrier: 'A3',
-            title:' Aegean',
-            maxBags: 2,
-            bags: [{
-                id: 1,
-                title: '12KG',
-                key: 'WzObjBLahEux',
-                price: 12,
-                convertedPrice: 12,
-
-            },
-                {
-                    id: 2,
-                    key: '56fzjE8uQY5Q',
-                    title: '25KG',
-                    price: 18,
-                    convertedPrice: 18
-                }
-            ]
-        },{
-            carrier: 'BA',
-            title:' British Airways',
-            maxBags: 2,
-            bags: [{
-                id: 1,
-                key: 'gxBzM9RfoeCn',
-                title: '22KG',
-                price: 15,
-                convertedPrice: 15
-            },
-                {
-                    id: 2,
-                    key: 'QtpVPkQnQkp9',
-                    title: '30KG',
-                    price: 45,
-                    convertedPrice: 45
-                }
-            ]
-        }
-    ];
+    @observable bagAllowance =[]
 
     @observable
     insuranceInfo = [];
@@ -756,8 +695,6 @@ class OtaStore {
 
 
 
-
-
     @action
     setCountries(data)
     {
@@ -770,6 +707,12 @@ class OtaStore {
     setInsurance(data)
     {
         this.insuranceInfo = data;
+    }
+
+    @action
+    setBags(data)
+    {
+        this.bagAllowance = data;
     }
 
 

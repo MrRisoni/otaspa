@@ -8,8 +8,9 @@ import './index.css';
 
 import BookApp from './Booking/PassengerPage';
 import SearchBundle from './Booking/Search/SearchBundle';
-import Payment from './Pay/Payment';
+import PaymentPage from './Pay/PaymentPage';
 import Upsales from './UpsalesPage/Upsales';
+import FinalPage from './Final/FinalPage';
 
 
 import OtaStore from './stores/OtaStore';
@@ -40,8 +41,8 @@ ReactDOM.render(
                 <Route exact path="/passengers" component={BookApp}/>
                 <Route exact path="/upsales" component={Upsales}/>
                 <Route exact path="/preseat" component={Upsales}/>
-                <Route exact path="/pay" component={Payment}/>
-                <Route exact path="/final" component={BookApp}/>
+                <Route exact path="/pay" component={PaymentPage}/>
+                <Route exact path="/final" component={FinalPage}/>
             </div>
         </Router>
     </Provider>

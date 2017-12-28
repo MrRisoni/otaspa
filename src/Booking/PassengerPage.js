@@ -22,7 +22,8 @@ class BookApp extends Component {
 
         this.state= {
             fetchedCountries:false,
-            fetchInsurance: false
+            fetchedInsurance: false,
+            fetchedBags :false
         };
 
         this.moveToUpsales = this.moveToUpsales.bind(this);
@@ -81,7 +82,19 @@ class BookApp extends Component {
             .then(function (response) {
                 self.props.otastore.setInsurance(response.data);
 
-                self.setState({fetchInsurance:true});
+                self.setState({fetchedInsurance:true});
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
+        axios.get(api + '/api/bags')
+            .then(function (response) {
+                self.props.otastore.setBags(response.data);
+
+                self.setState({fetchedBags:true});
 
             })
             .catch(function (error) {
@@ -97,7 +110,7 @@ class BookApp extends Component {
     render() {
 
 
-           if (this.state.fetchedCountries && this.state.fetchInsurance) {
+           if (this.state.fetchedCountries && this.state.fetchedInsurance && this.state.fetchedBags) {
                 return (
 
                     <div className="row">

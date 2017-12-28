@@ -30,6 +30,20 @@ app.get('/api/insurance', (req, res) => {
     res.send(require('./serverData/insurance'));
 });
 
+app.get('/api/bags', (req, res) => {
+    res.send(require('./serverData/bags'));
+});
+
+app.post('/api/pay', (req, res) => {
+    // echo PNR tickets
+
+    setTimeout( () => {
+        res.send({success:1});
+    },5000);
+
+});
+
+
 
 app.listen(PORT, function () {
     console.log(`Listening on port ${PORT}`);
