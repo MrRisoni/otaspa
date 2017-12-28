@@ -41,7 +41,7 @@ class Insurance extends Component {
                         </div>
 
                         <div className="col-md-2 offset-md-5">
-                            <button className="btn btn-sm btn-dark btn-block"
+                            <button className="btn btn-sm btn-dark btn-block btnToggle"
                                     data-toggle="collapse"
                                     data-target={`#insuranceCollapse${this.props.passengerid}`}
                                     aria-expanded="false" aria-controls="collapseExample">

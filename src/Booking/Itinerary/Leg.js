@@ -69,7 +69,21 @@ class Leg extends Component {
                 <div className="card  bg-light mb-3 border-primary mb-3">
 
                     <div className="card-header">
-                        {segTitle}
+                        <div className="row">
+                            <div className="col-md-2">
+                                {segTitle}
+                            </div>
+
+                            <div className="col-md-2 offset-md-8">
+                                <button className="btn btn-sm btn-dark btn-block btnToggle"
+                                        data-toggle="collapse"
+                                        data-target={`#passengerListCollapse`} aria-expanded="false"
+                                        aria-controls="collapseExample">
+                                    Toggle
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div className="card-body">

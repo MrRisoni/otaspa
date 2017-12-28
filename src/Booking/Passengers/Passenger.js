@@ -67,7 +67,7 @@ class Passenger extends Component {
 
 
                                 <div className="col-md-2 offset-md-3">
-                                    <button className="btn btn-sm btn-dark btn-block"
+                                    <button className="btn btn-sm btn-dark btn-block btnToggle"
                                             data-toggle="collapse"
                                             data-target={`#passengerCollapse${this.props.pap.id}`} aria-expanded="false"
                                             aria-controls="collapseExample">
