@@ -31,6 +31,7 @@ class SearchBundle extends Component {
                 <AirlineFlasher/>
                 <SimpleExample/>
 
+                <CarCarousel/>
 
                 <MyMapComponent
                     isMarkerShown
