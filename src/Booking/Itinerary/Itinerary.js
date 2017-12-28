@@ -15,10 +15,10 @@ class Itinerary extends Component {
         return (
             <div className="itinerary">
 
-                <Leg leg={0}/>
+                <Leg legId={0}/>
 
 
-                <Leg leg={1}/>
+                <Leg legId={1}/>
 
             </div>
 

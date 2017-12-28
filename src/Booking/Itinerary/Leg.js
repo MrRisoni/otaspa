@@ -43,19 +43,19 @@ class Leg extends Component {
 
     render() {
 
-        const stops = (this.props.leg === 0) ? this.props.ItineraryStore.itinerary.info.departure.stops : this.props.ItineraryStore.itinerary.info.return.stops;
+        const stops = (this.props.legId === 0) ? this.props.ItineraryStore.itinerary.info.departure.stops : this.props.ItineraryStore.itinerary.info.return.stops;
 
-        const hours = (this.props.leg === 0) ? this.props.ItineraryStore.itinerary.info.departure.waitTime.hours : this.props.ItineraryStore.itinerary.info.return.waitTime.hours;
-        const minutes = (this.props.leg === 0) ? this.props.ItineraryStore.itinerary.info.departure.waitTime.minutes : this.props.ItineraryStore.itinerary.info.return.waitTime.minutes;
+        const hours = (this.props.legId === 0) ? this.props.ItineraryStore.itinerary.info.departure.waitTime.hours : this.props.ItineraryStore.itinerary.info.return.waitTime.hours;
+        const minutes = (this.props.legId === 0) ? this.props.ItineraryStore.itinerary.info.departure.waitTime.minutes : this.props.ItineraryStore.itinerary.info.return.waitTime.minutes;
 
-        const whours = (this.props.leg === 0) ? this.props.ItineraryStore.itinerary.info.departure.durationTime.hours : this.props.ItineraryStore.itinerary.info.return.durationTime.hours;
-        const wminutes = (this.props.leg === 0) ? this.props.ItineraryStore.itinerary.info.departure.durationTime.minutes : this.props.ItineraryStore.itinerary.info.return.durationTime.minutes;
+        const whours = (this.props.legId === 0) ? this.props.ItineraryStore.itinerary.info.departure.durationTime.hours : this.props.ItineraryStore.itinerary.info.return.durationTime.hours;
+        const wminutes = (this.props.legId === 0) ? this.props.ItineraryStore.itinerary.info.departure.durationTime.minutes : this.props.ItineraryStore.itinerary.info.return.durationTime.minutes;
 
-        let obj = (this.props.leg === 0) ? this.getAirportData(this.props.ItineraryStore.itinerary.depSegments) : this.getAirportData(this.props.ItineraryStore.itinerary.retSegments);
+        let obj = (this.props.legId === 0) ? this.getAirportData(this.props.ItineraryStore.itinerary.depSegments) : this.getAirportData(this.props.ItineraryStore.itinerary.retSegments);
 
-        let segments = (this.props.leg === 0) ? this.props.ItineraryStore.itinerary.depSegments : this.props.ItineraryStore.itinerary.retSegments;
+        let segments = (this.props.legId === 0) ? this.props.ItineraryStore.itinerary.depSegments : this.props.ItineraryStore.itinerary.retSegments;
 
-        let segTitle = (this.props.leg === 0) ? "Departure" : "Return";
+        let segTitle = (this.props.legId === 0) ? "Departure" : "Return";
         let segmentsDiv = [];
 
 
@@ -77,7 +77,7 @@ class Leg extends Component {
                             <div className="col-md-2 offset-md-8">
                                 <button className="btn btn-sm btn-dark btn-block btnToggle"
                                         data-toggle="collapse"
-                                        data-target={`#passengerListCollapse`} aria-expanded="false"
+                                        data-target={`#legCollapse${this.props.legId}`} aria-expanded="false"
                                         aria-controls="collapseExample">
                                     Toggle
                                 </button>
@@ -86,7 +86,7 @@ class Leg extends Component {
 
                     </div>
 
-                    <div className="card-body">
+                    <div className="card-body show" id={`legCollapse${this.props.legId}`}>
 
                         <div className="row">
 
@@ -107,7 +107,7 @@ class Leg extends Component {
 
                             <div className="col-md-2">
                                 <button className="btn btn-sm btn-primary"
-                                data-toggle="collapse" data-target={`#segmentsCollapse${this.props.leg}`} aria-expanded="false" aria-controls="collapseExample">
+                                data-toggle="collapse" data-target={`#segmentsCollapse${this.props.legId}`} aria-expanded="false" aria-controls="collapseExample">
                                 Expand
                                 </button>
                             </div>
@@ -134,7 +134,7 @@ class Leg extends Component {
                         </div>
 
 
-                        <div className="collapse" id={`segmentsCollapse${this.props.leg}`}>
+                        <div className="collapse" id={`segmentsCollapse${this.props.legId}`}>
                             {segmentsDiv}
                         </div>
 
