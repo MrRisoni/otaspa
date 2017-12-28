@@ -41,8 +41,6 @@ class Segment extends Component {
 
         let obj = this.getSegmentData(this.props.segData);
 
-        console.log(obj);
-
         return (
 
             <div className="segments">

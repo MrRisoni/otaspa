@@ -10,13 +10,60 @@ const PORT = process.env.PORT || 4800;
 const Sequelize = require('sequelize');
 const cors = require('cors');
 
-const models = require('./models');
+const dbname = process.env.DBNAME || 'otaspadb';
+const user = process.env.DBUSER || 'root';
+const passwd = process.env.DBPASSWD || '';
+const host = process.env.DBHOST || '127.0.0.1';
+console.log(dbname, user, passwd, host);
+const sequelize = new Sequelize(dbname, user, passwd, {
+    host: host,
+    dialect: 'mysql',
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    }
+});
+
+
+sequelize
+    .authenticate()
+    .then(() => {
+        console.log('Connection has been established successfully.');
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+    });
+
+
+const CountryModel = sequelize.define('ota_countries', {
+        id: {
+            type: Sequelize.INTEGER.UNSIGNED,
+            field: 'con_id',
+            autoIncrement: true,
+            primaryKey: true,
+        },
+        name: {
+            type: Sequelize.CHAR,
+            field: 'con_name'
+        },
+        code: {
+            type: Sequelize.CHAR,
+            field: 'con_code'
+        }
+    },
+    {
+        timestamps: false,
+        freezeTableName: true
+    }
+);
 
 app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/api/countries', (req, res) => {
-    models.CountryModel.findAll(
+    CountryModel.findAll(
         { order: [
                 ['name', 'ASC']
             ]
@@ -39,7 +86,7 @@ app.post('/api/pay', (req, res) => {
 
     setTimeout( () => {
         res.send({success:1});
-    },5000);
+    },1000);
 
 });
 

@@ -34,7 +34,7 @@ class PaymentPage extends Component {
                 </div>
 
                 <br/>
-                
+
                 <div className="row">
                     <div className="col-md-4 offset-md-3">
                         <button className="btn btn-success btn-lg" onClick={this.handleClick}>
