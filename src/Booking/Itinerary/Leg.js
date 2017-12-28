@@ -33,7 +33,11 @@ class Leg extends Component {
 
             arrTime: segments[last_seg].arrDateTime.substr(11, 5),
             arrDay: moment(segments[last_seg].arrDateTime).format('dddd'),
-            arrDate: moment(segments[last_seg].arrDateTime).format('DD MMMM YYYY')
+            arrDate: moment(segments[last_seg].arrDateTime).format('DD MMMM YYYY'),
+
+            fromCity: segments[0].fromCity,
+            toCity: segments[last_seg].toCity
+
         }
     }
 
@@ -54,8 +58,9 @@ class Leg extends Component {
         let segTitle = (this.props.leg === 0) ? "Departure" : "Return";
         let segmentsDiv = [];
 
+
         segments.forEach((sg, idx) => {
-            segmentsDiv.push(<Segment key={idx} segData={sg}/>);
+            segmentsDiv.push(<Segment key={idx} segData={sg} segIndex={idx+1}/>);
         });
 
         return (
@@ -73,12 +78,14 @@ class Leg extends Component {
 
 
                             <Airport iata={obj.depIATA}
+                                     city={obj.fromCity}
                                      name={obj.depAirport}
                                      flyTime={obj.depTime}
                                      day={obj.depDay}
                                      date={obj.depDate}/>
 
                             <Airport iata={obj.arrIATA}
+                                     city={obj.toCity}
                                      name={obj.arrAirport}
                                      flyTime={obj.arrTime}
                                      day={obj.arrDay}

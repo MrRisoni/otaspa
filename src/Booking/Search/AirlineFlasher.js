@@ -40,9 +40,11 @@ class AirlineFlasher extends Component {
 
 
         return (
-            <div>
-                {this.state.airlines[this.state.counter]}
-                Component AirlineFlasher </div>
+            <div className="row">
+                <div className="col-md-4 offset-md-4">
+                    Fetching data from ... {this.state.airlines[this.state.counter]}
+                </div>
+            </div>
 
         );
     }

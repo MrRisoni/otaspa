@@ -48,7 +48,7 @@ class OtaStore {
                 arrDateTime: "2018-09-23T10:55:00+03:00",
                 airline: "FR,Ryanair",
                 img: {
-                    url: "https://logos-download.com/wp-content/uploads/2016/03/Ryanair_logo_small.png",
+                    url: "/logos/FR.png",
                     width: 100
                 }
             },
@@ -61,7 +61,7 @@ class OtaStore {
                 arrDateTime: "2018-09-23T19:00:00+01:00",
                 airline: "AF,Air France",
                 img: {
-                    url: "https://logos-download.com/wp-content/uploads/2016/03/Ryanair_logo_small.png",
+                    url: "/logos/AF.png",
                     width: 100
                 }
             },
@@ -74,7 +74,7 @@ class OtaStore {
                 arrDateTime: "2018-09-24T00:30:00+00:00",
                 airline: "BA,British Airways",
                 img: {
-                    url: "https://logos-download.com/wp-content/uploads/2016/03/Ryanair_logo_small.png",
+                    url: "https://www.seeklogo.net/wp-content/uploads/2015/07/british-airways-logo-vector-download.jpg",
                     width: 100
                 }
             }
@@ -89,7 +89,7 @@ class OtaStore {
                 arrDateTime: "2018-10-03T10:55:00+03:00",
                 airline: "FR,Raynair",
                 img: {
-                    url: "https://logos-download.com/wp-content/uploads/2016/03/Ryanair_logo_small.png",
+                    url: "/logos/FR.png",
                     width: 100
                 }
             },
@@ -102,7 +102,7 @@ class OtaStore {
                 arrDateTime: "2018-10-03T16:55:00+03:00",
                 airline: "A3,Aegean Airways",
                 img: {
-                    url: "https://logos-download.com/wp-content/uploads/2016/03/Ryanair_logo_small.png",
+                    url: "/logos/A3.png",
                     width: 100
                 }
             }

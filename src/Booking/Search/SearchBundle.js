@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 
 import CarCarousel from './CarCarousel';
 import OtaSpaDatePicker from './../OtaSpaDatePicker';
-import SearchBar from "./SearchBar";
-import SimpleExample from "./SimpleExample";
-import AirlineFlasher from "./AirlineFlasher";
+import SearchBar from './SearchBar';
+import SimpleExample from './SimpleExample';
+import AirlineFlasher from './AirlineFlasher';
+
+import MyMapComponent from "./MyMapComponent";
 
 
 class SearchBundle extends Component {
@@ -28,6 +30,17 @@ class SearchBundle extends Component {
                 <SearchBar/>
                 <AirlineFlasher/>
                 <SimpleExample/>
+
+
+                <MyMapComponent
+                    isMarkerShown
+                    googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                    loadingElement={<div style={{ height: `100%` }} />}
+                    containerElement={<div style={{ height: `400px` }} />}
+                    mapElement={<div style={{ height: `100%` }} />}
+                />
+
+
             </div>
 
         );

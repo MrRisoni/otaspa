@@ -48,7 +48,7 @@ class Segment extends Component {
             <div className="segments">
 
                 <div className="card">
-                    <div className="card-header bg-info"></div>
+                    <div className="card-header bg-info">Segment #{this.props.segIndex}</div>
                     <div className="card-body">
 
                         <div className="row">
