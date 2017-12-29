@@ -22,9 +22,9 @@ class PassengerList extends Component {
 
         let countriesList = [];
 
-        {this.props.otastore.countries.forEach( (country) => {
+        this.props.otastore.countries.forEach((country) => {
             countriesList.push(<option key={country.code} value={country.code}>{country.name}</option>);
-        })}
+        });
 
 
         this.props.otastore.passengers.forEach((ps) => {

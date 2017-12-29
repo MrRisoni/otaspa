@@ -23,10 +23,12 @@ class Segment extends Component {
             arrAirport: segment.toAirport.substr(5),
 
             depTime: segment.depDateTime.substr(11, 5),
+            depTimeGMT: segment.depDateTime,
             depDay: moment(segment.depDateTime).format('dddd'),
             depDate: moment(segment.depDateTime).format('DD MMMM YYYY'),
 
             arrTime: segment.arrDateTime.substr(11, 5),
+            arrTimeGMT: segment.arrDateTime,
             arrDay: moment(segment.arrDateTime).format('dddd'),
             arrDate: moment(segment.arrDateTime).format('DD MMMM YYYY'),
 
@@ -62,6 +64,7 @@ class Segment extends Component {
                                      city={obj.fromCity}
                                      name={obj.depAirport}
                                      flyTime={obj.depTime}
+                                     flyTimeGMT={obj.depTimeGMT}
                                      day={obj.depDay}
                                      date={obj.depDate}/>
 
@@ -69,6 +72,7 @@ class Segment extends Component {
                                      city={obj.toCity}
                                      name={obj.arrAirport}
                                      flyTime={obj.arrTime}
+                                     flyTimeGMT={obj.arrTimeGMT}
                                      day={obj.arrDay}
                                      date={obj.arrDate}/>
 

@@ -84,6 +84,7 @@ class Leg extends Component {
                                      city={obj.fromCity}
                                      name={obj.depAirport}
                                      flyTime={obj.depTime}
+                                     flyTimeGMT={obj.depTime}
                                      day={obj.depDay}
                                      date={obj.depDate}/>
 
@@ -91,6 +92,7 @@ class Leg extends Component {
                                      city={obj.toCity}
                                      name={obj.arrAirport}
                                      flyTime={obj.arrTime}
+                                     flyTimeGMT={obj.depTime}
                                      day={obj.arrDay}
                                      date={obj.arrDate}/>
 
