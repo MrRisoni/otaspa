@@ -14,7 +14,7 @@ class Preseat extends Component {
 
         for (let i = 0; i < 4; i++) {
             // how many columns in the aircraft fuselage
-            ColDiv.push(<SeatColumn key={i} colID={i}/>)
+            ColDiv.push(<SeatColumn key={i} colID={i}/>);
 
             ColHeaders.push(<div className="col-md-3" key={alphabet[i]} >{alphabet[i]}</div> )
         }
@@ -31,7 +31,7 @@ class Preseat extends Component {
 
                                 <div className="col-md-12">
                                     <div className="card">
-                                        <div className="card-header  bg-primary">Select Leg</div>
+                                        <div className="card-header  bg-primary">Select Passenger</div>
                                         <div className="card-body">
 
                                         </div>
