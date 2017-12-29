@@ -72,6 +72,12 @@ class Segment extends Component {
 
                         </div>
 
+                        <div className="row">
+                            <div className="col-md-8">
+                                Wait time
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

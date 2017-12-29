@@ -43,23 +43,12 @@ class Leg extends Component {
 
     render() {
 
-        const stops = (this.props.legId === 0) ? this.props.ItineraryStore.itinerary.info.departure.stops : this.props.ItineraryStore.itinerary.info.return.stops;
+        let obj = this.getAirportData(this.props.segments);
 
-        const hours = (this.props.legId === 0) ? this.props.ItineraryStore.itinerary.info.departure.waitTime.hours : this.props.ItineraryStore.itinerary.info.return.waitTime.hours;
-        const minutes = (this.props.legId === 0) ? this.props.ItineraryStore.itinerary.info.departure.waitTime.minutes : this.props.ItineraryStore.itinerary.info.return.waitTime.minutes;
-
-        const whours = (this.props.legId === 0) ? this.props.ItineraryStore.itinerary.info.departure.durationTime.hours : this.props.ItineraryStore.itinerary.info.return.durationTime.hours;
-        const wminutes = (this.props.legId === 0) ? this.props.ItineraryStore.itinerary.info.departure.durationTime.minutes : this.props.ItineraryStore.itinerary.info.return.durationTime.minutes;
-
-        let obj = (this.props.legId === 0) ? this.getAirportData(this.props.ItineraryStore.itinerary.depSegments) : this.getAirportData(this.props.ItineraryStore.itinerary.retSegments);
-
-        let segments = (this.props.legId === 0) ? this.props.ItineraryStore.itinerary.depSegments : this.props.ItineraryStore.itinerary.retSegments;
-
-        let segTitle = (this.props.legId === 0) ? "Departure" : "Return";
         let segmentsDiv = [];
 
 
-        segments.forEach((sg, idx) => {
+        this.props.segments.forEach((sg, idx) => {
             segmentsDiv.push(<Segment key={idx} segData={sg} segIndex={idx+1}/>);
         });
 
@@ -71,7 +60,7 @@ class Leg extends Component {
                     <div className="card-header">
                         <div className="row">
                             <div className="col-md-2">
-                                {segTitle}
+                                {this.props.segTitle}
                             </div>
 
                             <div className="col-md-2 offset-md-8">
@@ -121,15 +110,15 @@ class Leg extends Component {
                         <div className="row">
 
                             <div className="col-md-4">
-                                Stops: {stops}
+                                Stops: {this.props.stops}
                             </div>
 
                             <div className="col-md-4">
-                                Duration: {hours}h {minutes}m
+                                Duration: {this.props.durHours}h {this.props.durMinutes}m
                             </div>
 
                             <div className="col-md-4">
-                                Wait time: {whours}h {wminutes}m
+                                Wait time: {this.props.waitHours}h {this.props.waitMinutes}m
                             </div>
                         </div>
 

@@ -17,4 +17,6 @@ load upsales from axios
 Complete Page
 Language Selection
 TravisCI
-pass props to segments component
+
+GTM time in segments
+waiting time
