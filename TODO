@@ -1,22 +1,19 @@
 on scroll down page, scroll pricebox
 clean up code ( add comments)
-add unit tests (enzyme test)
-add logic unit tests
+
 DatePicker with prices
 Hotels
 Cars
 Preseat
 Search Page and filters
 React Leaflet a la kiwi ?? React google maps
-Validation in Passenger route ( no empty fields)
+
 Fake Result server
-more and lots more and way lots more
-Responsive Design
+
+
 axios once in MobX State
 load upsales from axios
 Complete Page
-Language Selection
-TravisCI
 
 GTM time in segments
 TIMEZONE CONVERSION
