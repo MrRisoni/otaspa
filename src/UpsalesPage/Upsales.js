@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import { inject, observer } from 'mobx-react';
 
 import PriceBox from '../Booking/SideBar';
-import Preseat from "./Preseat/Preseat";
-import PassengerUpsaleList from './PassengerUpsaleList';
+import Preseat from './Preseat/Preseat';
 
 @inject('otastore')
 @observer
@@ -35,10 +34,8 @@ class Upsales extends Component {
 
             <div className="row">
 
-                <div className="col-md-1"></div>
-
-                <div className="col-md-7">
-                    <PassengerUpsaleList/>
+               <div className="col-md-7 offset-md-1">
+                    <Preseat/>
 
                 </div>
 

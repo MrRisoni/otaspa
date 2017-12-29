@@ -6,13 +6,25 @@ class ValidatePassengers {
 
     validate(papList) {
         console.log('Validator Passengers');
-        console.log(papList.length);
+        let truthy =0;
+        let totalValids =0;
+
+        papList.forEach( (px) => {
+            if (px.active) {
+                truthy += this.validateNameSurname(px.surname);
+                truthy += this.validateNameSurname(px.name);
+                totalValids+=2;
+            }
+        });
+
+        console.log(truthy);
+
+        return (totalValids === truthy);
     }
 
 
     validateNameSurname(input) {
-
-        return input.search(/[^a-zA-Z]+/) === -1;
+        return (input.length>0 && input.search(/[^a-zA-Z]+/) === -1);
     }
 
     valDate() {

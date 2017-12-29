@@ -51,16 +51,14 @@ class Names extends Component {
 
         const VP = new ValidatePassengers();
 
+        this.props.otastore.editPaxElement(
+            {
+                value: fieldInput,
+                property: 'surname',
+                id: this.props.pap_id
+            });
+
         if (VP.validateNameSurname(fieldInput)) {
-
-            this.props.otastore.editPaxElement(
-                {
-                    value: fieldInput,
-                    property: 'surname',
-                    id: this.props.pap_id
-                });
-
-
             this.setState({
                 showSurnameErr: false
             });
@@ -83,19 +81,18 @@ class Names extends Component {
 
         const VP = new ValidatePassengers();
 
+        this.props.otastore.editPaxElement(
+            {
+                value: fieldInput,
+                property: 'name',
+                id: this.props.pap_id
+            });
+
+
         if (VP.validateNameSurname(fieldInput)) {
-
-            this.props.otastore.editPaxElement(
-                {
-                    value: fieldInput,
-                    property: 'name',
-                    id: this.props.pap_id
-                });
-
             this.setState({
                 showNameErr: false
             });
-
         }
         else{
             this.setState({
