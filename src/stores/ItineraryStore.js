@@ -47,7 +47,9 @@ class ItineraryStore {
                 img: {
                     url: "/logos/FR.png",
                     width: 100
-                }
+                },
+                waitTime: { hours :0, mins :0, total:0},
+                durationTime: { hours :0, mins :0}
             },
             {
                 fromCity: "Athens",
@@ -60,7 +62,9 @@ class ItineraryStore {
                 img: {
                     url: "/logos/AF.png",
                     width: 100
-                }
+                },
+                waitTime: { hours :0, mins :0, total:0},
+                durationTime: { hours :0, mins :0}
             },
             {
                 fromCity: "Paris",
@@ -73,7 +77,9 @@ class ItineraryStore {
                 img: {
                     url: "https://www.seeklogo.net/wp-content/uploads/2015/07/british-airways-logo-vector-download.jpg",
                     width: 100
-                }
+                },
+                waitTime: { hours :0, mins :0, total:0},
+                durationTime: { hours :0, mins :0}
             }
         ],
         retSegments: [
@@ -88,7 +94,9 @@ class ItineraryStore {
                 img: {
                     url: "/logos/FR.png",
                     width: 100
-                }
+                },
+                waitTime: { hours :0, mins :0, total:0},
+                durationTime: { hours :0, mins :0}
             },
             {
                 fromCity: "Athens",
@@ -101,7 +109,9 @@ class ItineraryStore {
                 img: {
                     url: "/logos/A3.png",
                     width: 100
-                }
+                },
+                waitTime: { hours :0, mins :0, total:0},
+                durationTime: { hours :0, mins :0}
             }
         ]
     };
@@ -153,11 +163,72 @@ class ItineraryStore {
         this.itinerary.info.departure.stops =  this.itinerary.depSegments.length -1;
         this.itinerary.info.return.stops =  this.itinerary.retSegments.length -1;
 
-        this.itinerary.info.departure.waitTime = this.findDuration(this.itinerary.depSegments);
-        this.itinerary.info.return.waitTime = this.findWaitTime(this.itinerary.depSegments);
+        this.itinerary.info.departure.durationTime = this.findDuration(this.itinerary.depSegments);
+        this.itinerary.info.return.durationTime = this.findDuration(this.itinerary.retSegments);
 
-        this.itinerary.info.departure.durationTime = this.findDuration(this.itinerary.retSegments);
+        this.itinerary.info.departure.waitTime = this.findWaitTime(this.itinerary.depSegments);
         this.itinerary.info.return.waitTime = this.findWaitTime(this.itinerary.retSegments);
+
+
+        for (var i =0; i< this.itinerary.depSegments.length; i++){
+
+            let depTime = moment(this.itinerary.depSegments[i].depDateTime);
+            let arrTime = moment(this.itinerary.depSegments[i].arrDateTime);
+
+            const durSeg = arrTime.diff(depTime) / (1000 * 60);
+
+            this.itinerary.depSegments[i].durationTime = {
+                hours: Math.floor(durSeg / 60),
+                minutes: durSeg % 60
+            }
+        }
+
+        for (i =0; i< this.itinerary.retSegments.length; i++){
+
+            let depTime = moment(this.itinerary.retSegments[i].depDateTime);
+            let arrTime = moment(this.itinerary.retSegments[i].arrDateTime);
+
+            const durSeg = arrTime.diff(depTime) / (1000 * 60);
+
+            this.itinerary.retSegments[i].durationTime = {
+                hours: Math.floor(durSeg / 60),
+                minutes: durSeg % 60
+            }
+        }
+
+
+
+
+        // wait time
+        for (i =0; i< this.itinerary.depSegments.length -1; i++){
+
+            let arrTime = moment(this.itinerary.depSegments[i].arrDateTime);
+            let depTime = moment(this.itinerary.depSegments[i +1].depDateTime);
+
+            const waitSeg = depTime.diff(arrTime) / (1000 * 60);
+
+            this.itinerary.depSegments[i].waitTime = {
+                hours: Math.floor(waitSeg / 60),
+                minutes: waitSeg % 60,
+                total: waitSeg
+            }
+        }
+
+
+        for (i =0; i< this.itinerary.retSegments.length -1; i++){
+
+            let arrTime = moment(this.itinerary.retSegments[i].arrDateTime);
+            let depTime = moment(this.itinerary.retSegments[i +1].depDateTime);
+
+            const waitSeg = depTime.diff(arrTime) / (1000 * 60);
+
+            this.itinerary.retSegments[i].waitTime = {
+                hours: Math.floor(waitSeg / 60),
+                minutes: waitSeg % 60,
+                total: waitSeg
+            }
+        }
+
 
     }
 

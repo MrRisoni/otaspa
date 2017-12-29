@@ -8,10 +8,11 @@ import Leg from './Leg';
 @inject('ItineraryStore')
 @observer
 class Itinerary extends Component {
-    componentDidMount() {
+    componentWillMount() {
         this.props.ItineraryStore.processSegments();
     }
     render() {
+
 
         const itineraryInfoDepart = this.props.ItineraryStore.itinerary.info.departure;
         const itineraryInfoReturn = this.props.ItineraryStore.itinerary.info.return;

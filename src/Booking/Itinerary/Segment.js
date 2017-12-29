@@ -40,6 +40,8 @@ class Segment extends Component {
 
 
         let obj = this.getSegmentData(this.props.segData);
+        const positiveWaitTime = (this.props.segData.waitTime.total >0);
+
 
         return (
 
@@ -72,12 +74,25 @@ class Segment extends Component {
 
                         </div>
 
-                        <div className="row">
-                            <div className="col-md-8">
-                                Wait time
-                            </div>
-                        </div>
 
+                    </div>
+
+
+                    <div className="card-footer">
+                        <div className="row">
+
+                            <div className="col-md-5">
+                                Duration {this.props.segData.durationTime.hours}h {this.props.segData.durationTime.minutes}m
+                            </div>
+
+
+                            {positiveWaitTime ? (
+                                <div className="col-md-5">
+                                    Wait time {this.props.segData.waitTime.hours}h {this.props.segData.waitTime.minutes}m
+                                </div>
+                            ) : (<div className="col-md-5"></div>)}
+
+                        </div>
                     </div>
                 </div>
             </div>
