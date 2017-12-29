@@ -139,34 +139,12 @@ class SideBar extends Component {
 
     }
 
-    getBrandedFares()
-    {
-        let brandedFareDiv = [];
-        this.props.otastore.passengers.forEach((pax) => {
-
-            pax.brandedFare.forEach( (pax_carrier) => {
-
-                this.props.otastore.BrandedFares.forEach( (brand) => {
-                    if (brand.carrier === pax_carrier.carrier) {
-
-                        brandedFareDiv.push(
-                            <div className="row">
-                                <div className="col-md-12">
-                                    #Passenger {pax.humanID} {brand.title}  {brand.options[pax_carrier.selection].name}
-                                </div>
-                            </div>);
-                    }
-                });
-            });
-        });
-    }
 
     render() {
 
         //
         let bagsDiv = this.getBagsDiv();
         let insuranceDiv = this.getInsuranceDiv();
-        let brandedFareDiv = this.getBrandedFares();
 
         // *********** Total Price ****************
 
@@ -196,9 +174,6 @@ class SideBar extends Component {
             });
 
 
-            px.brandedFare.forEach( (fare) => {
-                total += parseFloat(fare.price);
-            });
         });
 
 
@@ -249,9 +224,6 @@ class SideBar extends Component {
                         {insuranceDiv}
 
                         {bagsDiv}
-
-                        {brandedFareDiv}
-
 
                         <div className="row">
                             <div className="col-md-12">

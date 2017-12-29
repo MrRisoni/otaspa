@@ -1,7 +1,58 @@
 import React, {Component} from 'react';
+import {inject} from "mobx-react/index";
+import moment from "moment/moment";
 
-
+@inject('otastore')
 class Contact extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            surname: '',
+            name: '',
+            mail: '',
+            mobile: ''
+        };
+
+        this.editSurname = this.editSurname.bind(this);
+        this.editName = this.editName.bind(this);
+        this.editMobile = this.editMobile.bind(this);
+        this.editMail = this.editMail.bind(this);
+
+
+    }
+    editSurname(ev)
+    {
+        const fieldInput = ev.target.value.toUpperCase();
+        this.setState({surname: fieldInput});
+    }
+
+    editName(ev)
+    {
+        const fieldInput = ev.target.value.toUpperCase();
+        this.setState({name: fieldInput});
+    }
+
+    editMail(ev)
+    {
+        const fieldInput = ev.target.value.toUpperCase();
+        this.setState({mail: fieldInput});
+    }
+
+
+    editMobile(ev)
+    {
+        const fieldInput = ev.target.value.toUpperCase();
+        this.setState({mobile: fieldInput});
+    }
+
+
+    componentDidMount()
+    {
+        this.setState({
+            surname: this.props.otastore.contactInfo.surname
+        })
+    }
+
 
     render() {
         return (
@@ -27,12 +78,16 @@ class Contact extends Component {
 
                                 <div className="col-md-5">
                                     <input type="text" placeholder="Surname"
+                                           value={this.state.surname}
+                                           onChange={this.editSurname}
                                            className="form-control"/>
                                 </div>
 
 
                                 <div className="col-md-5">
                                     <input type="text" placeholder="Name"
+                                           value={this.state.name}
+                                           onChange={this.editName}
                                            className="form-control"/>
                                 </div>
 
@@ -53,12 +108,16 @@ class Contact extends Component {
 
                                 <div className="col-md-5">
                                     <input type="text" placeholder="Mobile"
+                                           value={this.state.mobile}
+                                           onChange={this.editMobile}
                                            className="form-control"/>
                                 </div>
 
 
                                 <div className="col-md-5">
                                     <input type="text" placeholder="Email"
+                                           value={this.state.mail}
+                                           onChange={this.editMail}
                                            className="form-control"/>
                                 </div>
 

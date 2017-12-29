@@ -62,6 +62,13 @@ class OtaStore {
         }
     ];
 
+    @observable
+    contactInfo = {
+        name: '',
+        surname: '',
+        email: '',
+        mobile:''
+    };
 
     @observable passengers = [
         {
@@ -78,21 +85,6 @@ class OtaStore {
             type: 'ADT',
             insuranceInfo :0,
             totalBags: 0,
-            brandedFare: [{
-                carrier: 'FR',
-                selection: 0,
-                price:0
-            },
-                {
-                    carrier: 'A3',
-                    selection: 0,
-                    price:0
-                },
-                {
-                    carrier: 'BA',
-                    selection: 0,
-                    price:0
-                }],
             bags: [
                 {
                     route: 'departLeg',
@@ -117,21 +109,6 @@ class OtaStore {
             active: true,
             insuranceInfo :0,
             totalBags: 0,
-            brandedFare: [{
-                carrier: 'FR',
-                selection: 0,
-                price:0
-            },
-                {
-                    carrier: 'A3',
-                    selection: 0,
-                    price:0
-                },
-                {
-                    carrier: 'BA',
-                    selection: 0,
-                    price:0
-                }],
             type: 'ADT',
             bags: [
                 {
@@ -147,234 +124,11 @@ class OtaStore {
 
 
 
-    @observable upsales = [
-        {
-            id: 0,
-            title: 'Web-Checkin',
-            price: 3.5,
-            convertedPrice: 3.5,
-            selected: false
-        },
-        {
-            id: 1,
-            title: 'SMS Notification',
-            price: 1.5,
-            convertedPrice: 1.5,
-            selected: false
-        }
-    ];
-
-
-
-    @observable bagAllowance =[]
+    @observable bagAllowance =[];
 
     @observable
     insuranceInfo = [];
 
-
-
-    BrandedFares = [{
-        key: "DNcuuXT5T9O9",
-        carrier: "FR",
-        title:' Ryanair',
-        options: [
-            {
-                id: 1,
-                name: 'Light',
-                convertedPrice: 0,
-                price: 0,
-                packages: [{
-                    title: 'cancellation'
-                }]
-            }
-        ]
-    },
-        {
-            key: "Y03dZvtTAwHr",
-            carrier: "A3",
-            title:' Aegean',
-            options: [{
-                id: 1,
-                name: 'Light',
-                convertedPrice: 0,
-                price: 0,
-                packages: [{
-                    title: 'cancellation'
-                }]
-            },
-                {
-                    id: 2,
-                    name: 'Flex',
-                    convertedPrice: 15,
-                    price: 15,
-                    packages: [{
-                        title: 'wifi'
-                    }]
-                }
-            ]
-        },
-        {
-            key: "9Rw5nNyMb3Ot",
-            carrier: "BA",
-            title:' British Airways',
-            options: [{
-                id: 1,
-                name: 'Basic',
-                convertedPrice: 0,
-                price: 0,
-                packages: [
-                    {
-                        title: 'Hand baggage',
-                        status: 'notincl'
-                    },
-                    {
-                        title: 'Checked baggage',
-                        status: 'notincl'
-                    },
-                    {
-                        title: 'Wifi',
-                        status: 'notincl'
-                    }
-                    ,
-                    {
-                        title: 'Priority Boarding',
-                        status: 'notincl'
-                    },
-                    {
-                        title: 'Lounge Access',
-                        status: 'notincl'
-                    },
-                    {
-                        title: 'Cancellation',
-                        status: 'notincl'
-                    },
-                    {
-                        title: 'Amendment',
-                        status: 'notincl'
-                    }]
-            },
-                {
-                    id: 2,
-                    name: 'Basic Plus',
-                    convertedPrice: 15,
-                    price: 15,
-                    packages: [
-                        {
-                            title: 'Hand baggage',
-                            status: 'free'
-                        },
-                        {
-                            title: 'Checked baggage',
-                            status: 'free'
-                        },
-                        {
-                            title: 'Wifi',
-                            status: 'notinlc'
-                        },
-                        {
-                            title: 'Cancellation',
-                            status: 'fee'
-                        },
-                        {
-                            title: 'Priority Boarding',
-                            status: 'notinlc'
-                        },
-                        {
-                            title: 'Lounge Access',
-                            status: 'notinlc'
-                        },
-                        {
-                            title: 'Amendment',
-                            status: 'notinlc'
-                        }]
-                },
-                {
-                    id: 3,
-                    name: 'Economy Premium',
-                    convertedPrice: 28,
-                    price: 28,
-                    packages: [
-                        {
-                            title: 'Hand baggage',
-                            status: 'free'
-                        },
-                        {
-                            title: 'Checked baggage',
-                            status: 'free'
-                        },
-                        {
-                            title: 'Wifi',
-                            status: 'free'
-                        },
-                        {
-                            title: 'Cancellation',
-                            status: 'free'
-                        }
-                        ,
-                        {
-                            title: 'Priority Boarding',
-                            status: 'free'
-                        },
-                        {
-                            title: 'Lounge Access',
-                            status: 'free'
-                        }
-                        ,
-                        {
-                            title: 'Cancellation',
-                            status: 'free'
-                        }
-                        ,
-                        {
-                            title: 'Amendment',
-                            status: 'free'
-                        }]
-                },
-                {
-                    id: 4,
-                    name: 'Economy Lux',
-                    convertedPrice: 36,
-                    price: 36,
-                    packages: [
-                        {
-                            title: 'Hand baggage',
-                            status: 'free'
-                        },
-                        {
-                            title: 'Checked baggage',
-                            status: 'free'
-                        },
-                        {
-                            title: 'Wifi',
-                            status: 'free'
-                        },
-                        {
-                            title: 'Cancellation',
-                            status: 'free'
-                        }
-                        ,
-                        {
-                            title: 'Priority Boarding',
-                            status: 'free'
-                        },
-                        {
-                            title: 'Lounge Access',
-                            status: 'free'
-                        }
-                        ,
-                        {
-                            title: 'Cancellation',
-                            status: 'free'
-                        }
-                        ,
-                        {
-                            title: 'Amendment',
-                            status: 'free'
-                        }]
-                }
-            ]
-        }
-    ]
 
     @observable outboundCarriers = ['FR', 'A3', 'BA'];
     @observable inboundCarriers = ['FR', 'A3'];
@@ -436,12 +190,6 @@ class OtaStore {
         });
 
 
-        this.BrandedFares.forEach( (carrier) => {
-            carrier.options.forEach( (pkg) => {
-                pkg.convertedPrice = pkg.price * this.currentRate;
-                pkg.convertedPrice = pkg.convertedPrice.toFixed(2);            });
-
-        });
     }
 
 
@@ -480,7 +228,20 @@ class OtaStore {
                     ps.humanID = humanID;
                     humanID++;
                 }
-            })
+            });
+
+            for ( var i =0 ; i < this.passengers.length; i++) {
+
+                if (this.passengers[i].active && this.passengers[i].type === 'ADT') {
+                    this.contactInfo.surname = this.passengers[i].surname;
+                    this.contactInfo.name = this.passengers[i].name;
+
+                    break;
+                }
+            }
+
+
+
 
 
         }
@@ -519,21 +280,6 @@ class OtaStore {
                         issue:'',
                         nationality:'',
                         expires:'',
-                        brandedFare: [{
-                            carrier: 'FR',
-                            selection: 0,
-                            price:0
-                        },
-                            {
-                                carrier: 'A3',
-                                selection: 0,
-                                price:0
-                            },
-                            {
-                                carrier: 'BA',
-                                selection: 0,
-                                price:0
-                            }],
                         bags: [
                             {
                                 route: 'departLeg',
@@ -573,24 +319,6 @@ class OtaStore {
         this.passengersWithinLimits()
     }
 
-    @action
-    buyBrandedFare(args)
-    {
-
-        this.passengers[args.passengerid].brandedFare.forEach(( airline) => {
-            if (airline.carrier === args.carrier) {
-                airline.selection = args.index;
-
-                this.BrandedFares.forEach( (brand) => {
-                    if (brand.carrier === args.carrier) {
-                        airline.price = brand.options[args.index].convertedPrice;
-                    }
-                });
-            }
-        });
-
-
-    }
 
     @action
     buyBag(args) {
