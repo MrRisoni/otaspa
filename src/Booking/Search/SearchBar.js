@@ -1,6 +1,26 @@
 import React, {Component} from 'react';
+import {inject, observer} from "mobx-react/index";
 
+@inject('htmlStore')
+@observer
 class SearchBar extends Component {
+    constructor(props)
+    {
+        super(props);
+        this.state = {
+            checkedCar: true
+        };
+
+        this.handleCheck = this.handleCheck.bind(this);
+    }
+
+    handleCheck(ev)
+    {
+        const self = this;
+        self.setState({checkedCar : !self.state.checkedCar});
+        this.props.htmlStore.toggleCarCarousel();
+    }
+
     render() {
         return (
             <div className="searchBar">
@@ -66,9 +86,11 @@ class SearchBar extends Component {
                         <div className="form-check">
                             <label>
                                 <input
-                                    type="checkbox"/>
-
+                                    type="checkbox"
+                                checked={this.state.checkedCar}
+                                onChange={this.handleCheck} />
                                 Book a car
+
                             </label>
                         </div>
                     </div>

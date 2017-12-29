@@ -6,6 +6,14 @@ class HtmlStore {
     @observable
     priceBoxMargin =5;
 
+    @observable
+    showCarCarousel = true;
+
+    @action
+    toggleCarCarousel()
+    {
+        this.showCarCarousel = !this.showCarCarousel;
+    }
 
     @action changeHeight(newHeight){
 
