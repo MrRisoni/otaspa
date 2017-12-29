@@ -1,24 +1,32 @@
 import React, {Component} from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker , MarkerWithLabel} from "react-google-maps"
+import MapCluster from './MapCluster';
+import axios from 'axios';
 
-const MyMapComponent = withScriptjs(withGoogleMap((props) =>
-    <GoogleMap
-        defaultZoom={5}
-        defaultCenter={{ lat: 38.3712, lng: 24.1268 }}
-    >
-        {props.isMarkerShown && <Marker position={{ lat: 37.9756, lng: 23.73379 }} />}
+// https://tomchentw.github.io/react-google-maps/#markerclusterer
 
-        <MarkerWithLabel
-            position={{ lat: -34.397, lng: 150.644 }}
-            labelAnchor={new google.maps.Point(0, 0)}
-            labelStyle={{backgroundColor: "yellow", fontSize: "32px", padding: "16px"}}
-        >
-            <div>Hello There!</div>
-        </MarkerWithLabel>
+class MyMapComponent extends Component{
+    constructor(props)
+    {
+        super(props);
+        this.state ={ markers: [] };
+    }
 
-    </GoogleMap>
-));
+    componentDidMount() {
+        const self = this;
+        let settings = require('../../env_settings');
+        console.log(settings);
+        let api = settings.BACK_END_URL;
+        axios.get(api + '/api/markers')
+            .then(function (response) {
+                console.log(response.data);
+                self.setState({ markers: response.data});
+            });
+    }
 
-
+    render()
+    {
+        return (<MapCluster markers={this.state.markers} />)
+    }
+}
 
 export default MyMapComponent;
