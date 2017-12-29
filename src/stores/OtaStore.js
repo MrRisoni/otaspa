@@ -1,114 +1,10 @@
 import {observable, action} from 'mobx';
-import moment from 'moment';
-import axios from 'axios';
 
 class OtaStore {
 
 
-    @observable departRoute = 'RHO-LHR';
-    @observable returnRoute = 'LGW-RHO';
-
-    @observable
-    priceBoxMargin =5;
-
     @observable
     countries = [];
-
-
-    @observable
-    itinerary = {
-        info: {
-            departure: {
-                from : '',
-                to: '',
-                depDate: '',
-                retDate: '',
-                stops: 0,
-                waitTime: { hours :0, mins :0},
-                durationTime: { hours :0, mins :0}
-            },
-            return: {
-                from : '',
-                to: '',
-                depDate: '',
-                retDate: '',
-                stops: 0,
-                waitTime: { hours :0, mins :0},
-                durationTime: { hours :0, mins :0}
-            }
-
-        },
-        depSegments: [
-            {
-                fromCity: "Rhodes",
-                toCity: "Athens",
-                fromAirport: "RHO, Diagoras Airport",
-                toAirport: "ATH, Eleftherios Venizelos Intl Arpt",
-                depDateTime: "2018-09-23T10:10:00+03:00",
-                arrDateTime: "2018-09-23T10:55:00+03:00",
-                airline: "FR,Ryanair",
-                img: {
-                    url: "/logos/FR.png",
-                    width: 100
-                }
-            },
-            {
-                fromCity: "Athens",
-                toCity: "Paris",
-                fromAirport: "ATH, Eleftherios Venizelos Intl Arpt",
-                toAirport: "CDG, Charles De Gaul Intl Arpt",
-                depDateTime: "2018-09-23T14:00:00+03:00",
-                arrDateTime: "2018-09-23T19:00:00+01:00",
-                airline: "AF,Air France",
-                img: {
-                    url: "/logos/AF.png",
-                    width: 100
-                }
-            },
-            {
-                fromCity: "Paris",
-                toCity: "London",
-                fromAirport: "CDG, Charles De Gaul Intl Arpt",
-                toAirport: "LHR, Heathrow London Intl Arpt",
-                depDateTime: "2018-09-24T00:00:00+01:00",
-                arrDateTime: "2018-09-24T00:30:00+00:00",
-                airline: "BA,British Airways",
-                img: {
-                    url: "https://www.seeklogo.net/wp-content/uploads/2015/07/british-airways-logo-vector-download.jpg",
-                    width: 100
-                }
-            }
-        ],
-        retSegments: [
-            {
-                fromCity: "London",
-                toCity: "Athens",
-                fromAirport: "LGW, Gatwick Airport",
-                toAirport: "ATH, Eleftherios Venizelos Intl Arpt",
-                depDateTime: "2018-10-03T10:10:00+03:00",
-                arrDateTime: "2018-10-03T10:55:00+03:00",
-                airline: "FR,Raynair",
-                img: {
-                    url: "/logos/FR.png",
-                    width: 100
-                }
-            },
-            {
-                fromCity: "Athens",
-                toCity: "Rhodes",
-                fromAirport: "ATH, Eleftherios Venizelos Intl Arpt",
-                toAirport: "RHO, Diagoras Airport",
-                depDateTime: "2018-10-03T16:00:00+03:00",
-                arrDateTime: "2018-10-03T16:55:00+03:00",
-                airline: "A3,Aegean Airways",
-                img: {
-                    url: "/logos/A3.png",
-                    width: 100
-                }
-            }
-        ]
-    };
-
 
     @observable currencyData = [
         {
@@ -270,99 +166,10 @@ class OtaStore {
 
 
 
-    @observable bagAllowance = [{
-        carrier: 'FR',
-        title:' Ryanair',
-        maxBags: 3,
-        bags: [
-            {
-                id: 1,
-                title: '119 × 119 × 81 cm, 15 kg',
-                key: 'A77bg5HyL7tW',
-                price: 12,
-                convertedPrice: 12,
-            },
-            {
-                id: 2,
-                title: '119 × 119 × 81 cm, 30 kg',
-                key: 'FjB9vHukA7sU',
-                price: 35,
-                convertedPrice: 35,
-            }
-        ]
-    },
-        {
-            carrier: 'A3',
-            title:' Aegean',
-            maxBags: 2,
-            bags: [{
-                id: 1,
-                title: '12KG',
-                key: 'WzObjBLahEux',
-                price: 12,
-                convertedPrice: 12,
-
-            },
-                {
-                    id: 2,
-                    key: '56fzjE8uQY5Q',
-                    title: '25KG',
-                    price: 18,
-                    convertedPrice: 18
-                }
-            ]
-        },{
-            carrier: 'BA',
-            title:' British Airways',
-            maxBags: 2,
-            bags: [{
-                id: 1,
-                key: 'gxBzM9RfoeCn',
-                title: '22KG',
-                price: 15,
-                convertedPrice: 15
-            },
-                {
-                    id: 2,
-                    key: 'QtpVPkQnQkp9',
-                    title: '30KG',
-                    price: 45,
-                    convertedPrice: 45
-                }
-            ]
-        }
-    ];
+    @observable bagAllowance =[]
 
     @observable
-    insuranceInfo = [{
-        id: 1,
-        title: 'No insurance',
-        key: 'pl2m7rgefxdE',
-        price: 0,
-        convertedPrice: 0
-    },
-        {
-            id: 2,
-            title: 'Globy Classic',
-            key: 'tzOzzkrt1KPz',
-            price: 5.16,
-            convertedPrice: 5.16
-        },
-        {
-            id: 3,
-            title: 'Globy Cancellation',
-            key: 'SZ273rT800q1',
-            price: 15.68,
-            convertedPrice: 15.68
-        },
-        {
-            id: 4,
-            title: 'Globy Schengen',
-            key: 'MJWCbFKU3Z4T',
-            price: 22.15,
-            convertedPrice: 22.15
-        }
-    ];
+    insuranceInfo = [];
 
 
 
@@ -592,44 +399,6 @@ class OtaStore {
         }
     }
 
-    findDuration(segments)
-    {
-        const depTime = moment(segments[0].depDateTime);
-        const lastseg = segments.length -1;
-        const arrTime = moment(segments[lastseg].arrDateTime);
-
-
-        let durReturn = arrTime.diff(depTime) / (1000 * 60);
-
-        return {
-            hours: Math.floor(durReturn / 60),
-            minutes: durReturn % 60
-        }
-    }
-
-    findWaitTime(segments){
-        let wait=0;
-
-        for (let s =0; s < segments.length -1; s++)
-        {
-            let depTime = moment(segments[s].depDateTime);
-            let arrTime = moment(segments[s+1].arrDateTime);
-
-            wait += arrTime.diff(depTime) / (1000 * 60);
-
-        }
-
-        return {
-            hours: Math.floor(wait / 60),
-            minutes: wait % 60
-        }
-    }
-
-
-
-
-
-
 
     /*************  ACTIONS ****************/
 
@@ -717,21 +486,6 @@ class OtaStore {
         }
     }
 
-
-
-    @action
-    processSegments()
-    {
-        this.itinerary.info.departure.stops =  this.itinerary.depSegments.length -1;
-        this.itinerary.info.return.stops =  this.itinerary.retSegments.length -1;
-
-        this.itinerary.info.departure.waitTime = this.findDuration(this.itinerary.depSegments);
-        this.itinerary.info.return.waitTime = this.findWaitTime(this.itinerary.depSegments);
-
-        this.itinerary.info.departure.durationTime = this.findDuration(this.itinerary.retSegments);
-        this.itinerary.info.return.waitTime = this.findWaitTime(this.itinerary.retSegments);
-
-    }
 
 
     @action
@@ -941,28 +695,26 @@ class OtaStore {
 
 
 
-    @action changeHeight(newHeight){
-
-        if (newHeight <= 622) {
-            this.priceBoxMargin = 5;
-        }
-        else {
-            this.priceBoxMargin = (165.0/(1200 - 622)) *( newHeight  - 622) ;
-        }
-
-    }
-
-
     @action
     setCountries(data)
     {
         console.log('Setting countries');
         this.countries = data;
         console.log(this.countries.length);
-
-
-
     }
+
+    @action
+    setInsurance(data)
+    {
+        this.insuranceInfo = data;
+    }
+
+    @action
+    setBags(data)
+    {
+        this.bagAllowance = data;
+    }
+
 
 
 }

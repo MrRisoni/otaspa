@@ -78,7 +78,9 @@ body, input[type="text"], option, select
     margin-top: 3%;
 }
 
-
+.gmtDate {
+    color:blue;
+}
 
 
 .upgradefare {

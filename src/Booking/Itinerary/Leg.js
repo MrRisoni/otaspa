@@ -7,7 +7,7 @@ import Airport from './Airport';
 import Segment from './Segment';
 
 
-@inject('otastore')
+@inject('ItineraryStore')
 @observer
 class Leg extends Component {
     constructor(props) {
@@ -43,23 +43,12 @@ class Leg extends Component {
 
     render() {
 
-        const stops = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.stops : this.props.otastore.itinerary.info.return.stops;
+        let obj = this.getAirportData(this.props.segments);
 
-        const hours = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.waitTime.hours : this.props.otastore.itinerary.info.return.waitTime.hours;
-        const minutes = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.waitTime.minutes : this.props.otastore.itinerary.info.return.waitTime.minutes;
-
-        const whours = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.durationTime.hours : this.props.otastore.itinerary.info.return.durationTime.hours;
-        const wminutes = (this.props.leg === 0) ? this.props.otastore.itinerary.info.departure.durationTime.minutes : this.props.otastore.itinerary.info.return.durationTime.minutes;
-
-        let obj = (this.props.leg === 0) ? this.getAirportData(this.props.otastore.itinerary.depSegments) : this.getAirportData(this.props.otastore.itinerary.retSegments);
-
-        let segments = (this.props.leg === 0) ? this.props.otastore.itinerary.depSegments : this.props.otastore.itinerary.retSegments;
-
-        let segTitle = (this.props.leg === 0) ? "Departure" : "Return";
         let segmentsDiv = [];
 
 
-        segments.forEach((sg, idx) => {
+        this.props.segments.forEach((sg, idx) => {
             segmentsDiv.push(<Segment key={idx} segData={sg} segIndex={idx+1}/>);
         });
 
@@ -71,13 +60,13 @@ class Leg extends Component {
                     <div className="card-header">
                         <div className="row">
                             <div className="col-md-2">
-                                {segTitle}
+                                {this.props.segTitle}
                             </div>
 
                             <div className="col-md-2 offset-md-8">
                                 <button className="btn btn-sm btn-dark btn-block btnToggle"
                                         data-toggle="collapse"
-                                        data-target={`#passengerListCollapse`} aria-expanded="false"
+                                        data-target={`#legCollapse${this.props.legId}`} aria-expanded="false"
                                         aria-controls="collapseExample">
                                     Toggle
                                 </button>
@@ -86,7 +75,7 @@ class Leg extends Component {
 
                     </div>
 
-                    <div className="card-body">
+                    <div className="card-body show" id={`legCollapse${this.props.legId}`}>
 
                         <div className="row">
 
@@ -95,6 +84,7 @@ class Leg extends Component {
                                      city={obj.fromCity}
                                      name={obj.depAirport}
                                      flyTime={obj.depTime}
+                                     flyTimeGMT={obj.depTime}
                                      day={obj.depDay}
                                      date={obj.depDate}/>
 
@@ -102,12 +92,13 @@ class Leg extends Component {
                                      city={obj.toCity}
                                      name={obj.arrAirport}
                                      flyTime={obj.arrTime}
+                                     flyTimeGMT={obj.depTime}
                                      day={obj.arrDay}
                                      date={obj.arrDate}/>
 
                             <div className="col-md-2">
                                 <button className="btn btn-sm btn-primary"
-                                data-toggle="collapse" data-target={`#segmentsCollapse${this.props.leg}`} aria-expanded="false" aria-controls="collapseExample">
+                                data-toggle="collapse" data-target={`#segmentsCollapse${this.props.legId}`} aria-expanded="false" aria-controls="collapseExample">
                                 Expand
                                 </button>
                             </div>
@@ -121,20 +112,20 @@ class Leg extends Component {
                         <div className="row">
 
                             <div className="col-md-4">
-                                Stops: {stops}
+                                Stops: {this.props.stops}
                             </div>
 
                             <div className="col-md-4">
-                                Duration: {hours}h {minutes}m
+                                Duration: {this.props.durHours}h {this.props.durMinutes}m
                             </div>
 
                             <div className="col-md-4">
-                                Wait time: {whours}h {wminutes}m
+                                Wait time: {this.props.waitHours}h {this.props.waitMinutes}m
                             </div>
                         </div>
 
 
-                        <div className="collapse" id={`segmentsCollapse${this.props.leg}`}>
+                        <div className="collapse" id={`segmentsCollapse${this.props.legId}`}>
                             {segmentsDiv}
                         </div>
 

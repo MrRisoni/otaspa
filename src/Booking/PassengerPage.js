@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react';
 import PriceBox from './SideBar';
 import PassengerList from './Passengers/PassengerList';
 import Itinerary from './Itinerary/Itinerary';
-import axios from "axios/index";
+import axios from 'axios';
 import FontAwesome from 'react-fontawesome';
 
 import './PassengerPage.css';
@@ -13,6 +13,7 @@ import ValidatePassengers from './Passengers/ValidatePassengers';
 
 @inject('routing')
 @inject('otastore')
+@inject('htmlStore')
 @observer
 class BookApp extends Component {
 
@@ -20,7 +21,9 @@ class BookApp extends Component {
         super(props);
 
         this.state= {
-            fetchedCountries:false
+            fetchedCountries:false,
+            fetchedInsurance: false,
+            fetchedBags :false
         };
 
         this.moveToUpsales = this.moveToUpsales.bind(this);
@@ -44,14 +47,8 @@ class BookApp extends Component {
 
     handleScroll() {
         const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-       // console.log(windowHeight);
-       // const body = document.body;
-       // const html = document.documentElement;
-       // const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
         const windowBottom = windowHeight + window.pageYOffset;
-        //console.log(windowBottom);
-
-        this.props.otastore.changeHeight( windowBottom);
+        this.props.htmlStore.changeHeight( windowBottom);
 
     }
 
@@ -65,7 +62,6 @@ class BookApp extends Component {
 
         axios.get(api + '/api/countries')
             .then(function (response) {
-                console.log(response.data);
                 self.props.otastore.setCountries(response.data);
 
                 self.setState({fetchedCountries:true});
@@ -76,6 +72,29 @@ class BookApp extends Component {
             });
 
 
+        axios.get(api + '/api/insurance')
+            .then(function (response) {
+                self.props.otastore.setInsurance(response.data);
+
+                self.setState({fetchedInsurance:true});
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
+        axios.get(api + '/api/bags')
+            .then(function (response) {
+                self.props.otastore.setBags(response.data);
+
+                self.setState({fetchedBags:true});
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
     }
 
     componentDidMount() {
@@ -85,7 +104,7 @@ class BookApp extends Component {
     render() {
 
 
-           if (this.state.fetchedCountries) {
+           if (this.state.fetchedCountries && this.state.fetchedInsurance && this.state.fetchedBags) {
                 return (
 
                     <div className="row">

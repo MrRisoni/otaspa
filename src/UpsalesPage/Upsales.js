@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react';
 import PriceBox from '../Booking/SideBar';
 import Preseat from './Preseat/Preseat';
 
-@inject('otastore')
+@inject('htmlStore')
 @observer
 class Upsales extends Component {
     constructor(props) {
@@ -14,21 +14,15 @@ class Upsales extends Component {
     }
     handleScroll() {
         const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-        // console.log(windowHeight);
-        // const body = document.body;
-        // const html = document.documentElement;
-        // const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
         const windowBottom = windowHeight + window.pageYOffset;
-        //console.log(windowBottom);
-
-        this.props.otastore.changeHeight( windowBottom);
+        this.props.htmlStore.changeHeight( windowBottom);
 
     }
 
-    componentDidMount() {
+    componentWillMount() {
         window.addEventListener("scroll", this.handleScroll);
-
     }
+
     render() {
         return (
 

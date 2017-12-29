@@ -4,6 +4,7 @@ import {observer, inject} from 'mobx-react';
 import SeatShow from '../UpsalesPage/Preseat/SeatShow';
 
 @inject('otastore')
+@inject('htmlStore')
 @observer
 class SideBar extends Component {
     constructor(props) {
@@ -183,7 +184,7 @@ class SideBar extends Component {
             if (px.insuranceInfo > 0) {
                 this.props.otastore.insuranceInfo.forEach((ins) => {
                     if (ins.id === px.insuranceInfo) {
-                        total += ins.convertedPrice;
+                        total += parseFloat(ins.convertedPrice);
                     }
                 });
             }
@@ -202,10 +203,10 @@ class SideBar extends Component {
 
 
 
-
+        console.log('total ' + total);
         total = total.toFixed(2);
 
-        let priceBoxStyle = {marginTop :  this.props.otastore.priceBoxMargin + '%'};
+        let priceBoxStyle = {marginTop :  this.props.htmlStore.priceBoxMargin + 'px'};
       //  console.log('new pricebox style ' + priceBoxStyle);
         return (
             <div className="pricebox" style={priceBoxStyle}>

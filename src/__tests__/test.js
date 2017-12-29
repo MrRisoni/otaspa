@@ -1,4 +1,4 @@
-import OtaStore from '../store';
+import OtaStore from '../stores/OtaStore';
 
 
 describe('OtaStore', () => {

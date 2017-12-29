@@ -4,20 +4,41 @@ import {observer, inject} from 'mobx-react';
 
 import Leg from './Leg';
 
-@inject('otastore')
+
+@inject('ItineraryStore')
 @observer
 class Itinerary extends Component {
-    componentDidMount() {
-        this.props.otastore.processSegments();
+    componentWillMount() {
+        this.props.ItineraryStore.processSegments();
     }
     render() {
+
+
+        const itineraryInfoDepart = this.props.ItineraryStore.itinerary.info.departure;
+        const itineraryInfoReturn = this.props.ItineraryStore.itinerary.info.return;
+
         return (
             <div className="itinerary">
 
-                <Leg leg={0}/>
+                <Leg legId={0}
+                     stops={itineraryInfoDepart.stops}
+                     durHours={itineraryInfoDepart.durationTime.hours}
+                     durMinutes={itineraryInfoDepart.durationTime.minutes}
+                     waitHours={itineraryInfoDepart.waitTime.hours}
+                     waitMinutes={itineraryInfoDepart.waitTime.minutes}
+                     segments={this.props.ItineraryStore.itinerary.depSegments}
+                     segTitle="Departure"/>
 
 
-                <Leg leg={1}/>
+                <Leg legId={1}
+                     stops={itineraryInfoReturn.stops}
+                     hours={itineraryInfoReturn.durationTime.hours}
+                     durHours={itineraryInfoReturn.durationTime.hours}
+                     durMinutes={itineraryInfoReturn.durationTime.minutes}
+                     waitHours={itineraryInfoReturn.waitTime.hours}
+                     waitMinutes={itineraryInfoReturn.waitTime.minutes}
+                     segments={this.props.ItineraryStore.itinerary.retSegments}
+                     segTitle="Return"/>
 
             </div>
 

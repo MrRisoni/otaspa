@@ -12,13 +12,12 @@ const Airport = function (props) {
                 <div className="col-md-8"><b
                     className="flightTime">{props.flyTime}</b> <br/>
                     {props.day} <br/>
-                    {props.date}
+                    {props.date} <br/>
+                    <p className="gmtDate">{props.flyTimeGMT}</p>
                 </div>
-
             </div>
         </div>
     );
-
 };
 
 export default Airport;

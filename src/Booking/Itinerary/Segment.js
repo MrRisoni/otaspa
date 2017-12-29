@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-
 import moment from 'moment';
-
 import Airport from './Airport';
 
 
@@ -23,10 +21,12 @@ class Segment extends Component {
             arrAirport: segment.toAirport.substr(5),
 
             depTime: segment.depDateTime.substr(11, 5),
+            depTimeGMT: segment.depDateTime,
             depDay: moment(segment.depDateTime).format('dddd'),
             depDate: moment(segment.depDateTime).format('DD MMMM YYYY'),
 
             arrTime: segment.arrDateTime.substr(11, 5),
+            arrTimeGMT: segment.arrDateTime,
             arrDay: moment(segment.arrDateTime).format('dddd'),
             arrDate: moment(segment.arrDateTime).format('DD MMMM YYYY'),
 
@@ -40,8 +40,8 @@ class Segment extends Component {
 
 
         let obj = this.getSegmentData(this.props.segData);
+        const positiveWaitTime = (this.props.segData.waitTime.total >0);
 
-        console.log(obj);
 
         return (
 
@@ -62,6 +62,7 @@ class Segment extends Component {
                                      city={obj.fromCity}
                                      name={obj.depAirport}
                                      flyTime={obj.depTime}
+                                     flyTimeGMT={obj.depTimeGMT}
                                      day={obj.depDay}
                                      date={obj.depDate}/>
 
@@ -69,11 +70,31 @@ class Segment extends Component {
                                      city={obj.toCity}
                                      name={obj.arrAirport}
                                      flyTime={obj.arrTime}
+                                     flyTimeGMT={obj.arrTimeGMT}
                                      day={obj.arrDay}
                                      date={obj.arrDate}/>
 
                         </div>
 
+
+                    </div>
+
+
+                    <div className="card-footer">
+                        <div className="row">
+
+                            <div className="col-md-5">
+                                Duration {this.props.segData.durationTime.hours}h {this.props.segData.durationTime.minutes}m
+                            </div>
+
+
+                            {positiveWaitTime ? (
+                                <div className="col-md-5">
+                                    Wait time {this.props.segData.waitTime.hours}h {this.props.segData.waitTime.minutes}m
+                                </div>
+                            ) : (<div className="col-md-5"></div>)}
+
+                        </div>
                     </div>
                 </div>
             </div>
