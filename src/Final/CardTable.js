@@ -24,7 +24,7 @@ const CardTable = function (props) {
 
 
     return (
-        <div className="card">
+        <div className="card FinalCardTable">
             <div className="card-header">{props.data.title}</div>
             <div className="card-body">
                 <table className="table table-striped table-bordered table-hover">

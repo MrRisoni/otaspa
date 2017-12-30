@@ -15,6 +15,9 @@ class FinalPage extends Component {
         }
 
         this.renderPriceData = this.renderPriceData.bind(this);
+        this.renderTicketData = this.renderTicketData.bind(this);
+        this.randomTicket = this.randomTicket.bind(this);
+
     }
 
     componentWillMount() {
@@ -35,6 +38,37 @@ class FinalPage extends Component {
             });
     }
 
+    randomTicket()
+    {
+        var text = "";
+        var possible = "0123456789";
+
+        for (var i = 0; i < 13; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
+    }
+
+    renderTicketData()
+    {
+        let ticketRows = [];
+
+        this.props.otastore.passengers.forEach((px) => {
+           if (px.active) {
+
+               ticketRows.push({
+                   title:  px.surname + ' ' + px.name,
+                   value: this.randomTicket()
+               })
+           }
+        });
+
+        return {
+            title: 'Tickets',
+            headers: ['Passenger', 'Ticket'],
+            rows: ticketRows
+        };
+    }
 
     renderPriceData()
     {
@@ -145,6 +179,7 @@ class FinalPage extends Component {
 
 
             const priceData = this.renderPriceData();
+            const ticketData = this.renderTicketData();
 
             return (
                 <div>
@@ -157,11 +192,18 @@ class FinalPage extends Component {
 
                     <div className="row">
                         <div className="col-md-8 offset-md-2">
+                            <CardTable data={ticketData}/>
+                        </div>
+                    </div>
+
+
+                    <div className="row">
+                        <div className="col-md-8 offset-md-2">
                             <CardTable data={priceData}/>
                         </div>
                     </div>
 
-                   
+
 
 
                 </div>)

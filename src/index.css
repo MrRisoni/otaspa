@@ -59,6 +59,10 @@ body, input[type="text"], option, select
     margin-top: 55%;
 }
 
+.FinalCardTable {
+    margin-top: 5px;
+}
+
 .CarCarousel img {
     margin-top: 12%;
     height: 75%;
