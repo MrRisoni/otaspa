@@ -20,7 +20,7 @@ class PriceMap extends React.PureComponent {
         let settings = require('../../env_settings');
         console.log(settings);
         let api = settings.BACK_END_URL;
-        axios.get(api + '/api/markers')
+        axios.get(api + '/api/airports')
             .then(function (response) {
                 console.log(response.data);
                 self.setState({ markers: response.data});

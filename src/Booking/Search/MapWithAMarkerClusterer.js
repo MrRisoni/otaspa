@@ -5,7 +5,7 @@ import  { MarkerClusterer } from 'react-google-maps/lib/components/addons/Marker
 import { MarkerWithLabel } from 'react-google-maps/lib/components/addons/MarkerWithLabel';
 
 /*global google*/
-const apiKey =
+
 
 const MapWithAMarkerClusterer = compose(
     withProps({
@@ -28,7 +28,7 @@ const MapWithAMarkerClusterer = compose(
         >
             {props.markers.map(marker => (
                 <MarkerWithLabel
-                    key={marker.photo_id}
+                    key={marker.airport_id}
                     position={{ lat: marker.latitude, lng: marker.longitude }}
                     labelAnchor={new google.maps.Point(0, 0)}
                     labelStyle={{backgroundColor: "yellow", fontSize: "32px", padding: "16px"}}
