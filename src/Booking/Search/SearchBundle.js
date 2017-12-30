@@ -5,8 +5,7 @@ import OtaSpaDatePicker from './../OtaSpaDatePicker';
 import SearchBar from './SearchBar';
 import AirlineFlasher from './AirlineFlasher';
 
-import MyMapComponent from "./MyMapComponent";
-import DemoApp from "./DemoApp";
+import PriceMap from './PriceMap';
 
 
 class SearchBundle extends Component {
@@ -32,7 +31,7 @@ class SearchBundle extends Component {
 
                 <CarCarousel/>
 
- <DemoApp/>
+                <PriceMap/>
 
             </div>
 

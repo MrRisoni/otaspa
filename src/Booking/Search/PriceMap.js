@@ -3,7 +3,7 @@ import MapWithAMarkerClusterer from './MapWithAMarkerClusterer';
 import React, {PureComponent} from 'react';
 
 
-class DemoApp extends React.PureComponent {
+class PriceMap extends React.PureComponent {
     constructor(props)
     {
         super(props);
@@ -34,4 +34,4 @@ class DemoApp extends React.PureComponent {
     }
 }
 
-export default DemoApp;
+export default PriceMap;

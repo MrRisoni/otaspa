@@ -1,7 +1,11 @@
 import React, {PureComponent} from 'react';
-import  { compose, withProps, withHandlers } from 'recompose';
-import  { withScriptjs,  withGoogleMap,  GoogleMap,  Marker} from 'react-google-maps';
-import  { MarkerClusterer }from 'react-google-maps/lib/components/addons/MarkerClusterer';
+import  { compose, withProps } from 'recompose';
+import  { withScriptjs,  withGoogleMap,  GoogleMap} from 'react-google-maps';
+import  { MarkerClusterer } from 'react-google-maps/lib/components/addons/MarkerClusterer';
+import { MarkerWithLabel } from 'react-google-maps/lib/components/addons/MarkerWithLabel';
+
+/*global google*/
+const apiKey =
 
 const MapWithAMarkerClusterer = compose(
     withProps({
@@ -10,31 +14,28 @@ const MapWithAMarkerClusterer = compose(
         containerElement: <div style={{ height: `400px` }} />,
         mapElement: <div style={{ height: `100%` }} />,
     }),
-    withHandlers({
-        onMarkerClustererClick: () => (markerClusterer) => {
-            const clickedMarkers = markerClusterer.getMarkers()
-            console.log(`Current clicked markers length: ${clickedMarkers.length}`)
-            console.log(clickedMarkers)
-        },
-    }),
     withScriptjs,
     withGoogleMap
 )(props =>
     <GoogleMap
-        defaultZoom={3}
-        defaultCenter={{ lat: 25.0391667, lng: 121.525 }}
+        defaultZoom={4}
+        defaultCenter={{ lat: 38.3712, lng: 24.1268 }}
     >
         <MarkerClusterer
-            onClick={props.onMarkerClustererClick}
             averageCenter
             enableRetinaIcons
             gridSize={60}
         >
             {props.markers.map(marker => (
-                <Marker
+                <MarkerWithLabel
                     key={marker.photo_id}
                     position={{ lat: marker.latitude, lng: marker.longitude }}
-                />
+                    labelAnchor={new google.maps.Point(0, 0)}
+                    labelStyle={{backgroundColor: "yellow", fontSize: "32px", padding: "16px"}}
+                >
+                    <div>Hello There!</div>
+                </MarkerWithLabel>
+
             ))}
         </MarkerClusterer>
     </GoogleMap>
