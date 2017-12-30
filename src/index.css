@@ -149,3 +149,17 @@ body, input[type="text"], option, select
     max-width: 95%;
     height: auto;
 }
+
+.mapLabelClass {
+    background-color: #ffffe6;
+    font-family: "Times New Roman";
+    font-size: 15px;
+    padding: 6px;
+    border-radius: 6px 6px 6px 6px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+
+    -webkit-box-shadow: 10px 10px 97px 13px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 97px 13px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 97px 13px rgba(0,0,0,0.75);
+}

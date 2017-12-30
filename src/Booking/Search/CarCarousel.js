@@ -47,7 +47,7 @@ class CarCarousel extends Component {
                                                 <FontAwesome
                                                     className='super-crazy-colors'
                                                     name='step-backward'
-                                                    size='1x'
+                                                    size='lg'
                                                     style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
                                                 />
                                             </button>
@@ -66,7 +66,7 @@ class CarCarousel extends Component {
                                                 <FontAwesome
                                                     className='super-crazy-colors'
                                                     name='step-forward'
-                                                    size='1x'
+                                                    size='lg'
                                                     style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
                                                 />
                                             </button>

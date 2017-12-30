@@ -22,5 +22,5 @@ yarn-error.log*
 *.log
 *.env
 *googleAPI*
-
-
+*googleAPIKey
+src/googleAPIKey.json

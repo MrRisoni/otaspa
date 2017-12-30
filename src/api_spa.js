@@ -81,6 +81,11 @@ app.get('/api/bags', (req, res) => {
     res.send(require('./serverData/bags'));
 });
 
+app.get('/api/airports', (req,res) => {
+    const data = require('./serverData/airports');
+    res.send(data);
+});
+
 app.post('/api/pay', (req, res) => {
     // echo PNR tickets
 
@@ -89,6 +94,8 @@ app.post('/api/pay', (req, res) => {
     },1000);
 
 });
+
+
 
 
 
