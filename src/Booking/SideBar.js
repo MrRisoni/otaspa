@@ -31,7 +31,7 @@ class SideBar extends Component {
             let returnLeg = [];
             let key = '';
 
-            if (px.totalBags > 0) {
+            if (px.totalBags > 0 && px.active) {
 
                 // for each trip leg
 
@@ -114,7 +114,7 @@ class SideBar extends Component {
         let insuranceDiv = [];
 
         this.props.otastore.passengers.forEach((px) => {
-            if (px.insuranceInfo > 1) {
+            if (px.insuranceInfo > 1 && px.active) {
 
                 this.props.otastore.insuranceInfo.forEach((ins) => {
 

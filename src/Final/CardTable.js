@@ -12,21 +12,16 @@ const CardTable = function (props) {
         headers.push(<th key={i}>{props.data.headers[i]}</th>)
     }
 
-    for (var i = 0; i < props.data.rows.length; i++)
+    for (i = 0; i < props.data.rows.length; i++)
     {
-
-    }
-
-   /* for(let variable in props.data) {
-
-        let  context = "";
-
-        rows.push(<tr className={context} key={reactKey}>
-            <td>{property}</td>
-            <td>{props.data[property]}</td>
+        let item = props.data.rows[i];
+        rows.push(<tr key={reactKey}>
+            <td>{item.title}</td>
+            <td>{item.value}</td>
         </tr>);
         reactKey++;
-    } */
+    }
+
 
     return (
         <div className="card">
@@ -39,7 +34,7 @@ const CardTable = function (props) {
                         </tr>
                     </thead>
                     <tbody>
-
+                        {rows}
                     </tbody>
                 </table>
             </div>

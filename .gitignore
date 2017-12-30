@@ -21,6 +21,6 @@ yarn-error.log*
 *.mp3
 *.log
 *.env
-
+*googleAPI*
 
 

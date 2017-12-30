@@ -13,6 +13,8 @@ class FinalPage extends Component {
         this.state = {
             processFinished: false
         }
+
+        this.renderPriceData = this.renderPriceData.bind(this);
     }
 
     componentWillMount() {
@@ -33,30 +35,116 @@ class FinalPage extends Component {
             });
     }
 
+
+    renderPriceData()
+    {
+        let priceRows = [];
+
+        let total = 0;
+        this.props.otastore.paxTypes.forEach( (pax) => {
+            if (pax.count >0) {
+                priceRows.push({
+                    title:  pax.name + ' x ' + pax.count,
+                    value: (pax.count * pax.convertedPrice).toFixed(2)
+                });
+
+                total += parseFloat(pax.count * pax.convertedPrice);
+            }
+        });
+
+        let insuranceTotal =0;
+        let insuranceCount = 0;
+        this.props.otastore.passengers.forEach((px) => {
+            if (px.insuranceInfo > 1 && px.active) {
+
+                this.props.otastore.insuranceInfo.forEach((ins) => {
+
+                    if (ins.id === px.insuranceInfo) {
+                        insuranceTotal += parseFloat(ins.convertedPrice);
+                        insuranceCount++;
+                        total+= parseFloat(ins.convertedPrice);
+                    }
+
+                });
+            }
+        });
+
+        if (insuranceCount >0) {
+            priceRows.push({
+                title:  'Insurance x ' +insuranceCount,
+                value: (insuranceTotal).toFixed(2)
+            })
+        }
+
+        // bags
+        let bagsDepCount = 0;
+        let bagsDepCost = 0;
+        let bagsRetCount = 0;
+        let bagsRetCost = 0;
+
+
+        this.props.otastore.passengers.forEach((px) => {
+
+            if (px.totalBags > 0 && px.active) {
+
+                px.bags.forEach((bagLeg, idxLeg) => {
+
+                    bagLeg.types.forEach((bag) => {
+
+                        if (bag.count > 0) {
+                            if (idxLeg === 0) {
+
+                                bagsDepCount += bag.count;
+                                bagsDepCost += parseFloat(bag.price * bag.count)
+                            }
+                            else {
+
+                                bagsRetCount += bag.count;
+                                bagsRetCost += parseFloat(bag.price * bag.count)
+                            }
+                        }
+
+                    });// end bag iteration for each leg
+
+                }); // end leg iteration
+            }
+        });
+
+        total += parseFloat(bagsDepCost) + parseFloat(bagsRetCost);
+
+        if (bagsDepCount >0) {
+            priceRows.push({
+                title:  'Bags Dep x ' +bagsDepCount,
+                value: bagsDepCost.toFixed(2)
+            })
+        }
+
+        if (bagsRetCount >0) {
+            priceRows.push({
+                title:  'Bags Ret x ' +bagsRetCount,
+                value: bagsRetCost.toFixed(2)
+            })
+        }
+        priceRows.push({
+            title:  'Total',
+            value: total.toFixed(2)
+        });
+
+
+        return {
+            title:'PriceAnalysis',
+            headers: ['Description', 'Value'],
+            rows: priceRows
+        }
+
+
+    }
     render() {
 
         if (this.state.processFinished) {
 
-            let passengersDiv = {};
 
-            let priceRows = [];
-
-            this.props.otastore.paxTypes.forEach( (pax) => {
-               if (pax.count >0) {
-                   priceRows.push({
-                       title:  pax.name + ' x ' + pax.count,
-                       value: (pax.count * pax.convertedPrice).toFixed(2)
-                   })
-               }
-            });
-
-            let priceData = {
-                title:'PriceAnalysis',
-                headers: ['Description', 'Value'],
-                rows: priceRows
-            };
-
-
+            const priceData = this.renderPriceData();
 
             return (
                 <div>
@@ -72,6 +160,9 @@ class FinalPage extends Component {
                             <CardTable data={priceData}/>
                         </div>
                     </div>
+
+                   
+
 
                 </div>)
         }
