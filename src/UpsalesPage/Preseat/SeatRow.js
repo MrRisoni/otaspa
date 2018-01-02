@@ -4,7 +4,7 @@ import './SeatRow.css';
 
 import SeatButton from './SeatButton';
 
-class SeatColumn extends Component {
+class SeatRow extends Component {
     constructor(props)
     {
         super();
@@ -16,8 +16,14 @@ class SeatColumn extends Component {
         for  (let i =0; i < 3; i++)
         {
 
-            const key= "seatbut_" + alphabet[this.props.colID] + (this.props.rowID + i);
-            SeatDiv.push(<SeatButton key={key} col={alphabet[this.props.colID]} row={(this.props.rowID + i)}/>)
+            const key= 'seatbut_' + alphabet[this.props.colID] + (this.props.rowID + i);
+
+            SeatDiv.push(<SeatButton key={key}
+                                     colNo={this.props.colNo}
+                                     seatNumber={this.props.seatNumber}
+                                     seatLetter={this.props.colLetter}
+                                     col={alphabet[this.props.colID]}
+                                     row={(this.props.rowID + i)}/>)
         }
 
         return (
@@ -28,6 +34,6 @@ class SeatColumn extends Component {
     }
 }
 
-export default SeatColumn;
+export default SeatRow;
 
 

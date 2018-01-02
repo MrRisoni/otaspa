@@ -17,7 +17,7 @@ class HtmlStore {
 
     @action changeHeight(newHeight){
 
-        console.log(newHeight);
+       // console.log(newHeight);
         if (newHeight <= 622) {
             this.priceBoxMargin = 5;
         }
@@ -26,7 +26,7 @@ class HtmlStore {
             this.priceBoxMargin = 3 * this.priceBoxMargin;
             this.priceBoxMargin = parseInt(this.priceBoxMargin);
         }
-        console.log(this.priceBoxMargin);
+       // console.log(this.priceBoxMargin);
     }
 }
 

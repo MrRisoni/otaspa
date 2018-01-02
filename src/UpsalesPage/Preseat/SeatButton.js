@@ -11,20 +11,16 @@ class SeatButton extends Component {
 
     handleClick()
     {
-        console.log("Click seat " + this.props.col + ' ' + this.props.row);
+        console.log("Click seat " + this.props.seatLetter + ' ' + this.props.seatNumber );
     }
     render() {
 
-        let classAvailability = (Math.floor(Math.random() * 100) + 1) > 30 ? "btn-primary" : "btn-default";
-        classAvailability += " btn ";
+        let classAvailability = (Math.floor(Math.random() * 100) + 1) > 30 ? "seatAvailable" : "seatTaken";
+        classAvailability += "  seatButton ";
         return (
-
-            <div className="col-md-1">
-                <button onClick={this.handleClick} className={classAvailability}>
-               </button>
-            </div>
-
-        );
+            <div className={classAvailability}
+                 onClick={this.handleClick} >
+            </div>);
     }
 }
 

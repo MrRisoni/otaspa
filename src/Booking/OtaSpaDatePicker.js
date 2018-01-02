@@ -25,7 +25,7 @@ class OtaSpaDatePicker extends Component {
                         <FontAwesome
                             className='fa fa-backward'
                             name='backward'
-                            size='1x'
+                            size='lg'
                             style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
                         />
                     </div>
@@ -36,7 +36,7 @@ class OtaSpaDatePicker extends Component {
                         <FontAwesome
                             className='fa fa-forward'
                             name='fa-forward'
-                            size='1x'
+                            size='lg'
                             style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
                         />
                     </div>

@@ -102,7 +102,6 @@ class Names extends Component {
     }
 
     render() {
-        const messages = require('../../messages');
         return (
             <div>
                 <div className="row">
@@ -124,7 +123,7 @@ class Names extends Component {
                                onChange={this.editSurname} className="form-control"/>
                         <Error show={this.state.showSurnameErr}
                                class={"textInputErr"}
-                               msg={messages.LETTERS_ONLY}/>
+                               msg="Only letters are allowed"/>
                     </div>
 
 
@@ -134,7 +133,7 @@ class Names extends Component {
                                onChange={this.editName} className="form-control"/>
                         <Error show={this.state.showNameErr}
                                class={"textInputErr"}
-                               msg={messages.LETTERS_ONLY}/>
+                               msg="Only letters are allowed"/>
                     </div>
 
                 </div>

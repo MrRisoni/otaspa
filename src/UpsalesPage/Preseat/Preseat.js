@@ -1,23 +1,81 @@
 import React, {Component} from 'react';
-
 import SeatColumn from './SeatColumn';
 
+import {observer, inject} from 'mobx-react';
+import FontAwesome from 'react-fontawesome';
+
+
+@inject('otastore')
+@observer
 class Preseat extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {};
+
+        this.handleNextPax = this.handleNextPax.bind(this);
+        this.handlePrevPax = this.handlePrevPax.bind(this);
+
+        this.handleNextLeg = this.handleNextLeg.bind(this);
+        this.handlePrevLeg = this.handlePrevLeg.bind(this);
+    }
+
+    handleNextPax() {
+
+    }
+
+    handlePrevPax() {
+
+    }
+
+
+    handleNextLeg() {
+
+    }
+
+    handlePrevLeg() {
+
+    }
 
     render() {
 
-
-        let ColDiv = [];
         let ColHeaders = [];
 
-        const alphabet  = ['A', 'B', 'C', 'D'];
+        const alphabet = ['A', 'B', 'C', 'D'];
+
+        let colNo =0;
+        let seatNumber = 0;
 
         for (let i = 0; i < 4; i++) {
-            // how many columns in the aircraft fuselage
-            ColDiv.push(<SeatColumn key={i} colID={i}/>);
 
-            ColHeaders.push(<div className="col-md-3" key={alphabet[i]} >{alphabet[i]}</div> )
+            let ColDiv = [];
+            for (let j = 0; j < 3; j++) {
+                colNo++;
+
+                seatNumber++;
+
+                ColDiv.push(<SeatColumn key={colNo}
+                                        colNo={colNo}
+                                        seatNumber={seatNumber}
+                                        colLetter={alphabet[i]}/>);
+            }
+
+            ColHeaders.push(<div className="col-md-3" key={alphabet[i]}>
+                <div className="card">
+                    <div className="card-header seatRowHeader">
+                        <p>{alphabet[i]}</p>
+                    </div>
+                    <div className="card-body">
+                        {/*  // how many columns in the aircraft fuselage */}
+                        <div className="row">
+                            {ColDiv}
+                        </div>
+                    </div>
+                </div>
+            </div>)
         }
+
         return (
 
 
@@ -27,44 +85,81 @@ class Preseat extends Component {
                         <div className="card-header  bg-primary">Select your Seat</div>
                         <div className="card-body">
 
-                            <div className="row">
+                            <div className="row preSeatPaxSelector">
 
                                 <div className="col-md-12">
                                     <div className="card">
                                         <div className="card-header  bg-primary">Select Passenger</div>
                                         <div className="card-body">
 
+                                            <button className="btn btn-sm btn-success" onClick={this.handlePrevPax}>
+                                                <FontAwesome
+                                                    className='fa fa-backward'
+                                                    name='forward'
+                                                    size='lg'
+                                                    style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
+                                                />
+                                            </button>
+
+                                            Passengers
+
+                                            <button className="btn btn-sm btn-success" onClick={this.handleNextPax}>
+                                                <FontAwesome
+                                                    className='fa fa-forward'
+                                                    name='forward'
+                                                    size='lg'
+                                                    style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
+                                                />
+                                            </button>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
 
-                            <div className="row">
+                            <div className="row preSeatPaxSelector">
 
                                 <div className="col-md-12">
                                     <div className="card">
                                         <div className="card-header  bg-primary">Select Leg</div>
                                         <div className="card-body">
 
+                                            <button className="btn btn-sm btn-success" onClick={this.handlePrevLeg}>
+                                                <FontAwesome
+                                                    className='fa fa-backward'
+                                                    name='forward'
+                                                    size='lg'
+                                                    style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
+                                                />
+                                            </button>
+
+                                            Legs
+
+                                            <button className="btn btn-sm btn-success" onClick={this.handleNextLeg}>
+                                                <FontAwesome
+                                                    className='fa fa-forward'
+                                                    name='forward'
+                                                    size='lg'
+                                                    style={{textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
+                                                />
+                                            </button>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+
                             <div className="row">
                                 {ColHeaders}
                             </div>
 
-                            <div className="row">
-                                {ColDiv}
-                            </div>
+
                         </div>
                     </div>
                 </div>
-            </div>
-
-        );
+            </div>);
     }
 }
 

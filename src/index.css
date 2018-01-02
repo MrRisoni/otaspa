@@ -46,8 +46,8 @@ body, input[type="text"], option, select
 
 
 .preSeatPaxSelector {
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin-bottom: 8px;
+    margin-top: 8px;
 }
 
  .CarCarousel {
@@ -168,4 +168,28 @@ body, input[type="text"], option, select
     -webkit-box-shadow: 10px 10px 97px 13px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 97px 13px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 97px 13px rgba(0,0,0,0.75);
+}
+
+.seatButton {
+    width: 25px;
+    height: 15px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+}
+
+.seatAvailable {
+    background-color : #292aff;
+}
+
+.seatTaken {
+    background-color: #ece7ff;
+}
+
+.seatRowHeader {
+    text-align: center;
+    height: 45px;
+    background-color: #feffd7;
 }
