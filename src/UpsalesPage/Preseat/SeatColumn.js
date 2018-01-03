@@ -12,7 +12,7 @@ class SeatColumn extends Component {
 
         let RowDiv = [];
 
-        for  (let r =0; r < 5; r++) // row seats
+        for  (let r =0; r < 35; r++) // row seats
         {
             let key = "col_" + this.props.colNo + "_row_" + r;
             // how many rows in the fuselage

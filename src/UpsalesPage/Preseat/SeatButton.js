@@ -11,8 +11,11 @@ class SeatButton extends Component {
 
     handleClick()
     {
+        console.log('---------');
         console.log("Click seat " + this.props.seatID );
+        console.log("rowID " + this.props.rowID );
     }
+
     render() {
 
         let classAvailability = (Math.floor(Math.random() * 100) + 1) > 30 ? "seatAvailable" : "seatTaken";
