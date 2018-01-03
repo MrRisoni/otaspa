@@ -11,14 +11,14 @@ class SeatButton extends Component {
 
     handleClick()
     {
-        console.log("Click seat " + this.props.seatLetter + ' ' + this.props.seatNumber );
+        console.log("Click seat " + this.props.seatID );
     }
     render() {
 
         let classAvailability = (Math.floor(Math.random() * 100) + 1) > 30 ? "seatAvailable" : "seatTaken";
-        classAvailability += "  seatButton ";
+        classAvailability += "  seatButton col-md-1";
         return (
-            <div className={classAvailability}
+            <div className={classAvailability} key={this.props.seatID}
                  onClick={this.handleClick} >
             </div>);
     }

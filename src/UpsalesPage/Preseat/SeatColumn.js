@@ -12,19 +12,18 @@ class SeatColumn extends Component {
 
         let RowDiv = [];
 
-        for  (let i =0; i <35; i++)
+        for  (let r =0; r < 5; r++) // row seats
         {
-            let key = "col_" + this.props.colNo + "_row_" + i;
+            let key = "col_" + this.props.colNo + "_row_" + r;
             // how many rows in the fuselage
             RowDiv.push(<SeatRow key={key}
                                  colNo={this.props.colNo}
-                                 seatNumber={this.props.seatNumber}
                                  colLetter={this.props.colLetter}
-                                 rowID={i}/>)
+                                 rowID={r}/>)
         }
 
         return (
-            <div className="col-md-3">{RowDiv}</div>
+            <div className="col-md-12 offset-md-2">{RowDiv}</div>
         );
     }
 }

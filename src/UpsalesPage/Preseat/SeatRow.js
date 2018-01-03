@@ -12,25 +12,17 @@ class SeatRow extends Component {
     render() {
 
         let SeatDiv = [];
-        const alphabet  = ['A', 'B', 'C', 'D'];
         for  (let i =0; i < 3; i++)
         {
 
-            const key= 'seatbut_' + alphabet[this.props.colID] + (this.props.rowID + i);
+            const key= 'seatbut_' + this.props.colLetter + (this.props.rowID + i);
+            const seatID= 's'+ this.props.colLetter + (this.props.rowID + i);
 
             SeatDiv.push(<SeatButton key={key}
-                                     colNo={this.props.colNo}
-                                     seatNumber={this.props.seatNumber}
-                                     seatLetter={this.props.colLetter}
-                                     col={alphabet[this.props.colID]}
-                                     row={(this.props.rowID + i)}/>)
+                                     seatID={seatID}/>)
         }
 
-        return (
-
-            <div className="row">{SeatDiv}</div>
-
-        );
+        return (<div className="row">{SeatDiv}</div>);
     }
 }
 

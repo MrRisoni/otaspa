@@ -44,32 +44,24 @@ class Preseat extends Component {
 
         const alphabet = ['A', 'B', 'C', 'D'];
 
-        let colNo =0;
-        let seatNumber = 0;
 
-        for (let i = 0; i < 4; i++) {
+        for (let sc = 0; sc < 4; sc++) {
 
-            let ColDiv = [];
-            for (let j = 0; j < 3; j++) {
-                colNo++;
+            let colHeaderKey = 'keyColH' + alphabet[sc];
 
-                seatNumber++;
+            let colRowsContainers = 'keyRowsCon' + alphabet[sc];
 
-                ColDiv.push(<SeatColumn key={colNo}
-                                        colNo={colNo}
-                                        seatNumber={seatNumber}
-                                        colLetter={alphabet[i]}/>);
-            }
-
-            ColHeaders.push(<div className="col-md-3" key={alphabet[i]}>
+            ColHeaders.push(<div className="col-md-3" key={colHeaderKey}>
                 <div className="card">
                     <div className="card-header seatRowHeader">
-                        <p>{alphabet[i]}</p>
+                        <p>{alphabet[sc]}</p>
                     </div>
                     <div className="card-body">
                         {/*  // how many columns in the aircraft fuselage */}
                         <div className="row">
-                            {ColDiv}
+                            <SeatColumn key={colRowsContainers}
+                                        colNo={sc}
+                                        colLetter={alphabet[sc]}/>
                         </div>
                     </div>
                 </div>

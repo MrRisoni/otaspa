@@ -176,9 +176,7 @@ class SideBar extends Component {
 
         });
 
-
-
-        console.log('total ' + total);
+        //console.log('total ' + total);
         total = total.toFixed(2);
 
         let priceBoxStyle = {marginTop :  this.props.htmlStore.priceBoxMargin + 'px'};
