@@ -4,7 +4,10 @@ import React, {Component} from 'react';
 class SeatButton extends Component {
     constructor(props)
     {
-        super();
+        super(props);
+        this.state = {
+            seatClassName: ""
+        };
 
         this.handleClick = this.handleClick.bind(this);
     }
@@ -14,14 +17,25 @@ class SeatButton extends Component {
         console.log('---------');
         console.log("Click seat " + this.props.seatID );
         console.log("rowID " + this.props.rowID );
+        if (this.props.isAvailable) {
+            // clear other classes for that leg...
+            this.setState({seatClassName: 'seatChosen seatButton col-md-1'});
+
+        }
+
+    }
+
+    componentWillMount()
+    {
+        let classAvailability = (this.props.isAvailable) ? "seatAvailable" : "seatTaken";
+        classAvailability += "  seatButton col-md-1";
+        this.setState({seatClassName:classAvailability});
     }
 
     render() {
 
-        let classAvailability = (Math.floor(Math.random() * 100) + 1) > 30 ? "seatAvailable" : "seatTaken";
-        classAvailability += "  seatButton col-md-1";
         return (
-            <div className={classAvailability} key={this.props.seatID}
+            <div className={this.state.seatClassName} key={this.props.seatID}
                  onClick={this.handleClick} >
             </div>);
     }

@@ -49,7 +49,7 @@ class Contact extends Component {
     componentDidMount()
     {
         this.setState({
-            surname: this.props.otastore.contactInfo.surname
+            surname: this.props.otaStore.contactInfo.surname
         })
     }
 

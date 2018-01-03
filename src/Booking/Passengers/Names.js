@@ -10,7 +10,7 @@ import Error from '../../Error';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-@inject('otastore')
+@inject('otaStore')
 class Names extends Component {
     constructor(props) {
         super(props);
@@ -51,7 +51,7 @@ class Names extends Component {
 
         const VP = new ValidatePassengers();
 
-        this.props.otastore.editPaxElement(
+        this.props.otaStore.editPaxElement(
             {
                 value: fieldInput,
                 property: 'surname',
@@ -81,7 +81,7 @@ class Names extends Component {
 
         const VP = new ValidatePassengers();
 
-        this.props.otastore.editPaxElement(
+        this.props.otaStore.editPaxElement(
             {
                 value: fieldInput,
                 property: 'name',

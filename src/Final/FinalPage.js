@@ -53,7 +53,7 @@ class FinalPage extends Component {
     {
         let ticketRows = [];
 
-        this.props.otastore.passengers.forEach((px) => {
+        this.props.otaStore.passengers.forEach((px) => {
            if (px.active) {
 
                ticketRows.push({
@@ -75,7 +75,7 @@ class FinalPage extends Component {
         let priceRows = [];
 
         let total = 0;
-        this.props.otastore.paxTypes.forEach( (pax) => {
+        this.props.otaStore.paxTypes.forEach( (pax) => {
             if (pax.count >0) {
                 priceRows.push({
                     title:  pax.name + ' x ' + pax.count,
@@ -88,10 +88,10 @@ class FinalPage extends Component {
 
         let insuranceTotal =0;
         let insuranceCount = 0;
-        this.props.otastore.passengers.forEach((px) => {
+        this.props.otaStore.passengers.forEach((px) => {
             if (px.insuranceInfo > 1 && px.active) {
 
-                this.props.otastore.insuranceInfo.forEach((ins) => {
+                this.props.otaStore.insuranceInfo.forEach((ins) => {
 
                     if (ins.id === px.insuranceInfo) {
                         insuranceTotal += parseFloat(ins.convertedPrice);
@@ -117,7 +117,7 @@ class FinalPage extends Component {
         let bagsRetCost = 0;
 
 
-        this.props.otastore.passengers.forEach((px) => {
+        this.props.otaStore.passengers.forEach((px) => {
 
             if (px.totalBags > 0 && px.active) {
 

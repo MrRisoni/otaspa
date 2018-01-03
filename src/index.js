@@ -26,7 +26,7 @@ const routingStore = new RouterStore();
 
 const stores = {
     routing: routingStore,
-    otastore: otastore,
+    otaStore: otastore,
     ItineraryStore: itinerary_store,
     htmlStore : htmlstore
 };

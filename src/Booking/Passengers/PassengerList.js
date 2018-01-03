@@ -3,7 +3,7 @@ import {observer, inject} from 'mobx-react';
 
 import Passenger from './Passenger';
 
-@inject('otastore')
+@inject('otaStore')
 @observer
 class PassengerList extends Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class PassengerList extends Component {
     }
 
     addPassenger() {
-        this.props.otastore.addPassenger();
+        this.props.otaStore.addPassenger();
     }
 
     render() {
@@ -22,12 +22,12 @@ class PassengerList extends Component {
 
         let countriesList = [];
 
-        this.props.otastore.countries.forEach((country) => {
+        this.props.otaStore.countries.forEach((country) => {
             countriesList.push(<option key={country.code} value={country.code}>{country.name}</option>);
         });
 
 
-        this.props.otastore.passengers.forEach((ps) => {
+        this.props.otaStore.passengers.forEach((ps) => {
             if (ps.active) {
                 passengerDiv.push(<Passenger key={ps.id}
                                              pap={ps}
@@ -51,11 +51,11 @@ class PassengerList extends Component {
                     </div>
 
 
-                    {this.props.otastore.reasonPassengers !== '' &&
+                    {this.props.otaStore.reasonPassengers !== '' &&
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="alert alert-danger" role="alert">
-                                    {this.props.otastore.reasonPassengers}
+                                    {this.props.otaStore.reasonPassengers}
                                 </div>
                             </div>
                         </div>

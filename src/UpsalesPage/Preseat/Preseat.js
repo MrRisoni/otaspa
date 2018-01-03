@@ -5,14 +5,18 @@ import {observer, inject} from 'mobx-react';
 import FontAwesome from 'react-fontawesome';
 
 
-@inject('otastore')
+@inject('otaStore')
+@inject('ItineraryStore')
 @observer
 class Preseat extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            currentPaxID:0,
+            currentLegID:0,
+        };
 
         this.handleNextPax = this.handleNextPax.bind(this);
         this.handlePrevPax = this.handlePrevPax.bind(this);
@@ -36,6 +40,17 @@ class Preseat extends Component {
 
     handlePrevLeg() {
 
+    }
+
+    componentWillMount() {
+        let firstActivePaxID = 12230;
+        this.props.otaStore.passengers.forEach((pax) => {
+            if (pax.active && pax.id < firstActivePaxID) {
+                firstActivePaxID = pax.id;
+            }
+        });
+
+        this.setState({currentPaxID: firstActivePaxID});
     }
 
     render() {
@@ -93,7 +108,8 @@ class Preseat extends Component {
                                                 />
                                             </button>
 
-                                            Passengers
+                                            {this.props.otaStore.passengers[this.state.currentPaxID].surname}
+                                            {this.props.otaStore.passengers[this.state.currentPaxID].name}
 
                                             <button className="btn btn-sm btn-success" onClick={this.handleNextPax}>
                                                 <FontAwesome
@@ -126,7 +142,7 @@ class Preseat extends Component {
                                                 />
                                             </button>
 
-                                            Legs
+                                            {this.props.itineraryStore.itinerary[this.state.depSegments].surname}
 
                                             <button className="btn btn-sm btn-success" onClick={this.handleNextLeg}>
                                                 <FontAwesome

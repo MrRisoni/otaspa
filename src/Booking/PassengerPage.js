@@ -12,7 +12,7 @@ import ValidatePassengers from './Passengers/ValidatePassengers';
 
 
 @inject('routing')
-@inject('otastore')
+@inject('otaStore')
 @inject('htmlStore')
 @observer
 class BookApp extends Component {
@@ -38,7 +38,7 @@ class BookApp extends Component {
         const valData = new ValidatePassengers();
 
         const { location, push, goBack } = this.props.routing;
-        if (valData.validate(this.props.otastore.passengers)) {
+        if (valData.validate(this.props.otaStore.passengers)) {
             push('/upsales');
         }
 

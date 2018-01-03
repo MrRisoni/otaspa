@@ -18,7 +18,10 @@ class SeatRow extends Component {
             const key= 'seatbut_' + this.props.colLetter + (this.props.rowID + i + 1);
             const seatID= 's'+ this.props.colLetter + parseInt(this.props.rowID*3  + i + 1);
 
+            let isAvailable = (Math.floor(Math.random() * 100) + 1) > 30;
+
             SeatDiv.push(<SeatButton key={key}
+                                     isAvailable={isAvailable}
                                      rowID={this.props.rowID}
                                      seatID={seatID}/>)
         }

@@ -184,6 +184,10 @@ body, input[type="text"], option, select
     background-color : #292aff;
 }
 
+.seatChosen {
+    background-color : #00ff03;
+}
+
 .seatTaken {
     background-color: #ece7ff;
 }

@@ -94,7 +94,8 @@ class OtaStore {
                     route: 'returnLeg',
                     types: []
                 }
-            ]
+            ],
+            preseat: []
         },
         {
             id: 1,
@@ -119,7 +120,8 @@ class OtaStore {
                     route: 'returnLeg',
                     types: []
                 }
-            ]
+            ],
+            preseat: []
         }];
 
 
@@ -289,7 +291,8 @@ class OtaStore {
                                 route: 'returnLeg',
                                 types: []
                             }
-                        ]
+                        ],
+                        preseat: []
                         });
 
             this.paxTypes[0].count++;
