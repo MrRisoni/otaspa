@@ -3,8 +3,7 @@ import {observer, inject} from 'mobx-react';
 
 import SeatShow from '../UpsalesPage/Preseat/SeatShow';
 
-@inject('otaStore')
-@inject('htmlStore')
+@inject('MasterStore')
 @observer
 class SideBar extends Component {
     constructor(props) {
@@ -16,14 +15,14 @@ class SideBar extends Component {
 
     handleChange(ev) {
         console.log(ev.target.value);
-        this.props.otaStore.changeCurrency(ev.target.value);
+        this.props.MasterStore.otaStore.changeCurrency(ev.target.value);
     }
 
     getBagsDiv()
     {
         let bagsDiv = [];
 
-        this.props.otaStore.passengers.forEach((px) => {
+        this.props.MasterStore.otaStore.passengers.forEach((px) => {
             let papDiv = [];
 
             let legsDiv = [];
@@ -48,7 +47,7 @@ class SideBar extends Component {
                                 departLeg.push(<div key={key} className="row">
                                     <div className="col-md-12">
                                         {bag.count}
-                                        x {bag.title} {bag.price} {this.props.otaStore.currency}
+                                        x {bag.title} {bag.price} {this.props.MasterStore.otaStore.currency}
                                     </div>
                                 </div>)
 
@@ -57,7 +56,7 @@ class SideBar extends Component {
                                 returnLeg.push(<div key={key} className="row">
                                     <div className="col-md-12">
                                         {bag.count}
-                                        x {bag.title} {bag.price} {this.props.otaStore.currency}
+                                        x {bag.title} {bag.price} {this.props.MasterStore.otaStore.currency}
                                     </div>
                                 </div>)
                             }
@@ -113,10 +112,10 @@ class SideBar extends Component {
     {
         let insuranceDiv = [];
 
-        this.props.otaStore.passengers.forEach((px) => {
+        this.props.MasterStore.otaStore.passengers.forEach((px) => {
             if (px.insuranceInfo > 1 && px.active) {
 
-                this.props.otaStore.insuranceInfo.forEach((ins) => {
+                this.props.MasterStore.otaStore.insuranceInfo.forEach((ins) => {
 
                     if (ins.id === px.insuranceInfo) {
                         const key = ins.key + 'papid' + px.id;
@@ -151,16 +150,16 @@ class SideBar extends Component {
         let total = 0;
 
 
-        this.props.otaStore.paxTypes.forEach((px) => {
+        this.props.MasterStore.otaStore.paxTypes.forEach((px) => {
             total += px.count * px.convertedPrice;
         });
 
         // bags
 
-        this.props.otaStore.passengers.forEach((px) => {
+        this.props.MasterStore.otaStore.passengers.forEach((px) => {
 
             if (px.insuranceInfo > 0) {
-                this.props.otaStore.insuranceInfo.forEach((ins) => {
+                this.props.MasterStore.otaStore.insuranceInfo.forEach((ins) => {
                     if (ins.id === px.insuranceInfo) {
                         total += parseFloat(ins.convertedPrice);
                     }
@@ -179,7 +178,7 @@ class SideBar extends Component {
         //console.log('total ' + total);
         total = total.toFixed(2);
 
-        let priceBoxStyle = {marginTop :  this.props.htmlStore.priceBoxMargin + 'px'};
+        let priceBoxStyle = {marginTop :  this.props.MasterStore.htmlStore.priceBoxMargin + 'px'};
       //  console.log('new pricebox style ' + priceBoxStyle);
         return (
             <div className="pricebox" style={priceBoxStyle}>
@@ -199,11 +198,11 @@ class SideBar extends Component {
                         </div>
 
 
-                        {this.props.otaStore.paxTypes.map((px) => {
+                        {this.props.MasterStore.otaStore.paxTypes.map((px) => {
                             return (<div key={px.type} className="row">
                                 {px.count > 0 &&
                                 <div className="col-md-12"> {px.count}
-                                    x {px.name} {px.convertedPrice} {this.props.otaStore.currency} </div>
+                                    x {px.name} {px.convertedPrice} {this.props.MasterStore.otaStore.currency} </div>
                                 }
 
                             </div>)
@@ -226,7 +225,7 @@ class SideBar extends Component {
                         <div className="row">
                             <div className="col-md-12">
 
-                                <h4> Total Price : {total} {this.props.otaStore.currency} </h4>
+                                <h4> Total Price : {total} {this.props.MasterStore.otaStore.currency} </h4>
 
                             </div>
                         </div>
@@ -236,7 +235,7 @@ class SideBar extends Component {
                     <div className="card-footer bg-light">
 
                         <select className="form-control" onChange={this.handleChange}>
-                            {this.props.otaStore.currencyData.map((cur) => {
+                            {this.props.MasterStore.otaStore.currencyData.map((cur) => {
                                 return (<option key={cur.trigram} value={cur.trigram}>{cur.trigram}</option>)
                             })}
 

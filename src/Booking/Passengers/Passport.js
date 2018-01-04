@@ -6,7 +6,7 @@ import {inject} from "mobx-react/index";
 import ValidatePassengers from './ValidatePassengers';
 
 
-@inject('otaStore')
+@inject('MasterStore')
 class Passport extends Component {
     constructor(props) {
         super(props);
@@ -27,7 +27,7 @@ class Passport extends Component {
         const fieldInput = ev.target.value.toUpperCase();
         console.log(ev.target.value);
 
-        this.props.otaStore.editPaxElement(
+        this.props.MasterStore.otaStore.editPaxElement(
             {
                 value: fieldInput,
                 property: 'passport',
@@ -41,7 +41,7 @@ class Passport extends Component {
         const fieldInput = ev.target.value.toUpperCase();
         console.log(fieldInput);
 
-        this.props.otaStore.editPaxElement(
+        this.props.MasterStore.otaStore.editPaxElement(
             {
                 value: fieldInput,
                 property: 'nationality',
@@ -64,7 +64,7 @@ class Passport extends Component {
         const fieldInput = ev.target.value.toUpperCase();
         console.log(fieldInput);
 
-        this.props.otaStore.editPaxElement(
+        this.props.MasterStore.otaStore.editPaxElement(
             {
                 value: fieldInput,
                 property: 'issue',

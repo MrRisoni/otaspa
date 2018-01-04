@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import Contact from './Contact';
 import Pay from './Pay';
-import PriceBox from '../Booking/SideBar';
+import SideBar from '../Booking/SideBar';
 
 
 class PaymentPage extends Component {
@@ -29,7 +29,7 @@ class PaymentPage extends Component {
                     </div>
 
                     <div className="col-md-4">
-                        <PriceBox/>
+                        <SideBar/>
                     </div>
                 </div>
 

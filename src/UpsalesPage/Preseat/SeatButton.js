@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 
+import {observer, inject} from 'mobx-react';
 
+
+@inject('MasterStore')
+@observer
 class SeatButton extends Component {
     constructor(props)
     {
@@ -20,7 +24,10 @@ class SeatButton extends Component {
         if (this.props.isAvailable) {
             // clear other classes for that leg...
             this.setState({seatClassName: 'seatChosen seatButton col-md-1'});
-
+            this.props.MasterStore.otaStore.selectSeat({
+                seat: this.props.seatID,
+                paxId: 0
+            });
         }
 
     }

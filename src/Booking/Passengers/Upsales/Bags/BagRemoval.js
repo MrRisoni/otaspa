@@ -4,7 +4,7 @@ import {observer, inject} from 'mobx-react';
 import FontAwesome from 'react-fontawesome';
 
 
-@inject('otaStore')
+@inject('MasterStore')
 @observer
 
 class BagRemoval extends Component {
@@ -16,7 +16,7 @@ class BagRemoval extends Component {
 
     remove(e) {
 
-        this.props.otaStore.removeBag( { passengerid: this.props.passengerid,
+        this.props.MasterStore.otaStore.removeBag( { passengerid: this.props.passengerid,
             carrier: this.props.carrier,
             leg: this.props.leg,
             bag_type_id: this.props.bagData.id});

@@ -4,7 +4,7 @@ import {inject} from 'mobx-react';
 import BagCarrier from './BagCarrier';
 
 
-@inject('otaStore')
+@inject('MasterStore')
 class BagLeg extends Component {
     // eslint-disable-next-line
     constructor(props) {
@@ -16,7 +16,7 @@ class BagLeg extends Component {
         let bagCarrierArray = [];
 
 
-        this.props.otaStore.bagAllowance.forEach((bgl) => {
+        this.props.MasterStore.otaStore.bagAllowance.forEach((bgl) => {
             this.props.legCarriers.forEach((lgc) => {
 
                 if (lgc === bgl.carrier) {

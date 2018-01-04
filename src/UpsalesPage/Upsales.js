@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { inject, observer } from 'mobx-react';
 
-import PriceBox from '../Booking/SideBar';
+import SideBar from '../Booking/SideBar';
 import Preseat from './Preseat/Preseat';
 
 @inject('routing')
@@ -18,8 +18,7 @@ class Upsales extends Component {
     handleScroll() {
         const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
         const windowBottom = windowHeight + window.pageYOffset;
-        this.props.htmlStore.changeHeight( windowBottom);
-
+        this.props.MasterStore.htmlStore.changeHeight( windowBottom);
     }
 
     componentWillMount() {
@@ -28,12 +27,8 @@ class Upsales extends Component {
 
     moveToPay()
     {
-
-
         const { location, push, goBack } = this.props.routing;
         push('/pay');
-
-
     }
 
     render() {
@@ -56,7 +51,7 @@ class Upsales extends Component {
                 </div>
 
                 <div className="col-md-4">
-                    {/* <PriceBox/> */}
+                    <SideBar/>
                 </div>
             </div>
         )

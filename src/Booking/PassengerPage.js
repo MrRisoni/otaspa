@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { inject, observer } from 'mobx-react';
 
-import PriceBox from './SideBar';
+import SideBar from './SideBar';
 import PassengerList from './Passengers/PassengerList';
 import Itinerary from './Itinerary/Itinerary';
 import axios from 'axios';
@@ -12,8 +12,8 @@ import ValidatePassengers from './Passengers/ValidatePassengers';
 
 
 @inject('routing')
-@inject('otaStore')
-@inject('htmlStore')
+@inject('MasterStore')
+@inject('MasterStore')
 @observer
 class BookApp extends Component {
 
@@ -38,7 +38,7 @@ class BookApp extends Component {
         const valData = new ValidatePassengers();
 
         const { location, push, goBack } = this.props.routing;
-        if (valData.validate(this.props.otaStore.passengers)) {
+        if (valData.validate(this.props.MasterStore.otaStore.passengers)) {
             push('/upsales');
         }
 
@@ -48,7 +48,7 @@ class BookApp extends Component {
     handleScroll() {
         const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
         const windowBottom = windowHeight + window.pageYOffset;
-        this.props.htmlStore.changeHeight( windowBottom);
+        this.props.MasterStore.htmlStore.changeHeight( windowBottom);
 
     }
 
@@ -62,7 +62,7 @@ class BookApp extends Component {
 
         axios.get(api + '/api/countries')
             .then(function (response) {
-                self.props.otastore.setCountries(response.data);
+                self.props.MasterStore.otaStore.setCountries(response.data);
 
                 self.setState({fetchedCountries:true});
 
@@ -74,7 +74,7 @@ class BookApp extends Component {
 
         axios.get(api + '/api/insurance')
             .then(function (response) {
-                self.props.otastore.setInsurance(response.data);
+                self.props.MasterStore.otaStore.setInsurance(response.data);
 
                 self.setState({fetchedInsurance:true});
 
@@ -86,7 +86,7 @@ class BookApp extends Component {
 
         axios.get(api + '/api/bags')
             .then(function (response) {
-                self.props.otastore.setBags(response.data);
+                self.props.MasterStore.otaStore.setBags(response.data);
 
                 self.setState({fetchedBags:true});
 
@@ -147,7 +147,7 @@ class BookApp extends Component {
                         </div>
 
                         <div className="col-md-3">
-                            <PriceBox/>
+                            <SideBar/>
                         </div>
                     </div>
                 );

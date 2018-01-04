@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {observer, inject} from 'mobx-react';
 
-@inject('otaStore')
+@inject('MasterStore')
 @observer
 class Insurance extends Component {
     constructor(props) {
@@ -20,7 +20,7 @@ class Insurance extends Component {
 
         self.setState({checkedInsurance: ev.target.value});
 
-        this.props.otaStore.updateInsurance({
+        this.props.MasterStore.otaStore.updateInsurance({
             id: this.props.passengerid,
             insurance: ev.target.value
         });
@@ -56,7 +56,7 @@ class Insurance extends Component {
                 <div className="collapse" id={`insuranceCollapse${this.props.passengerid}`}>
 
                     <div className="row">
-                        {this.props.otaStore.insuranceInfo.map((ins) => {
+                        {this.props.MasterStore.otaStore.insuranceInfo.map((ins) => {
 
                             return (<div key={ins.id} className="col-md-3">
 
@@ -73,7 +73,7 @@ class Insurance extends Component {
                                     </div>
 
                                     <div className="card-footer">
-                                        {ins.convertedPrice} {this.props.otaStore.currency}
+                                        {ins.convertedPrice} {this.props.MasterStore.otaStore.currency}
                                     </div>
                                 </div>
 

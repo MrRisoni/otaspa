@@ -4,7 +4,7 @@ import {observer, inject} from 'mobx-react';
 
 import FontAwesome from 'react-fontawesome';
 
-@inject('otaStore')
+@inject('MasterStore')
 @observer
 class SelectBag extends Component {
     constructor(props) {
@@ -20,7 +20,7 @@ class SelectBag extends Component {
         console.log('passengerid ' + this.props.passengerid);
         console.log('legid ' + this.props.leg);
 
-        this.props.otaStore.buyBag({
+        this.props.MasterStore.otaStore.buyBag({
             passengerid: this.props.passengerid,
             carrier: this.props.carrier,
             leg: this.props.leg,
@@ -41,7 +41,7 @@ class SelectBag extends Component {
                         />
 
                     </button>
-                    {this.props.bagData.title} {this.props.bagData.convertedPrice} {this.props.otaStore.currency} </div>
+                    {this.props.bagData.title} {this.props.bagData.convertedPrice} {this.props.MasterStore.otaStore.currency} </div>
             </div>);
 
 

@@ -447,6 +447,15 @@ class OtaStore {
     }
 
 
+    @action
+    selectSeat(args)
+    {
+        console.log(args.route);
+        console.log(args.paxId);
+        console.log(args.seat);
+
+    }
+
 
 }
 

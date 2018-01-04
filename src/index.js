@@ -7,26 +7,18 @@ import {Router, Route} from 'react-router';
 import './index.css';
 
 
-/*
+
 import BookApp from './Booking/PassengerPage';
 import SearchBundle from './Booking/Search/SearchBundle';
 import PaymentPage from './Pay/PaymentPage';
 import FinalPage from './Final/FinalPage';
-
-*/
 import Upsales from './UpsalesPage/Upsales';
 
-
-//import OtaStore from './stores/OtaStore';
-//import ItineraryStore from './stores/ItineraryStore';
-//import HtmlStore from './stores/HtmlStore';
 
 import MasterStore from './stores/MasterStore';
 
 
-//const otastore = new OtaStore();
-//const itinerary_store = new ItineraryStore();
-//const htmlstore = new HtmlStore();
+
 
 const browserHistory = createBrowserHistory();
 const routingStore = new RouterStore();
@@ -45,17 +37,6 @@ ReactDOM.render(
     <Provider {...stores}>
         <Router history={history}>
             <div>
-                <Route exact path="/upsales" component={Upsales}/>
-            </div>
-        </Router>
-    </Provider>
-    , document.getElementById('root'));
-
-/*
-ReactDOM.render(
-    <Provider {...stores}>
-        <Router history={history}>
-            <div>
                 <Route exact path="/" component={SearchBundle}/>
                 <Route exact path="/passengers" component={BookApp}/>
                 <Route exact path="/upsales" component={Upsales}/>
@@ -65,4 +46,3 @@ ReactDOM.render(
         </Router>
     </Provider>
     , document.getElementById('root'));
-*/
