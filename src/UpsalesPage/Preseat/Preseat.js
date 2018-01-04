@@ -5,8 +5,7 @@ import {observer, inject} from 'mobx-react';
 import FontAwesome from 'react-fontawesome';
 
 
-@inject('otaStore')
-@inject('ItineraryStore')
+@inject('MasterStore')
 @observer
 class Preseat extends Component {
 
@@ -14,8 +13,7 @@ class Preseat extends Component {
         super(props);
 
         this.state = {
-            currentPaxID:0,
-            currentLegID:0,
+            currentPaxID:0
         };
 
         this.handleNextPax = this.handleNextPax.bind(this);
@@ -35,16 +33,16 @@ class Preseat extends Component {
 
 
     handleNextLeg() {
-
+        this.props.MasterStore.itineraryStore.nextPreseatLeg();
     }
 
     handlePrevLeg() {
-
+        this.props.MasterStore.itineraryStore.previousPreseatLeg();
     }
 
     componentWillMount() {
         let firstActivePaxID = 12230;
-        this.props.otaStore.passengers.forEach((pax) => {
+        this.props.MasterStore.otaStore.passengers.forEach((pax) => {
             if (pax.active && pax.id < firstActivePaxID) {
                 firstActivePaxID = pax.id;
             }
@@ -108,8 +106,8 @@ class Preseat extends Component {
                                                 />
                                             </button>
 
-                                            {this.props.otaStore.passengers[this.state.currentPaxID].surname}
-                                            {this.props.otaStore.passengers[this.state.currentPaxID].name}
+                                            {this.props.MasterStore.otaStore.passengers[this.state.currentPaxID].surname}
+                                            {this.props.MasterStore.otaStore.passengers[this.state.currentPaxID].name}
 
                                             <button className="btn btn-sm btn-success" onClick={this.handleNextPax}>
                                                 <FontAwesome
@@ -142,7 +140,7 @@ class Preseat extends Component {
                                                 />
                                             </button>
 
-                                            {this.props.itineraryStore.itinerary[this.state.depSegments].surname}
+                                            {this.props.MasterStore.itineraryStore.currentPreasetLeg}
 
                                             <button className="btn btn-sm btn-success" onClick={this.handleNextLeg}>
                                                 <FontAwesome

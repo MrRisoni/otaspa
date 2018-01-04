@@ -5,7 +5,7 @@ import PriceBox from '../Booking/SideBar';
 import Preseat from './Preseat/Preseat';
 
 @inject('routing')
-@inject('htmlStore')
+@inject('MasterStore')
 @observer
 class Upsales extends Component {
     constructor(props) {
@@ -56,9 +56,8 @@ class Upsales extends Component {
                 </div>
 
                 <div className="col-md-4">
-                    <PriceBox/>
+                    {/* <PriceBox/> */}
                 </div>
-
             </div>
         )
     }

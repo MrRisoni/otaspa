@@ -12,6 +12,29 @@ class ItineraryStore {
     @observable
     countries = [];
 
+    @observable
+    segmentsCities = [
+        {
+            fromCity: "Rhodes",
+            toCity: "Athens"
+        },
+        {
+            fromCity: "Athens",
+            toCity: "Paris"
+        },
+        {
+            fromCity: "Paris",
+            toCity: "London"
+        },
+        {
+            fromCity: "London",
+            toCity: "Athens"
+        },
+        {
+            fromCity: "Athens",
+            toCity: "Rhodes"
+        }
+    ]
 
     @observable
     itinerary = {
@@ -124,6 +147,9 @@ class ItineraryStore {
 
     @observable carriers = ['FR', 'A3', 'BA'];
 
+    @observable currentPreasetLeg = 'Athens - Rhodes';
+
+    currentPreasetLegId =0;
 
     findDuration(segments)
     {
@@ -232,6 +258,37 @@ class ItineraryStore {
 
 
     }
+
+
+
+
+    @action
+    nextPreseatLeg()
+    {
+
+        this.currentPreasetLegId++;
+        if (this.currentPreasetLegId === this.segmentsCities.length)
+        {
+            this.currentPreasetLegId = 0;
+        }
+
+        console.log(this.currentPreasetLegId);
+        this.currentPreasetLeg = this.segmentsCities[this.currentPreasetLegId].fromCity + ' - ' + this.segmentsCities[this.currentPreasetLegId].toCity;
+    }
+
+    @action
+    previousPreseatLeg()
+    {
+        this.currentPreasetLegId--;
+        if (this.currentPreasetLegId <0)
+        {
+            this.currentPreasetLegId = 0;
+        }
+
+        console.log(this.currentPreasetLegId);
+        this.currentPreasetLeg = this.segmentsCities[this.currentPreasetLegId].fromCity + ' - ' + this.segmentsCities[this.currentPreasetLegId].toCity;
+    }
+
 
 }
 

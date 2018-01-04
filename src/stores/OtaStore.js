@@ -1,7 +1,7 @@
 import {observable, action} from 'mobx';
+import moment from "moment/moment";
 
 class OtaStore {
-
 
     @observable
     countries = [];
