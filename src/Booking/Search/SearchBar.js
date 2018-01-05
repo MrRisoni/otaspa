@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {inject, observer} from "mobx-react/index";
 
-@inject('MasterStore')
+@inject('otastore')
 @observer
 class SearchBar extends Component {
     constructor(props)
@@ -18,7 +18,7 @@ class SearchBar extends Component {
     {
         const self = this;
         self.setState({checkedCar : !self.state.checkedCar});
-        this.props.MasterStore.htmlStore.toggleCarCarousel();
+        this.props.otastore.toggleCarCarousel();
     }
 
     render() {

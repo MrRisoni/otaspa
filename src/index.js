@@ -15,7 +15,8 @@ import FinalPage from './Final/FinalPage';
 import Upsales from './UpsalesPage/Upsales';
 
 
-import MasterStore from './stores/MasterStore';
+import OtaStore from './stores/OtaStore';
+const otastore = new OtaStore();
 
 
 
@@ -23,11 +24,10 @@ import MasterStore from './stores/MasterStore';
 const browserHistory = createBrowserHistory();
 const routingStore = new RouterStore();
 
-const masterstore = new MasterStore();
 
 const stores = {
     routing: routingStore,
-    MasterStore: masterstore
+    otastore: otastore,
 };
 
 const history = syncHistoryWithStore(browserHistory, routingStore);

@@ -6,7 +6,7 @@ import Itinerary from '../Booking/Itinerary/Itinerary';
 import CardTable from './CardTable';
 
 
-@inject('MasterStore')
+@inject('otastore')
 class FinalPage extends Component {
     constructor(props) {
         super(props);
@@ -53,7 +53,7 @@ class FinalPage extends Component {
     {
         let ticketRows = [];
 
-        this.props.MasterStore.otaStore.passengers.forEach((px) => {
+        this.props.otastore.passengers.forEach((px) => {
            if (px.active) {
 
                ticketRows.push({
@@ -75,7 +75,7 @@ class FinalPage extends Component {
         let priceRows = [];
 
         let total = 0;
-        this.props.MasterStore.otaStore.paxTypes.forEach( (pax) => {
+        this.props.otastore.paxTypes.forEach( (pax) => {
             if (pax.count >0) {
                 priceRows.push({
                     title:  pax.name + ' x ' + pax.count,
@@ -88,10 +88,10 @@ class FinalPage extends Component {
 
         let insuranceTotal =0;
         let insuranceCount = 0;
-        this.props.MasterStore.otaStore.passengers.forEach((px) => {
+        this.props.otastore.passengers.forEach((px) => {
             if (px.insuranceInfo > 1 && px.active) {
 
-                this.props.MasterStore.otaStore.insuranceInfo.forEach((ins) => {
+                this.props.otastore.insuranceInfo.forEach((ins) => {
 
                     if (ins.id === px.insuranceInfo) {
                         insuranceTotal += parseFloat(ins.convertedPrice);
@@ -117,7 +117,7 @@ class FinalPage extends Component {
         let bagsRetCost = 0;
 
 
-        this.props.MasterStore.otaStore.passengers.forEach((px) => {
+        this.props.otastore.passengers.forEach((px) => {
 
             if (px.totalBags > 0 && px.active) {
 

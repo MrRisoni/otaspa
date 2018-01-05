@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {inject} from "mobx-react/index";
 import moment from "moment/moment";
 
-@inject('MasterStore')
+@inject('otastore')
 class Contact extends Component {
     constructor(props) {
         super(props);
@@ -49,7 +49,7 @@ class Contact extends Component {
     componentDidMount()
     {
         this.setState({
-            surname: this.props.MasterStore.otaStore.contactInfo.surname
+            surname: this.props.otastore.contactInfo.surname
         })
     }
 

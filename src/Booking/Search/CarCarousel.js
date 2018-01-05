@@ -3,13 +3,13 @@ import React, {Component} from 'react';
 import FontAwesome from 'react-fontawesome';
 import {inject, observer} from "mobx-react/index";
 
-@inject('MasterStore')
+@inject('otastore')
 @observer
 class CarCarousel extends Component {
 
     render() {
 
-        if (this.props.MasterStore.htmlStore.showCarCarousel) {
+        if (this.props.otastore.showCarCarousel) {
             return (
 
                 <div className="CarCarousel">

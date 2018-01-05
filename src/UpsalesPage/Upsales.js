@@ -5,7 +5,7 @@ import SideBar from '../Booking/SideBar';
 import Preseat from './Preseat/Preseat';
 
 @inject('routing')
-@inject('MasterStore')
+@inject('otastore')
 @observer
 class Upsales extends Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class Upsales extends Component {
     handleScroll() {
         const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
         const windowBottom = windowHeight + window.pageYOffset;
-        this.props.MasterStore.htmlStore.changeHeight( windowBottom);
+        this.props.otastore.changeHeight( windowBottom);
     }
 
     componentWillMount() {

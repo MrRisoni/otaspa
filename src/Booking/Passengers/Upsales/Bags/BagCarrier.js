@@ -3,7 +3,7 @@ import {observer, inject} from 'mobx-react';
 
 import SelectBag from './SelectBag';
 
-@inject('MasterStore')
+@inject('otastore')
 @observer
 class BagCarrier extends Component {
     // eslint-disable-next-line

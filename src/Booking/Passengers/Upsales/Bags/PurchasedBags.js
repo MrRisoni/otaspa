@@ -3,7 +3,7 @@ import {observer, inject} from 'mobx-react';
 
 import BagRemoval from './BagRemoval'
 
-@inject('MasterStore')
+@inject('otastore')
 @observer
 class PurchasedBags extends Component {
     // eslint-disable-next-line
@@ -15,7 +15,7 @@ class PurchasedBags extends Component {
 
         let purchasedDiv = [];
 
-        this.props.MasterStore.otaStore.passengers[this.props.passengerid].bags[this.props.leg].types.forEach((bg) => {
+        this.props.otastore.passengers[this.props.passengerid].bags[this.props.leg].types.forEach((bg) => {
             if (bg.count > 0) {
                 purchasedDiv.push(
                     <BagRemoval

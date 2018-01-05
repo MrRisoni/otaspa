@@ -5,7 +5,7 @@ import { inject} from 'mobx-react';
 import BagLeg from './BagLeg';
 import PurchasedBags from './PurchasedBags';
 
-@inject('MasterStore')
+@inject('otastore')
 class Bags extends Component {
     constructor(props) {
         super(props);
@@ -47,16 +47,16 @@ class Bags extends Component {
                             <div className="row">
 
 
-                                <BagLeg route={this.props.MasterStore.otaStore.departRoute}
+                                <BagLeg route={this.props.otastore.departRoute}
                                         passengerid={this.props.passengerid}
-                                        legCarriers={this.props.MasterStore.otaStore.outboundCarriers}
+                                        legCarriers={this.props.otastore.outboundCarriers}
                                         leg={0}
                                 />
 
 
-                                <BagLeg route={this.props.MasterStore.otaStore.returnRoute}
+                                <BagLeg route={this.props.otastore.returnRoute}
                                         passengerid={this.props.passengerid}
-                                        legCarriers={this.props.MasterStore.otaStore.inboundCarriers}
+                                        legCarriers={this.props.otastore.inboundCarriers}
                                         leg={1}
                                 />
 

@@ -12,8 +12,8 @@ import ValidatePassengers from './Passengers/ValidatePassengers';
 
 
 @inject('routing')
-@inject('MasterStore')
-@inject('MasterStore')
+@inject('otastore')
+@inject('otastore')
 @observer
 class BookApp extends Component {
 
@@ -38,7 +38,7 @@ class BookApp extends Component {
         const valData = new ValidatePassengers();
 
         const { location, push, goBack } = this.props.routing;
-        if (valData.validate(this.props.MasterStore.otaStore.passengers)) {
+        if (valData.validate(this.props.otastore.passengers)) {
             push('/upsales');
         }
 
@@ -48,7 +48,7 @@ class BookApp extends Component {
     handleScroll() {
         const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
         const windowBottom = windowHeight + window.pageYOffset;
-        this.props.MasterStore.htmlStore.changeHeight( windowBottom);
+        this.props.otastore.changeHeight( windowBottom);
 
     }
 
@@ -62,7 +62,7 @@ class BookApp extends Component {
 
         axios.get(api + '/api/countries')
             .then(function (response) {
-                self.props.MasterStore.otaStore.setCountries(response.data);
+                self.props.otastore.setCountries(response.data);
 
                 self.setState({fetchedCountries:true});
 
@@ -74,7 +74,7 @@ class BookApp extends Component {
 
         axios.get(api + '/api/insurance')
             .then(function (response) {
-                self.props.MasterStore.otaStore.setInsurance(response.data);
+                self.props.otastore.setInsurance(response.data);
 
                 self.setState({fetchedInsurance:true});
 
@@ -86,7 +86,7 @@ class BookApp extends Component {
 
         axios.get(api + '/api/bags')
             .then(function (response) {
-                self.props.MasterStore.otaStore.setBags(response.data);
+                self.props.otastore.setBags(response.data);
 
                 self.setState({fetchedBags:true});
 

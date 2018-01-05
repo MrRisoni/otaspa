@@ -11,7 +11,7 @@ import Miles from './Miles';
 import Insurance from './Upsales/Insurance';
 import Bags from './Upsales/Bags/Bags';
 
-@inject('MasterStore')
+@inject('otastore')
 class Passenger extends Component {
     constructor(props) {
         super(props);
@@ -32,11 +32,11 @@ class Passenger extends Component {
     changeAge(ev) {
         console.log('Change passenger type');
         console.log(ev.target.value);
-        this.props.MasterStore.otaStore.changePaxType({id: this.props.pap.id, type: ev.target.value});
+        this.props.otastore.changePaxType({id: this.props.pap.id, type: ev.target.value});
     }
 
     removeMe() {
-        this.props.MasterStore.otaStore.removePassenger(this.props.pap.id);
+        this.props.otastore.removePassenger(this.props.pap.id);
 
     }
 
