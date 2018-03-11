@@ -8,8 +8,4 @@ Largely inspired from kiwi.com as well as other sites
 
 Front-End Stack : React, MobX
 
-URL : https://reactota.herokuapp.com/passengers
-
-
-
 Old Vue.js repository https://github.com/MrRisoni/vuespa
